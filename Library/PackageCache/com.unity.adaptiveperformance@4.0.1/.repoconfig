@@ -1,8 +1,0 @@
-[version]
-repoconfig=6
-minimum-unity-meta=44
-
-path=<<EOT
-# general rule
-^[a-z0-9./_+-]+$
-EOT

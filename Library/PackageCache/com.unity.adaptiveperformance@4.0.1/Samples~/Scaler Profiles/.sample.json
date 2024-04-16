@@ -1,7 +1,0 @@
-{
-  "displayName": "Scaler Profile Sample",
-  "description": "Demonstrates how Adaptive Performance scaler profiles can be used.",
-  "createSeparatePackage": true,
-  "dependencies": {
-  }
-}

@@ -1,8 +1,0 @@
-{
-  "displayName": "VRR Sample",
-  "description": "Demonstrates how Variable Refresh Rate displays can be used with Adaptive Performance.",
-  "createSeparatePackage": true,
-  "dependencies": {
-  	"com.unity.adaptiveperformance.samsung.android": "4.0.0"
-  }
-}

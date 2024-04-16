@@ -1,8 +1,0 @@
-{
-  "displayName": "Thermal Sample",
-  "description": "Demonstrates how thermal warnings work.",
-  "createSeparatePackage": true,
-  "dependencies": {
-
-  }
-}

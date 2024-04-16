@@ -1,7 +1,0 @@
-{
-  "displayName": "Sample Environment",
-  "description": "The base Environment all Adaptive Performance Samples use.",
-  "createSeparatePackage": true,
-  "dependencies": {
-  }
-}

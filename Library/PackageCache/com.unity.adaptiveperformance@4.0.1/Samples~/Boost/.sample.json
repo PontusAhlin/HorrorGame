@@ -1,7 +1,0 @@
-{
-  "displayName": "Boost",
-  "description": "Demonstrates how the Adaptive Performance Boost works.",
-  "createSeparatePackage": true,
-  "dependencies": {
-  }
-}

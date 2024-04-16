@@ -1,8 +1,0 @@
-{
-  "displayName": "Adaptive Transparency Sample",
-  "description": "Demonstrates how removing transparent objects works.",
-  "createSeparatePackage": true,
-  "dependencies": {
-    "com.unity.render-pipelines.universal": "12.0.0"
-  }
-}

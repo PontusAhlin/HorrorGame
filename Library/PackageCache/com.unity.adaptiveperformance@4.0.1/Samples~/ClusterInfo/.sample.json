@@ -1,7 +1,0 @@
-{
-  "displayName": "Cluster Info",
-  "description": "Demonstrates how the Adaptive Performance Cluster Info works.",
-  "createSeparatePackage": true,
-  "dependencies": {
-  }
-}
