@@ -1,0 +1,7 @@
+{
+  "displayName": "Adaptive Physics",
+  "description": "Demonstrates how Adaptive Physics works.",
+  "createSeparatePackage": true,
+  "dependencies": {
+  }
+}

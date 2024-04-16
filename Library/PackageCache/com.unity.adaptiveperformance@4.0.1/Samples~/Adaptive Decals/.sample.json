@@ -1,0 +1,8 @@
+{
+  "displayName": "Adaptive Decals Sample",
+  "description": "Demonstrates how Adaptive Performance Decals Scaler work.",
+  "createSeparatePackage": true,
+  "dependencies": {
+    "com.unity.render-pipelines.universal": "12.0.0"
+  }
+}

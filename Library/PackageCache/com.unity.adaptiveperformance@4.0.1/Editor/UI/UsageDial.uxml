@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML
+xmlns:ui="UnityEngine.UIElements"
+xmlns:uie="UnityEditor.UIElements"
+xmlns:apui="UnityEditor.AdaptivePerformance.UI.Editor"
+xsi="http://www.w3.org/2001/XMLSchema-instance"
+engine="UnityEngine.UIElements"
+editor="UnityEditor.UIElements"
+noNamespaceSchemaLocation="../../../../../../UIElementsSchema/UIElements.xsd"
+editor-extension-mode="True">
+    <ui:VisualElement name="proxy-root">
+        <Style src="UsageDialStyle.uss" />
+        <ui:VisualElement style="border-left-color: rgba(151, 151, 151, 255); border-right-color: rgba(151, 151, 151, 255); border-top-color: rgba(151, 151, 151, 255); border-bottom-color: rgba(151, 151, 151, 255); border-bottom-width: 1px; flex-grow: 1; width: 68px; margin-left: 0; padding-left: 2px;">
+            <apui:UsageDial percentage-value="31" class="usage-dial__background-image">
+                <ui:VisualElement name="usage-dial__root" style="align-items: center; width: 0; height: 0;">
+                    <ui:VisualElement name="usage-dial__indicator" style="width: 12px; position: absolute; right: 22px; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); border-left-width: 0; border-right-width: 0; border-top-width: 0.5px; border-bottom-width: 0.5px; border-top-left-radius: 1px; border-bottom-left-radius: 1px; border-top-right-radius: 1px; border-bottom-right-radius: 1px;" />
+                </ui:VisualElement>
+                <ui:Label text="50%" display-tooltip-when-elided="true" name="usage-dial__label" style="-unity-text-align: upper-center;"  show-label="true"/>
+            </apui:UsageDial>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

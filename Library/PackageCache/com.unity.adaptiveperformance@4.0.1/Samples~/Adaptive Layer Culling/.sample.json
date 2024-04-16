@@ -1,0 +1,7 @@
+{
+  "displayName": "Adaptive Layer Culling Sample",
+  "description": "Demonstrates how Adaptive Performance Layer Culling scaler works.",
+  "createSeparatePackage": true,
+  "dependencies": {
+  }
+}

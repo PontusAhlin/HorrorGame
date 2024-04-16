@@ -1,0 +1,52 @@
+.proxy-root {
+    flex-grow: 1;
+}
+
+.usage-dial__background-image {
+    background-image: resource('Packages/com.unity.adaptiveperformance/Editor/UI/UsageDial_Ring.png');
+    flex-grow: 1;
+    width: 64px;
+    height: 32px;
+    flex-direction: column-reverse;
+    align-items: center;
+    -unity-background-image-tint-color: rgba(255, 255, 255, 0);
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.usage-dial__container {
+    border-left-color: rgb(151, 151, 151);
+    border-right-color: rgb(151, 151, 151);
+    border-top-color: rgb(151, 151, 151);
+    border-bottom-color: rgb(151, 151, 151);
+    border-bottom-width: 1px;
+    flex-grow: 1;
+    flex-shrink: 0;
+    width: 68px;
+    margin-left: 0;
+    padding-left: 2px;
+}
+
+.usage-dial__root {
+    align-items: center;
+    width: 0;
+    height: 0;
+}
+
+.usage-dial__indicator {
+    width: 12px;
+    position: absolute;
+    right: 22px;
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0.5px;
+    border-bottom-width: 0.5px;
+    border-top-left-radius: 1px;
+    border-bottom-left-radius: 1px;
+    border-top-right-radius: 1px;
+    border-bottom-right-radius: 1px;
+}

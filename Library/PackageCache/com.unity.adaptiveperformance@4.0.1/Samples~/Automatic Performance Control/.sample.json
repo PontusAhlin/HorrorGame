@@ -1,0 +1,7 @@
+{
+  "displayName": "Automatic Performance Control Sample",
+  "description": "Demonstrates how the Automatic Performance Control works.",
+  "createSeparatePackage": true,
+  "dependencies": {
+  }
+}

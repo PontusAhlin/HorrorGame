@@ -1,0 +1,7 @@
+.unity-foldout--depth-1 .unity-foldout__toggle,
+.unity-foldout--depth-2 .unity-foldout__toggle,
+.unity-foldout--depth-3 .unity-foldout__toggle,
+.unity-foldout--depth-4 .unity-foldout__toggle,
+.unity-foldout--depth-max .unity-foldout__toggle {
+    margin-left: 0;
+}

@@ -1,0 +1,24 @@
+{
+    "name": "Unity.AdaptivePerformance.Tests",
+    "references": [
+        "GUID:7dbf32976982c98448af054f2512cb79",
+        "GUID:27619889b8ba8c24980f49ee34dbb44a",
+        "GUID:0acc523941302664db1f4e527237feb3",
+        "GUID:e091ee923bff9460cb43c3f7d5553e73",
+        "GUID:92216e389e91d4db7858919b5ad28e62",
+        "GUID:9604b18aafdbc9346bceb5e19ac9c746"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

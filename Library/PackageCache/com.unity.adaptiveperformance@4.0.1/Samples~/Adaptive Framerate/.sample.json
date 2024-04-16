@@ -1,0 +1,8 @@
+{
+  "displayName": "Adaptive Framerate Sample",
+  "description": "Demonstrates how Adaptive Framrate using target framerate or variable refresh rate works.",
+  "createSeparatePackage": true,
+  "dependencies": {
+  	"com.unity.adaptiveperformance.samsung.android": "4.0.0"
+  }
+}
