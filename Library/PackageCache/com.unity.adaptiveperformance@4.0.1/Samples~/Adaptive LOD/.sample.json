@@ -1,0 +1,5 @@
+{
+  "displayName": "Adaptive LOD Sample",
+  "description": "Demonstrates how Adaptive Performance LOD Scaler works.",
+  "createSeparatePackage": true
+}

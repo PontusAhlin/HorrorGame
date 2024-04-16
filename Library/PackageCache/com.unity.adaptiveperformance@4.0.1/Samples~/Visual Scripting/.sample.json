@@ -1,0 +1,7 @@
+{
+  "displayName": "Visual Scripting",
+  "description": "Demonstrates how Adaptive Performance can be used in Visual Scripting.",
+  "createSeparatePackage": true,
+  "dependencies": {
+  }
+}

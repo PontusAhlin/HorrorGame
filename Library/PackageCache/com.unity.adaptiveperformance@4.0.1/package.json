@@ -1,0 +1,160 @@
+{
+  "name": "com.unity.adaptiveperformance",
+  "displayName": "Adaptive Performance",
+  "description": "The Adaptive Performance package provides an API to get feedback about the thermal and power state of mobile devices, enabling applications to make performance-relevant adaptions at runtime.\n\nFor instruction on how to use samples, please read the documentation.\n\nBy installing this package, you agree to the terms and conditions of the Unity End User License Agreement found under \"View licenses\" above.",
+  "version": "4.0.1",
+  "unity": "2021.2",
+  "unityRelease": "0a18",
+  "keywords": [
+    "mobile",
+    "adaptive",
+    "performance",
+    "utility",
+    "utilities",
+    "core",
+    "samsung",
+    "ap",
+    "provider",
+    "subsystem",
+    "indexer",
+    "scaler",
+    "vrr",
+    "boost",
+    "profiles",
+    "cluster",
+    "clusterinfo"
+  ],
+  "dependencies": {
+    "com.unity.subsystemregistration": "1.1.0",
+    "com.unity.profiling.core": "1.0.2"
+  },
+  "license": "See LICENSE.md file",
+  "samples": [
+    {
+      "displayName": "Environment",
+      "description": "The base Environment all Adaptive Performance samples use.",
+      "path": "Samples~/Environment"
+    },
+    {
+      "displayName": "Thermal",
+      "description": "Demonstrates how thermal warnings work.",
+      "path": "Samples~/Thermal"
+    },
+    {
+      "displayName": "Bottleneck",
+      "description": "Demonstrates how the bottleneck detection works.",
+      "path": "Samples~/Bottleneck"
+    },
+    {
+      "displayName": "Boost",
+      "description": "Demonstrates how the Adaptive Performance Boost works.",
+      "path": "Samples~/Boost"
+    },
+    {
+      "displayName": "Cluster Info",
+      "description": "Demonstrates how the Adaptive Performance Cluster Info works.",
+      "path": "Samples~/ClusterInfo"
+    },
+    {
+      "displayName": "VRR",
+      "description": "Demonstrates how Variable Refresh Rate displays can be used with Adaptive Performance.",
+      "path": "Samples~/VariableRefreshRate"
+    },
+    {
+      "displayName": "Scaler Profile Sample",
+      "description": "Demonstrates how Adaptive Performance scaler profiles can be used.",
+      "path": "Samples~/Scaler Profiles"
+    },
+    {
+      "displayName": "Automatic Performance Control",
+      "description": "Demonstrates how the Automatic Performance Control works.",
+      "path": "Samples~/Automatic Performance Control"
+    },
+    {
+      "displayName": "Adaptive Framerate",
+      "description": "Demonstrates how Adaptive Framrate using target framerate or variable refresh rate works.",
+      "path": "Samples~/Adaptive Framerate"
+    },
+    {
+      "displayName": "Adaptive Batching",
+      "description": "Demonstrates how Adaptive Batching works.",
+      "path": "Samples~/Adaptive Batching"
+    },
+    {
+      "displayName": "Adaptive LOD",
+      "description": "Demonstrates how Adaptive Performance LOD Scaler works.",
+      "path": "Samples~/Adaptive LOD"
+    },
+    {
+      "displayName": "Adaptive LUT",
+      "description": "Demonstrates how Adaptive LUT Scaler works.",
+      "path": "Samples~/Adaptive LUT"
+    },
+    {
+      "displayName": "Adaptive MSAA",
+      "description": "Demonstrates how Adaptive MSAA works.",
+      "path": "Samples~/Adaptive MSAA"
+    },
+    {
+      "displayName": "Adaptive Resolution",
+      "description": "Demonstrates how Adaptive Resolution works.",
+      "path": "Samples~/Adaptive Resolution"
+    },
+    {
+      "displayName": "Adaptive Shadow",
+      "description": "Demonstrates how Adaptive Performance Shadow Scaler, such as Adaptive Shadow Quality, Adaptive Shadow Resolution, Adaptive Shadow Distance and Adaptive Shadow Cascade work.",
+      "path": "Samples~/Adaptive Shadow"
+    },
+    {
+      "displayName": "Adaptive Sorting",
+      "description": "Demonstrates how Adaptive Sorting works.",
+      "path": "Samples~/Adaptive Sorting"
+    },
+    {
+      "displayName": "Adaptive Transparency",
+      "description": "Demonstrates how removing transparent objects works.",
+      "path": "Samples~/Adaptive Transparency"
+    },
+    {
+      "displayName": "Adaptive View Distance Sample",
+      "description": "Demonstrates how Adaptive Performance View Distance scaler works.",
+      "path": "Samples~/Adaptive View Distance"
+    },
+    {
+      "displayName": "Custom Scaler Sample",
+      "description": "Demonstrates how adding custom Adaptive Performance scaler works by showing how to create Adaptive Fog.",
+      "path": "Samples~/Custom Scaler"
+    },
+    {
+      "displayName": "Adaptive Physics",
+      "description": "Demonstrates how Adaptive Performance Physics scaler works.",
+      "path": "Samples~/Adaptive Physics"
+    },
+    {
+      "displayName": "Visual Scripting",
+      "description": "Demonstrates how Adaptive Performance can be used in Visual Scripting.",
+      "path": "Samples~/Visual Scripting"
+    },
+    {
+      "displayName": "Adaptive Decals",
+      "description": "Demonstrates how Adaptive Performance Decals scaler works.",
+      "path": "Samples~/Adaptive Decals"
+    },
+    {
+      "displayName": "Adaptive Layer Culling",
+      "description": "Demonstrates how Adaptive Performance Layer Culling scaler works.",
+      "path": "Samples~/Adaptive Layer Culling"
+    }
+  ],
+  "_upm": {
+    "changelog": "### Added\n- Fix bug with scaler not being initialized with settings from the Editor UI properly when using profiles.\n- Fix bug when building with IL2CPP and scaler types getting stripped out.\n- Fix bug with manual lifetime tests failing occasionally.\n- Fix bug with test provider and settings showing up in Project Settings."
+  },
+  "upmCi": {
+    "footprint": "9e5073e86f497287694b259a19f5a071f8fbb1b0"
+  },
+  "repository": {
+    "url": "https://github.cds.internal.unity3d.com/unity/com.unity.adaptiveperformance.git",
+    "type": "git",
+    "revision": "08f36a7c7e7e80b8ec602e108f0e40d1661540b5"
+  }
+}

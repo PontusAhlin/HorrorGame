@@ -1,0 +1,7 @@
+{
+  "displayName": "Adaptive View Distance Sample",
+  "description": "Demonstrates how Adaptive Performance View Distance scaler works.",
+  "createSeparatePackage": true,
+  "dependencies": {
+  }
+}

@@ -1,0 +1,25 @@
+{
+    "name": "Unity.Mobile.AndroidLogcat.IntegrationTests",
+    "references": [
+        "Unity.Mobile.AndroidLogcat.Editor",
+        "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner",
+        "Unity.Mobile.AndroidLogcat.Tests"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS",
+        "!DISABLE_LOGCAT_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

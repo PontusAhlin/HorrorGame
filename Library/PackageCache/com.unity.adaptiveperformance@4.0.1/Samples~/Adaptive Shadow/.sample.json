@@ -1,0 +1,8 @@
+{
+  "displayName": "Adaptive Shadow Sample",
+  "description": "Demonstrates how Adaptive Performance Shadow Scaler, such as Adaptive Shadow Quality, Adaptive Shadow Resolution, Adaptive Shadow Distance and Adaptive Shadow Cascade work.",
+  "createSeparatePackage": true,
+  "dependencies": {
+    "com.unity.render-pipelines.universal": "12.0.0"
+  }
+}

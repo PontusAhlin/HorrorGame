@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ui="UnityEngine.UIElements"
+    xmlns:uie="UnityEditor.UIElements"
+    xmlns:apui="Unity.AdaptivePerformance.Editor.UI"
+    xsi:noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd"
+    schemaLocation="                         UnityEngine.Experimental.UIElements ../../UIElementsSchema/UnityEngine.Experimental.UIElements.xsd                         UnityEditor.Experimental.UIElements ../../UIElementsSchema/UnityEditor.Experimental.UIElements.xsd                         UnityEditor.PackageManager.UI ../../UIElementsSchema/UnityEditor.PackageManager.UI.xsd"
+    >
+  <ui:Style src="AdaptivePerformanceDetailsView.uss"/>
+  <ui:Template name="UsageDial" src="../UI/UsageDial.uxml" />
+  <ui:ScrollView name="ap-details-view" >
+    <ui:VisualElement name="ap-details-view-head">
+      <ui:Label name="ap-details-view-header-label" text="Adaptive Performance Details"/>
+    </ui:VisualElement>
+    <ui:VisualElement name="ap-details-view-dials">
+      <ui:VisualElement name="ap-details-view-bottleneck">
+        <ui:Label name="ap-details-view-bottleneck-label" text="Bottleneck"/>
+        <ui:VisualElement name="ap-details-view-bottleneck-icon-container">
+          <ui:VisualElement name="ap-details-view-bottleneck-icon">
+             <ui:Label name="ap-details-view-bottleneck-icon-label" text="CPU"/>
+          </ui:VisualElement>
+        </ui:VisualElement>
+      </ui:VisualElement>
+      <ui:VisualElement name="ap-details-view-thermal-warning">
+        <ui:Label name="ap-details-view-thermal-warning-label" text="Thermal Warning"/>
+        <ui:Instance template="UsageDial" name="ap-usage-dial" />
+        <ui:Label name="ap-details-view-thermal-label" text="No Warning"/>
+      </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="ap-details-view-head">
+      <ui:Label name="ap-details-view-header-label" text="Scalers"/>
+    </ui:VisualElement>
+    <ui:ScrollView name="ap-scalers" mode="Horizontal" />
+    <ui:VisualElement name="ap-details-view-head">
+      <ui:Label name="ap-details-view-header-label" text="CPU and GPU Performance"/>
+    </ui:VisualElement>
+    <ui:VisualElement name="ap-details-view-details">
+      <ui:Label name="ap-details-view-label" text="no details"/>
+    </ui:VisualElement>
+  </ui:ScrollView>
+</ui:UXML>

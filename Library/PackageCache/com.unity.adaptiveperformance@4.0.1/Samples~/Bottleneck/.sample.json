@@ -1,0 +1,7 @@
+{
+  "displayName": "Bottleneck Sample",
+  "description": "Demonstrates how the bottleneck detection works.",
+  "createSeparatePackage": true,
+  "dependencies": {
+  }
+}

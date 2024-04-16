@@ -1,0 +1,7 @@
+{
+  "displayName": "Custom Scaler",
+  "description": "Demonstrates how adding custom Adaptive Performance scaler works by showing how to create Adaptive Fog.",
+  "createSeparatePackage": true,
+  "dependencies": {
+  }
+}

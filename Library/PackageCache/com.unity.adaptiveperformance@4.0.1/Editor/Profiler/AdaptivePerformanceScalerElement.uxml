@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ui="UnityEngine.UIElements"
+    xmlns:uie="UnityEditor.UIElements"
+    xmlns:apui="UnityEditor.AdaptivePerformance.UI.Editor"
+    xsi:noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd"
+    schemaLocation="                         UnityEngine.Experimental.UIElements ../../UIElementsSchema/UnityEngine.Experimental.UIElements.xsd                         UnityEditor.Experimental.UIElements ../../UIElementsSchema/UnityEditor.Experimental.UIElements.xsd                         UnityEditor.PackageManager.UI ../../UIElementsSchema/UnityEditor.PackageManager.UI.xsd                         Unity.MemoryProfiler.Editor ../../UIElementsSchema/Unity.MemoryProfiler.Editor.xsd "
+    >
+  <ui:Style src="AdaptivePerformanceScalerElement.uss"/>
+  <ui:VisualElement name="ap-scaler-element">
+    <ui:Label name="ap-scaler-element-max-label" text="0"/>
+    <ui:VisualElement name="ap-scaler-element-content">
+      <ui:VisualElement name="ap-scaler-element-bar">
+        <ui:VisualElement name="ap-scaler-element-bar-fill" style="transform-origin: top;" />
+      </ui:VisualElement>
+      <ui:Label name="ap-scaler-element-level-label" text="0"/>
+        <ui:Label name="ap-scaler-element-label" text="Scaler" style="transform-origin: center; rotate: 45deg;" />
+    </ui:VisualElement>
+  </ui:VisualElement>
+</ui:UXML>
