@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class DoorBehavior : MonoBehaviour
 {
-    public GameObject doorOpened, doorClosed;
+    public GameObject doorOpened, doorClosed, inTrigger, outTrigger;
+    bool DoorIsClosed = true;
     // Start is called before the first frame update
     void Start()
     {
