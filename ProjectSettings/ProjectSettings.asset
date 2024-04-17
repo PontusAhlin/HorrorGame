@@ -915,7 +915,10 @@ PlayerSettings:
   windowsGamepadBackendHint: 0
   cloudProjectId: 254e9f01-bf9b-43e1-99db-3a5bebaa6b0e
   framebufferDepthMemorylessMode: 0
-  qualitySettingsNames: []
+  qualitySettingsNames:
+  - Performant
+  - Balanced
+  - High Fidelity
   projectName: Test
   organizationId: unity_0b574cfcffeb54e9b928
   cloudEnabled: 0
