@@ -131,11 +131,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1742624408}
     m_Modifications:
-    - target: {fileID: 447621403048163950, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: b375f5b3e345f468e83cd783dc50f651, type: 2}
     - target: {fileID: 1053152156472769980, guid: cd80197544b7c49b0adb2701e425797e,
         type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -196,26 +191,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5780353175871520166, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: b375f5b3e345f468e83cd783dc50f651, type: 2}
-    - target: {fileID: 6521397582312099345, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 8f43e9e1f7f21473986665ce7d2589a1, type: 2}
     - target: {fileID: 7502548624102339308, guid: cd80197544b7c49b0adb2701e425797e,
         type: 3}
       propertyPath: m_Name
       value: 5x10 Door Frame (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 8476504849145567274, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 86b859b95143f4e9788fc4d2b229f866, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -506,11 +486,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1742624408}
     m_Modifications:
-    - target: {fileID: 447621403048163950, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: b375f5b3e345f468e83cd783dc50f651, type: 2}
     - target: {fileID: 1053152156472769980, guid: cd80197544b7c49b0adb2701e425797e,
         type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -571,26 +546,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5780353175871520166, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: b375f5b3e345f468e83cd783dc50f651, type: 2}
-    - target: {fileID: 6521397582312099345, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 8f43e9e1f7f21473986665ce7d2589a1, type: 2}
     - target: {fileID: 7502548624102339308, guid: cd80197544b7c49b0adb2701e425797e,
         type: 3}
       propertyPath: m_Name
       value: 5x10 Door Frame (6)
       objectReference: {fileID: 0}
-    - target: {fileID: 8476504849145567274, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 86b859b95143f4e9788fc4d2b229f866, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2132,21 +2092,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: b375f5b3e345f468e83cd783dc50f651, type: 2}
-    - target: {fileID: 6521397582312099345, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 8f43e9e1f7f21473986665ce7d2589a1, type: 2}
     - target: {fileID: 7502548624102339308, guid: cd80197544b7c49b0adb2701e425797e,
         type: 3}
       propertyPath: m_Name
       value: 5x10 Door Frame (4)
       objectReference: {fileID: 0}
-    - target: {fileID: 8476504849145567274, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 86b859b95143f4e9788fc4d2b229f866, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 1410418596230163876, guid: cd80197544b7c49b0adb2701e425797e, type: 3}
@@ -3487,15 +3437,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 193e80d4a1b1249aeb8f33029a00f863, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 100
-  playerBody: {fileID: 192311732}
 --- !u!1001 &964799925
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1742624408}
     m_Modifications:
     - target: {fileID: 6684716266796766487, guid: 561e0b20cb42b4ce8b27df095f9a1492,
         type: 3}
@@ -3525,17 +3473,17 @@ PrefabInstance:
     - target: {fileID: 8041290057272224463, guid: 561e0b20cb42b4ce8b27df095f9a1492,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8041290057272224463, guid: 561e0b20cb42b4ce8b27df095f9a1492,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8041290057272224463, guid: 561e0b20cb42b4ce8b27df095f9a1492,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8041290057272224463, guid: 561e0b20cb42b4ce8b27df095f9a1492,
         type: 3}
@@ -3557,6 +3505,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 561e0b20cb42b4ce8b27df095f9a1492, type: 3}
+--- !u!4 &964799926 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8041290057272224463, guid: 561e0b20cb42b4ce8b27df095f9a1492,
+    type: 3}
+  m_PrefabInstance: {fileID: 964799925}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &988498884
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3715,7 +3669,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1742624408}
     m_Modifications:
     - target: {fileID: 6684716266796766487, guid: 561e0b20cb42b4ce8b27df095f9a1492,
         type: 3}
@@ -3745,17 +3699,17 @@ PrefabInstance:
     - target: {fileID: 8041290057272224463, guid: 561e0b20cb42b4ce8b27df095f9a1492,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8041290057272224463, guid: 561e0b20cb42b4ce8b27df095f9a1492,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8041290057272224463, guid: 561e0b20cb42b4ce8b27df095f9a1492,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8041290057272224463, guid: 561e0b20cb42b4ce8b27df095f9a1492,
         type: 3}
@@ -3777,6 +3731,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 561e0b20cb42b4ce8b27df095f9a1492, type: 3}
+--- !u!4 &995496705 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8041290057272224463, guid: 561e0b20cb42b4ce8b27df095f9a1492,
+    type: 3}
+  m_PrefabInstance: {fileID: 995496704}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1009329767
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5144,7 +5104,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2926557707537190794, guid: f396e3429a4864fc2ad497cb3ce5fe2c, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5445,11 +5405,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1742624408}
     m_Modifications:
-    - target: {fileID: 447621403048163950, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: b375f5b3e345f468e83cd783dc50f651, type: 2}
     - target: {fileID: 1053152156472769980, guid: cd80197544b7c49b0adb2701e425797e,
         type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -5510,26 +5465,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0.0010070801
       objectReference: {fileID: 0}
-    - target: {fileID: 5780353175871520166, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: b375f5b3e345f468e83cd783dc50f651, type: 2}
-    - target: {fileID: 6521397582312099345, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 8f43e9e1f7f21473986665ce7d2589a1, type: 2}
     - target: {fileID: 7502548624102339308, guid: cd80197544b7c49b0adb2701e425797e,
         type: 3}
       propertyPath: m_Name
       value: 5x10 Door Frame (10)
       objectReference: {fileID: 0}
-    - target: {fileID: 8476504849145567274, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 86b859b95143f4e9788fc4d2b229f866, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6248,21 +6188,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1742624408}
     m_Modifications:
-    - target: {fileID: 447621403048163950, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: b375f5b3e345f468e83cd783dc50f651, type: 2}
-    - target: {fileID: 1053152156472769980, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5243423172026255270, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 5243423172026255270, guid: cd80197544b7c49b0adb2701e425797e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6313,26 +6238,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5780353175871520166, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: b375f5b3e345f468e83cd783dc50f651, type: 2}
-    - target: {fileID: 6521397582312099345, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 8f43e9e1f7f21473986665ce7d2589a1, type: 2}
     - target: {fileID: 7502548624102339308, guid: cd80197544b7c49b0adb2701e425797e,
         type: 3}
       propertyPath: m_Name
       value: 5x10 Door Frame (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 8476504849145567274, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 86b859b95143f4e9788fc4d2b229f866, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6352,11 +6262,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1742624408}
     m_Modifications:
-    - target: {fileID: 447621403048163950, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: b375f5b3e345f468e83cd783dc50f651, type: 2}
     - target: {fileID: 1053152156472769980, guid: cd80197544b7c49b0adb2701e425797e,
         type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -6417,26 +6322,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5780353175871520166, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: b375f5b3e345f468e83cd783dc50f651, type: 2}
-    - target: {fileID: 6521397582312099345, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 8f43e9e1f7f21473986665ce7d2589a1, type: 2}
     - target: {fileID: 7502548624102339308, guid: cd80197544b7c49b0adb2701e425797e,
         type: 3}
       propertyPath: m_Name
       value: 5x10 Door Frame (8)
       objectReference: {fileID: 0}
-    - target: {fileID: 8476504849145567274, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 86b859b95143f4e9788fc4d2b229f866, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6454,7 +6344,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1742624408}
     m_Modifications:
     - target: {fileID: 6907693929511137065, guid: db079f329d41b48d495492ead40c0789,
         type: 3}
@@ -6484,7 +6374,7 @@ PrefabInstance:
     - target: {fileID: 7818684029418803441, guid: db079f329d41b48d495492ead40c0789,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7818684029418803441, guid: db079f329d41b48d495492ead40c0789,
         type: 3}
@@ -6494,7 +6384,7 @@ PrefabInstance:
     - target: {fileID: 7818684029418803441, guid: db079f329d41b48d495492ead40c0789,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7818684029418803441, guid: db079f329d41b48d495492ead40c0789,
         type: 3}
@@ -6516,6 +6406,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db079f329d41b48d495492ead40c0789, type: 3}
+--- !u!4 &1632011911 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7818684029418803441, guid: db079f329d41b48d495492ead40c0789,
+    type: 3}
+  m_PrefabInstance: {fileID: 1632011910}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1632275799
 GameObject:
   m_ObjectHideFlags: 0
@@ -6948,11 +6844,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1742624408}
     m_Modifications:
-    - target: {fileID: 447621403048163950, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: b375f5b3e345f468e83cd783dc50f651, type: 2}
     - target: {fileID: 1053152156472769980, guid: cd80197544b7c49b0adb2701e425797e,
         type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -7013,26 +6904,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5780353175871520166, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: b375f5b3e345f468e83cd783dc50f651, type: 2}
-    - target: {fileID: 6521397582312099345, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 8f43e9e1f7f21473986665ce7d2589a1, type: 2}
     - target: {fileID: 7502548624102339308, guid: cd80197544b7c49b0adb2701e425797e,
         type: 3}
       propertyPath: m_Name
       value: 5x10 Door Frame (5)
       objectReference: {fileID: 0}
-    - target: {fileID: 8476504849145567274, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 86b859b95143f4e9788fc4d2b229f866, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7171,6 +7047,10 @@ Transform:
   - {fileID: 447175672}
   - {fileID: 1333827128}
   - {fileID: 2077778173}
+  - {fileID: 1889383421}
+  - {fileID: 1632011911}
+  - {fileID: 995496705}
+  - {fileID: 964799926}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1753124778
@@ -7181,11 +7061,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1742624408}
     m_Modifications:
-    - target: {fileID: 447621403048163950, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: b375f5b3e345f468e83cd783dc50f651, type: 2}
     - target: {fileID: 1053152156472769980, guid: cd80197544b7c49b0adb2701e425797e,
         type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -7246,26 +7121,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0.0010070801
       objectReference: {fileID: 0}
-    - target: {fileID: 5780353175871520166, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: b375f5b3e345f468e83cd783dc50f651, type: 2}
-    - target: {fileID: 6521397582312099345, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 8f43e9e1f7f21473986665ce7d2589a1, type: 2}
     - target: {fileID: 7502548624102339308, guid: cd80197544b7c49b0adb2701e425797e,
         type: 3}
       propertyPath: m_Name
       value: 5x10 Door Frame (12)
       objectReference: {fileID: 0}
-    - target: {fileID: 8476504849145567274, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 86b859b95143f4e9788fc4d2b229f866, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7523,21 +7383,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: b375f5b3e345f468e83cd783dc50f651, type: 2}
-    - target: {fileID: 6521397582312099345, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 8f43e9e1f7f21473986665ce7d2589a1, type: 2}
     - target: {fileID: 7502548624102339308, guid: cd80197544b7c49b0adb2701e425797e,
         type: 3}
       propertyPath: m_Name
       value: 5x10 Door Frame (9)
       objectReference: {fileID: 0}
-    - target: {fileID: 8476504849145567274, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 86b859b95143f4e9788fc4d2b229f866, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 2553262830729800190, guid: cd80197544b7c49b0adb2701e425797e, type: 3}
@@ -7709,7 +7559,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1742624408}
     m_Modifications:
     - target: {fileID: 6907693929511137065, guid: db079f329d41b48d495492ead40c0789,
         type: 3}
@@ -7739,7 +7589,7 @@ PrefabInstance:
     - target: {fileID: 7818684029418803441, guid: db079f329d41b48d495492ead40c0789,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7818684029418803441, guid: db079f329d41b48d495492ead40c0789,
         type: 3}
@@ -7749,7 +7599,7 @@ PrefabInstance:
     - target: {fileID: 7818684029418803441, guid: db079f329d41b48d495492ead40c0789,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7818684029418803441, guid: db079f329d41b48d495492ead40c0789,
         type: 3}
@@ -7771,6 +7621,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db079f329d41b48d495492ead40c0789, type: 3}
+--- !u!4 &1889383421 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7818684029418803441, guid: db079f329d41b48d495492ead40c0789,
+    type: 3}
+  m_PrefabInstance: {fileID: 1889383420}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1903121899
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7863,11 +7719,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1742624408}
     m_Modifications:
-    - target: {fileID: 447621403048163950, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: b375f5b3e345f468e83cd783dc50f651, type: 2}
     - target: {fileID: 1053152156472769980, guid: cd80197544b7c49b0adb2701e425797e,
         type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -7928,26 +7779,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5780353175871520166, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: b375f5b3e345f468e83cd783dc50f651, type: 2}
-    - target: {fileID: 6521397582312099345, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 8f43e9e1f7f21473986665ce7d2589a1, type: 2}
     - target: {fileID: 7502548624102339308, guid: cd80197544b7c49b0adb2701e425797e,
         type: 3}
       propertyPath: m_Name
       value: 5x10 Door Frame (7)
       objectReference: {fileID: 0}
-    - target: {fileID: 8476504849145567274, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 86b859b95143f4e9788fc4d2b229f866, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8303,11 +8139,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1742624408}
     m_Modifications:
-    - target: {fileID: 447621403048163950, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: b375f5b3e345f468e83cd783dc50f651, type: 2}
     - target: {fileID: 1053152156472769980, guid: cd80197544b7c49b0adb2701e425797e,
         type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -8368,26 +8199,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5780353175871520166, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: b375f5b3e345f468e83cd783dc50f651, type: 2}
-    - target: {fileID: 6521397582312099345, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 8f43e9e1f7f21473986665ce7d2589a1, type: 2}
     - target: {fileID: 7502548624102339308, guid: cd80197544b7c49b0adb2701e425797e,
         type: 3}
       propertyPath: m_Name
       value: 5x10 Door Frame (11)
       objectReference: {fileID: 0}
-    - target: {fileID: 8476504849145567274, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 86b859b95143f4e9788fc4d2b229f866, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8645,21 +8461,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1742624408}
     m_Modifications:
-    - target: {fileID: 447621403048163950, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: b375f5b3e345f468e83cd783dc50f651, type: 2}
-    - target: {fileID: 1053152156472769980, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5243423172026255270, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 5243423172026255270, guid: cd80197544b7c49b0adb2701e425797e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8710,26 +8511,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5780353175871520166, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: b375f5b3e345f468e83cd783dc50f651, type: 2}
-    - target: {fileID: 6521397582312099345, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 8f43e9e1f7f21473986665ce7d2589a1, type: 2}
     - target: {fileID: 7502548624102339308, guid: cd80197544b7c49b0adb2701e425797e,
         type: 3}
       propertyPath: m_Name
       value: 5x10 Door Frame (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 8476504849145567274, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 86b859b95143f4e9788fc4d2b229f866, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8991,11 +8777,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1742624408}
     m_Modifications:
-    - target: {fileID: 1956506991870768051, guid: db079f329d41b48d495492ead40c0789,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 72fa4a29caf534b6c80d684d0e81ad38, type: 2}
     - target: {fileID: 6907693929511137065, guid: db079f329d41b48d495492ead40c0789,
         type: 3}
       propertyPath: m_Name
@@ -9064,16 +8845,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1742624408}
     m_Modifications:
-    - target: {fileID: 447621403048163950, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: b375f5b3e345f468e83cd783dc50f651, type: 2}
-    - target: {fileID: 1053152156472769980, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5243423172026255270, guid: cd80197544b7c49b0adb2701e425797e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9124,26 +8895,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5780353175871520166, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: b375f5b3e345f468e83cd783dc50f651, type: 2}
-    - target: {fileID: 6521397582312099345, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 8f43e9e1f7f21473986665ce7d2589a1, type: 2}
     - target: {fileID: 7502548624102339308, guid: cd80197544b7c49b0adb2701e425797e,
         type: 3}
       propertyPath: m_Name
       value: 5x10 Door Frame
       objectReference: {fileID: 0}
-    - target: {fileID: 8476504849145567274, guid: cd80197544b7c49b0adb2701e425797e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 86b859b95143f4e9788fc4d2b229f866, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9295,7 +9051,3 @@ SceneRoots:
   - {fileID: 192311732}
   - {fileID: 963194228}
   - {fileID: 1632275800}
-  - {fileID: 1889383420}
-  - {fileID: 1632011910}
-  - {fileID: 964799925}
-  - {fileID: 995496704}
