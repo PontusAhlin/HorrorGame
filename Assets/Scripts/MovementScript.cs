@@ -15,11 +15,11 @@ public class ThirdPersonMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var gamepad = Gamepad.current;
+        var gamepad = Gamepad.current; //we are using INPUTSYSTEM, and i've configured it to imitate gamepad buttons for our touchscreen
         if (gamepad == null)
             return; // No gamepad connected.
 
-        if (gamepad.buttonNorth.isPressed)
+        if (gamepad.buttonNorth.isPressed) //north is our current movement button. so, this means "if this is pressed".
         {
         float targetAngle = cam.eulerAngles.y;                                      // Get the camera's y rotation
         Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;  // Rotate the forward vector by the camera's y rotation
