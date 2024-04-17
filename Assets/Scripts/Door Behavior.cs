@@ -12,16 +12,21 @@ public class DoorBehavior : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision other) {
+    private void OnTriggerEnter(Collider other) {
         if(other.gameObject.tag == "Ball"){
+        Debug.Log("door should open now");
         doorClosed.SetActive(false);
         doorOpened.SetActive(true);
         }
+        Debug.Log("end or door opening bit");
     }
 
-    private void OnCollisionExit(Collision other) {
+    private void OnTriggerExit(Collider other){
+        Debug.Log("door should close");
+        if(other.gameObject.tag == "Ball"){
         doorClosed.SetActive(true);
         doorOpened.SetActive(false);
+        }
     }        
     // Update is called once per frame
     void Update()
