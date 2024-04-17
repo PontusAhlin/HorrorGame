@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/ResolutionFixerScene.unity
+    guid: 83af474a273aff64daf04f239b0ede28
+  - enabled: 1
     path: Assets/Scenes/ButtonScene.unity
     guid: 4755b35b590504809a7525fd2109c2e2
   m_configObjects:
