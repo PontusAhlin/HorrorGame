@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class ResolutionResize : MonoBehaviour
 {
     [SerializeField] RenderTexture renderTexture;
-    [SerializeField] int DivideResolutionBy; //1 IS NONE
+    [SerializeField] int TargetWidth; //1 IS NONE
     // Start is called before the first frame update
 
     void Start() //WE NEED TO MAKE THIS RUN BEFORE RUNTIME!!!
@@ -20,8 +20,10 @@ public class ResolutionResize : MonoBehaviour
     void ResizeRenderTexture(RenderTexture renderTexture, int width, int height) {
          if (renderTexture) {
             renderTexture.Release();
-            renderTexture.width = width/DivideResolutionBy;
-            renderTexture.height = height/DivideResolutionBy; 
+            while (width > TargetWidth && height > TargetWidth)
+            {   width /= 2; height /= 2;}
+            renderTexture.width = width;
+            renderTexture.height = height; 
         }
     }
 
