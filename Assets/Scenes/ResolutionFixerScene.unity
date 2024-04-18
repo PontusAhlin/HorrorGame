@@ -154,7 +154,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   renderTexture: {fileID: 8400000, guid: 6130b8d05302e014aaf7cf1bfbdbfded, type: 2}
-  TargetWidth: 200
+  TargetWidthInPixels: 400
+  IsPixelationOn: 1
 --- !u!4 &1327146208
 Transform:
   m_ObjectHideFlags: 0

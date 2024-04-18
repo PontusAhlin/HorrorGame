@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
 public class ResolutionResize : MonoBehaviour
 {
     [SerializeField] RenderTexture renderTexture;
-    [SerializeField] int TargetWidthInPixels; //1 IS NONE
-    [SerializeField] bool IsPixelationOn;
+    [SerializeField] int TargetWidthInPixels = 400; //1 IS NONE
+    [SerializeField] bool IsPixelationOn = true;
     // Start is called before the first frame update
 
     void Start() //WE NEED TO MAKE THIS RUN BEFORE RUNTIME!!!
