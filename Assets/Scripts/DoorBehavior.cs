@@ -12,7 +12,7 @@ public class DoorBehavior1 : MonoBehaviour
         
     }
     private void OnTriggerEnter(Collider other) {
-        if(other.gameObject.CompareTag("Ball")){
+        if(other.gameObject.CompareTag("MainCamera")){
             if(closedDoor.activeInHierarchy == true){
                     Debug.Log("door opens");
                     closedDoor.SetActive(false);
@@ -25,7 +25,7 @@ public class DoorBehavior1 : MonoBehaviour
 
     private void OnTriggerExit(Collider other){
         Debug.Log("door should close");
-        if(other.gameObject.tag == "Ball"){
+        if(other.gameObject.tag == "MainCamera"){
             closedDoor.SetActive(true);
             openDoor.SetActive(false);
         }
