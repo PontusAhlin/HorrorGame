@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731704, g: 0.1341472, b: 0.121078566, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414727, b: 0.121078536, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -775,6 +775,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2037187388}
     m_Modifications:
+    - target: {fileID: 832833965503679307, guid: cd80197544b7c49b0adb2701e425797e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1053152156472769980, guid: cd80197544b7c49b0adb2701e425797e,
         type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -835,10 +840,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5719307187568014897, guid: cd80197544b7c49b0adb2701e425797e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6020223378099528635, guid: cd80197544b7c49b0adb2701e425797e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7047498108021969643, guid: cd80197544b7c49b0adb2701e425797e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226689296084337984, guid: cd80197544b7c49b0adb2701e425797e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7502548624102339308, guid: cd80197544b7c49b0adb2701e425797e,
         type: 3}
       propertyPath: m_Name
       value: 5x10 Door Frame (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073147259188272180, guid: cd80197544b7c49b0adb2701e425797e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1604,6 +1634,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2037187388}
     m_Modifications:
+    - target: {fileID: 832833965503679307, guid: cd80197544b7c49b0adb2701e425797e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1053152156472769980, guid: cd80197544b7c49b0adb2701e425797e,
         type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -1664,10 +1699,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5719307187568014897, guid: cd80197544b7c49b0adb2701e425797e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6020223378099528635, guid: cd80197544b7c49b0adb2701e425797e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7047498108021969643, guid: cd80197544b7c49b0adb2701e425797e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226689296084337984, guid: cd80197544b7c49b0adb2701e425797e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7502548624102339308, guid: cd80197544b7c49b0adb2701e425797e,
         type: 3}
       propertyPath: m_Name
       value: 5x10 Door Frame (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073147259188272180, guid: cd80197544b7c49b0adb2701e425797e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5921,6 +5981,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2037187388}
     m_Modifications:
+    - target: {fileID: 832833965503679307, guid: cd80197544b7c49b0adb2701e425797e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1053152156472769980, guid: cd80197544b7c49b0adb2701e425797e,
         type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -5981,10 +6046,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5719307187568014897, guid: cd80197544b7c49b0adb2701e425797e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6020223378099528635, guid: cd80197544b7c49b0adb2701e425797e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7047498108021969643, guid: cd80197544b7c49b0adb2701e425797e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226689296084337984, guid: cd80197544b7c49b0adb2701e425797e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7502548624102339308, guid: cd80197544b7c49b0adb2701e425797e,
         type: 3}
       propertyPath: m_Name
       value: 5x10 Door Frame (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073147259188272180, guid: cd80197544b7c49b0adb2701e425797e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6475,6 +6565,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2037187388}
     m_Modifications:
+    - target: {fileID: 832833965503679307, guid: cd80197544b7c49b0adb2701e425797e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5243423172026255270, guid: cd80197544b7c49b0adb2701e425797e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6525,10 +6620,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5719307187568014897, guid: cd80197544b7c49b0adb2701e425797e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6020223378099528635, guid: cd80197544b7c49b0adb2701e425797e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7047498108021969643, guid: cd80197544b7c49b0adb2701e425797e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226689296084337984, guid: cd80197544b7c49b0adb2701e425797e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7502548624102339308, guid: cd80197544b7c49b0adb2701e425797e,
         type: 3}
       propertyPath: m_Name
       value: 5x10 Door Frame (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073147259188272180, guid: cd80197544b7c49b0adb2701e425797e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6636,7 +6756,7 @@ PrefabInstance:
     - target: {fileID: 832833965503679307, guid: cd80197544b7c49b0adb2701e425797e,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1410418596230163876, guid: cd80197544b7c49b0adb2701e425797e,
         type: 3}
@@ -6706,12 +6826,12 @@ PrefabInstance:
     - target: {fileID: 5719307187568014897, guid: cd80197544b7c49b0adb2701e425797e,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6020223378099528635, guid: cd80197544b7c49b0adb2701e425797e,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6339718574695197615, guid: cd80197544b7c49b0adb2701e425797e,
         type: 3}
@@ -6721,12 +6841,12 @@ PrefabInstance:
     - target: {fileID: 7047498108021969643, guid: cd80197544b7c49b0adb2701e425797e,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7226689296084337984, guid: cd80197544b7c49b0adb2701e425797e,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7502548624102339308, guid: cd80197544b7c49b0adb2701e425797e,
         type: 3}
@@ -6741,7 +6861,7 @@ PrefabInstance:
     - target: {fileID: 8073147259188272180, guid: cd80197544b7c49b0adb2701e425797e,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8900,6 +9020,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2037187388}
     m_Modifications:
+    - target: {fileID: 832833965503679307, guid: cd80197544b7c49b0adb2701e425797e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1053152156472769980, guid: cd80197544b7c49b0adb2701e425797e,
         type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -8960,10 +9085,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5719307187568014897, guid: cd80197544b7c49b0adb2701e425797e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6020223378099528635, guid: cd80197544b7c49b0adb2701e425797e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7047498108021969643, guid: cd80197544b7c49b0adb2701e425797e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226689296084337984, guid: cd80197544b7c49b0adb2701e425797e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7502548624102339308, guid: cd80197544b7c49b0adb2701e425797e,
         type: 3}
       propertyPath: m_Name
       value: 5x10 Door Frame (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073147259188272180, guid: cd80197544b7c49b0adb2701e425797e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
