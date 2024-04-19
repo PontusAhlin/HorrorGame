@@ -14,17 +14,17 @@ public class DoorBehavior1 : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject.CompareTag("Player")){
             if(closedDoor.activeInHierarchy == true){
-                    Debug.Log("door opens");
+                    //Debug.Log("door opens");
                     closedDoor.SetActive(false);
                     openDoor.SetActive(true);
                 }
-            Debug.Log("door should open now");
+            //Debug.Log("door should open now");
         }
-        Debug.Log("end or door opening bit");
+        //Debug.Log("end or door opening bit");
     }
 
     private void OnTriggerExit(Collider other){
-        Debug.Log("door should close");
+        //Debug.Log("door should close");
         if(other.gameObject.tag == "Player"){
             closedDoor.SetActive(true);
             openDoor.SetActive(false);

@@ -31,7 +31,7 @@ public class ResolutionResize : MonoBehaviour
             renderTexture.width = width;
             renderTexture.height = height; 
         }
-        Debug.Log(width + "x" + height);
+        //Debug.Log(width + "x" + height);
     }
 
 
