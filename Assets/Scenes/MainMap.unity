@@ -1180,7 +1180,7 @@ GameObject:
   - component: {fileID: 217697776}
   - component: {fileID: 217697777}
   m_Layer: 0
-  m_Name: AmbientMusic
+  m_Name: Jumpscare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1212,7 +1212,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e6dca0ee70fc54eb3805b05ab3f8f10e, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
