@@ -156,7 +156,7 @@ MonoBehaviour:
   renderTexture: {fileID: 8400000, guid: 6130b8d05302e014aaf7cf1bfbdbfded, type: 2}
   TargetWidthInPixels: 600
   IsPixelationOn: 1
-  MapToLoadInto: ShaderCombinedMap
+  SceneToLoadInto: MainMap
 --- !u!4 &1327146208
 Transform:
   m_ObjectHideFlags: 0

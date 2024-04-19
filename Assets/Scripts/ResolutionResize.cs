@@ -9,14 +9,14 @@ public class ResolutionResize : MonoBehaviour
     [SerializeField] RenderTexture renderTexture; //this is needed to actually fetch the render texture
     [SerializeField] int TargetWidthInPixels = 600; //1 IS NONE
     [SerializeField] bool IsPixelationOn = true;
-    [SerializeField] string MapToLoadInto = "ShaderCombinedMap";
+    [SerializeField] string SceneToLoadInto = "MainMap";
     // Start is called before the first frame update
 
     void Start() //WE NEED TO MAKE THIS RUN BEFORE RUNTIME!!!
     {
 
         ResizeRenderTexture(renderTexture, Screen.width, Screen.height); //runs our resize function for our screen 
-        SceneManager.LoadScene(MapToLoadInto); //then loads into BUTTONSCENE.
+        SceneManager.LoadScene(SceneToLoadInto); //then loads into BUTTONSCENE.
     }
 
     
