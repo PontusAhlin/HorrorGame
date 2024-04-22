@@ -10,7 +10,7 @@ public class DoorTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         Debug.Log("door should open");
-        if(other.CompareTag("Ball")){
+        if(other.CompareTag("Ball") || other.CompareTag("Player") || other.CompareTag("Monster")){
         Debug.Log("door should open 2");
             if (!Door.isOpen){
                 Debug.Log("should trigger");
@@ -20,9 +20,9 @@ public class DoorTrigger : MonoBehaviour
     }
 
     private void OnTriggerExit(Collider other) {
-        if(other.CompareTag("Ball")){
+        if(other.CompareTag("Ball") || other.CompareTag("Player") || other.CompareTag("Monster")){
             if (Door.isOpen){
-                Debug.Log("should not trigger");
+                Debug.Log("should also trigger");
                 Door.Close();
             }
         }
