@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.5, y: -1, z: -1.5}
-  m_LocalScale: {x: 3, y: 5, z: 6}
+  m_LocalScale: {x: 3, y: 5, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3164787443046048518}
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8d797376038b4e32ac4148bd5ddc6dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Door: {fileID: 305959707735355955}
+  Door: {fileID: 2394512125898250551}
 --- !u!1 &3866943523565784027
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,7 +215,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3260490519939665836}
-  - component: {fileID: 305959707735355955}
+  - component: {fileID: 2394512125898250551}
   m_Layer: 0
   m_Name: DoorHinge
   m_TagString: Untagged
@@ -239,7 +239,7 @@ Transform:
   - {fileID: 4718108109148509439}
   m_Father: {fileID: 3164787443046048518}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &305959707735355955
+--- !u!114 &2394512125898250551
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
