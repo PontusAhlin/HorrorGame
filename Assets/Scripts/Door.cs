@@ -20,17 +20,18 @@ public class Door : MonoBehaviour
 
     private void Awake(){
         StartRotation = transform.rotation.eulerAngles;
-        Forward = transform.right;
+        Forward = transform.forward;
     }
 
     public void Open(Vector3 UserPosition){
-        if(isOpen){
+        Debug.Log("do smth");
+        if(!isOpen){
             if(AnimationCoroutine != null){
                 StopCoroutine(AnimationCoroutine);
             }
             if(isRotatingDoor){
-                float dot = Vector3.Dot(Forward, (UserPosition - transform.position).normalized);
-                Debug.Log("smth");
+                float dot = Vector3.Dot(Forward, (transform.position - UserPosition).normalized);
+                Debug.Log($"Dot: {dot.ToString("N3")}");
                 AnimationCoroutine = StartCoroutine(DoRotationOpen(dot));
             }
         }
