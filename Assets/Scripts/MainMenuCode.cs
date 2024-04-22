@@ -6,6 +6,7 @@ public class SC_MainMenu : MonoBehaviour
 {
     public GameObject MainMenu;
     public GameObject CreditsMenu;
+    [SerializeField] public string StartingSceneName = "SetupScene";
 
     // Start is called before the first frame update
     void Start()
@@ -16,7 +17,7 @@ public class SC_MainMenu : MonoBehaviour
     public void PlayNowButton()
     {
         // Play Now Button has been pressed, here you can initialize your game (For example Load a Scene called GameLevel etc.)
-        UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
+        UnityEngine.SceneManagement.SceneManager.LoadScene(StartingSceneName);
     }
 
     public void CreditsButton()

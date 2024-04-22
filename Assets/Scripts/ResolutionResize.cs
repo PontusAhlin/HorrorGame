@@ -7,15 +7,16 @@ using UnityEngine.SceneManagement;
 public class ResolutionResize : MonoBehaviour
 {
     [SerializeField] RenderTexture renderTexture; //this is needed to actually fetch the render texture
-    [SerializeField] int TargetWidthInPixels = 300; //1 IS NONE
+    [SerializeField] int TargetWidthInPixels = 600; //1 IS NONE
     [SerializeField] bool IsPixelationOn = true;
+    [SerializeField] string SceneToLoadInto = "MainMap";
     // Start is called before the first frame update
 
     void Start() //WE NEED TO MAKE THIS RUN BEFORE RUNTIME!!!
     {
 
         ResizeRenderTexture(renderTexture, Screen.width, Screen.height); //runs our resize function for our screen 
-        SceneManager.LoadScene("ButtonScene"); //then loads into BUTTONSCENE.
+        SceneManager.LoadScene(SceneToLoadInto); //then loads into BUTTONSCENE.
     }
 
     
@@ -30,7 +31,7 @@ public class ResolutionResize : MonoBehaviour
             renderTexture.width = width;
             renderTexture.height = height; 
         }
-        Debug.Log(width + "x" + height);
+        //Debug.Log(width + "x" + height);
     }
 
 
