@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class SphereCastTest : MonoBehaviour
 {
-
     public List<GameObject> currentHitObjects = new List<GameObject>();
-
 
     public Camera camera;
     
@@ -30,10 +28,12 @@ public class SphereCastTest : MonoBehaviour
     void Update()
     {
         
+        //Sets the players position and direction continuisly where the player looks 
         playerOrigin = transform.position + transform.forward * minDistance;
         playerDirection = transform.forward;
-
         currentHitDistance = maxDistance;        
+        
+        //Clears the gameObject list each frame
         currentHitObjects.Clear();
 
         //This line gives us an array with everything our raycast sphere hits 
