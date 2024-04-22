@@ -2,9 +2,9 @@
  * This script is responsible for generating viewers based on the type of generation.
  * It can generate viewers linearly or exponentially. It also adds settings to monsters
  * such as:
- * - Amount of viewers generated per second.
- * - Speed of the viewer generation.
- * - Type of viewer generation.
+ * - viewerAddAmount is the amount of views added be iteration.
+ * - viewerRemoveAmount is the amount of views removed be iteration.
+ * - generatorSpeed is the speed of the generation.
  *
  * How to use:
  * - Attach this script to a monster object.
@@ -19,17 +19,30 @@ using UnityEngine;
 public class MonsterGenerateViewers : MonoBehaviour
 {
 
-    [SerializeField] int viewersGenerated = 0;                          // Amount of viewers generated in total. [TODO: Make private]
-    [SerializeField] PlayerScore PlayerScore;                           // Reference to the score script.
-    [SerializeField] int viewersPerSecond = 1;                          // Amount of viewers generated per second.
-    [SerializeField] float generatorSpeed = 1.0f;                       // Speed of the viewer generation.
-    enum IncreaseAndDecrease { Linear, Exponential };                   // Type of viewer generation.
+    private float addSpeed = 0f;                                    // Speed of the viewer adding (positive).
+    private float removeSpeed = 0f;                                 // Speed of the viewer adding (positive).
+    private float viewsGeneratedInRow = 0f;                         // Used for preventing errors in the player's viewer amount.
+    
+    [Tooltip("Point to player score script which holds viewer amount and likes.")]
+    [SerializeField] PlayerScore PlayerScore;                       // Reference to the score script.
+    [Tooltip("The speed of linear and exponetial (x^2) increase. Must be more than 0 and 1.1 if exponential.")]
+    [SerializeField] float viewerAddAmount = 1f;                    // Amount of viewers generated per second.
+    [Tooltip("The speed of linear and exponetial (x^2) decrease. Must be more than 0 if linear and 1 if exponential.")]
+    [SerializeField] float viewerRemoveAmount = 0.5f;               // Amount of viewers removed per second.
+    [Tooltip("The interval speed at which the viewers should be generated. Must be more than 0.")]
+    [SerializeField] float generatorSpeed = 1.0f;                   // Speed of the viewer generation.
+    enum IncreaseAndDecrease { Linear, Exponential };               // Type of viewer generation.
+    [Tooltip("Mathmatical function for increasing and decreasing number of viewers added.")]
     [SerializeField] IncreaseAndDecrease increaseAndDecrease;
-    public bool inFieldOfView;                                          // If the monster is in the field of view.
+    [Tooltip("Update this value to change if viewers are added or removed.")]
+    public bool inFieldOfView = false;                              // If the monster is in the field of view.
 
     // Start is called before the first frame update
     void Start()
     {
+        // Perform all necessary checks to prevent errors.
+        // Note that having the checks here means no checking while updating the
+        // value of the components live.
         if (PlayerScore == null) {
             Debug.LogError("PlayerScore is not set. Removing MonsterGenerateViews script.");
             Destroy(this);
@@ -37,66 +50,102 @@ public class MonsterGenerateViewers : MonoBehaviour
         if (generatorSpeed == 0f)
             Debug.LogWarning("Generator speed is 0, which is invalid. It'll be set to 1 instead.");
             generatorSpeed = 1.0f;
-        if (viewersPerSecond == 0) {
-            Debug.LogWarning("viewersPerSecond speed is 0, which is invalid. It'll be set to 1 instead.");
-            viewersPerSecond = 1;
+        if (viewerAddAmount < 0f && increaseAndDecrease == IncreaseAndDecrease.Linear) {
+            Debug.LogWarning("viewerAddAmount speed is less than 0, which is invalid. It'll be set to 1 instead.");
+            viewerAddAmount = 1f;
         }
+        if (viewerAddAmount < 1.1f && increaseAndDecrease == IncreaseAndDecrease.Exponential){
+            Debug.LogWarning("viewerAddAmount speed is less than 1, which is invalid. It'll be set to 1.1 instead.");
+            viewerAddAmount = 1.1f;
+        }
+        if (viewerRemoveAmount < 1.1f && increaseAndDecrease == IncreaseAndDecrease.Exponential){
+            Debug.LogWarning("viewerRemoveAmount speed is less than 1, which is invalid. It'll be set to 1.1 instead.");
+            viewerRemoveAmount = 1.1f;
+        }
+        
         // Add or remove viewers based on the current status.
-        if (inFieldOfView)
-            InvokeRepeating("AddViewers", generatorSpeed, generatorSpeed);
-        else
-            InvokeRepeating("RemoveViewers", generatorSpeed, generatorSpeed);
+        InvokeRepeating("AdjustViewers", generatorSpeed, generatorSpeed);
     }
 
     /**
-        * Add viewers.
-        *
-        * This function add viewers based on the type of viewer generation.
-        */
+      * Adjust viewers.
+      *
+      * This function the add and remove speeds based on the current state
+      * of the view field. It also updates the player's viewer amount as well
+      * as a local sum of viewers generated by this script used for preventing
+      * error in the update of the players total amount of viewers.
+      */
+    void AdjustViewers() {
+
+        // Adjust velocity.
+        if (inFieldOfView) {
+            AddViewers();                                       // Update addSpeed.
+        } else if (viewsGeneratedInRow > 0f) {                  // Prevent removing viewers if there are none active generated by this script.
+            RemoveViewers();                                    // Update removeSpeed.
+        }
+        float tmp = 0;                                          // Temporary variable for preventing removing too much from the real viewer amount.
+        viewsGeneratedInRow += addSpeed - removeSpeed;          // Update local sum.
+        if (viewsGeneratedInRow < 0f)                           // Generate tmp sum to fix faulty real viewer amount.
+            tmp = -viewsGeneratedInRow;
+        PlayerScore.viewers += addSpeed - removeSpeed + tmp;    // Update player viewer amount.
+        if (viewsGeneratedInRow <= 0f) {
+            viewsGeneratedInRow = 0f;                           // Prevent faulty sum.
+            addSpeed = 0f;                                      // Reset faulty add speed.
+            removeSpeed = 0f;                                   // Reset faulty remove peed.
+        }
+
+    }
+
+    /**
+      * Add viewers.
+      *
+      * This function add viewers based on the type of viewer generation.
+      * It adds in different ways depending on the selected type of
+      * generation. Note how it also decreases the removeSpeed.
+      */
     void AddViewers() {
-        Debug.Log("Adding viewers");
-        int viewersToAdd = 0;                           // Create tmp. holder of viewvers to add.
         switch (increaseAndDecrease) {
             case IncreaseAndDecrease.Linear:
-                viewersToAdd = viewersPerSecond;
+                addSpeed = viewerAddAmount;
                 break;
             case IncreaseAndDecrease.Exponential:
-                if (viewersGenerated == 0)                   
-                    viewersToAdd = viewersPerSecond;    // If no viewers yet, add the viewersPerSecond.
+                if (addSpeed == 0f)             
+                    addSpeed = viewerAddAmount;
                 else
-                    viewersToAdd *= viewersToAdd;       // Otherwise do it exponentially.
+                    addSpeed *= viewerAddAmount;
                 break;
         }
-        viewersGenerated += viewersToAdd;                // Save the amount of viewers generated.
-        PlayerScore.viewers += viewersToAdd;             // Add the viewers to the score.
+        if (removeSpeed > 0) {                              // De crease the counterpart.
+            removeSpeed -= addSpeed;
+            if (removeSpeed < 0f)                           // Prevent faulty speed.
+                removeSpeed = 0f;
+        }
     }
 
     /**
-        * Remove viewers.
-        *
-        * This function remove viewers based on the type of viewer generation.
-        */
+      * Remove viewers.
+      *
+      * This function remove viewers based on the type of viewer generation.
+      * It removes in different ways depending on the selected type of
+      * generation. Note how it also decreases the Speed.
+      */
     void RemoveViewers() {
-        Debug.Log("Removing viewers");
-
-        if (viewersGenerated <= 0)
-            return;                                         // If no viewers, return.
-
-        int viewersToRemove = 0;                            // Create tmp. holder of viewvers to remove.
-
         switch (increaseAndDecrease) {
             case IncreaseAndDecrease.Linear:
-                viewersToRemove = viewersPerSecond;
+                removeSpeed = viewerRemoveAmount;
                 break;
             case IncreaseAndDecrease.Exponential:
-                if (viewersGenerated == 0)                   
-                    viewersToRemove = viewersPerSecond;     // If no viewers yet, remove the viewersPerSecond.
+                if (removeSpeed == 0f)             
+                    removeSpeed = viewerRemoveAmount;
                 else
-                    viewersToRemove *= viewersToRemove;     // Otherwise do it exponentially.
+                    removeSpeed *= viewerRemoveAmount;
                 break;
         }
-        viewersGenerated -= viewersToRemove;                 // Save the amount of viewers generated.
-        PlayerScore.viewers -= viewersToRemove;                   // Remove the viewers to the score.
+        if (addSpeed > 0f) {                            // De crease the counterpart.
+            addSpeed -= removeSpeed;
+            if (addSpeed < 0f)                          // Prevent faulty speed.
+                addSpeed = 0f;
+        }
     }
 
 }
