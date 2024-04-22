@@ -24,10 +24,11 @@ public class TileGenWalker : MonoBehaviour
 {
     [Tooltip("list of all the rooms that have 1 way out, and are 1x1")]
     public List<GameObject> Small1Way = new List<GameObject>();
-    [Tooltip("list of all the rooms that have 2 ways out corridor style, and are 1x1")]
-    public List<GameObject> Small2WayCorridor = new List<GameObject>();
     [Tooltip("list of all the rooms that have 2 way out corner style, and are 1x1")]
     public List<GameObject> Small2WayCorner = new List<GameObject>();
+    [Tooltip("list of all the rooms that have 2 ways out corridor style, and are 1x1")]
+    public List<GameObject> Small2WayCorridor = new List<GameObject>();
+
     [Tooltip("list of all the rooms that have 3 ways out, and are 1x1")]
     public List<GameObject> Small3Way = new List<GameObject>();
     [Tooltip("list of all the rooms that have 4 ways out, and are 1x1")]
@@ -75,7 +76,7 @@ public class TileGenWalker : MonoBehaviour
                 Debug.Log("ROOM WITH NO EXITS WAS DRAWN");
                 break;
             }
-            //1WAY
+            //1 WAY
             case (true, false, false, false):
             {
                 int prefabIndex = UnityEngine.Random.Range(0,Small1Way.Count);
@@ -100,7 +101,70 @@ public class TileGenWalker : MonoBehaviour
                 Instantiate(Small1Way[prefabIndex], new Vector3(x*RoomSize, 0, y*RoomSize), Quaternion.Euler(0,270f,0));
                 break;
             }
-            //2WAY CORRIDORS
+            //2 WAY CORRIDORS
+            case (true, false, true, false): //NS
+            {
+                int prefabIndex = UnityEngine.Random.Range(0,Small2WayCorridor.Count);
+                Instantiate(Small2WayCorridor[prefabIndex], new Vector3(x*RoomSize, 0, y*RoomSize), Quaternion.Euler(0,0,0));
+                break;
+            }
+            case (false, true, false, true): //EW
+            {
+                int prefabIndex = UnityEngine.Random.Range(0,Small2WayCorridor.Count);
+                Instantiate(Small2WayCorridor[prefabIndex], new Vector3(x*RoomSize, 0, y*RoomSize), Quaternion.Euler(0,90f,0));
+                break;
+            }
+            //2 WAY CORNERS
+            case (true, true, false, false): //NE
+            {
+                int prefabIndex = UnityEngine.Random.Range(0,Small2WayCorner.Count);
+                Instantiate(Small2WayCorner[prefabIndex], new Vector3(x*RoomSize, 0, y*RoomSize), Quaternion.Euler(0,0,0));
+                break;
+            }
+            case (false, true, true, false): //SE
+            {
+                int prefabIndex = UnityEngine.Random.Range(0,Small2WayCorner.Count);
+                Instantiate(Small2WayCorner[prefabIndex], new Vector3(x*RoomSize, 0, y*RoomSize), Quaternion.Euler(0,90f,0));
+                break;
+            }
+            case (false, false, true, true): //SW
+            {
+                int prefabIndex = UnityEngine.Random.Range(0,Small2WayCorner.Count);
+                Instantiate(Small2WayCorner[prefabIndex], new Vector3(x*RoomSize, 0, y*RoomSize), Quaternion.Euler(0,180f,0));
+                break;
+            }
+            case (true, false, false, true): //NW
+            {
+                int prefabIndex = UnityEngine.Random.Range(0,Small2WayCorner.Count);
+                Instantiate(Small2WayCorner[prefabIndex], new Vector3(x*RoomSize, 0, y*RoomSize), Quaternion.Euler(0,270f,0));
+                break;
+            }
+            //3 WAY
+            case (true, true, true, false): //NES
+            {
+                int prefabIndex = UnityEngine.Random.Range(0,Small3Way.Count);
+                Instantiate(Small3Way[prefabIndex], new Vector3(x*RoomSize, 0, y*RoomSize), Quaternion.Euler(0,0,0));
+                break;
+            }
+            case (false, true, true, true): //SEW
+            {
+                int prefabIndex = UnityEngine.Random.Range(0,Small3Way.Count);
+                Instantiate(Small3Way[prefabIndex], new Vector3(x*RoomSize, 0, y*RoomSize), Quaternion.Euler(0,90f,0));
+                break;
+            }
+            case (true, false, true, true): //NWS
+            {
+                int prefabIndex = UnityEngine.Random.Range(0,Small3Way.Count);
+                Instantiate(Small3Way[prefabIndex], new Vector3(x*RoomSize, 0, y*RoomSize), Quaternion.Euler(0,180f,0));
+                break;
+            }
+            case (true, true, false, true): //NEW
+            {
+                int prefabIndex = UnityEngine.Random.Range(0,Small3Way.Count);
+                Instantiate(Small3Way[prefabIndex], new Vector3(x*RoomSize, 0, y*RoomSize), Quaternion.Euler(0,270f,0));
+                break;
+            }
+            //4WAY
             default:
             {
                 int prefabIndex = UnityEngine.Random.Range(0,Small4Way.Count);
