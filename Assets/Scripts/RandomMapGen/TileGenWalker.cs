@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -14,10 +15,14 @@ what this does is generate a grid,
 spawn these "walker" objects that walk around the grid and place rooms where they walk,
 and then i needa code wtf it does with the grid
 because this was setup to output to a tilemap but that's for 2d
+
+YOU WANT TO WORK IN DrawRoom TO DRAW STUFF!!
+TO MODIFY RANDOM GENERATION PARAMETERS, DO IT FROM THE INSPECTOR, ON THE OBJECT WITH THIS SCRIPT!
 */
 
 public class TileGenWalker : MonoBehaviour
 {
+    public List<GameObject> prefabList = new List<GameObject>();
     public enum Grid
     {
         FLOOR,
@@ -26,29 +31,39 @@ public class TileGenWalker : MonoBehaviour
 
     //Variables
     public Grid[,] gridHandler;
-    public List<TileGenWalkerObject> Walkers;
-    public int MapWidth = 30;
+    public List<TileGenWalkerObject> Walkers; 
+    public int MapWidth = 30; //map size 
     public int MapHeight = 30;
+    public int RoomSize = 5; // THIS IS HOW BIG ONE "SQUARE" ROOM OF 1x1 IS IN UNITY UNITS!!
 
-    public int MaximumWalkers = 10;
-    public int TileCount = default;
-    public float FillPercentage = 0.4f;
-    public float WaitTime = 0.05f;
+    public int MaximumWalkers = 10; //amount of Walkers generating the map. think of these as 
+    //ants walking around from (middlex, middley) outwards, and everywhere they step
+    // is a room, and everywhere they don't is NOT a room. more walkers = blobbier rooms
+    public int TileCount = default; //dont touch this, this is just so u can see it in editor and doesn't
+    //affect how the generation runs
+    public float FillPercentage = 0.4f; //now THIS is what decides how much of the map should be filled, 
+    // where 100% is all the rooms of MapWidth*MapHeight
+    public float WaitTime = 0.05f; //manual delay in generating the map, for debugging purposes.
+    //THIS SHOULDBE AS LOW AS POSSIBLE!!!!
 
     void Start()
     {
         InitializeGrid();
     }
+    //this is the function that is called at coordinates X & Y 
+    void DrawRoom(int x, int y, bool north, bool east, bool south, bool west)
+    {
+        Debug.Log("drawn room at (" + x + "," + y + ")");
+        int prefabIndex = UnityEngine.Random.Range(0,prefabList.Count);
+        Instantiate(prefabList[prefabIndex], new Vector3(x*RoomSize, 0, y*RoomSize), Quaternion.identity);
+    }
 
 
     /*
     THIS FUNCTION JUST DRAWS CUBES IN THE EDITOR. 
+    THIS IS FOR TESTING PURPOSES. UNCOMMENT TO SEE IT WHEN U
+    CLICK PLAY AND THEN GO TO SCENE
 
-    DELETE THIS WHEN DONE
-
-
-
-    */
     void OnDrawGizmos()
     {
         if (!Application.isPlaying) return;
@@ -63,6 +78,7 @@ public class TileGenWalker : MonoBehaviour
             }
 
     }
+    */
 
     void InitializeGrid()
     {
@@ -142,11 +158,49 @@ public class TileGenWalker : MonoBehaviour
           THIS IS WHERE YOU SHOULD WRITE CODE THAT CARES ABOUT THE MAP
           LIKE
           THIS IS THE POINT WHERE THE MAP IS FULL OF Grid.EMPTY or GRID.FLOOR
-
-
-
-
         */
+
+        for (int x = 0; x < MapWidth; x++) //HANDLING IF THERE ARE ANY ADJACENT GRID STUFFS
+            for (int y = 0; y < MapHeight; y++)
+            {
+                if (gridHandler[x, y] == Grid.FLOOR)
+                {
+                    bool north = false, east = false, south = false, west = false;  //variables to hand to
+                                                                                    //DrawRoom to select the right prefab
+                                                                                    //with n/e/s/w entrances
+                    // CHECKING NORTH
+                    try
+                    {
+                        if (gridHandler[x,y+1] == Grid.FLOOR)
+                            north = true;
+                    }
+                    catch (Exception) {}
+                    // CHECKING EAST
+                    try
+                    {
+                        if (gridHandler[x+1,y] == Grid.FLOOR)
+                            east = true;
+                    }
+                    catch (Exception) {}
+                    // CHECKING SOUTH
+                    try
+                    {
+                        if (gridHandler[x,y-1] == Grid.FLOOR)
+                            south = true;
+                    }
+                    catch (Exception) {}
+                    // CHECKING WEST
+                    try
+                    {
+                        if (gridHandler[x-1,y] == Grid.FLOOR)
+                            west = true;
+                    }
+                    catch (Exception) {}
+                    
+                    DrawRoom(x,y,north,east,south,west);
+                }
+                
+            }
     }
 
     void ChanceToRemove()
