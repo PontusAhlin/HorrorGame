@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8637199349184868640}
   - component: {fileID: 3451481821305364724}
   - component: {fileID: 2280759489549188942}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,7 +119,8 @@ GameObject:
   - component: {fileID: 3428789428034349165}
   - component: {fileID: 1956506991870768051}
   - component: {fileID: 4079951249828313141}
-  m_Layer: 0
+  - component: {fileID: -2271116587976941191}
+  m_Layer: 8
   m_Name: 10x10 Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,6 +215,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!208 &-2271116587976941191
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6907693929511137065}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &7409993025527562507
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,7 +243,7 @@ GameObject:
   - component: {fileID: 8161528229537655956}
   - component: {fileID: 142703271268363007}
   - component: {fileID: 7856404982427910412}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

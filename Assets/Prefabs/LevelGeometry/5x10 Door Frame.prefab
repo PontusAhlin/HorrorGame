@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4954665948681817372}
   - component: {fileID: 447621403048163950}
   - component: {fileID: 3606553964332656968}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 4536641298944731456}
   - component: {fileID: 5780353175871520166}
   - component: {fileID: 7594816885943581810}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 7083377434621136484}
   - component: {fileID: 6521397582312099345}
   - component: {fileID: 1709942314428755076}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 5x10 Wall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -331,7 +331,7 @@ GameObject:
   - component: {fileID: 8802355580992719226}
   - component: {fileID: 8476504849145567274}
   - component: {fileID: 5575305740601578368}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 5x10 Wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -436,7 +436,8 @@ GameObject:
   - component: {fileID: 930480176993782249}
   - component: {fileID: 8062200177400695413}
   - component: {fileID: 6012742096064419858}
-  m_Layer: 0
+  - component: {fileID: 4560879910437400343}
+  m_Layer: 8
   m_Name: 5x10 Door Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -534,6 +535,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!208 &4560879910437400343
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7502548624102339308}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &7008250654399852884
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -542,10 +559,35 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5243423172026255270}
     m_Modifications:
+    - target: {fileID: 40515793972487103, guid: 7f660eb09ac394531ab67f49f2ac4828,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 362563368891937812, guid: 7f660eb09ac394531ab67f49f2ac4828,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1246329958397324640, guid: 7f660eb09ac394531ab67f49f2ac4828,
         type: 3}
       propertyPath: m_Name
       value: door
+      objectReference: {fileID: 0}
+    - target: {fileID: 1246329958397324640, guid: 7f660eb09ac394531ab67f49f2ac4828,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3322883858171594597, guid: 7f660eb09ac394531ab67f49f2ac4828,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3660986223452295919, guid: 7f660eb09ac394531ab67f49f2ac4828,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4123493761440458936, guid: 7f660eb09ac394531ab67f49f2ac4828,
         type: 3}
@@ -606,6 +648,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7695698224582818335, guid: 7f660eb09ac394531ab67f49f2ac4828,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
