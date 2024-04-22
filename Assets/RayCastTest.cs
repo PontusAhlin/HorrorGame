@@ -26,18 +26,15 @@ public class RayCastTest : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-
-        //The positions of the player and the monster(Ball should be monster) 
-        playerPos = mainCamera.transform.position;
-        monsterPos = monster.transform.position;
+        //The positions of the player and the monster 
+        playerPos = transform.position;
+        monsterPos = transform.position;
 
         //Check if the 
-        if (Physics.Linecast(playerPos, monsterPos) && monsterPos.magnitude < 10) && CheckAngle(playerPos, monsterPos) {
+        if (Physics.Linecast(playerPos, monsterPos) && monsterPos.magnitude < 10) {
             print("There is something in front of the object!");
         }
-    }
 
-    void CheckAngle(transfrom.position playerPos, transfrom.position monsterPos){
 
 
         /**
@@ -49,16 +46,34 @@ public class RayCastTest : MonoBehaviour
 
         //float FOV = mainCamera.fieldOfView;
         
-        Vector3 fovVectorLeft = transform.TransformDirection(,0,0) //Init this to 45 degrees to make it simpler. 
-        Vector3 fovVectorRight = transform.TransformDirection(, ,0) //Init this to 45 degrees to make it simpler. 
-        Vector3 infrontPlayer = transform.TransformDirection(Vector3.forward);
+
+        //y is the forward direction as such (0,1,0)
+        float angleLeft = Vector3.Angle(new Vector3(-1,1,0).normalized,new Vector3(0,1,0));
+        float angleRight = Vector3.Angle(new Vector3(1,1,0).normalized,new Vector3(0,1,0));
 
         
+        RaycastHit hit; 
+
+        if (Physics.Linecast(playerPos, playerPos + monsterPos, out hit)) {
+            Vector3 hitNormal = hit.normal;
+            float playerMonsterAngle = Vector3.Angle(monsterPos,hitNormal);
+            print("Angle between player and monster" + playerMonsterAngle); 
+        }
+
+
+
+        print("Angle between left and forward" + angleLeft);
+        print("Angle between right and forward" + angleRight);
+
+
+
+
 
 
 
 
     }
+
 
 
 
