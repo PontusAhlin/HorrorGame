@@ -152,16 +152,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a37aad3471e05446b757e01ebea406f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabList:
+  Small1Way:
+  - {fileID: 7696745252782542002, guid: 6f5df3b7672a98d4fab609e6dc21698e, type: 3}
+  Small2WayCorridor: []
+  Small2WayCorner: []
+  Small3Way: []
+  Small4Way:
   - {fileID: 6836053076124988568, guid: a10e188fb22a7624d9425ea914127397, type: 3}
   - {fileID: 2061838335374838114, guid: a3f084be26a3eb64c8e1e67137ea516b, type: 3}
   - {fileID: 8064493029011920915, guid: b46febd2dd91a8a4b866315649327a78, type: 3}
   MapWidth: 10
   MapHeight: 10
   RoomSize: 5
-  MaximumWalkers: 10
+  MaximumWalkers: 1
   TileCount: 0
   FillPercentage: 0.25
+  Randomness: 0.1
   WaitTime: 0.05
 --- !u!4 &424695931
 Transform:

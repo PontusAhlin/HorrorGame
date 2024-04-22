@@ -22,7 +22,16 @@ TO MODIFY RANDOM GENERATION PARAMETERS, DO IT FROM THE INSPECTOR, ON THE OBJECT 
 
 public class TileGenWalker : MonoBehaviour
 {
-    public List<GameObject> prefabList = new List<GameObject>();
+    [Tooltip("list of all the rooms that have 1 way out, and are 1x1")]
+    public List<GameObject> Small1Way = new List<GameObject>();
+    [Tooltip("list of all the rooms that have 2 ways out corridor style, and are 1x1")]
+    public List<GameObject> Small2WayCorridor = new List<GameObject>();
+    [Tooltip("list of all the rooms that have 2 way out corner style, and are 1x1")]
+    public List<GameObject> Small2WayCorner = new List<GameObject>();
+    [Tooltip("list of all the rooms that have 3 ways out, and are 1x1")]
+    public List<GameObject> Small3Way = new List<GameObject>();
+    [Tooltip("list of all the rooms that have 4 ways out, and are 1x1")]
+    public List<GameObject> Small4Way = new List<GameObject>();
     public enum Grid
     {
         FLOOR,
@@ -32,19 +41,22 @@ public class TileGenWalker : MonoBehaviour
     //Variables
     public Grid[,] gridHandler;
     public List<TileGenWalkerObject> Walkers; 
+    [Tooltip("total map width in cells")]
     public int MapWidth = 30; //map size 
+    [Tooltip("total map height in cells")]
     public int MapHeight = 30;
+    [Tooltip("this should match the EXACT SIZE OF A 1X1 ROOM. this is how much we distance stuff as well, and we set our rooms to 50 as default!!!")]
     public int RoomSize = 5; // THIS IS HOW BIG ONE "SQUARE" ROOM OF 1x1 IS IN UNITY UNITS!!
-
-    public int MaximumWalkers = 10; //amount of Walkers generating the map. think of these as 
-    //ants walking around from (middlex, middley) outwards, and everywhere they step
-    // is a room, and everywhere they don't is NOT a room. more walkers = blobbier rooms
-    public int TileCount = default; //dont touch this, this is just so u can see it in editor and doesn't
-    //affect how the generation runs
-    public float FillPercentage = 0.4f; //now THIS is what decides how much of the map should be filled, 
-    // where 100% is all the rooms of MapWidth*MapHeight
-    public float WaitTime = 0.05f; //manual delay in generating the map, for debugging purposes.
-    //THIS SHOULDBE AS LOW AS POSSIBLE!!!!
+    [Tooltip("more walkers - more uhhh...agents walking around generating the map. imagine you have ants on a piece of paper that u dunked in ink. wherever the ant walks, the map generates. this value sets the amount of ants u drop down")]
+    public int MaximumWalkers = 10;
+    [Tooltip("not relevant, just shows in editor how many tiles have been made, for debugging")]
+    public int TileCount = default;
+    [Tooltip("(0 -> 1), percentage of the map's total cells to be filled until it's done")]
+    public float FillPercentage = 0.4f;
+    [Tooltip("(0 -> 1), decides how chaotic the random gen is. lower = straighter rooms")]
+    public float Randomness = 0.5f;
+    [Tooltip("float value, but this should be like ZERO because all it does is delay the thing and lag!!")]
+    public float WaitTime = 0.05f;
 
     void Start()
     {
@@ -54,31 +66,49 @@ public class TileGenWalker : MonoBehaviour
     void DrawRoom(int x, int y, bool north, bool east, bool south, bool west)
     {
         Debug.Log("drawn room at (" + x + "," + y + ")");
-        int prefabIndex = UnityEngine.Random.Range(0,prefabList.Count);
-        Instantiate(prefabList[prefabIndex], new Vector3(x*RoomSize, 0, y*RoomSize), Quaternion.identity);
-    }
 
-
-    /*
-    THIS FUNCTION JUST DRAWS CUBES IN THE EDITOR. 
-    THIS IS FOR TESTING PURPOSES. UNCOMMENT TO SEE IT WHEN U
-    CLICK PLAY AND THEN GO TO SCENE
-
-    void OnDrawGizmos()
-    {
-        if (!Application.isPlaying) return;
-        for (int i = 0; i < MapWidth ; i++)
-            for (int j = 0; j < MapHeight ; j++)
+        switch (north, east, south, west)
+        {   
+            //SHOULDNT HAPPEN
+            case (false, false, false, false):
             {
-                if (gridHandler[i, j] == Grid.FLOOR)
-                    {   
-                        Vector3 pos = new Vector3(i, 0, j);
-                        Gizmos.DrawCube(pos, Vector3.one);
-                    }
+                Debug.Log("ROOM WITH NO EXITS WAS DRAWN");
+                break;
             }
-
+            //1WAY
+            case (true, false, false, false):
+            {
+                int prefabIndex = UnityEngine.Random.Range(0,Small1Way.Count);
+                Instantiate(Small1Way[prefabIndex], new Vector3(x*RoomSize, 0, y*RoomSize), Quaternion.Euler(0,0,0));
+                break;
+            }
+            case (false, true, false, false):
+            {
+                int prefabIndex = UnityEngine.Random.Range(0,Small1Way.Count);
+                Instantiate(Small1Way[prefabIndex], new Vector3(x*RoomSize, 0, y*RoomSize), Quaternion.Euler(0,90f,0));
+                break;
+            }
+            case (false, false, true, false):
+            {
+                int prefabIndex = UnityEngine.Random.Range(0,Small1Way.Count);
+                Instantiate(Small1Way[prefabIndex], new Vector3(x*RoomSize, 0, y*RoomSize), Quaternion.Euler(0,180f,0));
+                break;
+            }
+            case (false, false, false, true):
+            {
+                int prefabIndex = UnityEngine.Random.Range(0,Small1Way.Count);
+                Instantiate(Small1Way[prefabIndex], new Vector3(x*RoomSize, 0, y*RoomSize), Quaternion.Euler(0,270f,0));
+                break;
+            }
+            //2WAY CORRIDORS
+            default:
+            {
+                int prefabIndex = UnityEngine.Random.Range(0,Small4Way.Count);
+                Instantiate(Small4Way[prefabIndex], new Vector3(x*RoomSize, 0, y*RoomSize), Quaternion.Euler(0,0,0));
+                break;
+            }
+        }
     }
-    */
 
     void InitializeGrid()
     {
@@ -96,7 +126,7 @@ public class TileGenWalker : MonoBehaviour
 
         Vector3Int TileCenter = new Vector3Int(gridHandler.GetLength(0) / 2, gridHandler.GetLength(1) / 2, 0);
 
-        TileGenWalkerObject curWalker = new TileGenWalkerObject(new Vector2(TileCenter.x, TileCenter.y), GetDirection(), 0.5f);
+        TileGenWalkerObject curWalker = new TileGenWalkerObject(new Vector2(TileCenter.x, TileCenter.y), GetDirection(), Randomness);
         gridHandler[TileCenter.x, TileCenter.y] = Grid.FLOOR;
         Walkers.Add(curWalker);
 
@@ -239,7 +269,7 @@ public class TileGenWalker : MonoBehaviour
                 Vector2 newDirection = GetDirection();
                 Vector2 newPosition = Walkers[i].Position;
 
-                TileGenWalkerObject newWalker = new TileGenWalkerObject(newPosition, newDirection, 0.5f);
+                TileGenWalkerObject newWalker = new TileGenWalkerObject(newPosition, newDirection, Randomness);
                 Walkers.Add(newWalker);
             }
         }
