@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5069789902996591897}
   - component: {fileID: 4861801145063133414}
   - component: {fileID: 8523904080229969876}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 4954564421639131381}
   - component: {fileID: 6468837454935521699}
   - component: {fileID: 435476214761416195}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226,7 +226,8 @@ GameObject:
   - component: {fileID: 7607165927458922916}
   - component: {fileID: 6143414050292734620}
   - component: {fileID: 8544591490874018311}
-  m_Layer: 0
+  - component: {fileID: -7241635575637873658}
+  m_Layer: 8
   m_Name: 5x10 Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -321,3 +322,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!208 &-7241635575637873658
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8741610234638074878}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
