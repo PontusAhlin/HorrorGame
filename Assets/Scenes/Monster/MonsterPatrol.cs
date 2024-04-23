@@ -8,7 +8,12 @@ using UnityEngine.AI;
 public class enemyAiControl : MonoBehaviour
 {
 
-    GameObject player;
+    //GameObject player;
+    public Transform player; // Reference to the player's transform
+    public float detectionRange = 10f; // Detection range of the monster
+    public LayerMask layersToHit; // Layer mask to detect obstacles between the monster and the player
+
+
     NavMeshAgent agent; // initialize agent object referring to scripted object
 
     float rand; // initialize random object
@@ -39,6 +44,11 @@ public class enemyAiControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Check if the player is within the monster's detection range
+        //Debug.Log(Vector3.Distance(transform.position, player.position));
+        
+        IsPlayerVisible();
+
         Patrol();
 
         Animator.SetBool(isMoving, agent.velocity.magnitude < 0.01f);
@@ -93,6 +103,27 @@ public class enemyAiControl : MonoBehaviour
     {
         agent.SetDestination(destPoint); // agent.SetDestination provided by Unity engine
         
+    }
+
+    void IsPlayerVisible()
+    {
+        // Calculate direction from the monster to the player
+        Vector3 direction = player.position - transform.position;
+        Ray ray = new Ray(transform.position, direction.normalized);
+
+        // Cast a ray from the monster towards the player
+    
+        if (Physics.Raycast(ray, out RaycastHit hitted, detectionRange,layersToHit))
+        {
+            // Check if the ray hits the player
+            Debug.Log(hitted.collider.gameObject.name + " was hit!");
+        }
+    }
+
+    void PlayerDeath()
+    {
+        // Perform actions to handle player death, such as displaying a game over screen, resetting the level, etc.
+        Debug.Log("Player died!");
     }
 
     
