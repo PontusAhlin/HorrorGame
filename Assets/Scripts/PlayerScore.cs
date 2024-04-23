@@ -38,9 +38,9 @@ public class PlayerScore : MonoBehaviour
      */
     private void IncreaseLikes()
     {
-        // Linear increase of score generators.
-        likes += (int)(viewers * likesPerViewer);
-        // Logging for debugging.
-        Debug.Log("Viewers: " + viewers + "Likes: " + likes);
+        if (viewers >= 1f) {                                         // If the player has viewers (required to avoid likes while no viewers).
+            likes += (int)(viewers * likesPerViewer);               // Increase likes based on the amount of viewers.
+            Debug.Log("Viewers: " + viewers + "Likes: " + likes);   // Debug log.
+        }
     }
 }
