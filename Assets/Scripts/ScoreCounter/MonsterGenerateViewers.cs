@@ -35,7 +35,7 @@ public class MonsterGenerateViewers : MonoBehaviour
     [Tooltip("Mathmatical function for increasing and decreasing number of viewers added.")]
     [SerializeField] IncreaseAndDecrease increaseAndDecrease;
     [Tooltip("Update this value to change if viewers are added or removed.")]
-    public bool inFieldOfView = false;                              // If the monster is in the field of view.
+    public static bool inFieldOfView = false;                              // If the monster is in the field of view.
 
     // Start is called before the first frame update
     void Start()

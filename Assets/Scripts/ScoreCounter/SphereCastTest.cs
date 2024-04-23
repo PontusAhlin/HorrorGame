@@ -8,13 +8,10 @@ public class SphereCastTest : MonoBehaviour
     [Tooltip("List of objects which the raycast sphere detects ")]
     public List<GameObject> currentHitObjects = new List<GameObject>();
     */
+
     
     [Tooltip("Connect this to your main camera")]
     public Camera camera;
-    
-    [Tooltip("Reference from 'PlayerScore.cs', add the monster gameObject to this")]
-    public MonsterGenerateViewers monsterGenerateViewers;
-    
 
     //Init of detection components
     [Tooltip("Radius of the raycasted sphere")]
@@ -37,7 +34,7 @@ public class SphereCastTest : MonoBehaviour
         playerDirection = transform.forward;
         
         //Added to reset if the monster isn't in the field of view
-        monsterGenerateViewers.inFieldOfView = false;
+        MonsterGenerateViewers.inFieldOfView = false;
 
         /*
         // Clears the gameObject list each frame(Used for debugging)
@@ -52,7 +49,7 @@ public class SphereCastTest : MonoBehaviour
         foreach (RaycastHit hit in hits){            
     
             //If we we see something with the monster tag we inspect it 
-            if(hit.transform.gameObject.tag == "Monster"){
+            if(hit.transform.gameObject.tag == "Monster" || hit.transform.gameObject.tag == "SpecialMonster"){
                 RaycastHit hitMonster;
                 
                 //We look at the direction in which the player can see the monster
@@ -69,12 +66,23 @@ public class SphereCastTest : MonoBehaviour
                         currentHitObjects.Add(hit.transform.gameObject);
                     */
 
+
                     //If we're in this if statement it means that we can see the monster
                     //and each frame the monster is detected a view is added
-                    print("TRUE");
-                    monsterDetected = true;
-                    monsterGenerateViewers.inFieldOfView = true;
+                    switch(hit.transform.gameObject.tag)
+                    {
+                        case "Monster":
+                        MonsterGenerateViewers.inFieldOfView = true;
+                        break;
+
+                        //Add special monster functionality
+                        case "SpecialMonster":
+                        MonsterGenerateViewers.inFieldOfView = true;
+                        break;
+                    }
                 }
+            
+            
             }
         }
     }
