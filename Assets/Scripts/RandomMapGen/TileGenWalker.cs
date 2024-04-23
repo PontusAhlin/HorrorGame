@@ -347,28 +347,28 @@ public class TileGenWalker : MonoBehaviour
                     // CHECKING NORTH
                     try
                     {
-                        if (gridHandler[x,y+1] == Grid.ONE_ONE)
+                        if (gridHandler[x,y+1] != Grid.EMPTY)
                             north = true;
                     }
                     catch (Exception) {}
                     // CHECKING EAST
                     try
                     {
-                        if (gridHandler[x+1,y] == Grid.ONE_ONE)
+                        if (gridHandler[x+1,y] != Grid.EMPTY)
                             east = true;
                     }
                     catch (Exception) {}
                     // CHECKING SOUTH
                     try
                     {
-                        if (gridHandler[x,y-1] == Grid.ONE_ONE)
+                        if (gridHandler[x,y-1] != Grid.EMPTY)
                             south = true;
                     }
                     catch (Exception) {}
                     // CHECKING WEST
                     try
                     {
-                        if (gridHandler[x-1,y] == Grid.ONE_ONE)
+                        if (gridHandler[x-1,y] != Grid.EMPTY)
                             west = true;
                     }
                     catch (Exception) {}
