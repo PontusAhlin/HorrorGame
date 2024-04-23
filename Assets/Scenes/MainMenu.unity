@@ -152,8 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc1b13de05cc6704dbae6e6c54f2eb18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderTexture: {fileID: 0}
-  TargetWidthInPixels: 300
+  renderTexture: {fileID: 8400000, guid: 6130b8d05302e014aaf7cf1bfbdbfded, type: 2}
+  TargetWidthInPixels: 600
   IsPixelationOn: 1
 --- !u!4 &77946306
 Transform:
