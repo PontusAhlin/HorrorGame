@@ -12,14 +12,20 @@ public class ThirdPersonMovement : MonoBehaviour
 {
     // Public variables set in Unity Editor
     private Transform camTransform;
-    public float speed = 1f;
+    [Tooltip("Player movement speed.")]
+    [SerializeField] float speed = 1f;
     private Gamepad gamepad;            // We're using INPUTSYSTEM, configured it to imitate gamepad buttons touchscreens
-    public GameObject stepRayUpper;
-    public GameObject stepRayLower;
+    [Tooltip("Upper step ray element. This element is responsible for sending out a ray to check if the next step is rechable.")]
+    [SerializeField] GameObject stepRayUpper;
+    [Tooltip("Lower step ray element. This element is responsible for sending out a ray to check for step collision.")]
+    [SerializeField] GameObject stepRayLower;
     private CapsuleCollider capsuleCollider;
-    public float stepHeight = 0.6f;             // Height of the step
-    public float stepSpeed = 0.1f;              // Speed of the step
-    public float stepRayLowerMargin = 0.1f;     // Margin of the lower step ray (margin from ground)
+    [Tooltip("Height of the step.")]
+    [SerializeField] float stepHeight = 0.6f;             // Height of the step
+    [Tooltip("Speed of the step/climbing (higher means faster, but less smooth).")]
+    [SerializeField] float stepSpeed = 0.1f;              // Speed of the step
+    [Tooltip("Margin of the lower step ray (margin from ground).")]
+    [SerializeField] float stepRayLowerMargin = 0.1f;     // Margin of the lower step ray (margin from ground)
 
     // Start is called before the first frame update
     void Start()
