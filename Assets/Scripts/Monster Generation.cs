@@ -13,7 +13,7 @@ public class MonsterGeneration : MonoBehaviour
     private int CurrentMonsterAmount = 0;
     void Start()
     {
-        Instantiate(MonsterPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        Instantiate(MonsterPrefab, new Vector3(45, 0.1f, -20), Quaternion.identity);
         CurrentMonsterAmount++;
         if(CurrentMonsterAmount < MonsterAmount){
             StartCoroutine(GenerateMonster());
@@ -27,7 +27,7 @@ public class MonsterGeneration : MonoBehaviour
         yield return new WaitForSeconds(timeSeconds);
         //After we have waited 5 seconds print the time again.
         Debug.Log("Finished Coroutine at timestamp : " + Time.time);
-        Instantiate(MonsterPrefab, new Vector3(CurrentMonsterAmount*5, 0, 0), Quaternion.identity);
+        Instantiate(MonsterPrefab, new Vector3(45, 0.1f, -20), Quaternion.identity);
         CurrentMonsterAmount++;
         if(CurrentMonsterAmount < MonsterAmount){
             StartCoroutine(GenerateMonster());
