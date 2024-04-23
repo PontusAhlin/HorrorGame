@@ -35,8 +35,12 @@ public class TileGenWalker : MonoBehaviour
     public List<GameObject> Small4Way = new List<GameObject>();
     public enum Grid
     {
-        FLOOR,
+        TWO_TWO,
+        ONE_TWO,
+
+        ONE_ONE,
         EMPTY
+
     }
 
     //Variables
@@ -58,17 +62,26 @@ public class TileGenWalker : MonoBehaviour
     public float Randomness = 0.5f;
     [Tooltip("float value, but this should be like ZERO because all it does is delay the thing and lag!!")]
     public float WaitTime = 0.05f;
-
+    [Tooltip("(0 -> 1), this decides the percentage chance that 2x2 rooms will be generated when possible")]
+    public float TwoByTwoChance = 0.5f;
+    [Tooltip("(0 -> 1), this decides the percentage chance that 1x2 rooms will be generated when possible")]
+    public float OneByTwoChance = 0.5f;
     void Start()
     {
         InitializeGrid();
     }
     //this is the function that is called at coordinates X & Y 
+    /* DrawRoom(coord, coord, isNorthOpen, isEastOpen, .....)
+
+
+
+
+    */
     void DrawRoom(int x, int y, bool north, bool east, bool south, bool west)
     {
-        Debug.Log("drawn room at (" + x + "," + y + ")");
+        //Debug.Log("drawn room at (" + x + "," + y + ")");
 
-        switch (north, east, south, west)
+        switch (north, east, south, west) //THIS ENTIRE THING HANDLES DRAWING WHAT KIND OF ROOM, WHERE
         {   
             //SHOULDNT HAPPEN
             case (false, false, false, false):
@@ -77,25 +90,25 @@ public class TileGenWalker : MonoBehaviour
                 break;
             }
             //1 WAY
-            case (true, false, false, false):
+            case (true, false, false, false): //N
             {
                 int prefabIndex = UnityEngine.Random.Range(0,Small1Way.Count);
                 Instantiate(Small1Way[prefabIndex], new Vector3(x*RoomSize, 0, y*RoomSize), Quaternion.Euler(0,0,0));
                 break;
             }
-            case (false, true, false, false):
+            case (false, true, false, false): //E
             {
                 int prefabIndex = UnityEngine.Random.Range(0,Small1Way.Count);
                 Instantiate(Small1Way[prefabIndex], new Vector3(x*RoomSize, 0, y*RoomSize), Quaternion.Euler(0,90f,0));
                 break;
             }
-            case (false, false, true, false):
+            case (false, false, true, false): //S
             {
                 int prefabIndex = UnityEngine.Random.Range(0,Small1Way.Count);
                 Instantiate(Small1Way[prefabIndex], new Vector3(x*RoomSize, 0, y*RoomSize), Quaternion.Euler(0,180f,0));
                 break;
             }
-            case (false, false, false, true):
+            case (false, false, false, true): //W
             {
                 int prefabIndex = UnityEngine.Random.Range(0,Small1Way.Count);
                 Instantiate(Small1Way[prefabIndex], new Vector3(x*RoomSize, 0, y*RoomSize), Quaternion.Euler(0,270f,0));
@@ -191,7 +204,7 @@ public class TileGenWalker : MonoBehaviour
         Vector3Int TileCenter = new Vector3Int(gridHandler.GetLength(0) / 2, gridHandler.GetLength(1) / 2, 0);
 
         TileGenWalkerObject curWalker = new TileGenWalkerObject(new Vector2(TileCenter.x, TileCenter.y), GetDirection(), Randomness);
-        gridHandler[TileCenter.x, TileCenter.y] = Grid.FLOOR;
+        gridHandler[TileCenter.x, TileCenter.y] = Grid.ONE_ONE;
         Walkers.Add(curWalker);
 
         TileCount++;
@@ -223,16 +236,16 @@ public class TileGenWalker : MonoBehaviour
         while ((float)TileCount / (float)gridHandler.Length < FillPercentage)
         {
             Debug.Log("CreateFloors RAN");
-            bool hasCreatedFloor = false;
+            bool hasCreatedONE_ONE = false;
             foreach (TileGenWalkerObject curWalker in Walkers)
             {
                 Vector3Int curPos = new Vector3Int((int)curWalker.Position.x, (int)curWalker.Position.y, 0);
 
-                if (gridHandler[curPos.x, curPos.y] != Grid.FLOOR)
+                if (gridHandler[curPos.x, curPos.y] != Grid.ONE_ONE)
                 {
                     TileCount++;
-                    gridHandler[curPos.x, curPos.y] = Grid.FLOOR;
-                    hasCreatedFloor = true;
+                    gridHandler[curPos.x, curPos.y] = Grid.ONE_ONE;
+                    hasCreatedONE_ONE = true;
                 }
             }
 
@@ -242,7 +255,7 @@ public class TileGenWalker : MonoBehaviour
             ChanceToCreate();
             UpdatePosition();
 
-            if (hasCreatedFloor)
+            if (hasCreatedONE_ONE)
             {
                 yield return new WaitForSeconds(WaitTime);
             }
@@ -251,13 +264,13 @@ public class TileGenWalker : MonoBehaviour
         /*
           THIS IS WHERE YOU SHOULD WRITE CODE THAT CARES ABOUT THE MAP
           LIKE
-          THIS IS THE POINT WHERE THE MAP IS FULL OF Grid.EMPTY or GRID.FLOOR
+          THIS IS THE POINT WHERE THE MAP IS FULL OF Grid.EMPTY or GRID.ONE_ONE
         */
 
         for (int x = 0; x < MapWidth; x++) //HANDLING IF THERE ARE ANY ADJACENT GRID STUFFS
             for (int y = 0; y < MapHeight; y++)
             {
-                if (gridHandler[x, y] == Grid.FLOOR)
+                if (gridHandler[x, y] == Grid.ONE_ONE)
                 {
                     bool north = false, east = false, south = false, west = false;  //variables to hand to
                                                                                     //DrawRoom to select the right prefab
@@ -265,28 +278,28 @@ public class TileGenWalker : MonoBehaviour
                     // CHECKING NORTH
                     try
                     {
-                        if (gridHandler[x,y+1] == Grid.FLOOR)
+                        if (gridHandler[x,y+1] == Grid.ONE_ONE)
                             north = true;
                     }
                     catch (Exception) {}
                     // CHECKING EAST
                     try
                     {
-                        if (gridHandler[x+1,y] == Grid.FLOOR)
+                        if (gridHandler[x+1,y] == Grid.ONE_ONE)
                             east = true;
                     }
                     catch (Exception) {}
                     // CHECKING SOUTH
                     try
                     {
-                        if (gridHandler[x,y-1] == Grid.FLOOR)
+                        if (gridHandler[x,y-1] == Grid.ONE_ONE)
                             south = true;
                     }
                     catch (Exception) {}
                     // CHECKING WEST
                     try
                     {
-                        if (gridHandler[x-1,y] == Grid.FLOOR)
+                        if (gridHandler[x-1,y] == Grid.ONE_ONE)
                             west = true;
                     }
                     catch (Exception) {}
