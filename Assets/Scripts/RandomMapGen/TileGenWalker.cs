@@ -35,15 +35,18 @@ public class TileGenWalker : MonoBehaviour
     public List<GameObject> Small4Way = new List<GameObject>();
     [Tooltip("list of all the room floors that are 2x2")]
     public List<GameObject> BigFloors = new List<GameObject>();
-    [Tooltip("list of all the room walls that correspond to 2x2")]
+    [Tooltip("list of all the room floors that are 2x1")]
+    public List<GameObject> LongFloors = new List<GameObject>();
+    [Tooltip("list of all the room walls that correspond to 2x2 and 2x1")]
     public List<GameObject> BigWalls = new List<GameObject>();
-    [Tooltip("list of all the room doorways that correspond to 2x2")]
+    [Tooltip("list of all the room doorways that correspond to 2x2 and 2x1")]
     public List<GameObject> BigDoorways = new List<GameObject>();
+    
 
     public enum Grid
     {
         TWO_TWO,
-        ONE_TWO,
+        TWO_ONE,
         ONE_ONE,
         EMPTY
 
@@ -71,7 +74,7 @@ public class TileGenWalker : MonoBehaviour
     [Tooltip("(0 -> 1), this decides the percentage chance that 2x2 rooms will be generated when possible")]
     public float TwoByTwoChance = 0.5f;
     [Tooltip("(0 -> 1), this decides the percentage chance that 1x2 rooms will be generated when possible")]
-    public float OneByTwoChance = 0.5f;
+    public float TwoByOneChance = 0.5f;
     void Start()
     {
         InitializeGrid();
@@ -217,6 +220,45 @@ public class TileGenWalker : MonoBehaviour
         else   Instantiate(BigWalls[prefabIndex], new Vector3((x-0.5f)*RoomSize, 0, (y+1f)*RoomSize), Quaternion.Euler(0,270f,0));
         
     }
+    //NOT FINISHED!!!!!!!!!
+    void DrawTwoByOneHorizontal(int x, int y, bool a, bool b, bool c, bool d, bool e, bool f) //THIS DRAWS A 2x1 FLOOR
+    {
+        int prefabIndex = UnityEngine.Random.Range(0,LongFloors.Count); //pick variant of 2x1
+        //make floor
+        Instantiate(LongFloors[prefabIndex], new Vector3((x+0.5f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,0,0));
+        //make walls NEEDS TO OFFSET WALLS BY LIKE 1 PIXEL OR THEY OVERLAP!!!!!
+        if (a) Instantiate(BigDoorways[prefabIndex], new Vector3((x)*RoomSize, 0, (y+0.5f)*RoomSize), Quaternion.Euler(0,0,0));
+        else   Instantiate(BigWalls[prefabIndex], new Vector3((x)*RoomSize, 0, (y+0.5f)*RoomSize), Quaternion.Euler(0,0,0));
+        if (b) Instantiate(BigDoorways[prefabIndex], new Vector3((x+1f)*RoomSize, 0, (y+0.5f)*RoomSize), Quaternion.Euler(0,0,0));
+        else   Instantiate(BigWalls[prefabIndex], new Vector3((x+1f)*RoomSize, 0, (y+0.5f)*RoomSize), Quaternion.Euler(0,0,0));
+        if (c) Instantiate(BigDoorways[prefabIndex], new Vector3((x+1.5f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,90f,0));
+        else   Instantiate(BigWalls[prefabIndex], new Vector3((x+1.5f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,90f,0));
+        if (d) Instantiate(BigDoorways[prefabIndex], new Vector3((x+1f)*RoomSize, 0, (y-0.5f)*RoomSize), Quaternion.Euler(0,180f,0));
+        else   Instantiate(BigWalls[prefabIndex], new Vector3((x+1f)*RoomSize, 0, (y-0.5f)*RoomSize), Quaternion.Euler(0,180f,0));
+        if (e) Instantiate(BigDoorways[prefabIndex], new Vector3((x)*RoomSize, 0, (y-0.5f)*RoomSize), Quaternion.Euler(0,180f,0));
+        else   Instantiate(BigWalls[prefabIndex], new Vector3((x)*RoomSize, 0, (y-0.5f)*RoomSize), Quaternion.Euler(0,180f,0));
+        if (f) Instantiate(BigDoorways[prefabIndex], new Vector3((x-0.5f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,270f,0));
+        else   Instantiate(BigWalls[prefabIndex], new Vector3((x-0.5f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,270f,0));    
+    }
+    void DrawTwoByOneVertical(int x, int y, bool a, bool b, bool c, bool d, bool e, bool f) //THIS DRAWS A 2x1 FLOOR
+    {
+        int prefabIndex = UnityEngine.Random.Range(0,LongFloors.Count); //pick variant of 2x1
+        //make floor
+        Instantiate(LongFloors[prefabIndex], new Vector3((x)*RoomSize, 0, (y+0.5f)*RoomSize), Quaternion.Euler(0,90f,0));
+        //make walls NEEDS TO OFFSET WALLS BY LIKE 1 PIXEL OR THEY OVERLAP!!!!!
+        if (a) Instantiate(BigDoorways[prefabIndex], new Vector3((x)*RoomSize, 0, (y+1.5f)*RoomSize), Quaternion.Euler(0,0,0));
+        else   Instantiate(BigWalls[prefabIndex], new Vector3((x)*RoomSize, 0, (y+1.5f)*RoomSize), Quaternion.Euler(0,0,0));
+        if (b) Instantiate(BigDoorways[prefabIndex], new Vector3((x+0.5f)*RoomSize, 0, (y+1f)*RoomSize), Quaternion.Euler(0,90f,0));
+        else   Instantiate(BigWalls[prefabIndex], new Vector3((x+0.5f)*RoomSize, 0, (y+1f)*RoomSize), Quaternion.Euler(0,90f,0));
+        if (c) Instantiate(BigDoorways[prefabIndex], new Vector3((x+0.5f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,90f,0));
+        else   Instantiate(BigWalls[prefabIndex], new Vector3((x+0.5f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,90f,0));
+        if (d) Instantiate(BigDoorways[prefabIndex], new Vector3((x)*RoomSize, 0, (y-0.5f)*RoomSize), Quaternion.Euler(0,180f,0));
+        else   Instantiate(BigWalls[prefabIndex], new Vector3((x)*RoomSize, 0, (y-0.5f)*RoomSize), Quaternion.Euler(0,180f,0));
+        if (e) Instantiate(BigDoorways[prefabIndex], new Vector3((x-0.5f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,270f,0));
+        else   Instantiate(BigWalls[prefabIndex], new Vector3((x-0.5f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,270f,0));
+        if (f) Instantiate(BigDoorways[prefabIndex], new Vector3((x-0.5f)*RoomSize, 0, (y+1f)*RoomSize), Quaternion.Euler(0,270f,0));
+        else   Instantiate(BigWalls[prefabIndex], new Vector3((x-0.5f)*RoomSize, 0, (y+1f)*RoomSize), Quaternion.Euler(0,270f,0));    
+    }
     void InitializeGrid()
     {
         gridHandler = new Grid[MapWidth, MapHeight];
@@ -335,8 +377,70 @@ public class TileGenWalker : MonoBehaviour
                     }
             }
 
+        for (int x = 0; x < MapWidth-1; x++) //APPLYING TWO_ONE ROOMS, VERTICAL
+            for (int y = 0; y < MapHeight-1; y++)
+            {
+                bool gotSpace = false;
+                try
+                {
+                    gotSpace = gridHandler[x,y] == Grid.ONE_ONE && 
+                    gridHandler[x,y+1] == Grid.ONE_ONE;
+                }
+                catch (Exception) {gotSpace = false;}
+                if (gotSpace && (UnityEngine.Random.value < TwoByOneChance)) //for a 2x2 grid block
+                    { //place a TWO_TWO
+                        gridHandler[x,y] = Grid.TWO_ONE; 
+                        gridHandler[x,y+1] = Grid.TWO_ONE;
+                        bool a=false,b=false,c=false,d=false,e=false,f=false;
+                        try { a = gridHandler[x,y+2] != Grid.EMPTY;}
+                        catch (Exception) {}
+                        try { b = gridHandler[x+1,y+1] != Grid.EMPTY;}
+                        catch (Exception) {}
+                        try { c = gridHandler[x+1,y] != Grid.EMPTY;}
+                        catch (Exception) {}
+                        try { d = gridHandler[x,y-1] != Grid.EMPTY;}
+                        catch (Exception) {}
+                        try { e = gridHandler[x-1,y] != Grid.EMPTY;}
+                        catch (Exception) {}
+                        try { f = gridHandler[x-1,y+1] != Grid.EMPTY;}
+                        catch (Exception) {}
+                        DrawTwoByOneVertical(x,y,a,b,c,d,e,f);
+                    }
+            }
 
-        for (int x = 0; x < MapWidth; x++) //HANDLING IF THERE ARE ANY ADJACENT GRID STUFFS
+        for (int x = 0; x < MapWidth-1; x++) //APPLYING TWO_ONE ROOMS, HORIZONTAL
+            for (int y = 0; y < MapHeight-1; y++)
+            {
+                bool gotSpace = false;
+                try
+                {
+                    gotSpace = gridHandler[x,y] == Grid.ONE_ONE && 
+                    gridHandler[x+1,y] == Grid.ONE_ONE;
+                }
+                catch (Exception) {gotSpace = false;}
+                if (gotSpace && (UnityEngine.Random.value < TwoByOneChance)) //for a 2x2 grid block
+                    { //place a TWO_TWO
+                        gridHandler[x,y] = Grid.TWO_ONE; 
+                        gridHandler[x+1,y] = Grid.TWO_ONE;
+                        bool a=false,b=false,c=false,d=false,e=false,f=false;
+                        try { a = gridHandler[x,y+1] != Grid.EMPTY;}
+                        catch (Exception) {}
+                        try { b = gridHandler[x+1,y+1] != Grid.EMPTY;}
+                        catch (Exception) {}
+                        try { c = gridHandler[x+2,y] != Grid.EMPTY;}
+                        catch (Exception) {}
+                        try { d = gridHandler[x+1,y-1] != Grid.EMPTY;}
+                        catch (Exception) {}
+                        try { e = gridHandler[x,y-1] != Grid.EMPTY;}
+                        catch (Exception) {}
+                        try { f = gridHandler[x-1,y] != Grid.EMPTY;}
+                        catch (Exception) {}
+                        DrawTwoByOneHorizontal(x,y,a,b,c,d,e,f);
+                    }
+            }
+
+
+        for (int x = 0; x < MapWidth; x++) //APPLYING 1X1 ROOMS
             for (int y = 0; y < MapHeight; y++)
             {
                 if (gridHandler[x, y] == Grid.ONE_ONE)
