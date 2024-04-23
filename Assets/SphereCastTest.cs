@@ -31,41 +31,46 @@ public class SphereCastTest : MonoBehaviour
         //Sets the players position and direction continuisly where the player looks 
         sphereCastOffset = transform.position + transform.forward * minDistance;
         playerDirection = transform.forward;
-        currentHitDistance = maxDistance;        
-        
         //Clears the gameObject list each frame
         currentHitObjects.Clear();
 
         //This line gives us an array with everything our raycast sphere hits 
         RaycastHit[] hits = Physics.SphereCastAll(sphereCastOffset, sphereRadius, playerDirection, maxDistance, layerMask, QueryTriggerInteraction.UseGlobal);
 
+
+        //This list where all of the objects the sphereCast can see  
         foreach (RaycastHit hit in hits){            
+    
+            //If we we see something with the monster tag we inspect it 
             if(hit.transform.gameObject.tag == "Monster"){
                 RaycastHit hitMonster;
+                
+                //We look at the direction in which the player can see the monster
                 Vector3 monsterHitDirection = Vector3.Normalize(hit.point - transform.position);  
-                //print(monsterHitDirection);
-                if(Physics.Raycast(transform.position, monsterHitDirection, out hitMonster , hit.distance - 0.1f) == false){
+
+                // Calculate distance between player and monster.
+                float distanceBetween = Vector3.Distance(transform.position, hit.point);
+                // Debug ray to see if we hit something between player and monster.
+                Debug.DrawRay(transform.position, monsterHitDirection * (distanceBetween - 0.1f), Color.red);
+
+                //This makes a new separate raycast towards the monster, if there is something colliding with the raycast it doesn't register the monster 
+                if(Physics.Raycast(transform.position, monsterHitDirection, out hitMonster , distanceBetween - 0.1f) == false){
                     currentHitObjects.Add(hit.transform.gameObject);
                     print("SHIT A MONSTER");
-                    
+
+                    //Here we should add the points 
+
                 }
             }
         }
     }
 
-
     
+    //Debugging by creating the raycast sphere 
+    private void OnDrawGizmosSelected() {
+        Gizmos.color = Color.red;
+        Debug.DrawLine(transform.position, sphereCastOffset + playerDirection * maxDistance);
+        Gizmos.DrawWireSphere(sphereCastOffset + playerDirection * maxDistance , sphereRadius);
+    }
 
-        /**   
-        * Adds a new gameobject to our list of current gameobjects our sphere raycast can see.
-        * Checks if we see a monster in sight we do something.
-        */
-        /*
-        foreach (RaycastHit hit in hits){
-            currentHitObjects.Add(hit.transform.gameObject);
-            if(hit.transform.gameObject.tag == "Monster"){
-                print("SHEIT A MONSTER");
-            }
-        }
-    }*/
 }
