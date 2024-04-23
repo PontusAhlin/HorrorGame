@@ -68,13 +68,13 @@ public class TileGenWalker : MonoBehaviour
     [Tooltip("(0 -> 1), percentage of the map's total cells to be filled until it's done")]
     public float FillPercentage = 0.4f;
     [Tooltip("(0 -> 1), decides how chaotic the random gen is. lower = straighter rooms")]
-    public float Randomness = 0.5f;
+    public float Randomness = 0.48f;
     [Tooltip("float value, but this should be like ZERO because all it does is delay the thing and lag!!")]
     public float WaitTime = 0.05f;
     [Tooltip("(0 -> 1), this decides the percentage chance that 2x2 rooms will be generated when possible")]
-    public float TwoByTwoChance = 0.5f;
+    public float TwoByTwoChance = 0.48f;
     [Tooltip("(0 -> 1), this decides the percentage chance that 1x2 rooms will be generated when possible")]
-    public float TwoByOneChance = 0.5f;
+    public float TwoByOneChance = 0.48f;
     void Start()
     {
         InitializeGrid();
@@ -202,22 +202,22 @@ public class TileGenWalker : MonoBehaviour
         //make floor
         Instantiate(BigFloors[prefabIndex], new Vector3((x+0.5f)*RoomSize, 0, (y+0.5f)*RoomSize), Quaternion.Euler(0,0,0));
         //make walls NEEDS TO OFFSET WALLS BY LIKE 1 PIXEL OR THEY OVERLAP!!!!!
-        if (a) Instantiate(BigDoorways[prefabIndex], new Vector3((x)*RoomSize, 0, (y+1.5f)*RoomSize), Quaternion.Euler(0,0,0));
-        else   Instantiate(BigWalls[prefabIndex], new Vector3((x)*RoomSize, 0, (y+1.5f)*RoomSize), Quaternion.Euler(0,0,0));
-        if (b) Instantiate(BigDoorways[prefabIndex], new Vector3((x+1f)*RoomSize, 0, (y+1.5f)*RoomSize), Quaternion.Euler(0,0,0));
-        else   Instantiate(BigWalls[prefabIndex], new Vector3((x+1f)*RoomSize, 0, (y+1.5f)*RoomSize), Quaternion.Euler(0,0,0));
-        if (c) Instantiate(BigDoorways[prefabIndex], new Vector3((x+1.5f)*RoomSize, 0, (y+1)*RoomSize), Quaternion.Euler(0,90f,0));
-        else   Instantiate(BigWalls[prefabIndex], new Vector3((x+1.5f)*RoomSize, 0, (y+1)*RoomSize), Quaternion.Euler(0,90f,0));
-        if (d) Instantiate(BigDoorways[prefabIndex], new Vector3((x+1.5f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,90f,0));
-        else   Instantiate(BigWalls[prefabIndex], new Vector3((x+1.5f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,90f,0));
-        if (e) Instantiate(BigDoorways[prefabIndex], new Vector3((x+1f)*RoomSize, 0, (y-0.5f)*RoomSize), Quaternion.Euler(0,180f,0));
-        else   Instantiate(BigWalls[prefabIndex], new Vector3((x+1f)*RoomSize, 0, (y-0.5f)*RoomSize), Quaternion.Euler(0,180f,0));
-        if (f) Instantiate(BigDoorways[prefabIndex], new Vector3((x)*RoomSize, 0, (y-0.5f)*RoomSize), Quaternion.Euler(0,180f,0));
-        else   Instantiate(BigWalls[prefabIndex], new Vector3((x)*RoomSize, 0, (y-0.5f)*RoomSize), Quaternion.Euler(0,180f,0));
-        if (g) Instantiate(BigDoorways[prefabIndex], new Vector3((x-0.5f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,270f,0));
-        else   Instantiate(BigWalls[prefabIndex], new Vector3((x-0.5f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,270f,0));
-        if (h) Instantiate(BigDoorways[prefabIndex], new Vector3((x-0.5f)*RoomSize, 0, (y+1f)*RoomSize), Quaternion.Euler(0,270f,0));
-        else   Instantiate(BigWalls[prefabIndex], new Vector3((x-0.5f)*RoomSize, 0, (y+1f)*RoomSize), Quaternion.Euler(0,270f,0));
+        if (a) Instantiate(BigDoorways[prefabIndex], new Vector3((x)*RoomSize, 0, (y+1.48f)*RoomSize), Quaternion.Euler(0,0,0));
+        else   Instantiate(BigWalls[prefabIndex], new Vector3((x)*RoomSize, 0, (y+1.48f)*RoomSize), Quaternion.Euler(0,0,0));
+        if (b) Instantiate(BigDoorways[prefabIndex], new Vector3((x+1f)*RoomSize, 0, (y+1.48f)*RoomSize), Quaternion.Euler(0,0,0));
+        else   Instantiate(BigWalls[prefabIndex], new Vector3((x+1f)*RoomSize, 0, (y+1.48f)*RoomSize), Quaternion.Euler(0,0,0));
+        if (c) Instantiate(BigDoorways[prefabIndex], new Vector3((x+1.48f)*RoomSize, 0, (y+1)*RoomSize), Quaternion.Euler(0,90f,0));
+        else   Instantiate(BigWalls[prefabIndex], new Vector3((x+1.48f)*RoomSize, 0, (y+1)*RoomSize), Quaternion.Euler(0,90f,0));
+        if (d) Instantiate(BigDoorways[prefabIndex], new Vector3((x+1.48f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,90f,0));
+        else   Instantiate(BigWalls[prefabIndex], new Vector3((x+1.48f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,90f,0));
+        if (e) Instantiate(BigDoorways[prefabIndex], new Vector3((x+1f)*RoomSize, 0, (y-0.48f)*RoomSize), Quaternion.Euler(0,180f,0));
+        else   Instantiate(BigWalls[prefabIndex], new Vector3((x+1f)*RoomSize, 0, (y-0.48f)*RoomSize), Quaternion.Euler(0,180f,0));
+        if (f) Instantiate(BigDoorways[prefabIndex], new Vector3((x)*RoomSize, 0, (y-0.48f)*RoomSize), Quaternion.Euler(0,180f,0));
+        else   Instantiate(BigWalls[prefabIndex], new Vector3((x)*RoomSize, 0, (y-0.48f)*RoomSize), Quaternion.Euler(0,180f,0));
+        if (g) Instantiate(BigDoorways[prefabIndex], new Vector3((x-0.48f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,270f,0));
+        else   Instantiate(BigWalls[prefabIndex], new Vector3((x-0.48f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,270f,0));
+        if (h) Instantiate(BigDoorways[prefabIndex], new Vector3((x-0.48f)*RoomSize, 0, (y+1f)*RoomSize), Quaternion.Euler(0,270f,0));
+        else   Instantiate(BigWalls[prefabIndex], new Vector3((x-0.48f)*RoomSize, 0, (y+1f)*RoomSize), Quaternion.Euler(0,270f,0));
         
     }
     //NOT FINISHED!!!!!!!!!
@@ -227,18 +227,18 @@ public class TileGenWalker : MonoBehaviour
         //make floor
         Instantiate(LongFloors[prefabIndex], new Vector3((x+0.5f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,0,0));
         //make walls NEEDS TO OFFSET WALLS BY LIKE 1 PIXEL OR THEY OVERLAP!!!!!
-        if (a) Instantiate(BigDoorways[prefabIndex], new Vector3((x)*RoomSize, 0, (y+0.5f)*RoomSize), Quaternion.Euler(0,0,0));
-        else   Instantiate(BigWalls[prefabIndex], new Vector3((x)*RoomSize, 0, (y+0.5f)*RoomSize), Quaternion.Euler(0,0,0));
-        if (b) Instantiate(BigDoorways[prefabIndex], new Vector3((x+1f)*RoomSize, 0, (y+0.5f)*RoomSize), Quaternion.Euler(0,0,0));
-        else   Instantiate(BigWalls[prefabIndex], new Vector3((x+1f)*RoomSize, 0, (y+0.5f)*RoomSize), Quaternion.Euler(0,0,0));
-        if (c) Instantiate(BigDoorways[prefabIndex], new Vector3((x+1.5f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,90f,0));
-        else   Instantiate(BigWalls[prefabIndex], new Vector3((x+1.5f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,90f,0));
-        if (d) Instantiate(BigDoorways[prefabIndex], new Vector3((x+1f)*RoomSize, 0, (y-0.5f)*RoomSize), Quaternion.Euler(0,180f,0));
-        else   Instantiate(BigWalls[prefabIndex], new Vector3((x+1f)*RoomSize, 0, (y-0.5f)*RoomSize), Quaternion.Euler(0,180f,0));
-        if (e) Instantiate(BigDoorways[prefabIndex], new Vector3((x)*RoomSize, 0, (y-0.5f)*RoomSize), Quaternion.Euler(0,180f,0));
-        else   Instantiate(BigWalls[prefabIndex], new Vector3((x)*RoomSize, 0, (y-0.5f)*RoomSize), Quaternion.Euler(0,180f,0));
-        if (f) Instantiate(BigDoorways[prefabIndex], new Vector3((x-0.5f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,270f,0));
-        else   Instantiate(BigWalls[prefabIndex], new Vector3((x-0.5f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,270f,0));    
+        if (a) Instantiate(BigDoorways[prefabIndex], new Vector3((x)*RoomSize, 0, (y+0.48f)*RoomSize), Quaternion.Euler(0,0,0));
+        else   Instantiate(BigWalls[prefabIndex], new Vector3((x)*RoomSize, 0, (y+0.48f)*RoomSize), Quaternion.Euler(0,0,0));
+        if (b) Instantiate(BigDoorways[prefabIndex], new Vector3((x+1f)*RoomSize, 0, (y+0.48f)*RoomSize), Quaternion.Euler(0,0,0));
+        else   Instantiate(BigWalls[prefabIndex], new Vector3((x+1f)*RoomSize, 0, (y+0.48f)*RoomSize), Quaternion.Euler(0,0,0));
+        if (c) Instantiate(BigDoorways[prefabIndex], new Vector3((x+1.48f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,90f,0));
+        else   Instantiate(BigWalls[prefabIndex], new Vector3((x+1.48f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,90f,0));
+        if (d) Instantiate(BigDoorways[prefabIndex], new Vector3((x+1f)*RoomSize, 0, (y-0.48f)*RoomSize), Quaternion.Euler(0,180f,0));
+        else   Instantiate(BigWalls[prefabIndex], new Vector3((x+1f)*RoomSize, 0, (y-0.48f)*RoomSize), Quaternion.Euler(0,180f,0));
+        if (e) Instantiate(BigDoorways[prefabIndex], new Vector3((x)*RoomSize, 0, (y-0.48f)*RoomSize), Quaternion.Euler(0,180f,0));
+        else   Instantiate(BigWalls[prefabIndex], new Vector3((x)*RoomSize, 0, (y-0.48f)*RoomSize), Quaternion.Euler(0,180f,0));
+        if (f) Instantiate(BigDoorways[prefabIndex], new Vector3((x-0.48f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,270f,0));
+        else   Instantiate(BigWalls[prefabIndex], new Vector3((x-0.48f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,270f,0));    
     }
     void DrawTwoByOneVertical(int x, int y, bool a, bool b, bool c, bool d, bool e, bool f) //THIS DRAWS A 2x1 FLOOR
     {
@@ -246,18 +246,18 @@ public class TileGenWalker : MonoBehaviour
         //make floor
         Instantiate(LongFloors[prefabIndex], new Vector3((x)*RoomSize, 0, (y+0.5f)*RoomSize), Quaternion.Euler(0,90f,0));
         //make walls NEEDS TO OFFSET WALLS BY LIKE 1 PIXEL OR THEY OVERLAP!!!!!
-        if (a) Instantiate(BigDoorways[prefabIndex], new Vector3((x)*RoomSize, 0, (y+1.5f)*RoomSize), Quaternion.Euler(0,0,0));
-        else   Instantiate(BigWalls[prefabIndex], new Vector3((x)*RoomSize, 0, (y+1.5f)*RoomSize), Quaternion.Euler(0,0,0));
-        if (b) Instantiate(BigDoorways[prefabIndex], new Vector3((x+0.5f)*RoomSize, 0, (y+1f)*RoomSize), Quaternion.Euler(0,90f,0));
-        else   Instantiate(BigWalls[prefabIndex], new Vector3((x+0.5f)*RoomSize, 0, (y+1f)*RoomSize), Quaternion.Euler(0,90f,0));
-        if (c) Instantiate(BigDoorways[prefabIndex], new Vector3((x+0.5f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,90f,0));
-        else   Instantiate(BigWalls[prefabIndex], new Vector3((x+0.5f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,90f,0));
-        if (d) Instantiate(BigDoorways[prefabIndex], new Vector3((x)*RoomSize, 0, (y-0.5f)*RoomSize), Quaternion.Euler(0,180f,0));
-        else   Instantiate(BigWalls[prefabIndex], new Vector3((x)*RoomSize, 0, (y-0.5f)*RoomSize), Quaternion.Euler(0,180f,0));
-        if (e) Instantiate(BigDoorways[prefabIndex], new Vector3((x-0.5f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,270f,0));
-        else   Instantiate(BigWalls[prefabIndex], new Vector3((x-0.5f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,270f,0));
-        if (f) Instantiate(BigDoorways[prefabIndex], new Vector3((x-0.5f)*RoomSize, 0, (y+1f)*RoomSize), Quaternion.Euler(0,270f,0));
-        else   Instantiate(BigWalls[prefabIndex], new Vector3((x-0.5f)*RoomSize, 0, (y+1f)*RoomSize), Quaternion.Euler(0,270f,0));    
+        if (a) Instantiate(BigDoorways[prefabIndex], new Vector3((x)*RoomSize, 0, (y+1.48f)*RoomSize), Quaternion.Euler(0,0,0));
+        else   Instantiate(BigWalls[prefabIndex], new Vector3((x)*RoomSize, 0, (y+1.48f)*RoomSize), Quaternion.Euler(0,0,0));
+        if (b) Instantiate(BigDoorways[prefabIndex], new Vector3((x+0.48f)*RoomSize, 0, (y+1f)*RoomSize), Quaternion.Euler(0,90f,0));
+        else   Instantiate(BigWalls[prefabIndex], new Vector3((x+0.48f)*RoomSize, 0, (y+1f)*RoomSize), Quaternion.Euler(0,90f,0));
+        if (c) Instantiate(BigDoorways[prefabIndex], new Vector3((x+0.48f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,90f,0));
+        else   Instantiate(BigWalls[prefabIndex], new Vector3((x+0.48f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,90f,0));
+        if (d) Instantiate(BigDoorways[prefabIndex], new Vector3((x)*RoomSize, 0, (y-0.48f)*RoomSize), Quaternion.Euler(0,180f,0));
+        else   Instantiate(BigWalls[prefabIndex], new Vector3((x)*RoomSize, 0, (y-0.48f)*RoomSize), Quaternion.Euler(0,180f,0));
+        if (e) Instantiate(BigDoorways[prefabIndex], new Vector3((x-0.48f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,270f,0));
+        else   Instantiate(BigWalls[prefabIndex], new Vector3((x-0.48f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,270f,0));
+        if (f) Instantiate(BigDoorways[prefabIndex], new Vector3((x-0.48f)*RoomSize, 0, (y+1f)*RoomSize), Quaternion.Euler(0,270f,0));
+        else   Instantiate(BigWalls[prefabIndex], new Vector3((x-0.48f)*RoomSize, 0, (y+1f)*RoomSize), Quaternion.Euler(0,270f,0));    
     }
     void InitializeGrid()
     {
