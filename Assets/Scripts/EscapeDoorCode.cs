@@ -6,7 +6,10 @@ using UnityEngine.SceneManagement;
 public class EscapeDoorCode : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other) {
-        if(other.CompareTag("Ball") || other.CompareTag("Player"))
-        SceneManager.LoadScene("EscapeScene");
+        Debug.Log("Escape door war triggered");
+        if(other.CompareTag("Ball") || other.CompareTag("Player")){
+            Debug.Log("you escaped");
+            SceneManager.LoadScene("EscapeScene");
+        }
     }
 }
