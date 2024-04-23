@@ -196,9 +196,9 @@ public class TileGenWalker : MonoBehaviour
     void DrawTwoByTwo(int x, int y, bool a, bool b, bool c, bool d, bool e, bool f, bool g, bool h) //THIS DRAWS A 2x2 FLOOR
     {
         int prefabIndex = UnityEngine.Random.Range(0,BigFloors.Count); //pick variant of 2x2
-        //make floor NEED TO MAKE SURE IT PLACES IN THE RIGHT SPOT!!!!! DONE
+        //make floor
         Instantiate(BigFloors[prefabIndex], new Vector3((x+0.5f)*RoomSize, 0, (y+0.5f)*RoomSize), Quaternion.Euler(0,0,0));
-        //make walls NEED TO MODIFY WHERE THEY PLACE!! THINK ITS DONE
+        //make walls NEEDS TO OFFSET WALLS BY LIKE 1 PIXEL OR THEY OVERLAP!!!!!
         if (a) Instantiate(BigDoorways[prefabIndex], new Vector3((x)*RoomSize, 0, (y+1.5f)*RoomSize), Quaternion.Euler(0,0,0));
         else   Instantiate(BigWalls[prefabIndex], new Vector3((x)*RoomSize, 0, (y+1.5f)*RoomSize), Quaternion.Euler(0,0,0));
         if (b) Instantiate(BigDoorways[prefabIndex], new Vector3((x+1f)*RoomSize, 0, (y+1.5f)*RoomSize), Quaternion.Euler(0,0,0));
@@ -308,7 +308,7 @@ public class TileGenWalker : MonoBehaviour
                     gridHandler[x+1,y+1] == Grid.ONE_ONE;
                 }
                 catch (Exception) {gotSpace = false;}
-                if (gotSpace) //for a 2x2 grid block
+                if (gotSpace && (UnityEngine.Random.value < TwoByTwoChance)) //for a 2x2 grid block
                     { //place a TWO_TWO
                         gridHandler[x,y] = Grid.TWO_TWO; 
                         gridHandler[x,y+1] = Grid.TWO_TWO;
