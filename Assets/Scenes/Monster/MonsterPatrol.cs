@@ -38,7 +38,7 @@ public class enemyAiControl : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>(); // agent object corresponding to object that script is attributed to.
-        GameObject playerObject = GameObject.Find("Player");
+        GameObject playerObject = GameObject.Find("Character & Camera");
         playerTransform = playerObject.transform; // Reference to the player's transform
         
     }
