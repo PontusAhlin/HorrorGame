@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2400617677718280257}
+  - component: {fileID: 5376083841513636050}
   m_Layer: 0
   m_Name: Player Wrapper
   m_TagString: Untagged
@@ -34,6 +35,22 @@ Transform:
   - {fileID: 3955011290940672761}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5376083841513636050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 757767062706338174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09b948221e33e03488da7aab4f63f4b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewers: 0
+  likes: 0
+  likesPerViewer: 1
+  likeGenerationInterval: 1
 --- !u!1001 &2462290080416553087
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -244,7 +261,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7446998683019432069, guid: 7a1755c7d08a35647b0abbfb384a083c,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7583077245854140254}
   m_SourcePrefab: {fileID: 100100000, guid: 7a1755c7d08a35647b0abbfb384a083c, type: 3}
 --- !u!4 &4417203843101324807 stripped
 Transform:
@@ -252,6 +273,32 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4201144307064662403}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6707121696623737094 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7446998683019432069, guid: 7a1755c7d08a35647b0abbfb384a083c,
+    type: 3}
+  m_PrefabInstance: {fileID: 4201144307064662403}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7583077245854140254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6707121696623737094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe23eb58bad16e94ab9403aa9820dab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 0}
+  monsterGenerateViewers: {fileID: 0}
+  sphereRadius: 0
+  maxDistance: 0
+  minDistance: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!4 &6707121696623737095 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7446998683019432068, guid: 7a1755c7d08a35647b0abbfb384a083c,

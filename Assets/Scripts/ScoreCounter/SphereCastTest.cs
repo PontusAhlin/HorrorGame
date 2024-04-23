@@ -14,9 +14,7 @@ public class SphereCastTest : MonoBehaviour
     
     [Tooltip("Reference from 'PlayerScore.cs', add the monster gameObject to this")]
     public MonsterGenerateViewers monsterGenerateViewers;
-
-    private bool monsterDetected;
-
+    
 
     //Init of detection components
     [Tooltip("Radius of the raycasted sphere")]
@@ -70,7 +68,7 @@ public class SphereCastTest : MonoBehaviour
                     /* //Used for debugging
                         currentHitObjects.Add(hit.transform.gameObject);
                     */
-                    
+
                     //If we're in this if statement it means that we can see the monster
                     //and each frame the monster is detected a view is added
                     print("TRUE");
