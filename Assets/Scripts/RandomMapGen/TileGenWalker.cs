@@ -33,11 +33,17 @@ public class TileGenWalker : MonoBehaviour
     public List<GameObject> Small3Way = new List<GameObject>();
     [Tooltip("list of all the rooms that have 4 ways out, and are 1x1")]
     public List<GameObject> Small4Way = new List<GameObject>();
+    [Tooltip("list of all the room floors that are 2x2")]
+    public List<GameObject> BigFloors = new List<GameObject>();
+    [Tooltip("list of all the room walls that correspond to 2x2")]
+    public List<GameObject> BigWalls = new List<GameObject>();
+    [Tooltip("list of all the room doorways that correspond to 2x2")]
+    public List<GameObject> BigDoorways = new List<GameObject>();
+
     public enum Grid
     {
         TWO_TWO,
         ONE_TWO,
-
         ONE_ONE,
         EMPTY
 
@@ -187,6 +193,30 @@ public class TileGenWalker : MonoBehaviour
         }
     }
 
+    void DrawTwoByTwo(int x, int y, bool a, bool b, bool c, bool d, bool e, bool f, bool g, bool h) //THIS DRAWS A 2x2 FLOOR
+    {
+        int prefabIndex = UnityEngine.Random.Range(0,BigFloors.Count); //pick variant of 2x2
+        //make floor NEED TO MAKE SURE IT PLACES IN THE RIGHT SPOT!!!!! DONE
+        Instantiate(BigFloors[prefabIndex], new Vector3((x+0.5f)*RoomSize, 0, (y+0.5f)*RoomSize), Quaternion.Euler(0,0,0));
+        //make walls NEED TO MODIFY WHERE THEY PLACE!! THINK ITS DONE
+        if (a) Instantiate(BigDoorways[prefabIndex], new Vector3((x)*RoomSize, 0, (y+1.5f)*RoomSize), Quaternion.Euler(0,0,0));
+        else   Instantiate(BigWalls[prefabIndex], new Vector3((x)*RoomSize, 0, (y+1.5f)*RoomSize), Quaternion.Euler(0,0,0));
+        if (b) Instantiate(BigDoorways[prefabIndex], new Vector3((x+1f)*RoomSize, 0, (y+1.5f)*RoomSize), Quaternion.Euler(0,0,0));
+        else   Instantiate(BigWalls[prefabIndex], new Vector3((x+1f)*RoomSize, 0, (y+1.5f)*RoomSize), Quaternion.Euler(0,0,0));
+        if (c) Instantiate(BigDoorways[prefabIndex], new Vector3((x+1.5f)*RoomSize, 0, (y+1)*RoomSize), Quaternion.Euler(0,90f,0));
+        else   Instantiate(BigWalls[prefabIndex], new Vector3((x+1.5f)*RoomSize, 0, (y+1)*RoomSize), Quaternion.Euler(0,90f,0));
+        if (d) Instantiate(BigDoorways[prefabIndex], new Vector3((x+1.5f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,90f,0));
+        else   Instantiate(BigWalls[prefabIndex], new Vector3((x+1.5f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,90f,0));
+        if (e) Instantiate(BigDoorways[prefabIndex], new Vector3((x+1f)*RoomSize, 0, (y-0.5f)*RoomSize), Quaternion.Euler(0,180f,0));
+        else   Instantiate(BigWalls[prefabIndex], new Vector3((x+1f)*RoomSize, 0, (y-0.5f)*RoomSize), Quaternion.Euler(0,180f,0));
+        if (f) Instantiate(BigDoorways[prefabIndex], new Vector3((x)*RoomSize, 0, (y-0.5f)*RoomSize), Quaternion.Euler(0,180f,0));
+        else   Instantiate(BigWalls[prefabIndex], new Vector3((x)*RoomSize, 0, (y-0.5f)*RoomSize), Quaternion.Euler(0,180f,0));
+        if (g) Instantiate(BigDoorways[prefabIndex], new Vector3((x-0.5f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,270f,0));
+        else   Instantiate(BigWalls[prefabIndex], new Vector3((x-0.5f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,270f,0));
+        if (h) Instantiate(BigDoorways[prefabIndex], new Vector3((x-0.5f)*RoomSize, 0, (y+1f)*RoomSize), Quaternion.Euler(0,270f,0));
+        else   Instantiate(BigWalls[prefabIndex], new Vector3((x-0.5f)*RoomSize, 0, (y+1f)*RoomSize), Quaternion.Euler(0,270f,0));
+        
+    }
     void InitializeGrid()
     {
         gridHandler = new Grid[MapWidth, MapHeight];
@@ -266,6 +296,45 @@ public class TileGenWalker : MonoBehaviour
           LIKE
           THIS IS THE POINT WHERE THE MAP IS FULL OF Grid.EMPTY or GRID.ONE_ONE
         */
+        for (int x = 0; x < MapWidth-1; x++) //APPLYING TWO_TWO ROOMS
+            for (int y = 0; y < MapHeight-1; y++)
+            {
+                bool gotSpace = false;
+                try
+                {
+                    gotSpace = gridHandler[x,y] == Grid.ONE_ONE && 
+                    gridHandler[x,y+1] == Grid.ONE_ONE &&
+                    gridHandler[x+1,y] == Grid.ONE_ONE &&
+                    gridHandler[x+1,y+1] == Grid.ONE_ONE;
+                }
+                catch (Exception) {gotSpace = false;}
+                if (gotSpace) //for a 2x2 grid block
+                    { //place a TWO_TWO
+                        gridHandler[x,y] = Grid.TWO_TWO; 
+                        gridHandler[x,y+1] = Grid.TWO_TWO;
+                        gridHandler[x+1,y] = Grid.TWO_TWO;
+                        gridHandler[x+1,y+1] = Grid.TWO_TWO;
+                        bool a=false,b=false,c=false,d=false,e=false,f=false,g=false,h = false;
+                        try { a = gridHandler[x,y+2] != Grid.EMPTY;}
+                        catch (Exception) {}
+                        try { b = gridHandler[x+1,y+2] != Grid.EMPTY;}
+                        catch (Exception) {}
+                        try { c = gridHandler[x+2,y+1] != Grid.EMPTY;}
+                        catch (Exception) {}
+                        try { d = gridHandler[x+2,y] != Grid.EMPTY;}
+                        catch (Exception) {}
+                        try { e = gridHandler[x+1,y-1] != Grid.EMPTY;}
+                        catch (Exception) {}
+                        try { f = gridHandler[x,y-1] != Grid.EMPTY;}
+                        catch (Exception) {}
+                        try { g = gridHandler[x-1,y] != Grid.EMPTY;}
+                        catch (Exception) {}
+                        try { h = gridHandler[x-1,y+1] != Grid.EMPTY;}
+                        catch (Exception) {}
+                        DrawTwoByTwo(x,y,a,b,c,d,e,f,g,h);
+                    }
+            }
+
 
         for (int x = 0; x < MapWidth; x++) //HANDLING IF THERE ARE ANY ADJACENT GRID STUFFS
             for (int y = 0; y < MapHeight; y++)
