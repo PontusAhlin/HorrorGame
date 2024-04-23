@@ -72,7 +72,6 @@ public class SphereCastTest : MonoBehaviour
                     //If we're in this if statement it means that we can see the monster
                     //and each frame the monster is detected a view is added
                     print("TRUE");
-                    monsterDetected = true;
                     monsterGenerateViewers.inFieldOfView = true;
                 }
             }
