@@ -171,9 +171,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb5650767e3e44b00907c823cad31b0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorTrigger: {fileID: 362563368891937812}
-  openDoor: {fileID: 7695698224582818335}
-  closedDoor: {fileID: 3322883858171594597}
+  isOpen: 0
+  isRotatingDoor: 1
+  speed: 1
+  ForwardDirection: 0
 --- !u!1 &1246329958397324640
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,6 +187,7 @@ GameObject:
   - component: {fileID: 6621708079170807387}
   - component: {fileID: 6646926639798723800}
   - component: {fileID: 379479032895596001}
+  - component: {fileID: -5956241138440789311}
   m_Layer: 0
   m_Name: door
   m_TagString: Untagged
@@ -225,9 +227,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb5650767e3e44b00907c823cad31b0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorTrigger: {fileID: 0}
-  openDoor: {fileID: 0}
-  closedDoor: {fileID: 0}
+  isOpen: 0
+  isRotatingDoor: 1
+  speed: 1
+  ForwardDirection: 0
 --- !u!65 &6646926639798723800
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -265,6 +268,33 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!54 &-5956241138440789311
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246329958397324640}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &3322883858171594597
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,9 +466,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb5650767e3e44b00907c823cad31b0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorTrigger: {fileID: 3660986223452295919}
-  openDoor: {fileID: 40515793972487103}
-  closedDoor: {fileID: 3322883858171594597}
+  isOpen: 0
+  isRotatingDoor: 1
+  speed: 1
+  ForwardDirection: 0
 --- !u!1 &7695698224582818335
 GameObject:
   m_ObjectHideFlags: 0
