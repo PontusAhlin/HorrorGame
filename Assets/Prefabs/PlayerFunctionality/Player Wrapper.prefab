@@ -246,13 +246,33 @@ PrefabInstance:
     - target: {fileID: 4304017460328301479, guid: 7a1755c7d08a35647b0abbfb384a083c,
         type: 3}
       propertyPath: speed
-      value: 5
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4304017460328301479, guid: 7a1755c7d08a35647b0abbfb384a083c,
+        type: 3}
+      propertyPath: stepHeight
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4304017460328301479, guid: 7a1755c7d08a35647b0abbfb384a083c,
         type: 3}
       propertyPath: camTransform
       value: 
       objectReference: {fileID: 6707121696623737095}
+    - target: {fileID: 5381990559210099723, guid: 7a1755c7d08a35647b0abbfb384a083c,
+        type: 3}
+      propertyPath: m_Drag
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5381990559210099723, guid: 7a1755c7d08a35647b0abbfb384a083c,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5381990559210099723, guid: 7a1755c7d08a35647b0abbfb384a083c,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7446998683019432068, guid: 7a1755c7d08a35647b0abbfb384a083c,
         type: 3}
       propertyPath: m_LocalRotation.w
