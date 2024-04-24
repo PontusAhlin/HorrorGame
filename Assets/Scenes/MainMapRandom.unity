@@ -399,16 +399,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Small1Way:
-  - {fileID: 919132149155446097, guid: 1c656d7ed5ceb4c2f94054b5c234398a, type: 3}
-  - {fileID: 919132149155446097, guid: e2e05819bb2564166b1c3fcd9b523b1e, type: 3}
+  - {fileID: 3795634248687875757, guid: cdadc6ca6ace1b540bdb6d4b32e4e5cf, type: 3}
+  - {fileID: 8730059129882950603, guid: 0c24b34953ef36e41b7c58e7d8f4f044, type: 3}
   Small2WayCorner:
-  - {fileID: 919132149155446097, guid: 5df42db5f35cf4cea94c34ba4c99e39b, type: 3}
+  - {fileID: 6753071267491601251, guid: 6c97e6aeb7d702f49960bd628cd8cb0d, type: 3}
   Small2WayCorridor:
-  - {fileID: 919132149155446097, guid: 531ace26f93a74170874fca773177f6a, type: 3}
+  - {fileID: 7604550577372010587, guid: 6bdc99fac2adcbc40827c1f24ec14bf9, type: 3}
   Small3Way:
-  - {fileID: 919132149155446097, guid: 43a748a28d2d34edab82c40b603e4b9d, type: 3}
+  - {fileID: 4246194888241631813, guid: 887d7951d5663e041bb6b7be0af5a3d8, type: 3}
   Small4Way:
-  - {fileID: 919132149155446097, guid: b99ade3e291304de7a41a97dd7c46cc2, type: 3}
+  - {fileID: 6852346031799974992, guid: 4e556c72f01fb1640b16a7063d16f36f, type: 3}
   BigFloors:
   - {fileID: 3105231536723997877, guid: ad0c9b0be5e3b407b89ae11aec4d1afe, type: 3}
   LongFloors:
