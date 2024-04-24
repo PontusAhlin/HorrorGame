@@ -164,6 +164,14 @@ MonoBehaviour:
   - {fileID: 6836053076124988568, guid: a10e188fb22a7624d9425ea914127397, type: 3}
   - {fileID: 2061838335374838114, guid: a3f084be26a3eb64c8e1e67137ea516b, type: 3}
   - {fileID: 8064493029011920915, guid: b46febd2dd91a8a4b866315649327a78, type: 3}
+  BigFloors:
+  - {fileID: 2065385388631126903, guid: 949668ee15bdbee418a61e5a24dbde80, type: 3}
+  LongFloors:
+  - {fileID: 8165075910920994824, guid: fb180f77e15bcfd4ab6bf67a2b50e818, type: 3}
+  BigWalls:
+  - {fileID: 513234411445993344, guid: 34713c55e63132849b0d816afcd33eed, type: 3}
+  BigDoorways:
+  - {fileID: 191852421796572692, guid: 35625cc71dccfbb448d750d1f39c429d, type: 3}
   MapWidth: 30
   MapHeight: 30
   RoomSize: 5
@@ -172,6 +180,8 @@ MonoBehaviour:
   FillPercentage: 0.25
   Randomness: 0.5
   WaitTime: 0
+  TwoByTwoChance: 0.1
+  TwoByOneChance: 0.1
 --- !u!4 &424695931
 Transform:
   m_ObjectHideFlags: 0
@@ -436,12 +446,12 @@ MonoBehaviour:
   m_RequiresColorTexture: 0
   m_Version: 2
   m_TaaSettings:
-    quality: 3
-    frameInfluence: 0.1
-    jitterScale: 1
-    mipBias: 0
-    varianceClampScale: 0.9
-    contrastAdaptiveSharpening: 0
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

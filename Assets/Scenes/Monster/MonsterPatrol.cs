@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.AI;
-
+using UnityEngine.SceneManagement;
 
 
 public class enemyAiControl : MonoBehaviour
@@ -115,10 +115,14 @@ public class enemyAiControl : MonoBehaviour
 
         // Cast a ray from the monster towards the player
     
-        if (Physics.Raycast(ray, out RaycastHit hitted, detectionRange,layersToHit))
+    if (Physics.Raycast(ray, out RaycastHit hitted, detectionRange,layersToHit))
         {
             // Check if the ray hits the player
+            if (hitted.collider.gameObject.name.Equals("Character & Camera")) {
+                ChangeScene("GameEnd");
+            }
             Debug.Log(hitted.collider.gameObject.name + " was hit!");
+
         }
     }
 
@@ -128,7 +132,10 @@ public class enemyAiControl : MonoBehaviour
         Debug.Log("Player died!");
     }
 
-    
+    public void ChangeScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
    
 
 }

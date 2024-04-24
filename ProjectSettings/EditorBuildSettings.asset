@@ -9,9 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: adca2ed38b6d14154a515d7d8264bb4f
   - enabled: 1
-    path: Assets/Scenes/SetupScene.unity
+    path: Assets/Scenes/PauseMenu.unity
     guid: 67b79ef2b5aa74c0f9158ded50dbd29d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SetupScene.unity
     guid: 83af474a273aff64daf04f239b0ede28
   - enabled: 0
@@ -22,7 +22,7 @@ EditorBuildSettings:
     guid: 4838b635aaccdda499bafb372affc321
   - enabled: 1
     path: Assets/Scenes/GameEnd.unity
-    guid: ea277b94a4b3d43c989a89c202314ade
+    guid: 7b1668a38771d47fd9bc54cda2708f3b
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 6ee72d15cf39dd748a13eac57397b9af,
       type: 2}
