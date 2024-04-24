@@ -203,6 +203,7 @@ GameObject:
   - component: {fileID: 508115760}
   - component: {fileID: 508115759}
   - component: {fileID: 508115758}
+  - component: {fileID: 508115762}
   m_Layer: 0
   m_Name: Sphere (1)
   m_TagString: Monster
@@ -290,12 +291,29 @@ Transform:
   m_GameObject: {fileID: 508115757}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.56, y: 1.31, z: -6.38}
+  m_LocalPosition: {x: -4.36, y: 1.31, z: -5.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &508115762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508115757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61d717b56c75bc44f8ab25c09bf1820b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerScore: {fileID: 1399773844}
+  viewerAddAmount: 1
+  viewerRemoveAmount: 0.5
+  generatorSpeed: 1
+  increaseAndDecrease: 0
 --- !u!1 &697156258
 GameObject:
   m_ObjectHideFlags: 0
@@ -429,7 +447,7 @@ GameObject:
   - component: {fileID: 878611091}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: Monster
+  m_TagString: SpecialMonster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -514,7 +532,7 @@ Transform:
   m_GameObject: {fileID: 878611086}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.24, y: -0.1, z: -13.67}
+  m_LocalPosition: {x: -7.12, y: 0.3, z: -9.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -537,7 +555,6 @@ MonoBehaviour:
   viewerRemoveAmount: 0.5
   generatorSpeed: 1
   increaseAndDecrease: 0
-  inFieldOfView: 0
 --- !u!1001 &1002056228
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -686,18 +703,6 @@ Camera:
     type: 3}
   m_PrefabInstance: {fileID: 1604735110}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1399773837
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1399773823}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e37c5857ee6ace44b983c8b58d511b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1399773838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -711,7 +716,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 1399773836}
-  monsterGenerateViewers: {fileID: 878611091}
   sphereRadius: 3
   maxDistance: 4
   minDistance: 1
@@ -846,10 +850,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7446998683019432069, guid: 7a1755c7d08a35647b0abbfb384a083c,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1399773837}
     - targetCorrespondingSourceObject: {fileID: 7446998683019432069, guid: 7a1755c7d08a35647b0abbfb384a083c,
         type: 3}
       insertIndex: -1

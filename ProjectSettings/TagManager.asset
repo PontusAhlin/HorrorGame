@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ball
   - Monster
+  - SpecialMonster
   layers:
   - Default
   - TransparentFX

@@ -88,7 +88,7 @@ public class ThirdPersonMovement : MonoBehaviour
             RaycastHit hitUpper;
             if (!Physics.Raycast(stepRayUpper.transform.position, stepRayUpper.transform.TransformDirection(Vector3.forward), out hitUpper, capsuleCollider.radius + 0.3f)) {
                 transform.position += new Vector3(0f, stepSpeed, 0f);
-                Debug.LogWarning("JUMP");
+                //Debug.LogWarning("JUMP");
             }
         }
     }
