@@ -21,6 +21,9 @@ public class InGameInterface : MonoBehaviour
 	[SerializeField] TMPro.TextMeshProUGUI likesCounterText;
 	[Tooltip("Likes counter text object. Automatically set to object name \"Viewers Text\" if not set in Unity.")]
 	[SerializeField] TMPro.TextMeshProUGUI viewersCounterText;
+	[Tooltip("Chat box object. Automatically set to object name \"Chat Box\" if not set in Unity.")]
+	[SerializeField] GameObject chatBox;
+	private bool chatBoxEnabled = false; // If the chat box is enabled or not. This depends on the chatBox object being set.
 
 	// Start is called before the first frame update
 	void Start()
@@ -63,6 +66,20 @@ public class InGameInterface : MonoBehaviour
 			}
 		}
 
+		// Find the child GameObject with the name "Chat Box".
+		if (chatBox == null) {
+			Transform chatBoxTransform = transform.Find("Chat Box");
+			if (chatBoxTransform != null)
+			{
+				// Get the GameObject component from the GameObject
+				chatBox = chatBoxTransform.gameObject;
+			}
+			else
+			{
+				Debug.LogWarning("No child GameObject named 'Chat Box' found. Thus the chat will be disabled.");
+			}
+		}
+
 		// Nested function for convenience.
 		void DestroyDueToError()
 		{
@@ -91,5 +108,17 @@ public class InGameInterface : MonoBehaviour
 		// Update the likes and views counter.
 		likesCounterText.text = playerScore.likes.ToString();			// No rounding needed as likes are whole numbers.
 		viewersCounterText.text = ((int)playerScore.viewers).ToString();	// Round down to nearest whole number.
+	}
+
+	/**
+		* Print message.
+		*
+		* This function prints a message based on given arguments to the chat box.
+		* It can be used for printing out normal chat messages, and/or when
+		* a user has liked the stream.
+		*/
+	void PrintMessage(string message, string sprite) {
+		if (!chatBoxEnabled) return; // If the chat box is not enabled, return.
+		
 	}
 }
