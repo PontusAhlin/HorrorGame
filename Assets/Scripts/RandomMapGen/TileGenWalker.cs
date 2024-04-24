@@ -81,10 +81,6 @@ public class TileGenWalker : MonoBehaviour
     }
     //this is the function that is called at coordinates X & Y 
     /* DrawRoom(coord, coord, isNorthOpen, isEastOpen, .....)
-
-
-
-
     */
     void DrawRoom(int x, int y, bool north, bool east, bool south, bool west)
     {
@@ -195,7 +191,6 @@ public class TileGenWalker : MonoBehaviour
             }
         }
     }
-
     void DrawTwoByTwo(int x, int y, bool a, bool b, bool c, bool d, bool e, bool f, bool g, bool h) //THIS DRAWS A 2x2 FLOOR
     {
         int prefabIndex = UnityEngine.Random.Range(0,BigFloors.Count); //pick variant of 2x2
@@ -220,7 +215,6 @@ public class TileGenWalker : MonoBehaviour
         else   Instantiate(BigWalls[prefabIndex], new Vector3((x-0.48f)*RoomSize, 0, (y+1f)*RoomSize), Quaternion.Euler(0,270f,0));
         
     }
-    //NOT FINISHED!!!!!!!!!
     void DrawTwoByOneHorizontal(int x, int y, bool a, bool b, bool c, bool d, bool e, bool f) //THIS DRAWS A 2x1 FLOOR
     {
         int prefabIndex = UnityEngine.Random.Range(0,LongFloors.Count); //pick variant of 2x1
