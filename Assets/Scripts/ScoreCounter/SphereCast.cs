@@ -8,7 +8,6 @@ public class SphereCastTest : MonoBehaviour
     [Tooltip("List of objects which the raycast sphere detects ")]
     public List<GameObject> currentHitObjects = new List<GameObject>();
     */
-
     
     [Tooltip("Connect this to your main camera")]
     public Camera camera;
@@ -26,6 +25,10 @@ public class SphereCastTest : MonoBehaviour
     [Tooltip("DON'T TOUCH(BUT IF YOU DO SET IT BACK TO 'Default')")]
     public LayerMask layerMask;
 
+    private float viewerAddAmnt; 
+    private float viewerAddAmntTotal;
+    private float viewerAddAmntMonster;
+    private float viewerAddAmntSpecial;
 
     // Update is called once per frame
     void FixedUpdate(){
@@ -33,19 +36,22 @@ public class SphereCastTest : MonoBehaviour
         sphereCastOffset = transform.position + transform.forward * minDistance;
         playerDirection = transform.forward;
         
-        //Added to reset if the monster isn't in the field of view
+        //Resets if the monster isn't in the field of view
         MonsterGenerateViewers.inFieldOfView = false;
+        
+        MonsterGenerateViewers.viewerAddAmount = viewerAddAmntTotal; 
 
         /*
         // Clears the gameObject list each frame(Used for debugging)
             currentHitObjects.Clear();
         */
         
-        //This line gives us an array with everything our raycast sphere hits 
+
+        //Gives us an array with everything our raycast sphere hits 
         RaycastHit[] hits = Physics.SphereCastAll(sphereCastOffset, sphereRadius, playerDirection, maxDistance, layerMask, QueryTriggerInteraction.UseGlobal);
 
 
-        //This list where all of the objects the sphereCast can see  
+        //List where all of the objects the sphereCast can see  
         foreach (RaycastHit hit in hits){            
     
             //If we we see something with the monster tag we inspect it 
@@ -60,37 +66,41 @@ public class SphereCastTest : MonoBehaviour
                 // Debug ray to see if we hit something between player and monster.
                 Debug.DrawRay(transform.position, monsterHitDirection * (distanceBetween - 0.1f), Color.red);
 
-                //This makes a new separate raycast towards the monster, if there is something colliding with the raycast it doesn't register the monster.
+                //Makes a new separate raycast towards the monster, if there is something colliding with the raycast it doesn't register the monster.
+                //if statement means that we can see the monster
                 if(Physics.Raycast(transform.position, monsterHitDirection, out hitMonster , distanceBetween - 0.1f) == false){
                     /* //Used for debugging
                         currentHitObjects.Add(hit.transform.gameObject);
                     */
 
-
-                    //If we're in this if statement it means that we can see the monster
-                    //and each frame the monster is detected a view is added
+                    //Switch statement checks the tag of the current monster and deals with special cases
                     switch(hit.transform.gameObject.tag)
                     {
                         case "Monster":
-                        MonsterGenerateViewers.inFieldOfView = true;
+                            MonsterGenerateViewers.inFieldOfView = true;
+                            viewerAddAmntMonster = 1.0f;
                         break;
 
                         //Add special monster functionality
                         case "SpecialMonster":
-                        MonsterGenerateViewers.inFieldOfView = true;
+                            MonsterGenerateViewers.inFieldOfView = true;
+                            viewerAddAmntSpecial = 5.0f;
                         break;
                     }
                 }
-            
-            
+
+                viewerAddAmntTotal = viewerAddAmntMonster + viewerAddAmntSpecial;
+                MonsterGenerateViewers.viewerAddAmount = viewerAddAmntTotal;     
+                viewerAddAmntTotal = 0.0f;   
             }
-        }
+        
+        }    
     }
 
     
 
     
-    //Debugging by creating the raycast sphere 
+    //Debugging by creating the raycast sphere and line towards the sphere
     private void OnDrawGizmosSelected() {
         Gizmos.color = Color.red;
         Debug.DrawLine(transform.position, sphereCastOffset + playerDirection * maxDistance);

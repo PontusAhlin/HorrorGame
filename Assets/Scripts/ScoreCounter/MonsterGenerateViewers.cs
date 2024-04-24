@@ -26,7 +26,7 @@ public class MonsterGenerateViewers : MonoBehaviour
     [Tooltip("Point to player score script which holds viewer amount and likes.")]
     [SerializeField] PlayerScore PlayerScore;                       // Reference to the score script.
     [Tooltip("The speed of linear and exponetial (x^2) increase. Must be more than 0 and 1.1 if exponential.")]
-    [SerializeField] float viewerAddAmount = 1f;                    // Amount of viewers generated per second.
+    [SerializeField] public static float viewerAddAmount = 1f;                    // Amount of viewers generated per second.  Made static and public to make variable globally acessable.
     [Tooltip("The speed of linear and exponetial (x^2) decrease. Must be more than 0 if linear and 1 if exponential.")]
     [SerializeField] float viewerRemoveAmount = 0.5f;               // Amount of viewers removed per second.
     [Tooltip("The interval speed at which the viewers should be generated. Must be more than 0.")]
@@ -35,7 +35,7 @@ public class MonsterGenerateViewers : MonoBehaviour
     [Tooltip("Mathmatical function for increasing and decreasing number of viewers added.")]
     [SerializeField] IncreaseAndDecrease increaseAndDecrease;
     [Tooltip("Update this value to change if viewers are added or removed.")]
-    public static bool inFieldOfView = false;                              // If the monster is in the field of view.
+    public static bool inFieldOfView = false;                              // If the monster is in the field of view. Made static to make variable globally acessable.
 
     // Start is called before the first frame update
     void Start()
