@@ -5245,8 +5245,57 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 757767062706338174, guid: 4d061403edf068243adb4e23aef23fd2,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 502980440}
+    - targetCorrespondingSourceObject: {fileID: 757767062706338174, guid: 4d061403edf068243adb4e23aef23fd2,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 502980439}
   m_SourcePrefab: {fileID: 100100000, guid: 4d061403edf068243adb4e23aef23fd2, type: 3}
+--- !u!1 &502980438 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 757767062706338174, guid: 4d061403edf068243adb4e23aef23fd2,
+    type: 3}
+  m_PrefabInstance: {fileID: 502980437}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &502980439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 502980438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe23eb58bad16e94ab9403aa9820dab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 0}
+  sphereRadius: 0
+  maxDistance: 0
+  minDistance: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1
+--- !u!114 &502980440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 502980438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61d717b56c75bc44f8ab25c09bf1820b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerScore: {fileID: 0}
+  viewerRemoveAmount: 0.5
+  generatorSpeed: 1
+  increaseAndDecrease: 0
 --- !u!1001 &504773379
 PrefabInstance:
   m_ObjectHideFlags: 0
