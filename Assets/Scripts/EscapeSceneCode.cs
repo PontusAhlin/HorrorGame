@@ -9,9 +9,9 @@ public class EscapeSceneCode : MonoBehaviour
     [SerializeField]
     Text scoreText;
 
-    [SerializeField]
-    int score = 1337;
+    float score = 0;
     void Start(){
+        score = ScoreManager.Score;
         scoreText.text = "SCORE: " + score.ToString();
     }
     void Update(){
