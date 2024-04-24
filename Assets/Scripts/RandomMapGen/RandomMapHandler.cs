@@ -83,12 +83,17 @@ public class RandomMapHandler : MonoBehaviour
     public GameObject player;
     void Start()
     {
+        if (FillPercentage > 0.5f)
+        {
+            Debug.LogWarning("FILL PERCENTAGE TOO HIGH, CLAMPING (THIS CAUSES A CRASH IF IT'S OVER 0.5f IDK WHY -ALIN)");
+            FillPercentage = 0.5f;
+        }
         InitializeGrid();
     }
     //THIS FUNCTION RUNS AFTER MAPGEN IS DONE FOR HANDLING STUFF LIKE PLAYER & MONSTER PLACEMENT
     void PostMapgenFunction()
     {
-        player.transform.position = RandomMapParent.transform.position + new Vector3(MapWidth/2*RoomSize,10,MapHeight/2*RoomSize);
+        player.transform.position = RandomMapParent.transform.position + new Vector3((gridHandler.GetLength(0)/2)*RoomSize,10,(gridHandler.GetLength(1)/2)*RoomSize);
         postMapgenScript.Main();
     }
     void DrawRoom(int x, int y, bool north, bool east, bool south, bool west)

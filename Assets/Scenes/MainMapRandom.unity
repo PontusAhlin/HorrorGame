@@ -349,18 +349,19 @@ MonoBehaviour:
   - {fileID: 513234411445993344, guid: 34713c55e63132849b0d816afcd33eed, type: 3}
   BigDoorways:
   - {fileID: 191852421796572692, guid: 35625cc71dccfbb448d750d1f39c429d, type: 3}
-  MapWidth: 30
-  MapHeight: 30
+  MapWidth: 10
+  MapHeight: 10
   RoomSize: 5
   MaximumWalkers: 3
   TileCount: 0
-  FillPercentage: 0.25
+  FillPercentage: 0.5
   Randomness: 0.5
   WaitTime: 0
   TwoByTwoChance: 0.1
   TwoByOneChance: 0.1
   RandomMapParent: {fileID: 424695929}
   postMapgenScript: {fileID: 0}
+  player: {fileID: 1214115787}
 --- !u!4 &424695931
 Transform:
   m_ObjectHideFlags: 0
@@ -442,17 +443,17 @@ PrefabInstance:
     - target: {fileID: 4417203843101324807, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 40.8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4417203843101324807, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 69.6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4417203843101324807, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 68.8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5376083841513636050, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
@@ -723,6 +724,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7756f694d8a533d409530aa798f4ac28, type: 3}
+--- !u!1 &1214115787 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1743539864771279864, guid: 4d061403edf068243adb4e23aef23fd2,
+    type: 3}
+  m_PrefabInstance: {fileID: 502980437}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2103795466
 GameObject:
   m_ObjectHideFlags: 0
