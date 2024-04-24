@@ -25,10 +25,7 @@ public class SphereCastTest : MonoBehaviour
     [Tooltip("DON'T TOUCH(BUT IF YOU DO SET IT BACK TO 'Default')")]
     public LayerMask layerMask;
 
-    private float viewerAddAmnt; 
     private float viewerAddAmntTotal;
-    private float viewerAddAmntMonster;
-    private float viewerAddAmntSpecial;
 
     // Update is called once per frame
     void FixedUpdate(){
@@ -36,10 +33,9 @@ public class SphereCastTest : MonoBehaviour
         sphereCastOffset = transform.position + transform.forward * minDistance;
         playerDirection = transform.forward;
         
-        //Resets if the monster isn't in the field of view
+        //Resets if a monster isn't in the field of view
         MonsterGenerateViewers.inFieldOfView = false;
-        
-        MonsterGenerateViewers.viewerAddAmount = viewerAddAmntTotal; 
+        viewerAddAmntTotal = 0.0f;
 
         /*
         // Clears the gameObject list each frame(Used for debugging)
@@ -52,8 +48,8 @@ public class SphereCastTest : MonoBehaviour
 
 
         //List where all of the objects the sphereCast can see  
-        foreach (RaycastHit hit in hits){            
-    
+        foreach (RaycastHit hit in hits){     
+
             //If we we see something with the monster tag we inspect it 
             if(hit.transform.gameObject.tag == "Monster" || hit.transform.gameObject.tag == "SpecialMonster"){
                 RaycastHit hitMonster;
@@ -73,31 +69,29 @@ public class SphereCastTest : MonoBehaviour
                         currentHitObjects.Add(hit.transform.gameObject);
                     */
 
-                    //Switch statement checks the tag of the current monster and deals with special cases
+                    //Switch statement checks the tag of the current monster and adds the score to the total 
                     switch(hit.transform.gameObject.tag)
                     {
                         case "Monster":
                             MonsterGenerateViewers.inFieldOfView = true;
-                            viewerAddAmntMonster = 1.0f;
-                        break;
+                            viewerAddAmntTotal += 1.0f;
+                            break;
 
-                        //Add special monster functionality
                         case "SpecialMonster":
                             MonsterGenerateViewers.inFieldOfView = true;
-                            viewerAddAmntSpecial = 5.0f;
-                        break;
+                            viewerAddAmntTotal += 5.0f;
+                            break;
                     }
-                }
-
-                viewerAddAmntTotal = viewerAddAmntMonster + viewerAddAmntSpecial;
-                MonsterGenerateViewers.viewerAddAmount = viewerAddAmntTotal;     
-                viewerAddAmntTotal = 0.0f;   
+                }    
             }
-        
         }    
+        
+        //Final change to the addition of score 
+        MonsterGenerateViewers.viewerAddAmount = viewerAddAmntTotal; 
+
     }
 
-    
+
 
     
     //Debugging by creating the raycast sphere and line towards the sphere
@@ -106,5 +100,6 @@ public class SphereCastTest : MonoBehaviour
         Debug.DrawLine(transform.position, sphereCastOffset + playerDirection * maxDistance);
         Gizmos.DrawWireSphere(sphereCastOffset + playerDirection * maxDistance , sphereRadius);
     }
+
 
 }
