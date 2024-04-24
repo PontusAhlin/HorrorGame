@@ -93,7 +93,7 @@ public class RandomMapHandler : MonoBehaviour
     //THIS FUNCTION RUNS AFTER MAPGEN IS DONE FOR HANDLING STUFF LIKE PLAYER & MONSTER PLACEMENT
     void PostMapgenFunction()
     {
-        player.transform.position = RandomMapParent.transform.position + new Vector3((gridHandler.GetLength(0)/2)*RoomSize,10,(gridHandler.GetLength(1)/2)*RoomSize);
+        player.transform.position = RandomMapParent.transform.position + new Vector3((gridHandler.GetLength(0)/2)*RoomSize,25,(gridHandler.GetLength(1)/2)*RoomSize);
         postMapgenScript.Main();
     }
     void DrawRoom(int x, int y, bool north, bool east, bool south, bool west)
