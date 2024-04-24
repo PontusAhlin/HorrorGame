@@ -87,19 +87,48 @@ public class RandomMapHandler : MonoBehaviour
         player.transform.position = RandomMapParent.transform.position + new Vector3((gridHandler.GetLength(0)/2)*RoomSize,5,(gridHandler.GetLength(1)/2)*RoomSize);
         postMapgenScript.Main();
     }
+
+    /**
+      * Initilize Big Prefab.
+      *
+      * This is a helper function used for generating prefabs. It was created to shorten down the
+      * code and make it more reable due to similar code being used multiple times.
+      * It loads prefabs from BigWalls and BigDoorways lists and instantiates them at the
+      * given position.
+      *
+      * Note that no y-position is needed as the y-position is always 0.
+      *
+      * Author(s): William Fridh
+      */
+    void InitializePrefab(int x, int y, bool generateDoorWay, int prefabIndex, float xPosition, float zPosition, float yRotation)
+    {
+
+        // Select prefab.
+        GameObject prefab;
+        if (generateDoorWay)
+            prefab = Doorways[prefabIndex];
+        else
+            prefab = Walls[prefabIndex];
+        
+        // Add prefab.
+        Instantiate(
+            prefab,
+            new Vector3(xPosition, 0, zPosition),
+            Quaternion.Euler(0, yRotation, 0)
+        ).transform.SetParent(RandomMapParent.transform, false);
+
+    }
+
     void DrawOneByOne(int x, int y, bool n, bool e, bool s, bool w)
     {
         int prefabIndex = UnityEngine.Random.Range(0,One_OneFloors.Count); //pick variant of 2x2
         //make floor
         Instantiate(One_OneFloors[prefabIndex], new Vector3((x)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,0,0)).transform.SetParent(RandomMapParent.transform, false);
-        if (n) Instantiate(Doorways[prefabIndex], new Vector3((x)*RoomSize, 0, (y+0.48f)*RoomSize), Quaternion.Euler(0,0,0)).transform.SetParent(RandomMapParent.transform, false);
-        else   Instantiate(Walls[prefabIndex], new Vector3((x)*RoomSize, 0, (y+0.48f)*RoomSize), Quaternion.Euler(0,0,0)).transform.SetParent(RandomMapParent.transform, false);
-        if (e) Instantiate(Doorways[prefabIndex], new Vector3((x+0.48f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,90f,0)).transform.SetParent(RandomMapParent.transform, false);
-        else   Instantiate(Walls[prefabIndex], new Vector3((x+0.48f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,90f,0)).transform.SetParent(RandomMapParent.transform, false);
-        if (s) Instantiate(Doorways[prefabIndex], new Vector3((x)*RoomSize, 0, (y-0.48f)*RoomSize), Quaternion.Euler(0,180f,0)).transform.SetParent(RandomMapParent.transform, false);
-        else   Instantiate(Walls[prefabIndex], new Vector3((x)*RoomSize, 0, (y-0.48f)*RoomSize), Quaternion.Euler(0,180f,0)).transform.SetParent(RandomMapParent.transform, false);
-        if (w) Instantiate(Doorways[prefabIndex], new Vector3((x-0.48f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,270f,0)).transform.SetParent(RandomMapParent.transform, false);
-        else   Instantiate(Walls[prefabIndex], new Vector3((x-0.48f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,270f,0)).transform.SetParent(RandomMapParent.transform, false);
+        
+        InitializePrefab(x, y, n, prefabIndex, (x)*RoomSize, (y+0.48f)*RoomSize, 0);
+        InitializePrefab(x, y, e, prefabIndex, (x+0.48f)*RoomSize, (y)*RoomSize, 90f);
+        InitializePrefab(x, y, s, prefabIndex, (x)*RoomSize, (y-0.48f)*RoomSize, 180f);
+        InitializePrefab(x, y, w, prefabIndex, (x-0.48f)*RoomSize, (y)*RoomSize, 270f);
     }
     void DrawTwoByTwo(int x, int y, bool a, bool b, bool c, bool d, bool e, bool f, bool g, bool h) //THIS DRAWS A 2x2 FLOOR
     {
@@ -107,23 +136,15 @@ public class RandomMapHandler : MonoBehaviour
         //make floor
         Instantiate(Two_TwoFloors[prefabIndex], new Vector3((x+0.5f)*RoomSize, 0, (y+0.5f)*RoomSize), Quaternion.Euler(0,0,0)).transform.SetParent(RandomMapParent.transform, false);
         //make walls NEEDS TO OFFSET WALLS BY LIKE 1 PIXEL OR THEY OVERLAP!!!!!
-        if (a) Instantiate(Doorways[prefabIndex], new Vector3((x)*RoomSize, 0, (y+1.48f)*RoomSize), Quaternion.Euler(0,0,0)).transform.SetParent(RandomMapParent.transform, false);
-        else   Instantiate(Walls[prefabIndex], new Vector3((x)*RoomSize, 0, (y+1.48f)*RoomSize), Quaternion.Euler(0,0,0)).transform.SetParent(RandomMapParent.transform, false);
-        if (b) Instantiate(Doorways[prefabIndex], new Vector3((x+1f)*RoomSize, 0, (y+1.48f)*RoomSize), Quaternion.Euler(0,0,0)).transform.SetParent(RandomMapParent.transform, false);
-        else   Instantiate(Walls[prefabIndex], new Vector3((x+1f)*RoomSize, 0, (y+1.48f)*RoomSize), Quaternion.Euler(0,0,0)).transform.SetParent(RandomMapParent.transform, false);
-        if (c) Instantiate(Doorways[prefabIndex], new Vector3((x+1.48f)*RoomSize, 0, (y+1)*RoomSize), Quaternion.Euler(0,90f,0)).transform.SetParent(RandomMapParent.transform, false);
-        else   Instantiate(Walls[prefabIndex], new Vector3((x+1.48f)*RoomSize, 0, (y+1)*RoomSize), Quaternion.Euler(0,90f,0)).transform.SetParent(RandomMapParent.transform, false);
-        if (d) Instantiate(Doorways[prefabIndex], new Vector3((x+1.48f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,90f,0)).transform.SetParent(RandomMapParent.transform, false);
-        else   Instantiate(Walls[prefabIndex], new Vector3((x+1.48f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,90f,0)).transform.SetParent(RandomMapParent.transform, false);
-        if (e) Instantiate(Doorways[prefabIndex], new Vector3((x+1f)*RoomSize, 0, (y-0.48f)*RoomSize), Quaternion.Euler(0,180f,0)).transform.SetParent(RandomMapParent.transform, false);
-        else   Instantiate(Walls[prefabIndex], new Vector3((x+1f)*RoomSize, 0, (y-0.48f)*RoomSize), Quaternion.Euler(0,180f,0)).transform.SetParent(RandomMapParent.transform, false);
-        if (f) Instantiate(Doorways[prefabIndex], new Vector3((x)*RoomSize, 0, (y-0.48f)*RoomSize), Quaternion.Euler(0,180f,0)).transform.SetParent(RandomMapParent.transform, false);
-        else   Instantiate(Walls[prefabIndex], new Vector3((x)*RoomSize, 0, (y-0.48f)*RoomSize), Quaternion.Euler(0,180f,0)).transform.SetParent(RandomMapParent.transform, false);
-        if (g) Instantiate(Doorways[prefabIndex], new Vector3((x-0.48f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,270f,0)).transform.SetParent(RandomMapParent.transform, false);
-        else   Instantiate(Walls[prefabIndex], new Vector3((x-0.48f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,270f,0)).transform.SetParent(RandomMapParent.transform, false);
-        if (h) Instantiate(Doorways[prefabIndex], new Vector3((x-0.48f)*RoomSize, 0, (y+1f)*RoomSize), Quaternion.Euler(0,270f,0)).transform.SetParent(RandomMapParent.transform, false);
-        else   Instantiate(Walls[prefabIndex], new Vector3((x-0.48f)*RoomSize, 0, (y+1f)*RoomSize), Quaternion.Euler(0,270f,0)).transform.SetParent(RandomMapParent.transform, false);
-        
+
+        InitializePrefab(x, y, a, prefabIndex, (x)*RoomSize, (y+1.48f)*RoomSize, 0);
+        InitializePrefab(x, y, b, prefabIndex, (x+1f)*RoomSize, (y+1.48f)*RoomSize, 0);
+        InitializePrefab(x, y, c, prefabIndex, (x+1.48f)*RoomSize, (y+1)*RoomSize, 90f);
+        InitializePrefab(x, y, d, prefabIndex, (x+1.48f)*RoomSize, (y)*RoomSize, 90f);
+        InitializePrefab(x, y, e, prefabIndex, (x+1f)*RoomSize, (y-0.48f)*RoomSize, 180f);
+        InitializePrefab(x, y, f, prefabIndex, (x)*RoomSize, (y-0.48f)*RoomSize, 180f);
+        InitializePrefab(x, y, g, prefabIndex, (x-0.48f)*RoomSize, (y)*RoomSize, 270f);
+        InitializePrefab(x, y, h, prefabIndex, (x-0.48f)*RoomSize, (y+1f)*RoomSize, 270f);
     }
     void DrawTwoByOneHorizontal(int x, int y, bool a, bool b, bool c, bool d, bool e, bool f) //THIS DRAWS A 2x1 FLOOR
     {
@@ -131,18 +152,13 @@ public class RandomMapHandler : MonoBehaviour
         //make floor
         Instantiate(Two_OneFloors[prefabIndex], new Vector3((x+0.5f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,0,0)).transform.SetParent(RandomMapParent.transform, false);
         //make walls NEEDS TO OFFSET WALLS BY LIKE 1 PIXEL OR THEY OVERLAP!!!!!
-        if (a) Instantiate(Doorways[prefabIndex], new Vector3((x)*RoomSize, 0, (y+0.48f)*RoomSize), Quaternion.Euler(0,0,0)).transform.SetParent(RandomMapParent.transform, false);
-        else   Instantiate(Walls[prefabIndex], new Vector3((x)*RoomSize, 0, (y+0.48f)*RoomSize), Quaternion.Euler(0,0,0)).transform.SetParent(RandomMapParent.transform, false);
-        if (b) Instantiate(Doorways[prefabIndex], new Vector3((x+1f)*RoomSize, 0, (y+0.48f)*RoomSize), Quaternion.Euler(0,0,0)).transform.SetParent(RandomMapParent.transform, false);
-        else   Instantiate(Walls[prefabIndex], new Vector3((x+1f)*RoomSize, 0, (y+0.48f)*RoomSize), Quaternion.Euler(0,0,0)).transform.SetParent(RandomMapParent.transform, false);
-        if (c) Instantiate(Doorways[prefabIndex], new Vector3((x+1.48f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,90f,0)).transform.SetParent(RandomMapParent.transform, false);
-        else   Instantiate(Walls[prefabIndex], new Vector3((x+1.48f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,90f,0)).transform.SetParent(RandomMapParent.transform, false);
-        if (d) Instantiate(Doorways[prefabIndex], new Vector3((x+1f)*RoomSize, 0, (y-0.48f)*RoomSize), Quaternion.Euler(0,180f,0)).transform.SetParent(RandomMapParent.transform, false);
-        else   Instantiate(Walls[prefabIndex], new Vector3((x+1f)*RoomSize, 0, (y-0.48f)*RoomSize), Quaternion.Euler(0,180f,0)).transform.SetParent(RandomMapParent.transform, false);
-        if (e) Instantiate(Doorways[prefabIndex], new Vector3((x)*RoomSize, 0, (y-0.48f)*RoomSize), Quaternion.Euler(0,180f,0)).transform.SetParent(RandomMapParent.transform, false);
-        else   Instantiate(Walls[prefabIndex], new Vector3((x)*RoomSize, 0, (y-0.48f)*RoomSize), Quaternion.Euler(0,180f,0)).transform.SetParent(RandomMapParent.transform, false);
-        if (f) Instantiate(Doorways[prefabIndex], new Vector3((x-0.48f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,270f,0)).transform.SetParent(RandomMapParent.transform, false);
-        else   Instantiate(Walls[prefabIndex], new Vector3((x-0.48f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,270f,0)).transform.SetParent(RandomMapParent.transform, false);    
+        
+        InitializePrefab(x, y, a, prefabIndex, (x)*RoomSize, (y+0.48f)*RoomSize, 0);
+        InitializePrefab(x, y, b, prefabIndex, (x+1f)*RoomSize, (y+0.48f)*RoomSize, 0);
+        InitializePrefab(x, y, c, prefabIndex, (x+1.48f)*RoomSize, (y)*RoomSize, 90f);
+        InitializePrefab(x, y, d, prefabIndex, (x+1f)*RoomSize, (y-0.48f)*RoomSize, 180f);
+        InitializePrefab(x, y, e, prefabIndex, (x)*RoomSize, (y-0.48f)*RoomSize, 180f);
+        InitializePrefab(x, y, f, prefabIndex, (x-0.48f)*RoomSize, (y)*RoomSize, 270f);   
     }
     void DrawTwoByOneVertical(int x, int y, bool a, bool b, bool c, bool d, bool e, bool f) //THIS DRAWS A 2x1 FLOOR
     {
@@ -150,18 +166,12 @@ public class RandomMapHandler : MonoBehaviour
         //make floor
         Instantiate(Two_OneFloors[prefabIndex], new Vector3((x)*RoomSize, 0, (y+0.5f)*RoomSize), Quaternion.Euler(0,90f,0)).transform.SetParent(RandomMapParent.transform, false);
         //make walls NEEDS TO OFFSET WALLS BY LIKE 1 PIXEL OR THEY OVERLAP!!!!!
-        if (a) Instantiate(Doorways[prefabIndex], new Vector3((x)*RoomSize, 0, (y+1.48f)*RoomSize), Quaternion.Euler(0,0,0)).transform.SetParent(RandomMapParent.transform, false);
-        else   Instantiate(Walls[prefabIndex], new Vector3((x)*RoomSize, 0, (y+1.48f)*RoomSize), Quaternion.Euler(0,0,0)).transform.SetParent(RandomMapParent.transform, false);
-        if (b) Instantiate(Doorways[prefabIndex], new Vector3((x+0.48f)*RoomSize, 0, (y+1f)*RoomSize), Quaternion.Euler(0,90f,0)).transform.SetParent(RandomMapParent.transform, false);
-        else   Instantiate(Walls[prefabIndex], new Vector3((x+0.48f)*RoomSize, 0, (y+1f)*RoomSize), Quaternion.Euler(0,90f,0)).transform.SetParent(RandomMapParent.transform, false);
-        if (c) Instantiate(Doorways[prefabIndex], new Vector3((x+0.48f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,90f,0)).transform.SetParent(RandomMapParent.transform, false);
-        else   Instantiate(Walls[prefabIndex], new Vector3((x+0.48f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,90f,0)).transform.SetParent(RandomMapParent.transform, false);
-        if (d) Instantiate(Doorways[prefabIndex], new Vector3((x)*RoomSize, 0, (y-0.48f)*RoomSize), Quaternion.Euler(0,180f,0)).transform.SetParent(RandomMapParent.transform, false);
-        else   Instantiate(Walls[prefabIndex], new Vector3((x)*RoomSize, 0, (y-0.48f)*RoomSize), Quaternion.Euler(0,180f,0)).transform.SetParent(RandomMapParent.transform, false);
-        if (e) Instantiate(Doorways[prefabIndex], new Vector3((x-0.48f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,270f,0)).transform.SetParent(RandomMapParent.transform, false);
-        else   Instantiate(Walls[prefabIndex], new Vector3((x-0.48f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,270f,0)).transform.SetParent(RandomMapParent.transform, false);
-        if (f) Instantiate(Doorways[prefabIndex], new Vector3((x-0.48f)*RoomSize, 0, (y+1f)*RoomSize), Quaternion.Euler(0,270f,0)).transform.SetParent(RandomMapParent.transform, false);
-        else   Instantiate(Walls[prefabIndex], new Vector3((x-0.48f)*RoomSize, 0, (y+1f)*RoomSize), Quaternion.Euler(0,270f,0)).transform.SetParent(RandomMapParent.transform, false);    
+        InitializePrefab(x, y, a, prefabIndex, (x)*RoomSize, (y+1.48f)*RoomSize, 0);
+        InitializePrefab(x, y, b, prefabIndex, (x+0.48f)*RoomSize, (y+1f)*RoomSize, 90f);
+        InitializePrefab(x, y, c, prefabIndex, (x+0.48f)*RoomSize, (y)*RoomSize, 90f);
+        InitializePrefab(x, y, d, prefabIndex, (x)*RoomSize, (y-0.48f)*RoomSize, 180f);
+        InitializePrefab(x, y, e, prefabIndex, (x-0.48f)*RoomSize, (y)*RoomSize, 270f);
+        InitializePrefab(x, y, f, prefabIndex, (x-0.48f)*RoomSize, (y+1f)*RoomSize, 270f); 
     }
     IEnumerator CreateFloors()
     {
