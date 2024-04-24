@@ -27,7 +27,6 @@ public class SphereCastTest : MonoBehaviour
 
     private float viewerAddAmntTotal;
 
-    // Update is called once per frame
     void FixedUpdate(){
         //Sets the players position and direction continuisly where the player looks 
         sphereCastOffset = transform.position + transform.forward * minDistance;
@@ -90,7 +89,6 @@ public class SphereCastTest : MonoBehaviour
         MonsterGenerateViewers.viewerAddAmount = viewerAddAmntTotal; 
 
     }
-
 
 
     
