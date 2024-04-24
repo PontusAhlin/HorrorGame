@@ -14,6 +14,7 @@ public class ScoreManager : MonoBehaviour
     }
     void Update()
     {
+        if(PlayerScore != null)
         Score = PlayerScore.likes;
     }
 }
