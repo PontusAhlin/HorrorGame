@@ -5104,6 +5104,51 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!1 &497400770
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 497400772}
+  - component: {fileID: 497400771}
+  m_Layer: 0
+  m_Name: Score Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &497400771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 497400770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6609cbad7fda4f00b4b962fdd135e32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerScore: {fileID: 502980438}
+--- !u!4 &497400772
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 497400770}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.3207002, y: 1.0872356, z: -8.157481}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &502980437
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14850,7 +14895,7 @@ PrefabInstance:
     - target: {fileID: 8846869926684470253, guid: 183dfe7f4d0194a0884e929994c8eb59,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.565666
+      value: 51.41
       objectReference: {fileID: 0}
     - target: {fileID: 8846869926684470253, guid: 183dfe7f4d0194a0884e929994c8eb59,
         type: 3}
@@ -14860,7 +14905,7 @@ PrefabInstance:
     - target: {fileID: 8846869926684470253, guid: 183dfe7f4d0194a0884e929994c8eb59,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.847451
+      value: -9.78
       objectReference: {fileID: 0}
     - target: {fileID: 8846869926684470253, guid: 183dfe7f4d0194a0884e929994c8eb59,
         type: 3}
@@ -18842,3 +18887,4 @@ SceneRoots:
   - {fileID: 1655252535}
   - {fileID: 841495393}
   - {fileID: 502980437}
+  - {fileID: 497400772}
