@@ -118,7 +118,7 @@ public class enemyAiControl : MonoBehaviour
     if (Physics.Raycast(ray, out RaycastHit hitted, detectionRange,layersToHit))
         {
             // Check if the ray hits the player
-            if (hitted.collider.gameObject.name.Equals("Player")) {
+            if (hitted.collider.gameObject.name.Equals("Character & Camera")) {
                 ChangeScene("GameEnd");
             }
             Debug.Log(hitted.collider.gameObject.name + " was hit!");
