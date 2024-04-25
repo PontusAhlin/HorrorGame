@@ -81,7 +81,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 59e97d7df7a3c4469ac552be4dc09d4c,
         type: 3}
       propertyPath: m_Name
-      value: Monster2
+      value: Monster
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 59e97d7df7a3c4469ac552be4dc09d4c,
         type: 3}
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27a0b17c537ab4badb63ffe68dc6e4b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTransform: {fileID: 1, guid: 00000000000000000000000000000000, type: 0}
+  playerTransform: {fileID: 0}
   detectionRange: 15
   layersToHit:
     serializedVersion: 2
