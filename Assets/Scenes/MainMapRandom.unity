@@ -345,14 +345,14 @@ MonoBehaviour:
   - {fileID: 4098738801336719262, guid: 5df4158ec569dc643a794a640b8f8b77, type: 3}
   - {fileID: 4055001670401529941, guid: 2762c07815c86cb45b2ee9250fda9f36, type: 3}
   - {fileID: 9062866336837615491, guid: b390ffd34e3039141accf66f1465e8b9, type: 3}
-  MapWidth: 10
-  MapHeight: 10
+  MapWidth: 30
+  MapHeight: 30
   RoomSize: 50
   WallGapSize: 0.001
-  MaximumWalkers: 2
+  MaximumWalkers: 1
   TileCount: 0
-  FillPercentage: 0.5
-  Randomness: 0.5
+  FillPercentage: 0.2
+  Randomness: 0.2
   WaitTime: 0
   TwoByTwoChance: 0.2
   TwoByOneChance: 0.2
