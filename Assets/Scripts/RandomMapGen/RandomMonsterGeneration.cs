@@ -32,7 +32,9 @@ public class RandomMonsterGeneration : MonoBehaviour
         Debug.Log("Finished Coroutine at timestamp : " + Time.time);
         xCoord = Random.Range(0, gameObject.GetComponent<RandomMapHandler>().MapWidth);
         zCoord = Random.Range(0, gameObject.GetComponent<RandomMapHandler>().MapHeight);
-        while(randscript.gridHandler[xCoord,zCoord] == RandomMapHandler.Grid.EMPTY){
+        while(randscript.gridHandler[xCoord,zCoord] == RandomMapHandler.Grid.EMPTY &&
+        !(xCoord < gameObject.GetComponent<RandomMapHandler>().MapWidth/2 + 1 && xCoord > gameObject.GetComponent<RandomMapHandler>().MapWidth/2 - 1 &&
+        zCoord < gameObject.GetComponent<RandomMapHandler>().MapHeight/2 + 1 && zCoord > gameObject.GetComponent<RandomMapHandler>().MapHeight/2 - 1)){
             xCoord = Random.Range(0, gameObject.GetComponent<RandomMapHandler>().MapWidth);
             zCoord = Random.Range(0, gameObject.GetComponent<RandomMapHandler>().MapHeight);
         }
