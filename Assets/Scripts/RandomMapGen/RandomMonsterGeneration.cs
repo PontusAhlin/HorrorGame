@@ -10,6 +10,7 @@ public class RandomMonsterGeneration : MonoBehaviour
     [Tooltip("How many monsters should be generated")]
     public int MonsterAmount = 3;
     private int CurrentMonsterAmount = 0;
+    [Tooltip("Insert the RandomMapHandler script here pls")]
     public RandomMapHandler randscript;
     int mapOffsetX = 0;
     int mapOffsetZ = 0;
@@ -17,16 +18,9 @@ public class RandomMonsterGeneration : MonoBehaviour
     int xCoord, zCoord;
     void Start()
     {
-        //mapOffsetX = gameObject.GetComponent<RandomMapHandler>().RoomSize;
-        Debug.Log("bing bong:" + gameObject.GetComponent<RandomMapHandler>().RoomSize);
-        //mapOffsetZ = gameObject.GetComponent<RandomMapHandler>().RoomSize;
-        //mapOffsetX = -randscript.RoomSize;
-        //mapOffsetZ = randscript.RoomSize;
-
         if(CurrentMonsterAmount < MonsterAmount){
             StartCoroutine(GenerateMonster());
         }
-        //if (randscript.gridHandler[i][j] == RandomMapHandler.Grid.EMPTY);
     }
 
     IEnumerator GenerateMonster(){
@@ -45,9 +39,6 @@ public class RandomMonsterGeneration : MonoBehaviour
         xCoord = xCoord * gameObject.GetComponent<RandomMapHandler>().RoomSize;
         zCoord = zCoord * gameObject.GetComponent<RandomMapHandler>().RoomSize;
         Instantiate(MonsterPrefab, new Vector3(xCoord, 2, zCoord), Quaternion.identity);
-        //xCoord = Random.Range(0, gameObject.GetComponent<RandomMapHandler>().RoomSize * gameObject.GetComponent<RandomMapHandler>().MapWidth);
-        //zCoord = Random.Range(0, gameObject.GetComponent<RandomMapHandler>().RoomSize * gameObject.GetComponent<RandomMapHandler>().MapHeight);
-        //Instantiate(MonsterPrefab, new Vector3(xCoord + mapOffsetX, 1, zCoord + mapOffsetZ), Quaternion.identity);
         CurrentMonsterAmount++;
         if(CurrentMonsterAmount < MonsterAmount){
             StartCoroutine(GenerateMonster());

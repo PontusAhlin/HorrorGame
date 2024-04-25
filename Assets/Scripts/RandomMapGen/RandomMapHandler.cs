@@ -32,6 +32,8 @@ public class RandomMapHandler : MonoBehaviour
     public List<GameObject> Walls = new List<GameObject>();
     [Tooltip("list of all the room doorways that correspond to 2x2 and 2x1")]
     public List<GameObject> Doorways = new List<GameObject>();
+    [Tooltip("list of all navmeshes in ORDER: 1x1, 2x1, 2x2, doorway")]
+    public List<GameObject> Navmeshes = new List<GameObject>();
     
 
     public enum Grid
@@ -70,8 +72,12 @@ public class RandomMapHandler : MonoBehaviour
     public float TwoByOneChance = 0.50f;
     [Tooltip("this is the gameobject which the entire map will be parented to")]
     public GameObject RandomMapParent;
+    [Tooltip("this is the gameobject that navmeshes will be parented to (VERY IMPORTANT)")]
+    public GameObject NavmeshParent;
     [Tooltip("this hosts a script that runs right when mapgen ends for convenience")]
     public PostMapgenScript postMapgenScript;
+    [Tooltip("this hosts the script for navmesh generation because we have a call to that")]
+    public NavmeshGenerator navScript;
     [Tooltip("this hosts the player object so that we can teleport it on a map tile when its done generatin")]
     public GameObject player;
     void Start()
@@ -86,12 +92,49 @@ public class RandomMapHandler : MonoBehaviour
     //THIS FUNCTION RUNS AFTER MAPGEN IS DONE FOR HANDLING STUFF LIKE PLAYER & MONSTER PLACEMENT
     void PostMapgenFunction()
     {
+        Debug.Log("PostMapgenFunction ran");
+        navScript.GenerateMesh();
         player.transform.position = RandomMapParent.transform.position + new Vector3((gridHandler.GetLength(0)/2)*RoomSize,5,(gridHandler.GetLength(1)/2)*RoomSize);
         postMapgenScript.Main();
     }
 
+    /* initialize navmesh
+    this smacks a navmesh down at the same time as a big/small/whateverthefuck floor you need
+    so that they are all at the same height and are parented to the same thing
+    once theyr e parented to the same thing you can hit "bake" on that big thing and it'll
+    make the navmesh we need for the mosnter to move around
+
+    -alin
+    */
+    void InitializeNavmesh(int x, int y, string roomType)
+    {
+        switch (roomType)
+        {
+            case "1x1":
+            {
+                Instantiate(Navmeshes[0], new Vector3((x)*RoomSize, 1, (y)*RoomSize), Quaternion.Euler(0,0,0)).transform.SetParent(NavmeshParent.transform, false);
+                break;
+            }
+            case "2x1Horizontal":
+            {
+                Instantiate(Navmeshes[1], new Vector3((x+0.5f)*RoomSize, 1, (y)*RoomSize), Quaternion.Euler(0,0,0)).transform.SetParent(NavmeshParent.transform, false);
+                break;
+            }
+            case "2x1Vertical":
+            {
+                Instantiate(Navmeshes[1], new Vector3((x)*RoomSize, 1, (y+0.5f)*RoomSize), Quaternion.Euler(0,90f,0)).transform.SetParent(NavmeshParent.transform, false);
+                break;
+            }
+            case "2x2":
+            {
+                Instantiate(Navmeshes[2], new Vector3((x+0.5f)*RoomSize, 1, (y+0.5f)*RoomSize), Quaternion.Euler(0,0,0)).transform.SetParent(NavmeshParent.transform, false);
+                break;
+            }
+        }
+    }
+
     /**
-      * Initilize Big Prefab.
+      * Initilize Big Prefab. ALIN NOTE: this doesnt need x and y but i will fix this l8r
       *
       * This is a helper function used for generating prefabs. It was created to shorten down the
       * code and make it more reable due to similar code being used multiple times.
@@ -108,7 +151,15 @@ public class RandomMapHandler : MonoBehaviour
         // Select prefab.
         GameObject prefab;
         if (generateDoorWay)
-            prefab = Doorways[prefabIndex];
+            {
+                prefab = Doorways[prefabIndex];
+                //add navmesh
+                Instantiate(
+                Navmeshes[3],
+                new Vector3(xPosition, 1 , zPosition),
+                Quaternion.Euler(0, yRotation, 0)
+                ).transform.SetParent(NavmeshParent.transform, false);
+            }
         else
             prefab = Walls[prefabIndex];
         
@@ -126,7 +177,7 @@ public class RandomMapHandler : MonoBehaviour
         int prefabIndex = UnityEngine.Random.Range(0,One_OneFloors.Count); //pick variant of 2x2
         //make floor
         Instantiate(One_OneFloors[prefabIndex], new Vector3((x)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,0,0)).transform.SetParent(RandomMapParent.transform, false);
-        
+        InitializeNavmesh(x, y, "1x1");
         InitializePrefab(x, y, n, prefabIndex, (x)*RoomSize, (y+0.50f - WallGapSize)*RoomSize, 0);
         InitializePrefab(x, y, e, prefabIndex, (x+0.50f - WallGapSize)*RoomSize, (y)*RoomSize, 90f);
         InitializePrefab(x, y, s, prefabIndex, (x)*RoomSize, (y-0.50f + WallGapSize)*RoomSize, 180f);
@@ -137,8 +188,7 @@ public class RandomMapHandler : MonoBehaviour
         int prefabIndex = UnityEngine.Random.Range(0,Two_TwoFloors.Count); //pick variant of 2x2
         //make floor
         Instantiate(Two_TwoFloors[prefabIndex], new Vector3((x+0.5f)*RoomSize, 0, (y+0.5f)*RoomSize), Quaternion.Euler(0,0,0)).transform.SetParent(RandomMapParent.transform, false);
-        //make walls NEEDS TO OFFSET WALLS BY LIKE 1 PIXEL OR THEY OVERLAP!!!!!
-
+        InitializeNavmesh(x, y, "2x2");
         InitializePrefab(x, y, a, prefabIndex, (x)*RoomSize, (y+1.50f - WallGapSize)*RoomSize, 0);
         InitializePrefab(x, y, b, prefabIndex, (x+1f)*RoomSize, (y+1.50f - WallGapSize)*RoomSize, 0);
         InitializePrefab(x, y, c, prefabIndex, (x+1.50f - WallGapSize)*RoomSize, (y+1)*RoomSize, 90f);
@@ -153,8 +203,7 @@ public class RandomMapHandler : MonoBehaviour
         int prefabIndex = UnityEngine.Random.Range(0,Two_OneFloors.Count); //pick variant of 2x1
         //make floor
         Instantiate(Two_OneFloors[prefabIndex], new Vector3((x+0.5f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,0,0)).transform.SetParent(RandomMapParent.transform, false);
-        //make walls NEEDS TO OFFSET WALLS BY LIKE 1 PIXEL OR THEY OVERLAP!!!!!
-        
+        InitializeNavmesh(x, y, "2x1Horizontal");
         InitializePrefab(x, y, a, prefabIndex, (x)*RoomSize, (y+0.50f - WallGapSize)*RoomSize, 0);
         InitializePrefab(x, y, b, prefabIndex, (x+1f)*RoomSize, (y+0.50f - WallGapSize)*RoomSize, 0);
         InitializePrefab(x, y, c, prefabIndex, (x+1.50f - WallGapSize)*RoomSize, (y)*RoomSize, 90f);
@@ -167,7 +216,7 @@ public class RandomMapHandler : MonoBehaviour
         int prefabIndex = UnityEngine.Random.Range(0,Two_OneFloors.Count); //pick variant of 2x1
         //make floor
         Instantiate(Two_OneFloors[prefabIndex], new Vector3((x)*RoomSize, 0, (y+0.5f)*RoomSize), Quaternion.Euler(0,90f,0)).transform.SetParent(RandomMapParent.transform, false);
-        //make walls NEEDS TO OFFSET WALLS BY LIKE 1 PIXEL OR THEY OVERLAP!!!!!
+        InitializeNavmesh(x, y, "2x1Vertical");
         InitializePrefab(x, y, a, prefabIndex, (x)*RoomSize, (y+1.50f - WallGapSize)*RoomSize, 0);
         InitializePrefab(x, y, b, prefabIndex, (x+0.50f - WallGapSize)*RoomSize, (y+1f)*RoomSize, 90f);
         InitializePrefab(x, y, c, prefabIndex, (x+0.50f - WallGapSize)*RoomSize, (y)*RoomSize, 90f);

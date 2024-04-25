@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 5955948542370488737}
   - component: {fileID: 2972157040132501373}
   m_Layer: 0
-  m_Name: 2by1Floor(Textured)
+  m_Name: 2x1Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -133,8 +133,8 @@ Transform:
   m_GameObject: {fileID: 910495619493306895}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.8, y: 26.20783, z: -72.57707}
-  m_LocalScale: {x: 100, y: 1, z: 50}
+  m_LocalPosition: {x: -2.8, y: 26.861, z: -72.57707}
+  m_LocalScale: {x: 100, y: 0.68283, z: 50}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2284779448804594795}
