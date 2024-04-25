@@ -32,7 +32,7 @@ public class BoxCast : MonoBehaviour
         boxCastOffset = transform.position + transform.forward * minDistance;
         playerDirection = transform.forward;
         boxOrientation = transform.rotation;
-        print(boxOrientation);
+        //print(boxOrientation);
 
 
         //Resets if a monster isn't in the field of view

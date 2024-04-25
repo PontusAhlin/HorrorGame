@@ -119,6 +119,7 @@ public class enemyAiControl : MonoBehaviour
         {
             // Check if the ray hits the player
             if (hitted.collider.gameObject.name.Equals("Character & Camera")) {
+                Debug.Log("jumpscare shouldve happened");
                 ChangeScene("JumpScare");
             }
             Debug.Log(hitted.collider.gameObject.name + " was hit!");

@@ -606,7 +606,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MonsterPrefab: {fileID: 8182396208055939415, guid: 183dfe7f4d0194a0884e929994c8eb59,
     type: 3}
-  timeSeconds: 20
+  timeSeconds: 5
   MonsterAmount: 3
   randscript: {fileID: 424695930}
   xCoord: 0
@@ -1168,7 +1168,7 @@ PrefabInstance:
     - target: {fileID: 5961362493962424466, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 180.01001
+      value: 164.01001
       objectReference: {fileID: 0}
     - target: {fileID: 5961362493962424466, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
@@ -1178,12 +1178,12 @@ PrefabInstance:
     - target: {fileID: 5961362493962424466, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 124.97742
+      value: 82.005005
       objectReference: {fileID: 0}
     - target: {fileID: 5961362493962424466, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0
+      value: -36
       objectReference: {fileID: 0}
     - target: {fileID: 6399048826970515079, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
@@ -1198,7 +1198,7 @@ PrefabInstance:
     - target: {fileID: 6399048826970515079, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 134.03621
       objectReference: {fileID: 0}
     - target: {fileID: 6399048826970515079, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
