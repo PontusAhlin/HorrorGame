@@ -9,6 +9,8 @@ public class AudioHandler : MonoBehaviour
     public AudioSource source;
     public AudioClip clip;
     public bool play;
+    public CameraShake camera;
+    [SerializeField] float magnitude;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +24,7 @@ public class AudioHandler : MonoBehaviour
         if(play) 
         {
             source.PlayOneShot(clip);
+            StartCoroutine(camera.Shake(1.4f,magnitude));
             Invoke("ChangeScene",1);
         }
         play = false;
