@@ -439,14 +439,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 340093549}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3484af8aca23403b8c72fc317d9c09f, type: 3}
+  m_Script: {fileID: 11500000, guid: eb4e4748d90daf0458009cc62010f4f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   source: {fileID: 620997143}
-  clip: {fileID: 8300000, guid: 53238c48cba80480bba3a2ac8657ee3e, type: 3}
-  play: 1
-  camera: {fileID: 340093555}
-  magnitude: 0.1
+  clip: {fileID: 8300000, guid: c0f3188898c09e74292cfaedb051170b, type: 3}
+  play: 0
+  cameraShake: {fileID: 340093555}
+  magnitude: 0.2
 --- !u!114 &340093555
 MonoBehaviour:
   m_ObjectHideFlags: 0
