@@ -1,12 +1,14 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SC_MainMenu : MonoBehaviour
 {
     public GameObject MainMenu;
     public GameObject CreditsMenu;
     [SerializeField] public string StartingSceneName = "SetupScene";
+    public InputField playername;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +18,7 @@ public class SC_MainMenu : MonoBehaviour
 
     public void PlayNowButton()
     {
+        Debug.Log("Player name is: " + playername.text);
         // Play Now Button has been pressed, here you can initialize your game (For example Load a Scene called GameLevel etc.)
         UnityEngine.SceneManagement.SceneManager.LoadScene(StartingSceneName);
     }
