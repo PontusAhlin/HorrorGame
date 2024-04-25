@@ -22,20 +22,20 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (GameIsPaused)
-            {
-                Resume();
-            }
-            else
-            {
-                Pause();
-            }
-        }
-    }
+    // void Update()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.Escape))
+    //     {
+    //         if (GameIsPaused)
+    //         {
+    //             Resume();
+    //         }
+    //         else
+    //         {
+    //             Pause();
+    //         }
+    //     }
+    // }
 
     public void Resume()
     {
