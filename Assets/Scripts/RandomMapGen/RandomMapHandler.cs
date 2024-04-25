@@ -129,8 +129,8 @@ public class RandomMapHandler : MonoBehaviour
         
         InitializePrefab(x, y, n, prefabIndex, (x)*RoomSize, (y+0.50f - WallGapSize)*RoomSize, 0);
         InitializePrefab(x, y, e, prefabIndex, (x+0.50f - WallGapSize)*RoomSize, (y)*RoomSize, 90f);
-        InitializePrefab(x, y, s, prefabIndex, (x)*RoomSize, (y-0.50f - WallGapSize)*RoomSize, 180f);
-        InitializePrefab(x, y, w, prefabIndex, (x-0.50f - WallGapSize)*RoomSize, (y)*RoomSize, 270f);
+        InitializePrefab(x, y, s, prefabIndex, (x)*RoomSize, (y-0.50f + WallGapSize)*RoomSize, 180f);
+        InitializePrefab(x, y, w, prefabIndex, (x-0.50f + WallGapSize)*RoomSize, (y)*RoomSize, 270f);
     }
     void DrawTwoByTwo(int x, int y, bool a, bool b, bool c, bool d, bool e, bool f, bool g, bool h) //THIS DRAWS A 2x2 FLOOR
     {
@@ -143,10 +143,10 @@ public class RandomMapHandler : MonoBehaviour
         InitializePrefab(x, y, b, prefabIndex, (x+1f)*RoomSize, (y+1.50f - WallGapSize)*RoomSize, 0);
         InitializePrefab(x, y, c, prefabIndex, (x+1.50f - WallGapSize)*RoomSize, (y+1)*RoomSize, 90f);
         InitializePrefab(x, y, d, prefabIndex, (x+1.50f - WallGapSize)*RoomSize, (y)*RoomSize, 90f);
-        InitializePrefab(x, y, e, prefabIndex, (x+1f)*RoomSize, (y-0.50f - WallGapSize)*RoomSize, 180f);
-        InitializePrefab(x, y, f, prefabIndex, (x)*RoomSize, (y-0.50f - WallGapSize)*RoomSize, 180f);
-        InitializePrefab(x, y, g, prefabIndex, (x-0.50f - WallGapSize)*RoomSize, (y)*RoomSize, 270f);
-        InitializePrefab(x, y, h, prefabIndex, (x-0.50f - WallGapSize)*RoomSize, (y+1f)*RoomSize, 270f);
+        InitializePrefab(x, y, e, prefabIndex, (x+1f)*RoomSize, (y-0.50f + WallGapSize)*RoomSize, 180f);
+        InitializePrefab(x, y, f, prefabIndex, (x)*RoomSize, (y-0.50f + WallGapSize)*RoomSize, 180f);
+        InitializePrefab(x, y, g, prefabIndex, (x-0.50f + WallGapSize)*RoomSize, (y)*RoomSize, 270f);
+        InitializePrefab(x, y, h, prefabIndex, (x-0.50f + WallGapSize)*RoomSize, (y+1f)*RoomSize, 270f);
     }
     void DrawTwoByOneHorizontal(int x, int y, bool a, bool b, bool c, bool d, bool e, bool f) //THIS DRAWS A 2x1 FLOOR
     {
@@ -158,9 +158,9 @@ public class RandomMapHandler : MonoBehaviour
         InitializePrefab(x, y, a, prefabIndex, (x)*RoomSize, (y+0.50f - WallGapSize)*RoomSize, 0);
         InitializePrefab(x, y, b, prefabIndex, (x+1f)*RoomSize, (y+0.50f - WallGapSize)*RoomSize, 0);
         InitializePrefab(x, y, c, prefabIndex, (x+1.50f - WallGapSize)*RoomSize, (y)*RoomSize, 90f);
-        InitializePrefab(x, y, d, prefabIndex, (x+1f)*RoomSize, (y-0.50f - WallGapSize)*RoomSize, 180f);
-        InitializePrefab(x, y, e, prefabIndex, (x)*RoomSize, (y-0.50f - WallGapSize)*RoomSize, 180f);
-        InitializePrefab(x, y, f, prefabIndex, (x-0.50f - WallGapSize)*RoomSize, (y)*RoomSize, 270f);   
+        InitializePrefab(x, y, d, prefabIndex, (x+1f)*RoomSize, (y-0.50f + WallGapSize)*RoomSize, 180f);
+        InitializePrefab(x, y, e, prefabIndex, (x)*RoomSize, (y-0.50f + WallGapSize)*RoomSize, 180f);
+        InitializePrefab(x, y, f, prefabIndex, (x-0.50f + WallGapSize)*RoomSize, (y)*RoomSize, 270f);   
     }
     void DrawTwoByOneVertical(int x, int y, bool a, bool b, bool c, bool d, bool e, bool f) //THIS DRAWS A 2x1 FLOOR
     {
@@ -171,9 +171,9 @@ public class RandomMapHandler : MonoBehaviour
         InitializePrefab(x, y, a, prefabIndex, (x)*RoomSize, (y+1.50f - WallGapSize)*RoomSize, 0);
         InitializePrefab(x, y, b, prefabIndex, (x+0.50f - WallGapSize)*RoomSize, (y+1f)*RoomSize, 90f);
         InitializePrefab(x, y, c, prefabIndex, (x+0.50f - WallGapSize)*RoomSize, (y)*RoomSize, 90f);
-        InitializePrefab(x, y, d, prefabIndex, (x)*RoomSize, (y-0.50f - WallGapSize)*RoomSize, 180f);
-        InitializePrefab(x, y, e, prefabIndex, (x-0.50f - WallGapSize)*RoomSize, (y)*RoomSize, 270f);
-        InitializePrefab(x, y, f, prefabIndex, (x-0.50f - WallGapSize)*RoomSize, (y+1f)*RoomSize, 270f); 
+        InitializePrefab(x, y, d, prefabIndex, (x)*RoomSize, (y-0.50f + WallGapSize)*RoomSize, 180f);
+        InitializePrefab(x, y, e, prefabIndex, (x-0.50f + WallGapSize)*RoomSize, (y)*RoomSize, 270f);
+        InitializePrefab(x, y, f, prefabIndex, (x-0.50f + WallGapSize)*RoomSize, (y+1f)*RoomSize, 270f); 
     }
     IEnumerator CreateFloors()
     {

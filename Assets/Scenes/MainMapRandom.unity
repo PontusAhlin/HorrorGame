@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571337, b: 0.3069219, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -311,7 +311,6 @@ GameObject:
   - component: {fileID: 424695931}
   - component: {fileID: 424695930}
   - component: {fileID: 424695932}
-  - component: {fileID: 424695933}
   m_Layer: 0
   m_Name: RandomMapGeneration
   m_TagString: Untagged
@@ -344,7 +343,7 @@ MonoBehaviour:
   MapWidth: 10
   MapHeight: 10
   RoomSize: 50
-  WallGapSize: 0.1
+  WallGapSize: 0.001
   MaximumWalkers: 2
   TileCount: 0
   FillPercentage: 0.5
@@ -364,7 +363,7 @@ Transform:
   m_GameObject: {fileID: 424695929}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -100, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -674,12 +673,12 @@ PrefabInstance:
     - target: {fileID: 1401504665176257241, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 466.865
+      value: 528.615
       objectReference: {fileID: 0}
     - target: {fileID: 1401504665176257241, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -18.359997
+      value: -86.39995
       objectReference: {fileID: 0}
     - target: {fileID: 2207752836712570119, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
@@ -839,12 +838,12 @@ PrefabInstance:
     - target: {fileID: 3737391430845731975, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 586.455
+      value: 648.205
       objectReference: {fileID: 0}
     - target: {fileID: 3737391430845731975, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -18.359997
+      value: -86.39995
       objectReference: {fileID: 0}
     - target: {fileID: 4708142324329818333, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
