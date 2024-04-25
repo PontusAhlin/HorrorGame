@@ -52,6 +52,8 @@ public class RandomMapHandler : MonoBehaviour
     public int MapHeight = 30;
     [Tooltip("this should match the EXACT SIZE OF A 1X1 ROOM. this is how much we distance stuff as well, and we set our rooms to 50 as default!!!")]
     public int RoomSize = 5; // THIS IS HOW BIG ONE "SQUARE" ROOM OF 1x1 IS IN UNITY UNITS!!
+    [Tooltip("this decides the distance between the complete edge of the cell and where the wall spawns")]
+    public float WallGapSize = 0.01f;
     [Tooltip("more walkers - more uhhh...agents walking around generating the map. imagine you have ants on a piece of paper that u dunked in ink. wherever the ant walks, the map generates. this value sets the amount of ants u drop down")]
     public int MaximumWalkers = 10;
     [Tooltip("not relevant, just shows in editor how many tiles have been made, for debugging")]
@@ -59,13 +61,13 @@ public class RandomMapHandler : MonoBehaviour
     [Tooltip("(0 -> 1), percentage of the map's total cells to be filled until it's done")]
     public float FillPercentage = 0.4f;
     [Tooltip("(0 -> 1), decides how chaotic the random gen is. lower = straighter rooms")]
-    public float Randomness = 0.48f;
+    public float Randomness = 0.50f;
     [Tooltip("float value, but this should be like ZERO because all it does is delay the thing and lag!!")]
     public float WaitTime = 0.05f;
     [Tooltip("(0 -> 1), this decides the percentage chance that 2x2 rooms will be generated when possible")]
-    public float TwoByTwoChance = 0.48f;
+    public float TwoByTwoChance = 0.50f;
     [Tooltip("(0 -> 1), this decides the percentage chance that 1x2 rooms will be generated when possible")]
-    public float TwoByOneChance = 0.48f;
+    public float TwoByOneChance = 0.50f;
     [Tooltip("this is the gameobject which the entire map will be parented to")]
     public GameObject RandomMapParent;
     [Tooltip("this hosts a script that runs right when mapgen ends for convenience")]
@@ -125,10 +127,10 @@ public class RandomMapHandler : MonoBehaviour
         //make floor
         Instantiate(One_OneFloors[prefabIndex], new Vector3((x)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,0,0)).transform.SetParent(RandomMapParent.transform, false);
         
-        InitializePrefab(x, y, n, prefabIndex, (x)*RoomSize, (y+0.48f)*RoomSize, 0);
-        InitializePrefab(x, y, e, prefabIndex, (x+0.48f)*RoomSize, (y)*RoomSize, 90f);
-        InitializePrefab(x, y, s, prefabIndex, (x)*RoomSize, (y-0.48f)*RoomSize, 180f);
-        InitializePrefab(x, y, w, prefabIndex, (x-0.48f)*RoomSize, (y)*RoomSize, 270f);
+        InitializePrefab(x, y, n, prefabIndex, (x)*RoomSize, (y+0.50f - WallGapSize)*RoomSize, 0);
+        InitializePrefab(x, y, e, prefabIndex, (x+0.50f - WallGapSize)*RoomSize, (y)*RoomSize, 90f);
+        InitializePrefab(x, y, s, prefabIndex, (x)*RoomSize, (y-0.50f - WallGapSize)*RoomSize, 180f);
+        InitializePrefab(x, y, w, prefabIndex, (x-0.50f - WallGapSize)*RoomSize, (y)*RoomSize, 270f);
     }
     void DrawTwoByTwo(int x, int y, bool a, bool b, bool c, bool d, bool e, bool f, bool g, bool h) //THIS DRAWS A 2x2 FLOOR
     {
@@ -137,14 +139,14 @@ public class RandomMapHandler : MonoBehaviour
         Instantiate(Two_TwoFloors[prefabIndex], new Vector3((x+0.5f)*RoomSize, 0, (y+0.5f)*RoomSize), Quaternion.Euler(0,0,0)).transform.SetParent(RandomMapParent.transform, false);
         //make walls NEEDS TO OFFSET WALLS BY LIKE 1 PIXEL OR THEY OVERLAP!!!!!
 
-        InitializePrefab(x, y, a, prefabIndex, (x)*RoomSize, (y+1.48f)*RoomSize, 0);
-        InitializePrefab(x, y, b, prefabIndex, (x+1f)*RoomSize, (y+1.48f)*RoomSize, 0);
-        InitializePrefab(x, y, c, prefabIndex, (x+1.48f)*RoomSize, (y+1)*RoomSize, 90f);
-        InitializePrefab(x, y, d, prefabIndex, (x+1.48f)*RoomSize, (y)*RoomSize, 90f);
-        InitializePrefab(x, y, e, prefabIndex, (x+1f)*RoomSize, (y-0.48f)*RoomSize, 180f);
-        InitializePrefab(x, y, f, prefabIndex, (x)*RoomSize, (y-0.48f)*RoomSize, 180f);
-        InitializePrefab(x, y, g, prefabIndex, (x-0.48f)*RoomSize, (y)*RoomSize, 270f);
-        InitializePrefab(x, y, h, prefabIndex, (x-0.48f)*RoomSize, (y+1f)*RoomSize, 270f);
+        InitializePrefab(x, y, a, prefabIndex, (x)*RoomSize, (y+1.50f - WallGapSize)*RoomSize, 0);
+        InitializePrefab(x, y, b, prefabIndex, (x+1f)*RoomSize, (y+1.50f - WallGapSize)*RoomSize, 0);
+        InitializePrefab(x, y, c, prefabIndex, (x+1.50f - WallGapSize)*RoomSize, (y+1)*RoomSize, 90f);
+        InitializePrefab(x, y, d, prefabIndex, (x+1.50f - WallGapSize)*RoomSize, (y)*RoomSize, 90f);
+        InitializePrefab(x, y, e, prefabIndex, (x+1f)*RoomSize, (y-0.50f - WallGapSize)*RoomSize, 180f);
+        InitializePrefab(x, y, f, prefabIndex, (x)*RoomSize, (y-0.50f - WallGapSize)*RoomSize, 180f);
+        InitializePrefab(x, y, g, prefabIndex, (x-0.50f - WallGapSize)*RoomSize, (y)*RoomSize, 270f);
+        InitializePrefab(x, y, h, prefabIndex, (x-0.50f - WallGapSize)*RoomSize, (y+1f)*RoomSize, 270f);
     }
     void DrawTwoByOneHorizontal(int x, int y, bool a, bool b, bool c, bool d, bool e, bool f) //THIS DRAWS A 2x1 FLOOR
     {
@@ -153,12 +155,12 @@ public class RandomMapHandler : MonoBehaviour
         Instantiate(Two_OneFloors[prefabIndex], new Vector3((x+0.5f)*RoomSize, 0, (y)*RoomSize), Quaternion.Euler(0,0,0)).transform.SetParent(RandomMapParent.transform, false);
         //make walls NEEDS TO OFFSET WALLS BY LIKE 1 PIXEL OR THEY OVERLAP!!!!!
         
-        InitializePrefab(x, y, a, prefabIndex, (x)*RoomSize, (y+0.48f)*RoomSize, 0);
-        InitializePrefab(x, y, b, prefabIndex, (x+1f)*RoomSize, (y+0.48f)*RoomSize, 0);
-        InitializePrefab(x, y, c, prefabIndex, (x+1.48f)*RoomSize, (y)*RoomSize, 90f);
-        InitializePrefab(x, y, d, prefabIndex, (x+1f)*RoomSize, (y-0.48f)*RoomSize, 180f);
-        InitializePrefab(x, y, e, prefabIndex, (x)*RoomSize, (y-0.48f)*RoomSize, 180f);
-        InitializePrefab(x, y, f, prefabIndex, (x-0.48f)*RoomSize, (y)*RoomSize, 270f);   
+        InitializePrefab(x, y, a, prefabIndex, (x)*RoomSize, (y+0.50f - WallGapSize)*RoomSize, 0);
+        InitializePrefab(x, y, b, prefabIndex, (x+1f)*RoomSize, (y+0.50f - WallGapSize)*RoomSize, 0);
+        InitializePrefab(x, y, c, prefabIndex, (x+1.50f - WallGapSize)*RoomSize, (y)*RoomSize, 90f);
+        InitializePrefab(x, y, d, prefabIndex, (x+1f)*RoomSize, (y-0.50f - WallGapSize)*RoomSize, 180f);
+        InitializePrefab(x, y, e, prefabIndex, (x)*RoomSize, (y-0.50f - WallGapSize)*RoomSize, 180f);
+        InitializePrefab(x, y, f, prefabIndex, (x-0.50f - WallGapSize)*RoomSize, (y)*RoomSize, 270f);   
     }
     void DrawTwoByOneVertical(int x, int y, bool a, bool b, bool c, bool d, bool e, bool f) //THIS DRAWS A 2x1 FLOOR
     {
@@ -166,12 +168,12 @@ public class RandomMapHandler : MonoBehaviour
         //make floor
         Instantiate(Two_OneFloors[prefabIndex], new Vector3((x)*RoomSize, 0, (y+0.5f)*RoomSize), Quaternion.Euler(0,90f,0)).transform.SetParent(RandomMapParent.transform, false);
         //make walls NEEDS TO OFFSET WALLS BY LIKE 1 PIXEL OR THEY OVERLAP!!!!!
-        InitializePrefab(x, y, a, prefabIndex, (x)*RoomSize, (y+1.48f)*RoomSize, 0);
-        InitializePrefab(x, y, b, prefabIndex, (x+0.48f)*RoomSize, (y+1f)*RoomSize, 90f);
-        InitializePrefab(x, y, c, prefabIndex, (x+0.48f)*RoomSize, (y)*RoomSize, 90f);
-        InitializePrefab(x, y, d, prefabIndex, (x)*RoomSize, (y-0.48f)*RoomSize, 180f);
-        InitializePrefab(x, y, e, prefabIndex, (x-0.48f)*RoomSize, (y)*RoomSize, 270f);
-        InitializePrefab(x, y, f, prefabIndex, (x-0.48f)*RoomSize, (y+1f)*RoomSize, 270f); 
+        InitializePrefab(x, y, a, prefabIndex, (x)*RoomSize, (y+1.50f - WallGapSize)*RoomSize, 0);
+        InitializePrefab(x, y, b, prefabIndex, (x+0.50f - WallGapSize)*RoomSize, (y+1f)*RoomSize, 90f);
+        InitializePrefab(x, y, c, prefabIndex, (x+0.50f - WallGapSize)*RoomSize, (y)*RoomSize, 90f);
+        InitializePrefab(x, y, d, prefabIndex, (x)*RoomSize, (y-0.50f - WallGapSize)*RoomSize, 180f);
+        InitializePrefab(x, y, e, prefabIndex, (x-0.50f - WallGapSize)*RoomSize, (y)*RoomSize, 270f);
+        InitializePrefab(x, y, f, prefabIndex, (x-0.50f - WallGapSize)*RoomSize, (y+1f)*RoomSize, 270f); 
     }
     IEnumerator CreateFloors()
     {
