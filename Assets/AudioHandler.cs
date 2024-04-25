@@ -11,6 +11,8 @@ public class AudioHandler : MonoBehaviour
     public bool play;
     public CameraShake cameraShake;
     [SerializeField] float magnitude;
+    [SerializeField] float volume;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +25,7 @@ public class AudioHandler : MonoBehaviour
     {
         if(play) 
         {
+            source.volume = volume;
             source.PlayOneShot(clip);
             StartCoroutine(cameraShake.Shake(1.4f,magnitude));
             Invoke("ChangeScene",1);
@@ -36,4 +39,8 @@ public class AudioHandler : MonoBehaviour
     {
         SceneManager.LoadScene("GameEnd");
     }
+
+    
+
+    
 }

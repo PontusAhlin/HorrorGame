@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 0}
-  detectionRange: 15
+  detectionRange: 5
   layersToHit:
     serializedVersion: 2
     m_Bits: 264
