@@ -606,8 +606,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MonsterPrefab: {fileID: 8182396208055939415, guid: 183dfe7f4d0194a0884e929994c8eb59,
     type: 3}
-  timeSeconds: 3
-  MonsterAmount: 0
+  timeSeconds: 20
+  MonsterAmount: 3
   randscript: {fileID: 424695930}
   xCoord: 0
   zCoord: 0
@@ -617,7 +617,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1945998503}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 187222268}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09b948221e33e03488da7aab4f63f4b4, type: 3}

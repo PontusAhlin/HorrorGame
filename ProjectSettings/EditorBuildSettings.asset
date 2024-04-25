@@ -20,7 +20,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/ButtonScene.unity
     guid: 4755b35b590504809a7525fd2109c2e2
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TestScenes/MainMap.unity
     guid: 4838b635aaccdda499bafb372affc321
   - enabled: 1
