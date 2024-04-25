@@ -1,3 +1,11 @@
+/**
+    * This script is used to pause the game and display the pause menu.
+    * It will also allow the player to return to the main menu or quit the game.
+    *
+    * Author(s): Arnob Dey Sarker
+    *
+    */ 
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
