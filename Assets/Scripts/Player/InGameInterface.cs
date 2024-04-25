@@ -9,6 +9,7 @@
 	* Author(s): William Fridh
 	*/
 
+using UnityEditor.EditorTools;
 using UnityEngine;
 
 public class InGameInterface : MonoBehaviour
@@ -23,6 +24,8 @@ public class InGameInterface : MonoBehaviour
 	[SerializeField] TMPro.TextMeshProUGUI viewersCounterText;
 	[Tooltip("Chat box object. Automatically set to object name \"Chat Box\" if not set in Unity.")]
 	[SerializeField] GameObject chatBox;
+	[Tooltip("Counter holder object. Used to trigger recalculation of position (to resovle Unity bug).")]
+	[SerializeField] GameObject counterHolder;
 	private bool chatBoxEnabled = false; // If the chat box is enabled or not. This depends on the chatBox object being set.
 
 	// Start is called before the first frame update
@@ -108,6 +111,11 @@ public class InGameInterface : MonoBehaviour
 		// Update the likes and views counter.
 		likesCounterText.text = playerScore.likes.ToString();			// No rounding needed as likes are whole numbers.
 		viewersCounterText.text = ((int)playerScore.viewers).ToString();	// Round down to nearest whole number.
+		// Enable and disable counter holder element to trigger recalculation of position (to resovle Unity bug).
+		if (counterHolder != null) {
+			counterHolder.SetActive(false);
+			counterHolder.SetActive(true);
+		}
 	}
 
 	/**
