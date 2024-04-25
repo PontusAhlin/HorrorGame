@@ -10,6 +10,7 @@ public class RandomMonsterGeneration : MonoBehaviour
     [Tooltip("How many monsters should be generated")]
     public int MonsterAmount = 3;
     private int CurrentMonsterAmount = 0;
+    [Tooltip("Insert the RandomMapHandler script here pls")]
     public RandomMapHandler randscript;
     int mapOffsetX = 0;
     int mapOffsetZ = 0;

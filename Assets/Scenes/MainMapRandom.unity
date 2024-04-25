@@ -310,6 +310,7 @@ GameObject:
   m_Component:
   - component: {fileID: 424695931}
   - component: {fileID: 424695930}
+  - component: {fileID: 424695933}
   - component: {fileID: 424695932}
   m_Layer: 0
   m_Name: RandomMapGeneration
@@ -345,8 +346,8 @@ MonoBehaviour:
   - {fileID: 4098738801336719262, guid: 5df4158ec569dc643a794a640b8f8b77, type: 3}
   - {fileID: 4055001670401529941, guid: 2762c07815c86cb45b2ee9250fda9f36, type: 3}
   - {fileID: 9062866336837615491, guid: b390ffd34e3039141accf66f1465e8b9, type: 3}
-  MapWidth: 30
-  MapHeight: 30
+  MapWidth: 5
+  MapHeight: 5
   RoomSize: 50
   WallGapSize: 0.001
   MaximumWalkers: 1
@@ -389,6 +390,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RandomMapParent: {fileID: 424695929}
+--- !u!114 &424695933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424695929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68a9a2492eab242488278a940bd4afe7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MonsterPrefab: {fileID: 8182396208055939415, guid: 183dfe7f4d0194a0884e929994c8eb59,
+    type: 3}
+  timeSeconds: 3
+  MonsterAmount: 3
+  randscript: {fileID: 424695930}
+  xCoord: 0
+  zCoord: 0
 --- !u!1 &656645222 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1743539864771279864, guid: 4d061403edf068243adb4e23aef23fd2,
@@ -1164,9 +1184,9 @@ SceneRoots:
   m_Roots:
   - {fileID: 809258694}
   - {fileID: 424695931}
+  - {fileID: 721380123}
   - {fileID: 1102820252}
   - {fileID: 754446779}
   - {fileID: 163052178}
   - {fileID: 2103795468}
   - {fileID: 1945998503}
-  - {fileID: 721380123}
