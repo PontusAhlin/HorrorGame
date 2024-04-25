@@ -61,7 +61,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d84f97485d69e44f4b1bab84d435ac8a,
         type: 3}
       propertyPath: m_Name
-      value: 1x1FloorTextured
+      value: 1x1Floor
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
