@@ -340,6 +340,11 @@ MonoBehaviour:
   - {fileID: 8523536431361906366, guid: d1e83073e533230419d956b33fec45e9, type: 3}
   Doorways:
   - {fileID: 8523536431361906366, guid: 4a873812fbac4452eaabcea8e7215c02, type: 3}
+  Navmeshes:
+  - {fileID: 6672660521479324593, guid: 1bfce81a57a4bb341a2675d0d1e33b7f, type: 3}
+  - {fileID: 4098738801336719262, guid: 5df4158ec569dc643a794a640b8f8b77, type: 3}
+  - {fileID: 4055001670401529941, guid: 2762c07815c86cb45b2ee9250fda9f36, type: 3}
+  - {fileID: 9062866336837615491, guid: b390ffd34e3039141accf66f1465e8b9, type: 3}
   MapWidth: 10
   MapHeight: 10
   RoomSize: 50
@@ -352,6 +357,7 @@ MonoBehaviour:
   TwoByTwoChance: 0.2
   TwoByOneChance: 0.2
   RandomMapParent: {fileID: 424695929}
+  NavmeshParent: {fileID: 0}
   postMapgenScript: {fileID: 424695932}
   player: {fileID: 656645222}
 --- !u!4 &424695931
