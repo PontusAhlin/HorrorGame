@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2400617677718280257}
-  - component: {fileID: 5376083841513636050}
   m_Layer: 3
   m_Name: Player Wrapper
   m_TagString: Untagged
@@ -34,22 +33,6 @@ Transform:
   - {fileID: 4417203843101324807}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5376083841513636050
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 757767062706338174}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09b948221e33e03488da7aab4f63f4b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  viewers: 0
-  likes: 0
-  likesPerViewer: 1
-  likeGenerationInterval: 1
 --- !u!1 &3913424728450996981
 GameObject:
   m_ObjectHideFlags: 0
@@ -539,11 +522,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -17.059998
       objectReference: {fileID: 0}
-    - target: {fileID: 3866671699950647691, guid: 284e0ca2c1a77284db569c761241378d,
-        type: 3}
-      propertyPath: playerScore
-      value: 
-      objectReference: {fileID: 5376083841513636050}
     - target: {fileID: 3866671699950647691, guid: 284e0ca2c1a77284db569c761241378d,
         type: 3}
       propertyPath: likesCounterText
