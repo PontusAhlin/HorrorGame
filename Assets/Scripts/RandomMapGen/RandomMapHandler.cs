@@ -76,6 +76,8 @@ public class RandomMapHandler : MonoBehaviour
     public GameObject NavmeshParent;
     [Tooltip("this hosts a script that runs right when mapgen ends for convenience")]
     public PostMapgenScript postMapgenScript;
+    [Tooltip("this hosts the script for navmesh generation because we have a call to that")]
+    public NavmeshGenerator navScript;
     [Tooltip("this hosts the player object so that we can teleport it on a map tile when its done generatin")]
     public GameObject player;
     void Start()
@@ -90,6 +92,8 @@ public class RandomMapHandler : MonoBehaviour
     //THIS FUNCTION RUNS AFTER MAPGEN IS DONE FOR HANDLING STUFF LIKE PLAYER & MONSTER PLACEMENT
     void PostMapgenFunction()
     {
+        Debug.Log("PostMapgenFunction ran");
+        navScript.GenerateMesh();
         player.transform.position = RandomMapParent.transform.position + new Vector3((gridHandler.GetLength(0)/2)*RoomSize,5,(gridHandler.GetLength(1)/2)*RoomSize);
         postMapgenScript.Main();
     }
