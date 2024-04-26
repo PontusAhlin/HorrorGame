@@ -108,8 +108,19 @@ public class InGameInterface : MonoBehaviour
 		*/
 	void UpdateInGameInterface() {
 		// Update the likes and views counter.
-		likesCounterText.text = playerScore.likes.ToString();			// No rounding needed as likes are whole numbers.
-		viewersCounterText.text = ((int)playerScore.viewers).ToString();	// Round down to nearest whole number.
+		if (playerScore.likes >= 1000) {
+			decimal likesRounded = System.Math.Round((decimal)(playerScore.likes / 1000), 1);		// Round to 1 decimal place.
+			likesCounterText.text = likesRounded.ToString() + "K";									// Round to 1 decimal place and add "K" for thousands.
+		} else {
+			likesCounterText.text = ((int)playerScore.likes).ToString();								// If less than 1000, just print the number.
+		}
+		if (playerScore.viewers >= 1000) {
+			decimal viewersRounded = System.Math.Round((decimal)(playerScore.viewers / 1000), 1);	// Round down to nearest whole number.
+			viewersCounterText.text = viewersRounded.ToString() + "K";								// Round down to nearest whole number and add "K" for thousands.
+		} else {
+			viewersCounterText.text = ((int)playerScore.viewers).ToString();							// If less than 1000, just print the number.
+		}
+
 		// Enable and disable counter holder element to trigger recalculation of position (to resovle Unity bug).
 		if (counterHolder != null) {
 			counterHolder.SetActive(false);
@@ -126,6 +137,6 @@ public class InGameInterface : MonoBehaviour
 		*/
 	void PrintMessage(string message, string sprite) {
 		if (!chatBoxEnabled) return; // If the chat box is not enabled, return.
-		
+		// Work in progress...
 	}
 }
