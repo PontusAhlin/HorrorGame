@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8811279587142282634}
   - component: {fileID: 6267081630528760883}
   - component: {fileID: 1956863342346861125}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 2893070098257449532}
   - component: {fileID: 5955948542370488737}
   - component: {fileID: 2972157040132501373}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 2x1Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,7 +221,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 404329610160237087}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Chair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 7732860853036728598}
   - component: {fileID: 1029124791605354165}
   - component: {fileID: 5696611534735231236}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -366,7 +366,7 @@ GameObject:
   - component: {fileID: 125683585756905593}
   - component: {fileID: 1936666482170860192}
   - component: {fileID: 7159718575531215494}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -471,7 +471,7 @@ GameObject:
   - component: {fileID: 1660588650955367095}
   - component: {fileID: 5468568148488260091}
   - component: {fileID: 3146998278220780890}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -576,7 +576,7 @@ GameObject:
   - component: {fileID: 4895981759207237379}
   - component: {fileID: 4423771631139782907}
   - component: {fileID: 1334073155417413595}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -681,7 +681,7 @@ GameObject:
   - component: {fileID: 1159847471671977749}
   - component: {fileID: 7983792523039194685}
   - component: {fileID: 2611791510048957719}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -846,6 +846,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Table
+      objectReference: {fileID: 0}
+    - target: {fileID: 2881029655034923456, guid: 5a6aeeef23445483388d7e22dc5b2915,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3389069294192001966, guid: 5a6aeeef23445483388d7e22dc5b2915,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5506626418804752585, guid: 5a6aeeef23445483388d7e22dc5b2915,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045953272534544098, guid: 5a6aeeef23445483388d7e22dc5b2915,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8825607207687204811, guid: 5a6aeeef23445483388d7e22dc5b2915,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

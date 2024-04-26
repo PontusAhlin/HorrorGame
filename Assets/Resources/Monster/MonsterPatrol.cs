@@ -12,7 +12,8 @@ public class enemyAiControl : MonoBehaviour
     static private GameObject playerObject;
     //GameObject player;
     public Transform playerTransform; // Reference to the player's transform
-    public float detectionRange = 10f; // Detection range of the monster
+    public float killRange = 10f; // Detection range of the monster
+    public float huntRange = 100f; 
     public LayerMask layersToHit; // Layer mask to detect obstacles between the monster and the player
 
 
@@ -115,21 +116,28 @@ public class enemyAiControl : MonoBehaviour
 
         // Cast a ray from the monster towards the player
     
-    if (Physics.Raycast(ray, out RaycastHit hitted, detectionRange,layersToHit))
+    if (Physics.Raycast(ray, out RaycastHit killHit, killRange,layersToHit))
         {
             // Check if the ray hits the player
-            if (hitted.collider.gameObject.name.Equals("Character & Camera")) {
-                Debug.Log("jumpscare shouldve happened");
+            if (killHit.collider.gameObject.name.Equals("Character & Camera")) {
                 ChangeScene("JumpScare");
             }
-            Debug.Log(hitted.collider.gameObject.name + " was hit!");
+            Debug.Log(killHit.collider.gameObject.name + " was hit!");
+
+        }
+
+    if (Physics.Raycast(ray, out RaycastHit huntHit, huntRange,layersToHit))
+        {
+            // Check if the ray hits the player
+            if (huntHit.collider.gameObject.name.Equals("Character & Camera")) {
+                destPoint = huntHit.point;
+                walkPointSet = true;
+
+            }
+            Debug.Log(huntHit.collider.gameObject.name + " was hit!");
 
         }
     }
-
-    
-
-
 
     void PlayerDeath()
     {

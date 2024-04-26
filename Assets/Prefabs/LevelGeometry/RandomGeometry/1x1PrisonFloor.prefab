@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3300141169854820832}
   - component: {fileID: 3161749338605623871}
   - component: {fileID: 6543544915003618406}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 4372979206118693379}
   - component: {fileID: 6262396368403952042}
   - component: {fileID: 436414606693480901}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 2213003799355727669}
   - component: {fileID: 3199824039977101199}
   - component: {fileID: 7014112969644392509}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BedFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -329,7 +329,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4452495776938561807}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 1x1PrisonFloor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -367,7 +367,7 @@ GameObject:
   - component: {fileID: 9111824935510361690}
   - component: {fileID: 7263998810141419329}
   - component: {fileID: 1468888844757539039}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -474,7 +474,7 @@ GameObject:
   - component: {fileID: 5288060408557005922}
   - component: {fileID: 8104997038145654831}
   - component: {fileID: 7658535945845526282}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -581,7 +581,7 @@ GameObject:
   - component: {fileID: 5239193728930819209}
   - component: {fileID: 5352055884488666396}
   - component: {fileID: 1620411487885175179}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -685,7 +685,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1144526777044242102}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PrisonBed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -720,6 +720,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4452495776938561807}
     m_Modifications:
+    - target: {fileID: 702187826173541927, guid: fc6fc681e880f47d986b4b12df59c9c6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 875446396115378672, guid: fc6fc681e880f47d986b4b12df59c9c6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1101433271523836951, guid: fc6fc681e880f47d986b4b12df59c9c6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1668380442320734208, guid: fc6fc681e880f47d986b4b12df59c9c6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1924353132842644524, guid: fc6fc681e880f47d986b4b12df59c9c6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -770,10 +790,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 5947261293297134588, guid: fc6fc681e880f47d986b4b12df59c9c6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6974951648948650458, guid: fc6fc681e880f47d986b4b12df59c9c6,
         type: 3}
       propertyPath: m_Name
       value: Chair
+      objectReference: {fileID: 0}
+    - target: {fileID: 6974951648948650458, guid: fc6fc681e880f47d986b4b12df59c9c6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7286307072588030875, guid: fc6fc681e880f47d986b4b12df59c9c6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -849,6 +884,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: TexturedTable
       objectReference: {fileID: 0}
+    - target: {fileID: 2881029655034923456, guid: 5a6aeeef23445483388d7e22dc5b2915,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3389069294192001966, guid: 5a6aeeef23445483388d7e22dc5b2915,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5506626418804752585, guid: 5a6aeeef23445483388d7e22dc5b2915,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045953272534544098, guid: 5a6aeeef23445483388d7e22dc5b2915,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8825607207687204811, guid: 5a6aeeef23445483388d7e22dc5b2915,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -922,6 +982,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: 1x1CellFloor
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 079335757f7134ed1accc6102ee2934b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
