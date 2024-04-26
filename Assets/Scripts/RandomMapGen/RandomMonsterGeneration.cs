@@ -16,6 +16,7 @@ public class RandomMonsterGeneration : MonoBehaviour
     int mapOffsetZ = 0;
     [SerializeField]
     int xCoord, zCoord;
+    private int safeArea = 1;
     void Start()
     {
         if(CurrentMonsterAmount < MonsterAmount){
@@ -32,9 +33,10 @@ public class RandomMonsterGeneration : MonoBehaviour
         Debug.Log("Finished Coroutine at timestamp : " + Time.time);
         xCoord = Random.Range(0, gameObject.GetComponent<RandomMapHandler>().MapWidth);
         zCoord = Random.Range(0, gameObject.GetComponent<RandomMapHandler>().MapHeight);
-        while(randscript.gridHandler[xCoord,zCoord] == RandomMapHandler.Grid.EMPTY &&
-        !(xCoord < gameObject.GetComponent<RandomMapHandler>().MapWidth/2 + 1 && xCoord > gameObject.GetComponent<RandomMapHandler>().MapWidth/2 - 1 &&
-        zCoord < gameObject.GetComponent<RandomMapHandler>().MapHeight/2 + 1 && zCoord > gameObject.GetComponent<RandomMapHandler>().MapHeight/2 - 1)){
+
+        while(randscript.gridHandler[xCoord,zCoord] == RandomMapHandler.Grid.EMPTY ||
+        (xCoord < (gameObject.GetComponent<RandomMapHandler>().MapWidth - 1)/2 + safeArea && xCoord > (gameObject.GetComponent<RandomMapHandler>().MapWidth - 1)/2 - safeArea &&
+        zCoord < (gameObject.GetComponent<RandomMapHandler>().MapHeight - 1)/2 + safeArea && zCoord > (gameObject.GetComponent<RandomMapHandler>().MapHeight - 1)/2 - safeArea)){
             xCoord = Random.Range(0, gameObject.GetComponent<RandomMapHandler>().MapWidth);
             zCoord = Random.Range(0, gameObject.GetComponent<RandomMapHandler>().MapHeight);
         }
