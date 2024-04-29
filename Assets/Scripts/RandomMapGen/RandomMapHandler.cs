@@ -34,6 +34,9 @@ public class RandomMapHandler : MonoBehaviour
     public List<GameObject> Doorways = new List<GameObject>();
     [Tooltip("list of all navmeshes in ORDER: 1x1, 2x1, 2x2, doorway")]
     public List<GameObject> Navmeshes = new List<GameObject>();
+    [Tooltip("list of all door prefabs that will generate in doorways")]
+    public List<GameObject> Doors = new List<GameObject>();
+
     
 
     public enum Grid
@@ -70,6 +73,8 @@ public class RandomMapHandler : MonoBehaviour
     public float TwoByTwoChance = 0.50f;
     [Tooltip("(0 -> 1), this decides the percentage chance that 1x2 rooms will be generated when possible")]
     public float TwoByOneChance = 0.50f;
+    [Tooltip("(0 -> 1), this decides the percentage chance that doorways will have a door")]
+    public float DoorChance = 0.50f;
     [Tooltip("this is the gameobject which the entire map will be parented to")]
     public GameObject RandomMapParent;
     [Tooltip("this is the gameobject that navmeshes will be parented to (VERY IMPORTANT)")]
@@ -159,6 +164,16 @@ public class RandomMapHandler : MonoBehaviour
                 new Vector3(xPosition, 1 , zPosition),
                 Quaternion.Euler(0, yRotation, 0)
                 ).transform.SetParent(NavmeshParent.transform, false);
+
+                //add doorway
+                if (UnityEngine.Random.value < DoorChance && (yRotation != 180f) && (yRotation != 270f)) //this makes it so they only generate N and E to prevent overlapping doors
+                {
+                    Instantiate(
+                    Doors[UnityEngine.Random.Range(0,Doors.Count)], //THIS IS TEMPORARY BECAUSE I DON'T THINK WE'LL HAVE DOORS CORRESPOND TO ROOMTYPES
+                    new Vector3(xPosition, 0 , zPosition),
+                    Quaternion.Euler(0, yRotation, 0)
+                    ).transform.SetParent(NavmeshParent.transform, false);
+                }
             }
         else
             prefab = Walls[prefabIndex];
