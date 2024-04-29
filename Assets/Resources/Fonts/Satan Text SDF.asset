@@ -1415,10 +1415,10 @@ MonoBehaviour:
     m_Y: 508
     m_Width: 23
     m_Height: 40
-  - m_X: 166
-    m_Y: 231
-    m_Width: 59
-    m_Height: 3
+  - m_X: 288
+    m_Y: 221
+    m_Width: 735
+    m_Height: 802
   - m_X: 186
     m_Y: 231
     m_Width: 39
