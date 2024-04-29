@@ -10,7 +10,6 @@
     * Author(s): William Fridh
     */
 
-using UnityEditor.EditorTools;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
