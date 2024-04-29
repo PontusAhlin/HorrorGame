@@ -13,7 +13,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class loginScene : MonoBehaviour
+public class LoginScene : MonoBehaviour
 {
 
     [Tooltip("The scene to load when the user logs in.")]
@@ -43,25 +43,24 @@ public class loginScene : MonoBehaviour
         }
 
         // Set value of input to last used (stored).
-        //usernameInput.text = "Last Used Username";
+        usernameInput.text = Storage.GetUsername();
     }
 
     // Go Live
-    public void goLive()
+    public void GoLive()
     {
+        SaveUsername();
         SceneManager.LoadScene(gameScene);
     }
 
     // Cancel
-    public void cancel()
+    public void Cancel()
     {
-        saveUsername();
         SceneManager.LoadScene(cancelScene);
     }
 
     // Save username
-    void saveUsername() {
-        // Add code here to store the username in a database or file.
-        // The data is found via usernameInput.text (I think).
+    private void SaveUsername() {
+        Storage.SetUsername(usernameInput.text);
     }
 }

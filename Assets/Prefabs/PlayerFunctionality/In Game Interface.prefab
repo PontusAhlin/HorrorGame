@@ -236,10 +236,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerScore: {fileID: 0}
-  likesCounterText: {fileID: 0}
-  viewersCounterText: {fileID: 0}
-  chatBox: {fileID: 0}
+  likesCounterText: {fileID: 5512513506599188771}
+  viewersCounterText: {fileID: 3479377440802638400}
+  chatBox: {fileID: 5267694598395479257}
   counterHolder: {fileID: 6490762707028026288}
+  usernameText: {fileID: 4785221850112769156}
 --- !u!1 &928981376951287987
 GameObject:
   m_ObjectHideFlags: 0
@@ -753,8 +754,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 82.005005, y: -36}
-  m_SizeDelta: {x: 164.01001, y: 0}
+  m_AnchoredPosition: {x: 29.57, y: -36}
+  m_SizeDelta: {x: 59.14, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &1860915638310097321
 CanvasRenderer:
@@ -871,7 +872,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 100.084885, y: 32}
+  m_AnchoredPosition: {x: 100.08491, y: 32}
   m_SizeDelta: {x: 88.33, y: 0}
   m_Pivot: {x: 0.5, y: 3}
 --- !u!222 &7379644222469412367
@@ -1000,7 +1001,7 @@ GameObject:
   - component: {fileID: 4807089278566998880}
   - component: {fileID: 4785221850112769156}
   m_Layer: 5
-  m_Name: Likes Text
+  m_Name: Username
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1053,7 +1054,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: HorrorStreamer
+  m_text: Fri
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
