@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Dry_Trees/Materials.meta
+guid: b3256f7f13045594fa3b2c6d634e85ce
+========
+guid: ff0f0e45eb6a84db59dd30d8d86be2c3
+>>>>>>>> aec754b6 (Added model for Ghost monster):Assets/Prefabs/LevelGeometry/GhostMonster.meta
+folderAsset: yes
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
