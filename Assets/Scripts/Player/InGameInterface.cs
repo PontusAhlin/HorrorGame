@@ -23,8 +23,10 @@ public class InGameInterface : MonoBehaviour
 	[SerializeField] TMPro.TextMeshProUGUI viewersCounterText;
 	[Tooltip("Chat box object. Automatically set to object name \"Chat Box\" if not set in Unity.")]
 	[SerializeField] GameObject chatBox;
-	[Tooltip("Counter holder object. Used to trigger recalculation of position (to resovle Unity bug).")]
-	[SerializeField] GameObject counterHolder;
+	[Tooltip("Top bar object. Used to trigger recalculation of position (to resovle Unity bug).")]
+	[SerializeField] GameObject topBar;
+	[Tooltip("Username text object where the given username will be displayed.")]
+	[SerializeField] TMPro.TextMeshProUGUI usernameText;
 	private bool chatBoxEnabled = false; // If the chat box is enabled or not. This depends on the chatBox object being set.
 
 	// Start is called before the first frame update
@@ -40,32 +42,14 @@ public class InGameInterface : MonoBehaviour
 
 		// Find the child GameObject with the name "Likes Text".
 		if (likesCounterText == null) {
-			Transform likesTextTransform = transform.Find("Likes Text");
-			if (likesTextTransform != null)
-			{
-				// Get the TextMeshPro component from the GameObject
-				likesCounterText = likesTextTransform.GetComponent<TMPro.TextMeshProUGUI>();
-			}
-			else
-			{
-				Debug.LogError("No child GameObject named 'Likes Text' found.");
-				DestroyDueToError();
-			}
+			Debug.LogError("Likes text object is not set.");
+			DestroyDueToError();
 		}
 
 		// Find the child GameObject with the name "Viewers Text".
 		if (viewersCounterText == null) {
-			Transform viewersTextTransform = transform.Find("Viewers Text");
-			if (viewersTextTransform != null)
-			{
-				// Get the TextMeshPro component from the GameObject
-				viewersCounterText = viewersTextTransform.GetComponent<TMPro.TextMeshProUGUI>();
-			}
-			else
-			{
-				Debug.LogError("No child GameObject named 'Viewers Text' found.");
-				DestroyDueToError();
-			}
+			Debug.LogError("Viewers text object is not set.");
+			DestroyDueToError();
 		}
 
 		// Find the child GameObject with the name "Chat Box".
@@ -82,12 +66,21 @@ public class InGameInterface : MonoBehaviour
 			}
 		}
 
+		// Find the child GameObject with the name "Username".
+		if (usernameText == null) {
+			Debug.LogError("Username text object is not set.");
+			DestroyDueToError();
+		}
+
 		// Nested function for convenience.
 		void DestroyDueToError()
 		{
 			Debug.LogError("Due to missing elemenet, this script will be destroyed.");
 			Destroy(this); // Destroy this script if the required component is not found.
 		}
+
+		// Set username.
+		usernameText.text = Storage.GetUsername();
 	}
 
 	// Update is called once per frame
@@ -121,10 +114,10 @@ public class InGameInterface : MonoBehaviour
 			viewersCounterText.text = ((int)playerScore.viewers).ToString();							// If less than 1000, just print the number.
 		}
 
-		// Enable and disable counter holder element to trigger recalculation of position (to resovle Unity bug).
-		if (counterHolder != null) {
-			counterHolder.SetActive(false);
-			counterHolder.SetActive(true);
+		// Enable and disable top bar element to trigger recalculation of position (to resovle Unity bug).
+		if (topBar != null) {
+			topBar.SetActive(false);
+			topBar.SetActive(true);
 		}
 	}
 

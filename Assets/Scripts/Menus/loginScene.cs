@@ -10,10 +10,11 @@
     * Author(s): William Fridh
     */
 
+using UnityEditor.EditorTools;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class loginScene : MonoBehaviour
+public class LoginScene : MonoBehaviour
 {
 
     [Tooltip("The scene to load when the user logs in.")]
@@ -22,6 +23,8 @@ public class loginScene : MonoBehaviour
     [SerializeField] TMPro.TMP_InputField usernameInput;
     [Tooltip("The scene to load upon cancel.")]
     [SerializeField] string cancelScene;
+    [Tooltip("The error box object.")]
+    [SerializeField] GameObject errorBox;
 
     // Start is called before the first frame update
     void Start()
@@ -43,25 +46,41 @@ public class loginScene : MonoBehaviour
         }
 
         // Set value of input to last used (stored).
-        //usernameInput.text = "Last Used Username";
+        usernameInput.text = Storage.GetUsername();
+
+        // Disable error box.
+        errorBox.SetActive(false);
     }
 
     // Go Live
-    public void goLive()
+    public void GoLive()
     {
+        if (usernameInput.text == "")
+        {
+            errorBox.SetActive(true);
+            TMPro.TextMeshProUGUI textComponent = errorBox.GetComponentInChildren<TMPro.TextMeshProUGUI>();
+            textComponent.text = "Please enter a username.";
+            return;
+        }
+        if (usernameInput.text.Length < 3)
+        {
+            errorBox.SetActive(true);
+            TMPro.TextMeshProUGUI textComponent = errorBox.GetComponentInChildren<TMPro.TextMeshProUGUI>();
+            textComponent.text = "Username is too short.";
+            return;
+        }
+        SaveUsername();
         SceneManager.LoadScene(gameScene);
     }
 
     // Cancel
-    public void cancel()
+    public void Cancel()
     {
-        saveUsername();
         SceneManager.LoadScene(cancelScene);
     }
 
     // Save username
-    void saveUsername() {
-        // Add code here to store the username in a database or file.
-        // The data is found via usernameInput.text (I think).
+    private void SaveUsername() {
+        Storage.SetUsername(usernameInput.text);
     }
 }
