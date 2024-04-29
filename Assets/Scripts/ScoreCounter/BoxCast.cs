@@ -1,3 +1,15 @@
+/**
+    *   
+    * This script connects to the main camera 
+    * so that when you look at a monster you
+    * generate a score. A prerequisite is
+    * MonsterGenerateViewers.cs and PlayerScore.cs
+    * which generates the score.
+    *
+    * Authors: Pontus Åhlin
+*/
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,9 +35,18 @@ public class BoxCast : MonoBehaviour
     public LayerMask layerMask;
 
     public Quaternion boxOrientation;
-    public Vector3 halfBox;
+    public Vector3 halfBox; 
 
-    private float viewerAddAmntTotal;
+
+    public List<GameObject> spawnedMonsters = new List<GameObject>();
+    public List<GameObject> curWatchingMonster = new List<GameObject>();
+    List<MonsterGenerateViewers> monsterInFov = new List<MonsterGenerateViewers>();
+    private List<GameObject> seenMonsters = new List<GameObject>();
+
+
+    private MonsterGenerateViewers monsterComponents; 
+
+
 
     void FixedUpdate(){
         //Sets the players position and direction continuisly where the player looks 
@@ -34,10 +55,8 @@ public class BoxCast : MonoBehaviour
         boxOrientation = transform.rotation;
         //print(boxOrientation);
 
-
-        //Resets if a monster isn't in the field of view
-        MonsterGenerateViewers.inFieldOfView = false;
-        viewerAddAmntTotal = 0.0f;
+        //MonsterGenerateViewers monsterGenerate = GetComponent<MonsterGenerateViewers>();
+        
 
         /*
         // Clears the gameObject list each frame(Used for debugging)
@@ -48,14 +67,35 @@ public class BoxCast : MonoBehaviour
         //Gives us an array with everything our raycast box hits 
         RaycastHit[] hits = Physics.BoxCastAll(boxCastOffset, halfBox , playerDirection, boxOrientation , maxDistance, layerMask, QueryTriggerInteraction.UseGlobal);
 
-
         //List where all of the objects the boxCast can see  
         foreach (RaycastHit hit in hits){     
 
-            //If we we see something with the monster tag we inspect it 
-            if(hit.transform.gameObject.tag == "Monster" || hit.transform.gameObject.tag == "SpecialMonster"){
+            //GameObject of what currently hit in boxcast
+            GameObject hitObject = hit.collider.gameObject;
+            MonsterGenerateViewers monsterGenerates = hitObject.GetComponent<MonsterGenerateViewers>();
+
+
+            for(int i = 0; i < monsterInFov.Count; i++){
+                monsterInFov[i].inFieldOfView = false;
+            }
+
+            //If not seen before, add monster to seen monsters list(used for random viewerRequest)
+            print(hit.transform.tag);
+            if(!seenMonsters.Contains(hitObject) && hit.transform.tag == "Monster"){
+                seenMonsters.Add(hitObject);
+            }
+
+            if(hit.transform.tag == "Monster"){
+                curWatchingMonster.Add(hitObject);
+            }
+
+            //seen and spawned monsters are checked so only their unqiue ID triggers pointed raycast. 
+            print(hit.collider.gameObject);
+            if(curWatchingMonster.Contains(hitObject)){
                 RaycastHit hitMonster;
-                
+
+                print("tag " + hit.transform.gameObject.tag);
+
                 //We look at the direction in which the player can see the monster
                 Vector3 monsterHitDirection = Vector3.Normalize(hit.point - transform.position);  
 
@@ -67,29 +107,19 @@ public class BoxCast : MonoBehaviour
                 //Makes a new separate raycast towards the monster, if there is something colliding with the raycast it doesn't register the monster.
                 //if statement means that we can see the monster
                 if(Physics.Raycast(transform.position, monsterHitDirection, out hitMonster , distanceBetween - 0.1f) == false){
-                    /* //Used for debugging
-                        currentHitObjects.Add(hit.transform.gameObject);
-                    */
 
-                    //Switch statement checks the tag of the current monster and adds the score to the total 
-                    switch(hit.transform.gameObject.tag)
-                    {
-                        case "Monster":
-                            MonsterGenerateViewers.inFieldOfView = true;
-                            viewerAddAmntTotal += 1.0f;
-                            break;
-
-                        case "SpecialMonster":
-                            MonsterGenerateViewers.inFieldOfView = true;
-                            viewerAddAmntTotal += 5.0f;
-                            break;
+                    
+                    print("cur watching " + hitObject);
+                    if(!monsterInFov.Contains(monsterGenerates)){
+                        monsterInFov.Add(monsterGenerates);
                     }
-                }    
+                    monsterGenerates.inFieldOfView = true;
+                    if(monsterGenerates.viewerRequest == true){
+                        monsterGenerates.viewerAddAmount = 5.0f; 
+                    }
+                }
             }
-        }    
-        
-        //Final change to the addition of score 
-        MonsterGenerateViewers.viewerAddAmount = viewerAddAmntTotal; 
+        }
 
     }
 
