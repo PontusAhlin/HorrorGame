@@ -34,16 +34,19 @@ public class loginScene : MonoBehaviour
             Debug.LogError("Cancel Scene not set in the inspector.");
             Destroy(this);
         }
+
+        // Set value of input to last used (stored).
+        //usernameInput.text = "Last Used Username";
     }
 
     // Go Live
-    void goLive()
+    public void goLive()
     {
         SceneManager.LoadScene(gameScene);
     }
 
     // Cancel
-    void cancel()
+    public void cancel()
     {
         saveUsername();
         SceneManager.LoadScene(cancelScene);
