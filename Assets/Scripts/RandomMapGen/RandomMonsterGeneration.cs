@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RandomMonsterGeneration : MonoBehaviour
 {
+    public GameObject Player;
     public GameObject MonsterPrefab;
     [Tooltip("How frequent monsters should be generated")]
     public int timeSeconds = 3;
@@ -12,10 +13,10 @@ public class RandomMonsterGeneration : MonoBehaviour
     private int CurrentMonsterAmount = 0;
     [Tooltip("Insert the RandomMapHandler script here pls")]
     public RandomMapHandler randscript;
-    int mapOffsetX = 0;
-    int mapOffsetZ = 0;
     [SerializeField]
     int xCoord, zCoord;
+    [SerializeField]
+    //private int safeArea = 0;
     void Start()
     {
         if(CurrentMonsterAmount < MonsterAmount){
@@ -30,11 +31,13 @@ public class RandomMonsterGeneration : MonoBehaviour
         yield return new WaitForSeconds(timeSeconds);
         //After we have waited 5 seconds print the time again.
         Debug.Log("Finished Coroutine at timestamp : " + Time.time);
-        xCoord = Random.Range(0, gameObject.GetComponent<RandomMapHandler>().MapWidth);
-        zCoord = Random.Range(0, gameObject.GetComponent<RandomMapHandler>().MapHeight);
-        while(randscript.gridHandler[xCoord,zCoord] == RandomMapHandler.Grid.EMPTY &&
-        !(xCoord < gameObject.GetComponent<RandomMapHandler>().MapWidth/2 + 1 && xCoord > gameObject.GetComponent<RandomMapHandler>().MapWidth/2 - 1 &&
-        zCoord < gameObject.GetComponent<RandomMapHandler>().MapHeight/2 + 1 && zCoord > gameObject.GetComponent<RandomMapHandler>().MapHeight/2 - 1)){
+        xCoord = Random.Range(0, gameObject.GetComponent<RandomMapHandler>().MapWidth - 1);
+        zCoord = Random.Range(0, gameObject.GetComponent<RandomMapHandler>().MapHeight - 1);
+        while(randscript.gridHandler[xCoord,zCoord] == RandomMapHandler.Grid.EMPTY ||
+        (xCoord == Mathf.RoundToInt(Player.transform.position.x/gameObject.GetComponent<RandomMapHandler>().RoomSize)&& 
+        zCoord == Mathf.RoundToInt(Player.transform.position.z/gameObject.GetComponent<RandomMapHandler>().RoomSize))){
+            Debug.Log("x: " + xCoord);
+            Debug.Log("z: " + zCoord);
             xCoord = Random.Range(0, gameObject.GetComponent<RandomMapHandler>().MapWidth);
             zCoord = Random.Range(0, gameObject.GetComponent<RandomMapHandler>().MapHeight);
         }
