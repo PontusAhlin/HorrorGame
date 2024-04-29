@@ -33,7 +33,8 @@ Material:
         m_Scale: {x: 2, y: 10}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
-    m_Floats: []
+    m_Floats:
+    - _Metallic: 1
     m_Colors: []
   m_BuildTextureStacks: []
 --- !u!114 &2396614890635556360
