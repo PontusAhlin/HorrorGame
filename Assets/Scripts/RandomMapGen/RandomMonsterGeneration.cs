@@ -36,8 +36,6 @@ public class RandomMonsterGeneration : MonoBehaviour
         while(randscript.gridHandler[xCoord,zCoord] == RandomMapHandler.Grid.EMPTY ||
         (xCoord == Mathf.RoundToInt(Player.transform.position.x/gameObject.GetComponent<RandomMapHandler>().RoomSize)&& 
         zCoord == Mathf.RoundToInt(Player.transform.position.z/gameObject.GetComponent<RandomMapHandler>().RoomSize))){
-            Debug.Log("x: " + xCoord);
-            Debug.Log("z: " + zCoord);
             xCoord = Random.Range(0, gameObject.GetComponent<RandomMapHandler>().MapWidth);
             zCoord = Random.Range(0, gameObject.GetComponent<RandomMapHandler>().MapHeight);
         }
