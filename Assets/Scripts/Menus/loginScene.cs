@@ -1,8 +1,15 @@
+/**
+    * loginScene.cs
+    * This script is used to control the login scene and handle the
+    * user input for the username.
+    *
+    * TODO:
+    * - Add code to save the username to a database or file.
+    * - Add code to load the username from a database or file.
+    *
+    * Author(s): William Fridh
+    */
 
-
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.EditorTools;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
