@@ -13,7 +13,7 @@ public class ControlRoomButton : MonoBehaviour
     private float upperLowerDiff;
     public bool isPressed;
     private bool prevPressedState;
-    public AudioSource pressedSound;
+    public AudioSource pressedSound;    
     public AudioSource releasedSound;
     public UnityEvent onPressed;
     public UnityEvent onReleased;
