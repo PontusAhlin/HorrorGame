@@ -456,6 +456,8 @@ MonoBehaviour:
   - {fileID: 4098738801336719262, guid: 5df4158ec569dc643a794a640b8f8b77, type: 3}
   - {fileID: 4055001670401529941, guid: 2762c07815c86cb45b2ee9250fda9f36, type: 3}
   - {fileID: 9062866336837615491, guid: b390ffd34e3039141accf66f1465e8b9, type: 3}
+  Doors:
+  - {fileID: 8605882871198492074, guid: e5bab216db185424091cc5f77d837f33, type: 3}
   MapWidth: 5
   MapHeight: 5
   RoomSize: 50
@@ -467,6 +469,7 @@ MonoBehaviour:
   WaitTime: 0
   TwoByTwoChance: 0
   TwoByOneChance: 0.1
+  DoorChance: 0.5
   RandomMapParent: {fileID: 424695929}
   NavmeshParent: {fileID: 721380121}
   postMapgenScript: {fileID: 424695932}
@@ -519,7 +522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 656645222}
-  MonsterPrefab: {fileID: 8182396208055939415, guid: 183dfe7f4d0194a0884e929994c8eb59,
+  MonsterPrefab: {fileID: 8240662236359481035, guid: 6c16723a32642c24ba47efa9f41d9f78,
     type: 3}
   timeSeconds: 5
   MonsterAmount: 1
