@@ -9,7 +9,6 @@
 	* Author(s): William Fridh
 	*/
 
-using UnityEditor.EditorTools;
 using UnityEngine;
 
 public class InGameInterface : MonoBehaviour
