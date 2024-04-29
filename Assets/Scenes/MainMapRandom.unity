@@ -591,10 +591,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac3c5391c3fbead4abf039f5e72d5a94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SaiBallTester: {fileID: 0}
-  escapeDoor: {fileID: 0}
+  SaiBallTester: {fileID: 5963655803062015831, guid: 8064665bf60c04ab487287fa0816b01d,
+    type: 3}
+  escapeDoor: {fileID: 9147294279848740864, guid: c8a1c138a856a45119f6c3c1629be8b6,
+    type: 3}
   RandomMapParent: {fileID: 424695929}
-  randscript: {fileID: 0}
+  randscript: {fileID: 424695930}
 --- !u!114 &424695933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -607,6 +609,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68a9a2492eab242488278a940bd4afe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 656645222}
   MonsterPrefab: {fileID: 8182396208055939415, guid: 183dfe7f4d0194a0884e929994c8eb59,
     type: 3}
   timeSeconds: 5
@@ -941,7 +944,7 @@ PrefabInstance:
     - target: {fileID: 1401504665176257241, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 291.44388
+      value: 259.0762
       objectReference: {fileID: 0}
     - target: {fileID: 1401504665176257241, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
@@ -1111,7 +1114,7 @@ PrefabInstance:
     - target: {fileID: 3737391430845731975, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 307.55887
+      value: 275.1912
       objectReference: {fileID: 0}
     - target: {fileID: 3737391430845731975, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
@@ -1329,11 +1332,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1392790394482818983, guid: 7348054b69bca433ab1c6fa3874ff409,
-        type: 3}
-      propertyPath: PlayerScore
-      value: 
-      objectReference: {fileID: 589702165}
     - target: {fileID: 2714574935288662778, guid: 7348054b69bca433ab1c6fa3874ff409,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1389,11 +1387,35 @@ PrefabInstance:
       propertyPath: m_Name
       value: Score Manager
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1392790394482818983, guid: 7348054b69bca433ab1c6fa3874ff409, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5554633828509903128, guid: 7348054b69bca433ab1c6fa3874ff409,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1960050472}
   m_SourcePrefab: {fileID: 100100000, guid: 7348054b69bca433ab1c6fa3874ff409, type: 3}
+--- !u!1 &1960050471 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5554633828509903128, guid: 7348054b69bca433ab1c6fa3874ff409,
+    type: 3}
+  m_PrefabInstance: {fileID: 1960050470}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1960050472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960050471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6609cbad7fda4f00b4b962fdd135e32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerScore: {fileID: 589702165}
 --- !u!1 &2103795466
 GameObject:
   m_ObjectHideFlags: 0
