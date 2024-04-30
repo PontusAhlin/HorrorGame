@@ -1762,7 +1762,7 @@ MonoBehaviour:
   MainMenu: {fileID: 1580686211}
   CreditsMenu: {fileID: 1329876258}
   HighscoreSceneName: Highscore
-  StartingSceneName: Entrance
+  StartingSceneName: Login
   playername: {fileID: 0}
 --- !u!4 &1211356482
 Transform:
