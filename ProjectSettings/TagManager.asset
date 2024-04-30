@@ -3,20 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Ball
-  - Monster
-  - SpecialMonster
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Player
+  - 
   - Water
   - UI
-  - Outline 1
-  - Outline 2
-  - navmesh
+  - 
+  - 
+  - 
   - 
   - 
   - 
