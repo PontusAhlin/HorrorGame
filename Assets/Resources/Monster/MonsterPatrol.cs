@@ -8,14 +8,13 @@ using UnityEngine.SceneManagement;
 
 public class enemyAiControl : MonoBehaviour
 {
-
     static private GameObject playerObject;
     //GameObject player;
     public Transform playerTransform; // Reference to the player's transform
     public float killRange = 10f; // Detection range of the monster
     public float huntRange = 100f; 
     public LayerMask layersToHit; // Layer mask to detect obstacles between the monster and the player
-
+    public string JumpscareScene;
 
     NavMeshAgent agent; // initialize agent object referring to scripted object
 
@@ -120,7 +119,7 @@ public class enemyAiControl : MonoBehaviour
         {
             // Check if the ray hits the player
             if (killHit.collider.gameObject.name.Equals("Character & Camera")) {
-                ChangeScene("JumpScare");
+                ChangeScene(JumpscareScene);
             }
             //.Log(killHit.collider.gameObject.name + " was hit!");
 

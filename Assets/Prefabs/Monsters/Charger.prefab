@@ -147,7 +147,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9501e4e8584af43059413dee01ba5068,
         type: 3}
       propertyPath: m_Name
-      value: Warrok W Kurniawan
+      value: Charger
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9501e4e8584af43059413dee01ba5068,
         type: 3}
@@ -266,6 +266,7 @@ MonoBehaviour:
   layersToHit:
     serializedVersion: 2
     m_Bits: 264
+  JumpscareScene: JumpscareCharger
   groundLayer:
     serializedVersion: 2
     m_Bits: 256

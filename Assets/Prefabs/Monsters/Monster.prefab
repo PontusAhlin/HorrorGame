@@ -261,6 +261,7 @@ MonoBehaviour:
   layersToHit:
     serializedVersion: 2
     m_Bits: 264
+  JumpscareScene: Jumpscare
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
