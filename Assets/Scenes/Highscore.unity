@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731713, g: 0.13414736, b: 0.12107852, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -262,8 +262,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 280, y: -150}
-  m_SizeDelta: {x: 560, y: 0}
+  m_AnchoredPosition: {x: 280, y: -120}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &297426695
 MonoBehaviour:
@@ -335,6 +335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MissingHighscoreTextHolder: {fileID: 1704544127}
+  HighscoreList: {fileID: 297426693}
   HighscoreListObjectPrefab: {fileID: 6724282144266075715, guid: 281acf2a478df2f4abd4bf17f7b647fc,
     type: 3}
   QuiteMenuSceneName: MainMenu
@@ -436,21 +437,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SC_MainMenu, Assembly-CSharp
-        m_MethodName: QuitButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
+      - m_Target: {fileID: 536551263}
+        m_TargetAssemblyTypeName: HighscoreMenu, Assembly-CSharp
+        m_MethodName: cancel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1524,7 +1513,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &1884827116
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1670,12 +1659,12 @@ PrefabInstance:
     - target: {fileID: 693017961504980592, guid: 281acf2a478df2f4abd4bf17f7b647fc,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 91.63
+      value: 395.35
       objectReference: {fileID: 0}
     - target: {fileID: 693017961504980592, guid: 281acf2a478df2f4abd4bf17f7b647fc,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 218.6
+      value: 218.59999
       objectReference: {fileID: 0}
     - target: {fileID: 693017961504980592, guid: 281acf2a478df2f4abd4bf17f7b647fc,
         type: 3}
@@ -1700,7 +1689,7 @@ PrefabInstance:
     - target: {fileID: 3163819428677102438, guid: 281acf2a478df2f4abd4bf17f7b647fc,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 342.56
+      value: 494.41998
       objectReference: {fileID: 0}
     - target: {fileID: 3163819428677102438, guid: 281acf2a478df2f4abd4bf17f7b647fc,
         type: 3}
@@ -1835,7 +1824,7 @@ PrefabInstance:
     - target: {fileID: 8560132825346156496, guid: 281acf2a478df2f4abd4bf17f7b647fc,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 281.16
+      value: 433.02
       objectReference: {fileID: 0}
     - target: {fileID: 8560132825346156496, guid: 281acf2a478df2f4abd4bf17f7b647fc,
         type: 3}

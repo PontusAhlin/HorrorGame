@@ -1,3 +1,8 @@
+/**
+    * MainMenuCode.cs
+    * Author(s): Arnob Sarker, William Fridh
+    */
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -7,6 +12,8 @@ public class SC_MainMenu : MonoBehaviour
 {
     public GameObject MainMenu;
     public GameObject CreditsMenu;
+    [Tooltip("The name of the scene to load when the player wants to see the highscore.")]
+    [SerializeField] string HighscoreSceneName;
     [SerializeField] public string StartingSceneName = "MainMapRandom";
     public InputField playername;
 
@@ -36,6 +43,19 @@ public class SC_MainMenu : MonoBehaviour
         // Show Main Menu
         MainMenu.SetActive(true);
         CreditsMenu.SetActive(false);
+    }
+
+    public void HighscoreButton()
+    {
+        // Show Highscore Menu
+        if (HighscoreSceneName != null && HighscoreSceneName != "")
+        {
+            SceneManager.LoadScene(HighscoreSceneName);
+        }
+        else
+        {
+            Debug.LogError("HighscoreSceneName is not set in the inspector, thus no navigation will be done.");
+        }
     }
 
     public void QuitButton()
