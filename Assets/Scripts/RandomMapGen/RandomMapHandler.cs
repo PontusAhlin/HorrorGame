@@ -37,6 +37,10 @@ public class RandomMapHandler : MonoBehaviour
     [Tooltip("list of all door prefabs that will generate in doorways")]
     public List<GameObject> Doors = new List<GameObject>();
 
+    //this is used to store all doors generated and spawn them AFTER the navmesh si generated, so monsters can path through doors
+    //xPosition, zPosition, yRotation
+    LinkedList<(float, float, float)> DoorList = new LinkedList<(float, float, float)>();
+
     
 
     public enum Grid
@@ -97,8 +101,19 @@ public class RandomMapHandler : MonoBehaviour
     //THIS FUNCTION RUNS AFTER MAPGEN IS DONE FOR HANDLING STUFF LIKE PLAYER & MONSTER PLACEMENT
     void PostMapgenFunction()
     {
-        Debug.Log("PostMapgenFunction ran");
         navScript.GenerateMesh();
+        while (DoorList.First != null)
+        {
+            float x, z, rot;
+            (x,z,rot) = DoorList.First.Value;
+            Instantiate
+            (
+                Doors[UnityEngine.Random.Range(0,Doors.Count)], //THIS IS TEMPORARY BECAUSE I DON'T THINK WE'LL HAVE DOORS CORRESPOND TO ROOMTYPES
+                new Vector3(x, 0 , z),
+                Quaternion.Euler(0, rot, 0)
+            ).transform.SetParent(NavmeshParent.transform, false);
+            DoorList.RemoveFirst();
+        }
         player.transform.position = RandomMapParent.transform.position + new Vector3((gridHandler.GetLength(0)/2)*RoomSize,5,(gridHandler.GetLength(1)/2)*RoomSize);
         postMapgenScript.Main();
     }
@@ -168,11 +183,7 @@ public class RandomMapHandler : MonoBehaviour
                 //add doorway
                 if (UnityEngine.Random.value < DoorChance && (yRotation != 180f) && (yRotation != 270f)) //this makes it so they only generate N and E to prevent overlapping doors
                 {
-                    Instantiate(
-                    Doors[UnityEngine.Random.Range(0,Doors.Count)], //THIS IS TEMPORARY BECAUSE I DON'T THINK WE'LL HAVE DOORS CORRESPOND TO ROOMTYPES
-                    new Vector3(xPosition, 0 , zPosition),
-                    Quaternion.Euler(0, yRotation, 0)
-                    ).transform.SetParent(NavmeshParent.transform, false);
+                    DoorList.AddFirst((xPosition, zPosition, yRotation));
                 }
             }
         else
