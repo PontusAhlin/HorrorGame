@@ -21,25 +21,20 @@ public class BoxCast : MonoBehaviour
     public List<GameObject> currentHitObjects = new List<GameObject>();
     */
     
-    [Tooltip("Connect this to your main camera")]
-    public Camera camera;
-
     //Init of detection components
     public float maxDistance;
     [Tooltip("The 'offset' from the player forward which the sphere will start from  ")]
     public float minDistance;
     private Vector3 boxCastOffset;
     private Vector3 playerDirection;
-    private float currentHitDistance;
     [Tooltip("DON'T TOUCH(BUT IF YOU DO SET IT BACK TO 'Default')")]
-    public LayerMask layerMask;
+    [SerializeField] LayerMask layerMask;
 
     public Quaternion boxOrientation;
     public Vector3 halfBox; 
 
 
     public List<GameObject> spawnedMonsters = new List<GameObject>();
-    public List<GameObject> curWatchingMonster = new List<GameObject>();
     List<MonsterGenerateViewers> monsterInFov = new List<MonsterGenerateViewers>();
     private List<GameObject> seenMonsters = new List<GameObject>();
 
@@ -59,10 +54,15 @@ public class BoxCast : MonoBehaviour
         
 
         /*
-        // Clears the gameObject list each frame(Used for debugging)
+        //Clears the gameObject list each frame(Used for debugging)
             currentHitObjects.Clear();
         */
         
+        //Essential to reset the in field of view to false for the monster gameobject when not looking at it  
+        for(int i = 0; i < monsterInFov.Count; i++){
+            monsterInFov[i].inFieldOfView = false;
+        }
+
 
         //Gives us an array with everything our raycast box hits 
         RaycastHit[] hits = Physics.BoxCastAll(boxCastOffset, halfBox , playerDirection, boxOrientation , maxDistance, layerMask, QueryTriggerInteraction.UseGlobal);
@@ -74,10 +74,8 @@ public class BoxCast : MonoBehaviour
             GameObject hitObject = hit.collider.gameObject;
             MonsterGenerateViewers monsterGenerates = hitObject.GetComponent<MonsterGenerateViewers>();
 
-
-            for(int i = 0; i < monsterInFov.Count; i++){
-                monsterInFov[i].inFieldOfView = false;
-            }
+            
+  
 
             //If not seen before, add monster to seen monsters list(used for random viewerRequest)
             print(hit.transform.tag);
@@ -85,13 +83,9 @@ public class BoxCast : MonoBehaviour
                 seenMonsters.Add(hitObject);
             }
 
-            if(hit.transform.tag == "Monster"){
-                curWatchingMonster.Add(hitObject);
-            }
 
             //seen and spawned monsters are checked so only their unqiue ID triggers pointed raycast. 
-            print(hit.collider.gameObject);
-            if(curWatchingMonster.Contains(hitObject)){
+            if(hit.transform.tag == "Monster"){
                 RaycastHit hitMonster;
 
                 print("tag " + hit.transform.gameObject.tag);
@@ -108,15 +102,22 @@ public class BoxCast : MonoBehaviour
                 //if statement means that we can see the monster
                 if(Physics.Raycast(transform.position, monsterHitDirection, out hitMonster , distanceBetween - 0.1f) == false){
 
-                    
-                    print("cur watching " + hitObject);
+                    //Part of resetting the FOV of monsters
                     if(!monsterInFov.Contains(monsterGenerates)){
                         monsterInFov.Add(monsterGenerates);
                     }
+
                     monsterGenerates.inFieldOfView = true;
+
+
+                    //User requests 
                     if(monsterGenerates.viewerRequest == true){
                         monsterGenerates.viewerAddAmount = 5.0f; 
                     }
+                    if(monsterGenerates.viewerRequest == false){
+                        monsterGenerates.viewerAddAmount = 1.0f; 
+                    }
+
                 }
             }
         }
