@@ -61,6 +61,12 @@ public class Storage
         return data.username;
     }
 
+    public static string[] GetTopFiveHighscore()
+    {
+        StorageData data = getData();
+        return data.topFiveHighscore;
+    }
+
     // =============================== SETTERS ===============================
     public static void SetUsername(string value)
     {
@@ -68,9 +74,58 @@ public class Storage
         data.username = value;
         SaveData(data);
     }
+
+    // =============================== ADDERS ===============================
+
+    /**
+        * Adds a new highscore to the top five highscore list.
+        * If the new highscore is not in the top five it will not be added.
+        *
+        * Returns true if the new highscore was added.
+        */
+    public static bool AddToTopFiveHighscore(string newHighscore)
+    {
+        bool newHighscoreAdded = false;
+        // Seperate given data.
+        int newScore = int.Parse(newHighscore.Split(':')[1]);
+        // Load data.
+        StorageData data = getData();
+        // Create a new array and clone content.
+        int newArrLength = data.topFiveHighscore.Length + 1;
+        if (newArrLength > 5)
+        {
+            newArrLength = 5;
+        }
+        string[] newArray = new string[newArrLength];
+        if (newArrLength == 1)
+        {
+            newArray[0] = newHighscore;
+        }
+        else
+        {
+            int i = 0;
+            for (int ii = 0; ii < newArrLength; ii++)
+            {
+                if (int.Parse(data.topFiveHighscore[i].Split(':')[1]) < newScore && !newHighscoreAdded)
+                {
+                    newArray[ii] = newHighscore;
+                    newHighscoreAdded = true;
+                }
+                else
+                {
+                    newArray[ii] = data.topFiveHighscore[i++];
+                }
+            }
+        }
+        // Save.
+        data.topFiveHighscore = newArray;
+        SaveData(data);
+        return newHighscoreAdded;
+    }
 }
 
 public class StorageData
 {
     public string username;
+    public string[] topFiveHighscore = new string[0];
 }
