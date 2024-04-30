@@ -47,6 +47,8 @@ public class MonsterGenerateViewers : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PlayerScore = Camera.main.GetComponent<PlayerScore>();
+
         // Perform all necessary checks to prevent errors.
         // Note that having the checks here means no checking while updating the
         // value of the components live.

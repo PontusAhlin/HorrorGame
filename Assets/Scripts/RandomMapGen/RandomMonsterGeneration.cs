@@ -26,7 +26,8 @@ public class RandomMonsterGeneration : MonoBehaviour
     [SerializeField]
     //private int safeArea = 0;
 
-    public BoxCast boxCast; 
+    //Reference to access BoxCast
+    public BoxCast boxCast;
 
 
     void Start()
@@ -55,8 +56,6 @@ public class RandomMonsterGeneration : MonoBehaviour
         }
         xCoord = xCoord * gameObject.GetComponent<RandomMapHandler>().RoomSize;
         zCoord = zCoord * gameObject.GetComponent<RandomMapHandler>().RoomSize;
-        //Spawning monster adds to monsterSpawned list in BoxCast.(Added by Pontus)
-        boxCast.spawnedMonsters.Add(MonsterPrefab);
 
         Instantiate(MonsterPrefab, new Vector3(xCoord, 2, zCoord), Quaternion.identity);
         CurrentMonsterAmount++;
