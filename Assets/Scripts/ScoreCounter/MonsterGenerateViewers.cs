@@ -47,6 +47,8 @@ public class MonsterGenerateViewers : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Sets the main camera to PlayerScore field.
+        //Otherwise spawning of monsters doesn't work
         PlayerScore = Camera.main.GetComponent<PlayerScore>();
 
         // Perform all necessary checks to prevent errors.
