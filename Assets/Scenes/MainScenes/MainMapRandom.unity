@@ -134,7 +134,7 @@ GameObject:
   m_Component:
   - component: {fileID: 163052178}
   - component: {fileID: 163052177}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Shader Handler (Volume)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -867,6 +867,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1563752926618483696, guid: 4d061403edf068243adb4e23aef23fd2,
+        type: 3}
+      propertyPath: m_VolumeLayerMask.m_Bits
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2207752836712570119, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
