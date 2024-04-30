@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 6487163524221522769}
   - component: {fileID: 6403963447906270799}
   m_Layer: 0
-  m_Name: Trigger
+  m_Name: EscapeDoorTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
