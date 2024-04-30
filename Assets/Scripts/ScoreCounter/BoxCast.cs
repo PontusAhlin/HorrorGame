@@ -4,15 +4,17 @@
     * so that when you look at a monster you
     * generate a score. A prerequisite is
     * MonsterGenerateViewers.cs and PlayerScore.cs
-    * which generates the score.
+    * which generates the score. This is mainly used for 
+    * detection of monsters. 
     *
-    * Authors: Pontus Åhlin
+    * Authors: Pontus Åhlin, William Fridh, Sai Chintapalli
 */
 
 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class BoxCast : MonoBehaviour
 {
@@ -33,13 +35,16 @@ public class BoxCast : MonoBehaviour
     public Quaternion boxOrientation;
     public Vector3 halfBox; 
 
+    private float doubleAddAmnt = 2.0f;
+
+
 
     public List<GameObject> spawnedMonsters = new List<GameObject>();
     List<MonsterGenerateViewers> monsterInFov = new List<MonsterGenerateViewers>();
     private List<GameObject> seenMonsters = new List<GameObject>();
 
+    public RandomMonsterGeneration randomMonsterGeneration;
 
-    private MonsterGenerateViewers monsterComponents; 
 
 
 
@@ -48,9 +53,19 @@ public class BoxCast : MonoBehaviour
         boxCastOffset = transform.position + transform.forward * minDistance;
         playerDirection = transform.forward;
         boxOrientation = transform.rotation;
-        //print(boxOrientation);
 
-        //MonsterGenerateViewers monsterGenerate = GetComponent<MonsterGenerateViewers>();
+        for(int i = 0; i < spawnedMonsters.Count; i++){
+
+            //Will access the last/most recent monster in the 
+            MonsterGenerateViewers monsterViewer = spawnedMonsters.Last().GetComponent<MonsterGenerateViewers>();
+            
+            if(spawnedMonsters.Count > randomMonsterGeneration.CurrentMonsterAmount){
+                monsterViewer.viewerAddAmount *= doubleAddAmnt;
+            }
+        }
+
+
+
         
 
         /*
@@ -106,23 +121,14 @@ public class BoxCast : MonoBehaviour
                     if(!monsterInFov.Contains(monsterGenerates)){
                         monsterInFov.Add(monsterGenerates);
                     }
-
                     monsterGenerates.inFieldOfView = true;
 
-
-                    //User requests 
-                    if(monsterGenerates.viewerRequest == true){
-                        monsterGenerates.viewerAddAmount = 5.0f; 
-                    }
-                    if(monsterGenerates.viewerRequest == false){
-                        monsterGenerates.viewerAddAmount = 1.0f; 
                     }
 
                 }
             }
         }
-
-    }
+    
 
     
     //Debugging by creating the raycast box and line towards the box
@@ -131,6 +137,15 @@ public class BoxCast : MonoBehaviour
         Debug.DrawLine(transform.position, boxCastOffset + playerDirection * maxDistance);
         Gizmos.DrawWireCube(boxCastOffset + playerDirection * maxDistance , halfBox/2);
     }
+
+    /** 
+        * ONLY NEWEST MONSTER GETS REQUESTED/GIVES MORE POINTS, 
+        * will get doubleded when a new monster spawns 
+        * 1st = 1 v/s, 2nd = 2 v/s, 3rd = 4 v/s etc. 
+        * They will always detoriate when a new monster spawns. 
+        * 
+    */
+
 
 
 

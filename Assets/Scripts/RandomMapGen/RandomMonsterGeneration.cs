@@ -1,3 +1,11 @@
+/**
+    * 
+    *
+    *
+    * Authors: Sai Chintapalli, Pontus Åhlin
+*/
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +18,7 @@ public class RandomMonsterGeneration : MonoBehaviour
     public int timeSeconds = 3;
     [Tooltip("How many monsters should be generated")]
     public int MonsterAmount = 3;
-    private int CurrentMonsterAmount = 0;
+    public int CurrentMonsterAmount = 0;
     [Tooltip("Insert the RandomMapHandler script here pls")]
     public RandomMapHandler randscript;
     [SerializeField]
@@ -19,6 +27,7 @@ public class RandomMonsterGeneration : MonoBehaviour
     //private int safeArea = 0;
 
     public BoxCast boxCast; 
+
 
     void Start()
     {

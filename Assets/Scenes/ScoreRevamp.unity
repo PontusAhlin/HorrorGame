@@ -391,6 +391,11 @@ PrefabInstance:
       propertyPath: halfBox.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2537804529035807778, guid: 4d061403edf068243adb4e23aef23fd2,
+        type: 3}
+      propertyPath: spawnedMonsters.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2646611541216202558, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
       propertyPath: m_Layer
