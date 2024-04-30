@@ -13,14 +13,17 @@ using UnityEngine;
 public class RandomMonsterGeneration : MonoBehaviour
 {
     public GameObject Player;
-    public GameObject MonsterPrefab;
+    [Tooltip("TRUE = spawn one of each monster first before randomizing. FALSE = truly random spawns")]
+    public bool SpawnOneOfEach;
+    [Tooltip("monsters in this list will be randomly picked to spawn")]
+    public List<GameObject> MonsterPrefabs = new List<GameObject>();
     [Tooltip("How frequent monsters should be generated")]
     public int timeSeconds = 3;
     [Tooltip("How many monsters should be generated")]
     public int MonsterAmount = 3;
     public int CurrentMonsterAmount = 0;
     [Tooltip("Insert the RandomMapHandler script here pls")]
-    public RandomMapHandler randscript;
+    public RandomMapHandler RandomMapScript;
     [SerializeField]
     int xCoord, zCoord;
     [SerializeField]
@@ -34,12 +37,11 @@ public class RandomMonsterGeneration : MonoBehaviour
     {
 
         if(CurrentMonsterAmount < MonsterAmount){
-            StartCoroutine(GenerateMonster());
+            StartCoroutine(GenerateMonster(0)); 
         }
     }
 
-    IEnumerator GenerateMonster(){
-
+    IEnumerator GenerateMonster(int monsterIndex){
         //Print the time of when the function is first called.
         Debug.Log("Started Coroutine at timestamp : " + Time.time);
         //yield on a new YieldInstruction that waits for 5 seconds.
@@ -48,7 +50,7 @@ public class RandomMonsterGeneration : MonoBehaviour
         Debug.Log("Finished Coroutine at timestamp : " + Time.time);
         xCoord = Random.Range(0, gameObject.GetComponent<RandomMapHandler>().MapWidth - 1);
         zCoord = Random.Range(0, gameObject.GetComponent<RandomMapHandler>().MapHeight - 1);
-        while(randscript.gridHandler[xCoord,zCoord] == RandomMapHandler.Grid.EMPTY ||
+        while(RandomMapScript.gridHandler[xCoord,zCoord] == RandomMapHandler.Grid.EMPTY ||
         (xCoord == Mathf.RoundToInt(Player.transform.position.x/gameObject.GetComponent<RandomMapHandler>().RoomSize)&& 
         zCoord == Mathf.RoundToInt(Player.transform.position.z/gameObject.GetComponent<RandomMapHandler>().RoomSize))){
             xCoord = Random.Range(0, gameObject.GetComponent<RandomMapHandler>().MapWidth);
@@ -57,10 +59,27 @@ public class RandomMonsterGeneration : MonoBehaviour
         xCoord = xCoord * gameObject.GetComponent<RandomMapHandler>().RoomSize;
         zCoord = zCoord * gameObject.GetComponent<RandomMapHandler>().RoomSize;
 
-        Instantiate(MonsterPrefab, new Vector3(xCoord, 2, zCoord), Quaternion.identity);
-        CurrentMonsterAmount++;
-        if(CurrentMonsterAmount < MonsterAmount){
-            StartCoroutine(GenerateMonster());
+        if (SpawnOneOfEach)
+        {
+            if (monsterIndex == MonsterPrefabs.Count)
+                SpawnOneOfEach = false;
+            Instantiate(MonsterPrefabs[monsterIndex], new Vector3(xCoord, 2, zCoord), Quaternion.identity);
+            CurrentMonsterAmount++;
+            if(CurrentMonsterAmount < MonsterAmount)
+            {
+                StartCoroutine(GenerateMonster(monsterIndex++));
+            
+            }
+        }
+        else
+        {
+            Instantiate(MonsterPrefabs[UnityEngine.Random.Range(0,MonsterPrefabs.Count)], new Vector3(xCoord, 2, zCoord), Quaternion.identity);
+            CurrentMonsterAmount++;
+            if(CurrentMonsterAmount < MonsterAmount)
+            {
+                StartCoroutine(GenerateMonster(0));
+            }
         }
     }
 }
+
