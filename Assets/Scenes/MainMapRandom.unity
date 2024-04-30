@@ -439,7 +439,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   One_OneFloors:
-  - {fileID: 5494139032220107365, guid: 5f0670f26f5d0413ca47d4f840aa2b11, type: 3}
   - {fileID: 8476333451016901077, guid: 5ee0307198ffd4463aaa05945741bef2, type: 3}
   Two_OneFloors:
   - {fileID: 910495619493306895, guid: 7cb577b787ef24d76888bde36e579ec6, type: 3}
@@ -470,8 +469,8 @@ MonoBehaviour:
   Randomness: 0.2
   WaitTime: 0
   TwoByTwoChance: 0
-  TwoByOneChance: 0.1
-  DoorChance: 0.5
+  TwoByOneChance: 0
+  DoorChance: 0
   RandomMapParent: {fileID: 424695929}
   NavmeshParent: {fileID: 721380121}
   postMapgenScript: {fileID: 424695932}
@@ -527,7 +526,7 @@ MonoBehaviour:
   MonsterPrefab: {fileID: 8182396208055939415, guid: 183dfe7f4d0194a0884e929994c8eb59,
     type: 3}
   timeSeconds: 5
-  MonsterAmount: 1
+  MonsterAmount: 0
   randscript: {fileID: 424695930}
   xCoord: 0
   zCoord: 0
@@ -858,7 +857,7 @@ PrefabInstance:
     - target: {fileID: 1401504665176257241, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 322.29944
+      value: 94.3866
       objectReference: {fileID: 0}
     - target: {fileID: 1401504665176257241, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
@@ -1028,7 +1027,7 @@ PrefabInstance:
     - target: {fileID: 3737391430845731975, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 322.29944
+      value: 94.3866
       objectReference: {fileID: 0}
     - target: {fileID: 3737391430845731975, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
