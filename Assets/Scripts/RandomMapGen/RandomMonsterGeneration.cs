@@ -1,3 +1,11 @@
+/**
+    * 
+    *
+    *
+    * Authors: Sai Chintapalli, Pontus Åhlin
+*/
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,21 +18,28 @@ public class RandomMonsterGeneration : MonoBehaviour
     public int timeSeconds = 3;
     [Tooltip("How many monsters should be generated")]
     public int MonsterAmount = 3;
-    private int CurrentMonsterAmount = 0;
+    public int CurrentMonsterAmount = 0;
     [Tooltip("Insert the RandomMapHandler script here pls")]
     public RandomMapHandler randscript;
     [SerializeField]
     int xCoord, zCoord;
     [SerializeField]
     //private int safeArea = 0;
+
+    //Reference to access BoxCast
+    public BoxCast boxCast;
+
+
     void Start()
     {
+
         if(CurrentMonsterAmount < MonsterAmount){
             StartCoroutine(GenerateMonster());
         }
     }
 
     IEnumerator GenerateMonster(){
+
         //Print the time of when the function is first called.
         Debug.Log("Started Coroutine at timestamp : " + Time.time);
         //yield on a new YieldInstruction that waits for 5 seconds.
@@ -41,6 +56,7 @@ public class RandomMonsterGeneration : MonoBehaviour
         }
         xCoord = xCoord * gameObject.GetComponent<RandomMapHandler>().RoomSize;
         zCoord = zCoord * gameObject.GetComponent<RandomMapHandler>().RoomSize;
+
         Instantiate(MonsterPrefab, new Vector3(xCoord, 2, zCoord), Quaternion.identity);
         CurrentMonsterAmount++;
         if(CurrentMonsterAmount < MonsterAmount){
