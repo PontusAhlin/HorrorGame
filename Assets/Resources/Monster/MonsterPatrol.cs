@@ -1,4 +1,4 @@
-using System.Collections;
+    using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
@@ -122,7 +122,7 @@ public class enemyAiControl : MonoBehaviour
             if (killHit.collider.gameObject.name.Equals("Character & Camera")) {
                 ChangeScene("JumpScare");
             }
-            Debug.Log(killHit.collider.gameObject.name + " was hit!");
+            //.Log(killHit.collider.gameObject.name + " was hit!");
 
         }
 
@@ -134,7 +134,7 @@ public class enemyAiControl : MonoBehaviour
                 walkPointSet = true;
 
             }
-            Debug.Log(huntHit.collider.gameObject.name + " was hit!");
+            //Debug.Log(huntHit.collider.gameObject.name + " was hit!");
 
         }
     }
