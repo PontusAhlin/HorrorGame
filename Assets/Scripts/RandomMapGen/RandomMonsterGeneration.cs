@@ -43,11 +43,11 @@ public class RandomMonsterGeneration : MonoBehaviour
 
     IEnumerator GenerateMonster(int monsterIndex){
         //Print the time of when the function is first called.
-        Debug.Log("Started Coroutine at timestamp : " + Time.time);
+        //Debug.Log("Started Coroutine at timestamp : " + Time.time);
         //yield on a new YieldInstruction that waits for 5 seconds.
-        yield return new WaitForSeconds(timeSeconds);
+        yield   return new WaitForSeconds(timeSeconds);
         //After we have waited 5 seconds print the time again.
-        Debug.Log("Finished Coroutine at timestamp : " + Time.time);
+        //Debug.Log("Finished Coroutine at timestamp : " + Time.time);
         xCoord = Random.Range(0, gameObject.GetComponent<RandomMapHandler>().MapWidth - 1);
         zCoord = Random.Range(0, gameObject.GetComponent<RandomMapHandler>().MapHeight - 1);
         while(RandomMapScript.gridHandler[xCoord,zCoord] == RandomMapHandler.Grid.EMPTY ||
@@ -61,13 +61,14 @@ public class RandomMonsterGeneration : MonoBehaviour
 
         if (SpawnOneOfEach)
         {
+            //Debug.Log(monsterIndex);
             if (monsterIndex == MonsterPrefabs.Count)
                 SpawnOneOfEach = false;
             Instantiate(MonsterPrefabs[monsterIndex], new Vector3(xCoord, 2, zCoord), Quaternion.identity);
             CurrentMonsterAmount++;
             if(CurrentMonsterAmount < MonsterAmount)
             {
-                StartCoroutine(GenerateMonster(monsterIndex++));
+                StartCoroutine(GenerateMonster(monsterIndex+1));
             
             }
         }

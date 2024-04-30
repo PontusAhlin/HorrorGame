@@ -530,7 +530,7 @@ MonoBehaviour:
   timeSeconds: 5
   MonsterAmount: 2
   CurrentMonsterAmount: 0
-  RandomMapScript: {fileID: 0}
+  RandomMapScript: {fileID: 424695930}
   xCoord: 0
   zCoord: 0
   boxCast: {fileID: 0}
