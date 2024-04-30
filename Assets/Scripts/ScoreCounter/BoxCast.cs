@@ -39,11 +39,12 @@ public class BoxCast : MonoBehaviour
 
 
 
-    public List<GameObject> spawnedMonsters = new List<GameObject>();
-    List<MonsterGenerateViewers> monsterInFov = new List<MonsterGenerateViewers>();
+    private List<GameObject> spawnedMonsters = new List<GameObject>();
+    private List<MonsterGenerateViewers> monsterInFov = new List<MonsterGenerateViewers>();
     private List<GameObject> seenMonsters = new List<GameObject>();
 
-    public RandomMonsterGeneration randomMonsterGeneration;
+    private RandomMonsterGeneration randomMonsterGeneration;
+    MonsterGenerateViewers monsterViewer;
 
 
 
@@ -93,7 +94,6 @@ public class BoxCast : MonoBehaviour
   
 
             //If not seen before, add monster to seen monsters list(used for random viewerRequest)
-            print(hit.transform.tag);
             if(!seenMonsters.Contains(hitObject) && hit.transform.tag == "Monster"){
                 seenMonsters.Add(hitObject);
             }
@@ -103,7 +103,8 @@ public class BoxCast : MonoBehaviour
             if(hit.transform.tag == "Monster"){
                 RaycastHit hitMonster;
 
-                print("tag " + hit.transform.gameObject.tag);
+                //Debugging 
+                //print("tag " + hit.transform.gameObject.tag);
 
                 //We look at the direction in which the player can see the monster
                 Vector3 monsterHitDirection = Vector3.Normalize(hit.point - transform.position);  
