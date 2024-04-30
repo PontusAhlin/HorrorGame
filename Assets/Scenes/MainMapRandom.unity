@@ -507,7 +507,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SaiBallTester: {fileID: 5963655803062015831, guid: 8064665bf60c04ab487287fa0816b01d,
     type: 3}
-  escapeDoor: {fileID: 9147294279848740864, guid: c8a1c138a856a45119f6c3c1629be8b6,
+  escapeDoor: {fileID: 4131765527472534327, guid: a7a68f776caed4d01924c638ba79d2d6,
     type: 3}
   RandomMapParent: {fileID: 424695929}
   randscript: {fileID: 424695930}

@@ -60,8 +60,8 @@ public class ControlRoomButton : MonoBehaviour
         prevPressedState = isPressed;
         pressedSound.pitch = 1;
         pressedSound.Play();
-        public GameObject EscapeDoorTrigger = GameObject.Find("EscapeDoorTrigger");
-        EscapeDoorTrigger.setActive(true);
+        GameObject EscapeDoorTrigger = GameObject.Find("EscapeDoorTrigger");
+        EscapeDoorTrigger.SetActive(true);
         //onPressed.Invoke();
 
 
