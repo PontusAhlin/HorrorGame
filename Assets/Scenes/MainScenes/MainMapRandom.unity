@@ -526,10 +526,12 @@ MonoBehaviour:
   MonsterPrefab: {fileID: 7669915599114108628, guid: eb3798cfecf32430592a742b605c99d7,
     type: 3}
   timeSeconds: 5
-  MonsterAmount: 0
+  MonsterAmount: 2
+  CurrentMonsterAmount: 0
   randscript: {fileID: 424695930}
   xCoord: 0
   zCoord: 0
+  boxCast: {fileID: 0}
 --- !u!114 &589702165 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5848892784253001097, guid: 4d061403edf068243adb4e23aef23fd2,
