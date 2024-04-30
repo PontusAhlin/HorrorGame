@@ -15,9 +15,8 @@ public class ControlRoomButton : MonoBehaviour
     private bool prevPressedState;
     public AudioSource pressedSound;    
     public AudioSource releasedSound;
-    public UnityEvent onPressed;
-    public UnityEvent onReleased;
-
+    //public UnityEvent onPressed;
+    //public UnityEvent onReleased;
     // Start is called before the first frame update
     void Start()
     {
@@ -61,13 +60,17 @@ public class ControlRoomButton : MonoBehaviour
         prevPressedState = isPressed;
         pressedSound.pitch = 1;
         pressedSound.Play();
-        onPressed.Invoke();
+        public GameObject EscapeDoorTrigger = GameObject.Find("EscapeDoorTrigger");
+        EscapeDoorTrigger.setActive(true);
+        //onPressed.Invoke();
+
+
     }
 
     void Released(){
         prevPressedState = isPressed;
         releasedSound.pitch = Random.Range(1.1f, 1.2f);
         releasedSound.Play();
-        onReleased.Invoke();
+        //onReleased.Invoke();
     }
 }
