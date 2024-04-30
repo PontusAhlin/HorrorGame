@@ -12,9 +12,9 @@ public class SC_MainMenu : MonoBehaviour
 {
     public GameObject MainMenu;
     public GameObject CreditsMenu;
-    [Tooltip("The name of the scene to load when the player wants to see the highscore.")]
     [SerializeField] string HighscoreSceneName;
-    [SerializeField] public string StartingSceneName = "MainMapRandom";
+    [Tooltip("The name of the scene to load when the player wants to see the highscore.")]
+    [SerializeField] public string StartingSceneName = "Entrance";
     public InputField playername;
 
     // Start is called before the first frame update

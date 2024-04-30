@@ -42,8 +42,14 @@ EditorBuildSettings:
     path: Assets/Scenes/Jumpscares/JumpScare.unity
     guid: f9f02b186c0f64fa0b5a5444d581d773
   - enabled: 1
-    path: Assets/Scenes/Jumpscares/JumpscareCharger.unity
+    path: Assets/Scenes/Login.unity
+    guid: 3493b44fcde55404a88cfc9ad6573d33
+  - enabled: 0
+    path: Assets/Scenes/JumpscareCharger.unity
     guid: d1fe074b92963464ea5131145a6503c3
+  - enabled: 1
+    path: Assets/Scenes/Entrance.unity
+    guid: 08384f85b93d64b95ad046c331f1fc78
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 6ee72d15cf39dd748a13eac57397b9af,
       type: 2}
