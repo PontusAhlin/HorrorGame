@@ -384,7 +384,7 @@ Animator:
   m_GameObject: {fileID: 919132148278930759}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 263f21c0ab95f4c9da3e06e84818d949, type: 3}
-  m_Controller: {fileID: 9100000, guid: b4ae3eedb8d054356b306db834b6746a, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2b99ce7f915e0684ab00e59dcbbc418d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3234,7 +3234,8 @@ MonoBehaviour:
   likesCounterText: {fileID: 4698785374678798493}
   viewersCounterText: {fileID: 4466492131185812478}
   chatBox: {fileID: 0}
-  counterHolder: {fileID: 6315951023796439566}
+  topBar: {fileID: 0}
+  usernameText: {fileID: 0}
 --- !u!1 &4089567568152730726
 GameObject:
   m_ObjectHideFlags: 0
