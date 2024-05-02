@@ -45,7 +45,7 @@ public class BoxCast : MonoBehaviour
     //References to other scripts
     RandomMonsterGeneration randomMonsterGeneration;
     MonsterGenerateViewers monsterViewer;
-    ChangeColour changeColour;
+    //ChangeColour changeColour;
 
 
     //Random indexing for monsterRequests 
