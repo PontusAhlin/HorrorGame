@@ -11,10 +11,9 @@ other scripts from here too.
 */
 
 public class PostMapgenScript : MonoBehaviour{
-    public GameObject SaiBallTester; //can be removed just for testing
     public GameObject escapeDoor;
     public GameObject RandomMapParent;
-    public RandomMapHandler randscript;
+    public RandomMapHandler RandomMapHandlerScript;
     private int mapWidth, mapHeight, roomSize, escapeX, escapeZ, searchOffset;
     string direction;
     public void Main()
@@ -27,7 +26,7 @@ public class PostMapgenScript : MonoBehaviour{
         while(!found){
             //down to up on left side
             for(int z = searchOffset; z<mapHeight - searchOffset; z++){
-                if(randscript.gridHandler[searchOffset, z] != RandomMapHandler.Grid.EMPTY && !found){
+                if(RandomMapHandlerScript.gridHandler[searchOffset, z] != RandomMapHandler.Grid.EMPTY && !found){
                     escapeX = searchOffset;
                     escapeZ = z;
                     found = true;
@@ -36,7 +35,7 @@ public class PostMapgenScript : MonoBehaviour{
             }
             //left to right on top side
             for(int x = searchOffset; x<mapWidth - searchOffset; x++){
-                if(randscript.gridHandler[x, mapHeight - searchOffset - 1] != RandomMapHandler.Grid.EMPTY && !found){
+                if(RandomMapHandlerScript.gridHandler[x, mapHeight - searchOffset - 1] != RandomMapHandler.Grid.EMPTY && !found){
                     escapeX = x;
                     escapeZ = mapHeight - searchOffset - 1;
                     found = true;
@@ -45,7 +44,7 @@ public class PostMapgenScript : MonoBehaviour{
             }
             //down to up on right side
             for(int z = searchOffset; z<mapHeight - searchOffset; z++){
-                if(randscript.gridHandler[mapWidth - searchOffset - 1, z] != RandomMapHandler.Grid.EMPTY && !found){
+                if(RandomMapHandlerScript.gridHandler[mapWidth - searchOffset - 1, z] != RandomMapHandler.Grid.EMPTY && !found){
                     escapeX = mapWidth - searchOffset - 1;
                     escapeZ = z;
                     found = true;
@@ -54,7 +53,7 @@ public class PostMapgenScript : MonoBehaviour{
             }
             //left to right on bottom side
             for(int x = searchOffset; x<mapWidth - searchOffset; x++){
-                if(randscript.gridHandler[x, searchOffset] != RandomMapHandler.Grid.EMPTY && !found){
+                if(RandomMapHandlerScript.gridHandler[x, searchOffset] != RandomMapHandler.Grid.EMPTY && !found){
                     escapeX = x;
                     escapeZ = searchOffset;
                     found = true;
@@ -63,8 +62,7 @@ public class PostMapgenScript : MonoBehaviour{
             }
             searchOffset++;    
         }
-        Debug.Log("the door coords: (" + escapeX + ", " + escapeZ + ")");
-        Instantiate(SaiBallTester, new Vector3(escapeX * roomSize, 0, escapeZ * roomSize), Quaternion.identity); //this can be deleted
+        //Debug.Log("the door coords: (" + escapeX + ", " + escapeZ + ")");
         if(direction == "left"){
             Instantiate(escapeDoor, new Vector3(escapeX * roomSize - roomSize/2 + 0.31f, 0, escapeZ * roomSize),
             Quaternion.Euler(0, 90, 0)); 
