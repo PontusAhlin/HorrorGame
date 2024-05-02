@@ -106,9 +106,6 @@ public class InGameInterface : MonoBehaviour
 			}
 			SetMessageVolume(audioVolume);
 		}
-
-		// Temporary chat message printing
-		InvokeRepeating("CallPrintMessageEveryFiveSeconds", 5.0f, 5.0f);
 	}
 
 	// Update is called once per frame
@@ -204,9 +201,4 @@ public class InGameInterface : MonoBehaviour
 			audioSource.Play();
 	}
 
-	int tmp = 0;
-	void CallPrintMessageEveryFiveSeconds() {
-		PrintMessage("Bananas #" + tmp.ToString(), "baseline_person_white_icon");
-		tmp++;
-	}
 }
