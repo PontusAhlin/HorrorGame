@@ -439,9 +439,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   One_OneFloors:
-  - {fileID: 3453717261446643645, guid: f1d1919491304a84e9de5b2618fba5be, type: 3}
   - {fileID: 2197518751371334308, guid: 5a0d9597e4fb24edbb27cf59ea8319b6, type: 3}
   - {fileID: 5494139032220107365, guid: 5f0670f26f5d0413ca47d4f840aa2b11, type: 3}
+  - {fileID: 3453717261446643645, guid: f1d1919491304a84e9de5b2618fba5be, type: 3}
   Two_OneFloors:
   - {fileID: 910495619493306895, guid: 7cb577b787ef24d76888bde36e579ec6, type: 3}
   - {fileID: 3210018799227719742, guid: 0aca72c55a7524f0b8c5a8f6690eb109, type: 3}
@@ -451,8 +451,8 @@ MonoBehaviour:
     type: 3}
   Walls:
   - {fileID: 8523536431361906366, guid: d1e83073e533230419d956b33fec45e9, type: 3}
-  - {fileID: 8523536431361906366, guid: d1e83073e533230419d956b33fec45e9, type: 3}
   - {fileID: 8665916550482828080, guid: ee735b25d5f974e0eb00f5f5827ee263, type: 3}
+  - {fileID: 8523536431361906366, guid: d1e83073e533230419d956b33fec45e9, type: 3}
   Doorways:
   - {fileID: 8523536431361906366, guid: 4a873812fbac4452eaabcea8e7215c02, type: 3}
   - {fileID: 8523536431361906366, guid: 4a873812fbac4452eaabcea8e7215c02, type: 3}
@@ -470,11 +470,11 @@ MonoBehaviour:
   WallGapSize: 0.001
   MaximumWalkers: 3
   TileCount: 0
-  FillPercentage: 0.2
-  Randomness: 0.5
+  FillPercentage: 0.25
+  Randomness: 0.2
   WaitTime: 0
-  TwoByTwoChance: 0.4
-  TwoByOneChance: 0.4
+  TwoByTwoChance: 0.25
+  TwoByOneChance: 0.25
   DoorChance: 0
   RandomMapParent: {fileID: 424695929}
   NavmeshParent: {fileID: 721380121}
@@ -529,6 +529,7 @@ MonoBehaviour:
   SpawnOneOfEach: 1
   MonsterPrefabs:
   - {fileID: 7669915599114108628, guid: eb3798cfecf32430592a742b605c99d7, type: 3}
+  - {fileID: 8182396208055939415, guid: 183dfe7f4d0194a0884e929994c8eb59, type: 3}
   timeSeconds: 15
   MonsterAmount: 2
   firstMonsterDelay: 5
@@ -1098,16 +1099,6 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5900719680896520903, guid: 4d061403edf068243adb4e23aef23fd2,
-        type: 3}
-      propertyPath: maxDistance
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 5900719680896520903, guid: 4d061403edf068243adb4e23aef23fd2,
-        type: 3}
-      propertyPath: minDistance
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 5961362493962424466, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -1258,8 +1249,7 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2537804529035807778, guid: 4d061403edf068243adb4e23aef23fd2, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1385,7 +1375,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9e53dc738bb0f4ac0a8d811a56906e7c, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0

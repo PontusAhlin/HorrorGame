@@ -7,6 +7,7 @@ public class ControlRoomButton : MonoBehaviour
 {
     public AudioSource pressedSound;    
     public AudioSource releasedSound;
+    public Material onMaterial;
 
     void OnTriggerEnter(Collider other){
         if (other.tag == "Player")
@@ -16,9 +17,11 @@ public class ControlRoomButton : MonoBehaviour
             //Debug.Log("trigger entered");
             GameObject EscapeDoorTrigger = GameObject.Find("/justDoor(withCam)(Clone)/EscapeDoorTrigger");
             GameObject LockedDoor = GameObject.Find("justDoor(withCam)(Clone)/LockedDoor");
-            //Debug.Log(EscapeDoorTrigger);
+            GameObject Bulb = GameObject.Find("1x1ControlRoomFloor(Clone)/ControlPanel/Bulb");
+            Debug.Log(Bulb);
             EscapeDoorTrigger.GetComponent<Collider>().isTrigger = true;
             LockedDoor.SetActive(false);
+            Bulb.GetComponent<MeshRenderer>().material = onMaterial;
             //onPressed.Invoke();
         }
 

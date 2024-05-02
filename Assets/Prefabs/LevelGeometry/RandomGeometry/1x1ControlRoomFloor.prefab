@@ -121,6 +121,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pressedSound: {fileID: 7606813837541958263}
   releasedSound: {fileID: 7606813837541958263}
+  onMaterial: {fileID: -2505642851634945670, guid: f396e3429a4864fc2ad497cb3ce5fe2c,
+    type: 3}
 --- !u!82 &7606813837541958263
 AudioSource:
   m_ObjectHideFlags: 0
@@ -476,8 +478,8 @@ Transform:
   m_GameObject: {fileID: 6459523415416080974}
   serializedVersion: 2
   m_LocalRotation: {x: -4.3297806e-17, y: 0.7071068, z: -0.7071068, w: 4.3297806e-17}
-  m_LocalPosition: {x: -0.33809337, y: 0.37416667, z: -0.51499754}
-  m_LocalScale: {x: 0.11965777, y: 0.026720129, z: 0.14553511}
+  m_LocalPosition: {x: -0.338, y: 0.322, z: -0.515}
+  m_LocalScale: {x: 0.2061105, y: 0.026720129, z: 0.27952927}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3092884363764811284}
@@ -616,8 +618,8 @@ Transform:
   m_GameObject: {fileID: 7451368364908586256}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.33809337, y: 0.37416667, z: -0.51499754}
-  m_LocalScale: {x: 0.077471256, y: 0.09566667, z: 0.287}
+  m_LocalPosition: {x: -0.33809337, y: 0.322, z: -0.51499754}
+  m_LocalScale: {x: 0.13344423, y: 0.18374696, z: 0.287}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3092884363764811284}
