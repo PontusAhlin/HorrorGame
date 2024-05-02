@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-/* BY: ALIN
+/* BY: ALIN, Pontus Åhlin
 this script has a function called GenerateMessage which returns one [1] string containing a thing that
 our chat would be saying at this point in time, based on some numbers corresponding to what the player
 is doing right now.
@@ -48,7 +48,7 @@ public class ChatGeneration : MonoBehaviour
         "KEEP FILMING IT",
         "FINALLY SOMETHING GOOD"
     };
-    List<string> RequestMessages = new List<string>
+    /*List<string> RequestMessages = new List<string>
     {
         "WHAT IS THAT",
         "RUN!!!",
@@ -60,9 +60,19 @@ public class ChatGeneration : MonoBehaviour
         "RUN RUN RUN",
         "KEEP FILMING IT",
         "FINALLY SOMETHING GOOD"
+    };*/
+
+    List<string> RequestMessages = new List<string>{
+        "I want to see the " + 12
     };
 
-    string GenerateMessage()
+
+    /*  The messages are sorted into three categories: Positive, Negative and request. 
+        The negative comments will be shown when no monster is seen for a while/low viewers.
+        The positive comments will be shown when you record a monster and have higher viewers.
+        The request comments will be shown when the viewers wants to see a before seen monster. 
+    */
+    public string GenerateMessage(string MessageType)
     {
         string message = null;
 
@@ -84,13 +94,30 @@ public class ChatGeneration : MonoBehaviour
         if it's over 0.20f+0.30f, we get a regular random chat message
         */
 
-
+        /*
         if (pickedMessagePointer < MonsterChance)
             message = MonsterMessages[UnityEngine.Random.Range(0,MonsterMessages.Count)];
         else if (pickedMessagePointer < (MonsterChance + RequestChance))
             message = RequestMessages[UnityEngine.Random.Range(0,RequestMessages.Count)];
         else 
             message = RegularMessages[UnityEngine.Random.Range(0,RegularMessages.Count)];
+        */
+
+
+        switch(MessageType){
+
+            case "Positive":
+                message = MonsterMessages[UnityEngine.Random.Range(0,MonsterMessages.Count)];
+                break;    
+
+            case "Negative":
+                message = RegularMessages[UnityEngine.Random.Range(0,RegularMessages.Count)];
+                break;
+
+            case "Request":
+                message = RequestMessages[UnityEngine.Random.Range(0,RequestMessages.Count)];
+                break;
+        }
 
         return message;
     }

@@ -46,18 +46,26 @@ public class BoxCast : MonoBehaviour
     RandomMonsterGeneration randomMonsterGeneration;
     MonsterGenerateViewers monsterViewer;
     //ChangeColour changeColour;
-
+    ChatGeneration chatGeneration;
+    PlayerScore playerScore;
 
     //Random indexing for monsterRequests 
     private int ranReqIndex;
 
     //Timer for the monster requests 
     public float viewerRequestTime;
+    //Timer for how often the chat should appear
+    public float chatTimeInterval;
 
+
+    //variable where viewer messages will be stored from ChatGeneration.cs     
+    public string viewerMsg;
 
     void Start(){
         //Request time is initilized to 60 seconds
         viewerRequestTime = 60.0f;
+        chatTimeInterval = 5.0f;
+
     }
 
 
@@ -67,12 +75,14 @@ public class BoxCast : MonoBehaviour
         playerDirection = transform.forward;
         boxOrientation = transform.rotation;
 
-        //Updating the timer
+
+        //Updating the timers
         viewerRequestTime -= Time.deltaTime;
+        chatTimeInterval -= Time.deltaTime; 
+
 
         //Handles the requests from viewers
         viewerRequest();
-
 
         /*
         //Clears the gameObject list each frame(Used for debugging)
@@ -134,10 +144,39 @@ public class BoxCast : MonoBehaviour
     }
     
 
-
     void viewerRequest(){
         //After a certain time a seen monster will reset their viewer multiplier and be requested by the chat. 
-        if(viewerRequestTime < 1.0f && seenMonsters.Count > 0){
+        //If nothing is seen in set amount of time the chat will be bored.
+        if(chatTimeInterval < 1.0f){
+            //Getting the viewercount from the PlayerScore.cs
+            GameObject pScore = GameObject.Find("Main Camera");
+            playerScore = pScore.GetComponent<PlayerScore>();    
+            
+            
+            for(int i = 0; i < monsterInFov.Count; i++){
+                if(monsterInFov[i].inFieldOfView == true || playerScore.viewers > 5){
+                    getChat();
+                    viewerMsg = chatGeneration.GenerateMessage("Positive");
+                    print(viewerMsg);
+                    chatTimeInterval = 5.0f;
+                }
+            }
+            /*WORK ON GETTING THE LOGIC WORKING FOR WATCHING ONE MONSTER AND GETTING TWO MESSAGES*/
+            /*if(monsterInFov[i].inFieldOfView == false && playerScore.viewers > 5){
+                getChat();
+                viewerMsg = chatGeneration.GenerateMessage("Negative");
+                print(viewerMsg);
+                //Resetting the timers
+                chatTimeInterval = 5.0f;
+            }*/
+        }
+
+        if(viewerRequestTime < 1.0f && seenMonsters.Count > 0 && chatTimeInterval < 2.0f){
+            //Message from ChatGeneration.cs
+            getChat();
+            viewerMsg = chatGeneration.GenerateMessage("Request");
+            print(viewerMsg);
+
             ranReqIndex = Random.Range(0,seenMonsters.Count);
             MonsterGenerateViewers reqMonster = seenMonsters[ranReqIndex].GetComponent<MonsterGenerateViewers>();
             reqMonster.mult = 1.0f;     
@@ -145,11 +184,7 @@ public class BoxCast : MonoBehaviour
             //seenMonster[ranReqIndex].gameObject.Colour
             print("I want to see the " + "PUT IN COLOUR OF MONSTER" + " " + seenMonsters[ranReqIndex].gameObject.name);
             viewerRequestTime = 60.0f;
-        }
-        //If we haven't seen a monster we reset the request time.  
-        if(viewerRequestTime < 0.5f){
-            print("Cmooon find a monsteeeer");
-            viewerRequestTime = 30.0f;
+            chatTimeInterval = 5.0f;
         }
     }
     
@@ -158,6 +193,12 @@ public class BoxCast : MonoBehaviour
         Gizmos.color = Color.red;
         Debug.DrawLine(transform.position, boxCastOffset + playerDirection * maxDistance);
         Gizmos.DrawWireCube(boxCastOffset + playerDirection * maxDistance , halfBox/2);
+    }
+
+
+    private void getChat(){
+        GameObject chatGenerationGameObject = GameObject.Find("ChatManager");
+        chatGeneration = chatGenerationGameObject.GetComponent<ChatGeneration>();
     }
 
 
