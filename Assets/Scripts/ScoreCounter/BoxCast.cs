@@ -56,7 +56,7 @@ public class BoxCast : MonoBehaviour
 
 
     void Start(){
-        //Request time is initilized to 30 seconds
+        //Request time is initilized to 60 seconds
         viewerRequestTime = 60.0f;
     }
 
