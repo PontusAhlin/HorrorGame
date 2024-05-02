@@ -22,7 +22,7 @@ public class ChatGeneration : MonoBehaviour
     public float RequestChance = 0.25f;
     [Tooltip("this is the monster GameObject whose EXACT NAME IN UNITY will be requested")]
     public GameObject MonsterObject;
-    List<string> RegularChat = new List<string>
+    List<string> RegularMessages = new List<string>
     {
         "This guy sucks",
         "hi is this the cooking stream",
@@ -35,12 +35,40 @@ public class ChatGeneration : MonoBehaviour
         "ill donate 50 ectoplasm if you scream at the top of your lungs rn",
         "I hope you're doing okay in there!!!!"
     };
+    List<string> MonsterMessages = new List<string>
+    {
+        "WHAT IS THAT",
+        "RUN!!!",
+        "poke it",
+        "you can clearly see its fake...",
+        "pls dont die",
+        "GHOSTLEAKS IS THE BEST HAHA",
+        "IS HE GHONNA DIE",
+        "RUN RUN RUN",
+        "KEEP FILMING IT",
+        "FINALLY SOMETHING GOOD"
+    };
+    List<string> RequestMessages = new List<string>
+    {
+        "WHAT IS THAT",
+        "RUN!!!",
+        "poke it",
+        "you can clearly see its fake...",
+        "pls dont die",
+        "GHOSTLEAKS IS THE BEST HAHA",
+        "IS HE GHONNA DIE",
+        "RUN RUN RUN",
+        "KEEP FILMING IT",
+        "FINALLY SOMETHING GOOD"
+    };
 
     string GenerateMessage()
     {
         string message = null;
 
-        message = RegularChat[UnityEngine.Random.Range(0,RegularChat.Count)];
+
+
+        message = RegularMessages[UnityEngine.Random.Range(0,RegularMessages.Count)];
 
 
         return message;
