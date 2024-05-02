@@ -1147,6 +1147,7 @@ MonoBehaviour:
   layersToHit:
     serializedVersion: 2
     m_Bits: 0
+  JumpscareScene: 
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -2767,7 +2768,7 @@ PrefabInstance:
     - target: {fileID: 4982748168232926638, guid: 2e4341b898ad64b3a86e5a9592ce57dc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 53.40415
+      value: 53.405453
       objectReference: {fileID: 0}
     - target: {fileID: 4982748168232926638, guid: 2e4341b898ad64b3a86e5a9592ce57dc,
         type: 3}
@@ -2777,27 +2778,27 @@ PrefabInstance:
     - target: {fileID: 4982748168232926638, guid: 2e4341b898ad64b3a86e5a9592ce57dc,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -24.668713
+      value: -24.870014
       objectReference: {fileID: 0}
     - target: {fileID: 4982748168232926638, guid: 2e4341b898ad64b3a86e5a9592ce57dc,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.99999285
       objectReference: {fileID: 0}
     - target: {fileID: 4982748168232926638, guid: 2e4341b898ad64b3a86e5a9592ce57dc,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4982748168232926638, guid: 2e4341b898ad64b3a86e5a9592ce57dc,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.0037801322
       objectReference: {fileID: 0}
     - target: {fileID: 4982748168232926638, guid: 2e4341b898ad64b3a86e5a9592ce57dc,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4982748168232926638, guid: 2e4341b898ad64b3a86e5a9592ce57dc,
         type: 3}
@@ -2807,7 +2808,7 @@ PrefabInstance:
     - target: {fileID: 4982748168232926638, guid: 2e4341b898ad64b3a86e5a9592ce57dc,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -0.433
       objectReference: {fileID: 0}
     - target: {fileID: 4982748168232926638, guid: 2e4341b898ad64b3a86e5a9592ce57dc,
         type: 3}
@@ -2824,6 +2825,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GhostMonster - Copy
       objectReference: {fileID: 0}
+    - target: {fileID: 7118089094910767946, guid: 2e4341b898ad64b3a86e5a9592ce57dc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7747866572334251126, guid: 2e4341b898ad64b3a86e5a9592ce57dc,
         type: 3}
       propertyPath: m_Enabled
@@ -2832,6 +2838,7 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 3535983614946078914, guid: 2e4341b898ad64b3a86e5a9592ce57dc, type: 3}
     - {fileID: 4623889392269862424, guid: 2e4341b898ad64b3a86e5a9592ce57dc, type: 3}
+    - {fileID: 7118089094910767946, guid: 2e4341b898ad64b3a86e5a9592ce57dc, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -2870,6 +2877,7 @@ MonoBehaviour:
     m_Bits: 264
   speed: 5
   MonsterTransform: {fileID: 1212042678}
+  rotationSpeed: 60
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -4717,3 +4725,5 @@ SceneRoots:
   - {fileID: 8818156656136970289}
   - {fileID: 1411872836}
   - {fileID: 570852375}
+  - {fileID: 404336865}
+  - {fileID: 1212042674}

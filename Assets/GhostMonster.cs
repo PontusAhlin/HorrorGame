@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class GhostMonster : MonoBehaviour
 {
-
+    private RandomMapHandler randomMapHandler;
     static private GameObject playerObject;
     //GameObject player;
     public Transform playerTransform; // Reference to the player's transform
@@ -19,6 +19,13 @@ public class GhostMonster : MonoBehaviour
     private float pace;
     public Transform MonsterTransform;
     Vector3 movementDirection;
+    public float rotationSpeed;
+    Vector3 rotation;
+    Vector3 direction;
+    int randomX;
+    int randomY;
+    
+
 
     NavMeshAgent agent; // initialize agent object referring to scripted object
 
@@ -41,11 +48,14 @@ public class GhostMonster : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameObject randomMapHandler = GameObject.Find("/RandomMapGeneration");
+        Debug.Log(randomMapHandler);
         pace = speed;
         agent = GetComponent<NavMeshAgent>(); // agent object corresponding to object that script is attributed to.
         GameObject playerObject = GameObject.Find("Character & Camera");
         //playerTransform = playerObject.transform; // Reference to the player's transform
-        
+        SearchForDest();
+       
     }
 
     // Update is called once per frame
@@ -57,6 +67,8 @@ public class GhostMonster : MonoBehaviour
         IsPlayerVisible();
 
         Patrol();
+        direction = destPoint - transform.position;
+        Rotate(rotationSpeed, MonsterTransform.forward, movementDirection);
 
         Animator.SetBool(isMoving, agent.velocity.magnitude < 0.01f);
     }
@@ -80,21 +92,33 @@ public class GhostMonster : MonoBehaviour
         else
         {
             Travel();
+            //Rotate(rotationSpeed, MonsterTransform.forward, movementDirection);
         }
         
     }
 
     void SearchForDest()
     {
-        Vector3 randomDirection = Random.insideUnitSphere * walkRange; /* picks a random 3D coordinate in 
-        in the range of the sphere (serialized as Range) */ 
+        /*
+        Vector3 randomDirection = Random.insideUnitSphere * walkRange; 
+         picks a random 3D coordinate in 
+        in the range of the sphere (serialized as Range) 
 
         randomDirection += transform.position; // add the current position to randomDirection
-        NavMesh.SamplePosition(randomDirection, out hit, walkRange, 1); /* find closest point on the navmesh to randomDirection
-         store this in hit */
+        NavMesh.SamplePosition(randomDirection, out hit, walkRange, 1); // find closest point on the navmesh to randomDirection
+         store this in hit 
         destPoint = hit.position; // set destination to hit
         Debug.Log(destPoint);
         walkPointSet = true; // now walkPointSet is true.
+        */
+
+        randomX = UnityEngine.Random.Range(0, randomMapHandler.MapWidth)*randomMapHandler.RoomSize;
+        randomY = UnityEngine.Random.Range(0, randomMapHandler.MapHeight)*randomMapHandler.RoomSize;
+        destPoint = new Vector3((float)randomX,0,(float)randomY);
+        Debug.Log(destPoint);
+        walkPointSet = true;    // now walkPointSet is true.
+        
+
 
     }
 
@@ -103,7 +127,7 @@ public class GhostMonster : MonoBehaviour
     void IsPlayerVisible()
     {
         // Calculate direction from the monster to the player
-        Vector3 direction = playerTransform.position - transform.position;
+        direction = playerTransform.position - transform.position;
         Ray ray = new Ray(transform.position, direction.normalized);
 
         // Cast a ray from the monster towards the player
@@ -157,32 +181,25 @@ public class GhostMonster : MonoBehaviour
     public void Travel() 
     {
         // destPoint
-        Debug.Log("movementdirection =" + movementDirection);
-        Debug.Log("destpoint =" + destPoint);
-        Debug.Log("destpointNormalized =" + destPoint.normalized);
-        Debug.Log("MonsterTransform.rotation =" + MonsterTransform.rotation);
+        
         movementDirection = destPoint.normalized;
-        /*
-        if(movementDirection != Vector3.zero)
-        {
-            playerTransform.forward = movementDirection;
-        }
-        */
-        Debug.Log("euler" + Quaternion.Euler(destPoint.normalized.x, destPoint.normalized.y, destPoint.normalized.z));
-        MonsterTransform.rotation = Quaternion.Euler(destPoint.normalized.x, destPoint.normalized.y, destPoint.normalized.z);
         MonsterTransform.position = Vector3.MoveTowards(MonsterTransform.position, destPoint, pace * Time.deltaTime);
         
+    }
 
-        /*
-        movementDirection = destPoint.normalized;
-
-        playerTransform.Translate(movementDirection * pace * Time.deltaTime, Space.World);
-
-        if (movementDirection != Vector3.zero)
+    public void Rotate(float rotationSpeed, Vector3 forward, Vector3 destdir)
+    {
+        rotation = new Vector3(0,rotationSpeed,0);
+        Quaternion rot = Quaternion.FromToRotation(forward, destdir);
+        if (rot.y > 0)
         {
-            playerTransform.forward = movementDirection;
+            transform.Rotate(rotation * Time.deltaTime);
         }
-        */
+
+        if (rot.y < 0)
+        {
+            MonsterTransform.Rotate(-rotation * Time.deltaTime);
+        }
     }
    
 
