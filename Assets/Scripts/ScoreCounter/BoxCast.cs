@@ -36,14 +36,14 @@ public class BoxCast : MonoBehaviour
     public Vector3 halfBox; 
 
     private float doubleAddAmnt = 2.0f;
+    int viewerRequest;
 
 
-
-    private List<GameObject> spawnedMonsters = new List<GameObject>();
+    public List<GameObject> spawnedMonsters = new List<GameObject>();
     private List<MonsterGenerateViewers> monsterInFov = new List<MonsterGenerateViewers>();
     private List<GameObject> seenMonsters = new List<GameObject>();
 
-    private RandomMonsterGeneration randomMonsterGeneration;
+    RandomMonsterGeneration randomMonsterGeneration;
     MonsterGenerateViewers monsterViewer;
 
 
@@ -55,6 +55,7 @@ public class BoxCast : MonoBehaviour
         playerDirection = transform.forward;
         boxOrientation = transform.rotation;
 
+        
         for(int i = 0; i < spawnedMonsters.Count; i++){
 
             //Will access the last/most recent monster in the 
@@ -138,15 +139,6 @@ public class BoxCast : MonoBehaviour
         Debug.DrawLine(transform.position, boxCastOffset + playerDirection * maxDistance);
         Gizmos.DrawWireCube(boxCastOffset + playerDirection * maxDistance , halfBox/2);
     }
-
-    /** 
-        * ONLY NEWEST MONSTER GETS REQUESTED/GIVES MORE POINTS, 
-        * will get doubleded when a new monster spawns 
-        * 1st = 1 v/s, 2nd = 2 v/s, 3rd = 4 v/s etc. 
-        * They will always detoriate when a new monster spawns. 
-        * 
-    */
-
 
 
 
