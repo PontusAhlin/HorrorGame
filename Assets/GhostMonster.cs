@@ -48,7 +48,7 @@ public class GhostMonster : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject randomMapHandler = GameObject.Find("/RandomMapGeneration");
+        randomMapHandler = GameObject.Find("/RandomMapGeneration").GetComponent<RandomMapHandler>();
         Debug.Log(randomMapHandler);
         pace = speed;
         agent = GetComponent<NavMeshAgent>(); // agent object corresponding to object that script is attributed to.
