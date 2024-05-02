@@ -29,9 +29,6 @@ public class RandomMonsterGeneration : MonoBehaviour
     [SerializeField]
     //private int safeArea = 0;
 
-    //Reference to access BoxCast
-    public BoxCast boxCast;
-
 
     void Start()
     {

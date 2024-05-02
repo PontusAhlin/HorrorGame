@@ -5,7 +5,7 @@
     * generate a score. A prerequisite is
     * MonsterGenerateViewers.cs and PlayerScore.cs
     * which generates the score. This is mainly used for 
-    * detection of monsters. 
+    * detection of monsters and viewer requests. 
     *
     * Authors: Pontus Åhlin, William Fridh, Sai Chintapalli
 */
@@ -15,6 +15,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+
 
 public class BoxCast : MonoBehaviour
 {
@@ -31,22 +32,32 @@ public class BoxCast : MonoBehaviour
     private Vector3 playerDirection;
     [Tooltip("DON'T TOUCH(BUT IF YOU DO SET IT BACK TO 'Default')")]
     [SerializeField] LayerMask layerMask;
-
+    
+    //BoxCast adjustments 
     public Quaternion boxOrientation;
     public Vector3 halfBox; 
 
-    private float doubleAddAmnt = 2.0f;
-    int viewerRequest;
 
-
-    public List<GameObject> spawnedMonsters = new List<GameObject>();
+    //Lists regarding the monsters 
     private List<MonsterGenerateViewers> monsterInFov = new List<MonsterGenerateViewers>();
-    private List<GameObject> seenMonsters = new List<GameObject>();
+    public List<GameObject> seenMonsters = new List<GameObject>();
 
+    //References to other scripts
     RandomMonsterGeneration randomMonsterGeneration;
     MonsterGenerateViewers monsterViewer;
 
 
+    //Random indexing for monsterRequests 
+    private int ranReqIndex;
+
+    //Timer for the monster requests 
+    public float viewerRequestTime;
+
+
+    void Start(){
+        //Request time is initilized to 30 seconds
+        viewerRequestTime = 60.0f;
+    }
 
 
     void FixedUpdate(){
@@ -55,20 +66,12 @@ public class BoxCast : MonoBehaviour
         playerDirection = transform.forward;
         boxOrientation = transform.rotation;
 
-        
-        for(int i = 0; i < spawnedMonsters.Count; i++){
+        //Updating the timer
+        viewerRequestTime -= Time.deltaTime;
 
-            //Will access the last/most recent monster in the 
-            MonsterGenerateViewers monsterViewer = spawnedMonsters.Last().GetComponent<MonsterGenerateViewers>();
-            
-            if(spawnedMonsters.Count > randomMonsterGeneration.CurrentMonsterAmount){
-                monsterViewer.viewerAddAmount *= doubleAddAmnt;
-            }
-        }
+        //Handles the requests from viewers
+        viewerRequest();
 
-
-
-        
 
         /*
         //Clears the gameObject list each frame(Used for debugging)
@@ -90,8 +93,6 @@ public class BoxCast : MonoBehaviour
             //GameObject of what currently hit in boxcast
             GameObject hitObject = hit.collider.gameObject;
             MonsterGenerateViewers monsterGenerates = hitObject.GetComponent<MonsterGenerateViewers>();
-
-            
   
 
             //If not seen before, add monster to seen monsters list(used for random viewerRequest)
@@ -127,11 +128,27 @@ public class BoxCast : MonoBehaviour
 
                     }
 
-                }
             }
         }
+    }
     
 
+    void viewerRequest(){
+        //After a certain time a seen monster will reset their viewer multiplier and be requested by the chat. 
+        if(viewerRequestTime < 1.0f && seenMonsters.Count > 0){
+            ranReqIndex = Random.Range(0,seenMonsters.Count);
+            MonsterGenerateViewers reqMonster = seenMonsters[ranReqIndex].GetComponent<MonsterGenerateViewers>();
+            reqMonster.mult = 1.0f;     
+
+            print("I want to see the " + "PUT IN COLOUR OF MONSTER" + " " + seenMonsters[ranReqIndex].gameObject.name);
+            viewerRequestTime = 60.0f;
+        }
+        //If we haven't seen a monster we reset the request time.  
+        if(viewerRequestTime < 0.5f){
+            print("Cmooon find a monsteeeer");
+            viewerRequestTime = 30.0f;
+        }
+    }
     
     //Debugging by creating the raycast box and line towards the box
     private void OnDrawGizmosSelected() {
