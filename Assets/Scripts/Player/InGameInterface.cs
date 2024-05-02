@@ -9,6 +9,7 @@
 	* Author(s): William Fridh
 	*/
 
+using System.IO;
 using System.Xml;
 using UnityEngine;
 
@@ -37,7 +38,14 @@ public class InGameInterface : MonoBehaviour
 	[Tooltip("Sprite folder. Example: \"Assets/Resources/Images\"")]
 	[SerializeField] string spriteFolder;
 
+	[Tooltip("Audio clip to play when a message is printed.")]
+	[SerializeField] AudioClip audioClip;
+
+	[Tooltip("Message volume.")]
+	[SerializeField] float audioVolume = 1.0f;
+
 	private TMPro.TextMeshProUGUI usernameText;
+	private AudioSource audioSource;
 
 	// Start is called before the first frame update
 	void Start()
@@ -90,6 +98,15 @@ public class InGameInterface : MonoBehaviour
 		if (usernameText != null)
 			usernameText.text = Storage.GetUsername();
 
+		// Set audio source.
+		if (audioClip != null) {
+			if (audioSource == null) {
+				audioSource = gameObject.AddComponent<AudioSource>();
+				audioSource.clip = audioClip;
+			}
+			SetMessageVolume(audioVolume);
+		}
+
 		// Temporary chat message printing
 		InvokeRepeating("CallPrintMessageEveryFiveSeconds", 5.0f, 5.0f);
 	}
@@ -98,6 +115,12 @@ public class InGameInterface : MonoBehaviour
 	void Update()
 	{
 		UpdateInGameInterface(); // Call main function of file.
+	}
+
+	// Set message volume.
+	void SetMessageVolume(float volume) {
+		if (audioSource != null)
+			audioSource.volume = volume;
 	}
 
 	/**
@@ -174,10 +197,11 @@ public class InGameInterface : MonoBehaviour
 		messageObjectAvatarComponent.sprite = spriteResources;
 
 		// Scroll to the top.
-		//Debug.Log(- (chatBox.GetComponent<RectTransform>().rect.height / 2));
-		//chatBox.transform.localPosition = new Vector3(0, 0, 0);
-		// Set PoY to 0.
 		chatBox.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0, 0);
+
+		// Play audio clip.
+		if (audioClip != null)
+			audioSource.Play();
 	}
 
 	int tmp = 0;
