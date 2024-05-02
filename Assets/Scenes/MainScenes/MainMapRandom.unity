@@ -439,8 +439,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   One_OneFloors:
-  - {fileID: 3453717261446643645, guid: f1d1919491304a84e9de5b2618fba5be, type: 3}
-  - {fileID: 5494139032220107365, guid: 5f0670f26f5d0413ca47d4f840aa2b11, type: 3}
+  - {fileID: 2197518751371334308, guid: 5a0d9597e4fb24edbb27cf59ea8319b6, type: 3}
   Two_OneFloors:
   - {fileID: 910495619493306895, guid: 7cb577b787ef24d76888bde36e579ec6, type: 3}
   Two_TwoFloors:
@@ -1375,7 +1374,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9e53dc738bb0f4ac0a8d811a56906e7c, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
