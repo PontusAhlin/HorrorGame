@@ -45,6 +45,7 @@ public class BoxCast : MonoBehaviour
     //References to other scripts
     RandomMonsterGeneration randomMonsterGeneration;
     MonsterGenerateViewers monsterViewer;
+    ChangeColour changeColour;
 
 
     //Random indexing for monsterRequests 
@@ -133,13 +134,15 @@ public class BoxCast : MonoBehaviour
     }
     
 
+
     void viewerRequest(){
         //After a certain time a seen monster will reset their viewer multiplier and be requested by the chat. 
         if(viewerRequestTime < 1.0f && seenMonsters.Count > 0){
             ranReqIndex = Random.Range(0,seenMonsters.Count);
             MonsterGenerateViewers reqMonster = seenMonsters[ranReqIndex].GetComponent<MonsterGenerateViewers>();
             reqMonster.mult = 1.0f;     
-
+            //ChangeColour colourMonster = seenMonsters[ranReqIndex].GetComponent<ChangeColour>(); //SHOULD BE PUT IN BELOW WHEN ADDED TO DEV
+            //seenMonster[ranReqIndex].gameObject.Colour
             print("I want to see the " + "PUT IN COLOUR OF MONSTER" + " " + seenMonsters[ranReqIndex].gameObject.name);
             viewerRequestTime = 60.0f;
         }
