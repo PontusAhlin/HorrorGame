@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4452495776938561807}
-  - component: {fileID: 958712697611358291}
   m_Layer: 8
   m_Name: 1x1PrisonFloor
   m_TagString: Untagged
@@ -385,6 +384,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7967050960172683166, guid: 5d18c129194d345bbb4f11e0b285f4c2,
+        type: 3}
+      propertyPath: m_Carve
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

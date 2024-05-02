@@ -440,16 +440,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   One_OneFloors:
   - {fileID: 3453717261446643645, guid: f1d1919491304a84e9de5b2618fba5be, type: 3}
+  - {fileID: 2197518751371334308, guid: 5a0d9597e4fb24edbb27cf59ea8319b6, type: 3}
+  - {fileID: 5494139032220107365, guid: 5f0670f26f5d0413ca47d4f840aa2b11, type: 3}
   Two_OneFloors:
   - {fileID: 910495619493306895, guid: 7cb577b787ef24d76888bde36e579ec6, type: 3}
   Two_TwoFloors:
   - {fileID: 3105231536723997877, guid: ad0c9b0be5e3b407b89ae11aec4d1afe, type: 3}
-  ControlRoomFloor: {fileID: 919132149155446097, guid: 079335757f7134ed1accc6102ee2934b,
+  ControlRoomFloor: {fileID: 8476333451016901077, guid: 5ee0307198ffd4463aaa05945741bef2,
     type: 3}
   Walls:
   - {fileID: 8523536431361906366, guid: d1e83073e533230419d956b33fec45e9, type: 3}
+  - {fileID: 8523536431361906366, guid: d1e83073e533230419d956b33fec45e9, type: 3}
   - {fileID: 8665916550482828080, guid: ee735b25d5f974e0eb00f5f5827ee263, type: 3}
   Doorways:
+  - {fileID: 8523536431361906366, guid: 4a873812fbac4452eaabcea8e7215c02, type: 3}
   - {fileID: 8523536431361906366, guid: 4a873812fbac4452eaabcea8e7215c02, type: 3}
   - {fileID: 8523536431361906366, guid: 4a873812fbac4452eaabcea8e7215c02, type: 3}
   Navmeshes:
@@ -463,9 +467,9 @@ MonoBehaviour:
   MapHeight: 10
   RoomSize: 50
   WallGapSize: 0.001
-  MaximumWalkers: 1
+  MaximumWalkers: 2
   TileCount: 0
-  FillPercentage: 0.5
+  FillPercentage: 0.2
   Randomness: 0.2
   WaitTime: 0
   TwoByTwoChance: 0
