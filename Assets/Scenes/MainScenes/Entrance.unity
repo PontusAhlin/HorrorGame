@@ -4939,7 +4939,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Move the phone in the direction you want to go
+  m_text: Point the phone in the direction you want to move
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c2a3e0423ce7342939a62ae495f10e33, type: 2}
   m_sharedMaterial: {fileID: 8098653943917566091, guid: c2a3e0423ce7342939a62ae495f10e33,
