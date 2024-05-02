@@ -464,17 +464,17 @@ MonoBehaviour:
   - {fileID: 9062866336837615491, guid: b390ffd34e3039141accf66f1465e8b9, type: 3}
   Doors:
   - {fileID: 8605882871198492074, guid: e5bab216db185424091cc5f77d837f33, type: 3}
-  MapWidth: 10
-  MapHeight: 10
+  MapWidth: 8
+  MapHeight: 8
   RoomSize: 50
   WallGapSize: 0.001
   MaximumWalkers: 3
   TileCount: 0
   FillPercentage: 0.25
-  Randomness: 0.2
+  Randomness: 0.5
   WaitTime: 0
-  TwoByTwoChance: 0.25
-  TwoByOneChance: 0.25
+  TwoByTwoChance: 0.5
+  TwoByOneChance: 0.5
   DoorChance: 0
   RandomMapParent: {fileID: 424695929}
   NavmeshParent: {fileID: 721380121}
