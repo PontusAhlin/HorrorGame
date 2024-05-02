@@ -9,6 +9,7 @@
 	* Author(s): William Fridh
 	*/
 
+using System.Xml;
 using UnityEngine;
 
 public class InGameInterface : MonoBehaviour
@@ -17,17 +18,26 @@ public class InGameInterface : MonoBehaviour
 	// Variables to be set in Unity.
 	[Tooltip("Player score script holding the amount of view and likes.")]
 	[SerializeField] PlayerScore playerScore;
-	[Tooltip("Likes counter text object. Automatically set to object name \"Likes Text\" if not set in Unity.")]
+
+	[Tooltip("Likes counter text object.")]
 	[SerializeField] TMPro.TextMeshProUGUI likesCounterText;
-	[Tooltip("Likes counter text object. Automatically set to object name \"Viewers Text\" if not set in Unity.")]
+
+	[Tooltip("Likes counter text object.")]
 	[SerializeField] TMPro.TextMeshProUGUI viewersCounterText;
-	[Tooltip("Chat box object. Automatically set to object name \"Chat Box\" if not set in Unity.")]
-	[SerializeField] GameObject chatBox;
+
+	[Tooltip("Chat box wrapper object.")]
+	[SerializeField] GameObject chatBoxWrapper;
+
 	[Tooltip("Top bar object. Used to trigger recalculation of position (to resovle Unity bug).")]
 	[SerializeField] GameObject topBar;
-	[Tooltip("Username text object where the given username will be displayed.")]
-	[SerializeField] TMPro.TextMeshProUGUI usernameText;
-	private bool chatBoxEnabled = false; // If the chat box is enabled or not. This depends on the chatBox object being set.
+
+    [Tooltip("Message prefab.")]
+    [SerializeField] GameObject chatMessagePrefab;
+
+	[Tooltip("Sprite folder. Example: \"Assets/Resources/Images\"")]
+	[SerializeField] string spriteFolder;
+
+	private TMPro.TextMeshProUGUI usernameText;
 
 	// Start is called before the first frame update
 	void Start()
@@ -53,34 +63,35 @@ public class InGameInterface : MonoBehaviour
 		}
 
 		// Find the child GameObject with the name "Chat Box".
-		if (chatBox == null) {
-			Transform chatBoxTransform = transform.Find("Chat Box");
-			if (chatBoxTransform != null)
-			{
-				// Get the GameObject component from the GameObject
-				chatBox = chatBoxTransform.gameObject;
-			}
-			else
-			{
-				Debug.LogWarning("No child GameObject named 'Chat Box' found. Thus the chat will be disabled.");
-			}
+		if (chatBoxWrapper == null) {
+			Debug.LogWarning("No chatBoxWrapper selected. Thus the chat will be disabled.");
+			DestroyDueToError();
 		}
 
 		// Find the child GameObject with the name "Username".
 		if (usernameText == null) {
-			Debug.LogError("Username text object is not set.");
-			DestroyDueToError();
+			Debug.LogWarning("Username text object is not set. No username will be displayed.");
 		}
+
+		// Check if sprite folder is set.
+		if (spriteFolder == null)
+			Debug.LogWarning("Sprite folder is not set. No chat messages will be displayed.");
+		else
+			spriteFolder = spriteFolder.Replace("Assets/", "").Replace("Resources/", ""); // Remove "Assets/" and "Resources/" from the path.
 
 		// Nested function for convenience.
 		void DestroyDueToError()
 		{
-			Debug.LogError("Due to missing elemenet, this script will be destroyed.");
+			Debug.LogError("InGameInterface: Due to missing elemenet, this script will be destroyed.");
 			Destroy(this); // Destroy this script if the required component is not found.
 		}
 
 		// Set username.
-		usernameText.text = Storage.GetUsername();
+		if (usernameText != null)
+			usernameText.text = Storage.GetUsername();
+
+		// Temporary chat message printing
+		InvokeRepeating("CallPrintMessageEveryFiveSeconds", 5.0f, 5.0f);
 	}
 
 	// Update is called once per frame
@@ -101,18 +112,8 @@ public class InGameInterface : MonoBehaviour
 		*/
 	void UpdateInGameInterface() {
 		// Update the likes and views counter.
-		if (playerScore.likes >= 1000) {
-			decimal likesRounded = System.Math.Round((decimal)(playerScore.likes / 1000), 1);		// Round to 1 decimal place.
-			likesCounterText.text = likesRounded.ToString() + "K";									// Round to 1 decimal place and add "K" for thousands.
-		} else {
-			likesCounterText.text = ((int)playerScore.likes).ToString();								// If less than 1000, just print the number.
-		}
-		if (playerScore.viewers >= 1000) {
-			decimal viewersRounded = System.Math.Round((decimal)(playerScore.viewers / 1000), 1);	// Round down to nearest whole number.
-			viewersCounterText.text = viewersRounded.ToString() + "K";								// Round down to nearest whole number and add "K" for thousands.
-		} else {
-			viewersCounterText.text = ((int)playerScore.viewers).ToString();							// If less than 1000, just print the number.
-		}
+		likesCounterText.text = Formatting.FloatToShortString(playerScore.likes);
+		viewersCounterText.text = Formatting.FloatToShortString(playerScore.viewers);
 
 		// Enable and disable top bar element to trigger recalculation of position (to resovle Unity bug).
 		if (topBar != null) {
@@ -129,7 +130,59 @@ public class InGameInterface : MonoBehaviour
 		* a user has liked the stream.
 		*/
 	void PrintMessage(string message, string sprite) {
-		if (!chatBoxEnabled) return; // If the chat box is not enabled, return.
-		// Work in progress...
+
+		if (chatBoxWrapper == null)
+			return;
+
+		// Check arguments.
+		if (message == null || sprite == null) {
+			Debug.LogError("PrintMessage: One or more arguments are null.");
+			return;
+		}
+
+		// Clean sprite name.
+		sprite = sprite.Split('.')[0]; // Remove file extension.
+
+		// Get the chat box object.
+		GameObject chatBox = chatBoxWrapper.transform.Find("Chat Box").gameObject; // Get the chat box object.
+
+		// Get sprite resources.
+		string spritePath = spriteFolder + "/" + sprite;
+		Sprite spriteResources = Resources.Load<Sprite>(spritePath);
+		if (spriteResources == null) {
+			Debug.LogError("PrintMessage: Sprite located at \"" + spritePath + "\" could not be found. Message won't be printed.");
+			return;
+		}
+
+		// Create a new chat message object.
+        GameObject messageObject = Instantiate(chatMessagePrefab, transform);
+		messageObject.transform.SetParent(chatBox.transform);
+		messageObject.transform.SetAsFirstSibling();
+		
+		TMPro.TextMeshProUGUI messageObjectTextComponent =
+			messageObject.transform
+			.Find("Text Wrapper").Find("Text")
+			.gameObject.GetComponent<TMPro.TextMeshProUGUI>();
+
+		UnityEngine.UI.Image messageObjectAvatarComponent =
+			messageObject.transform
+			.Find("Avatar")
+			.gameObject.GetComponent<UnityEngine.UI.Image>();
+
+		// Add content to new message.
+		messageObjectTextComponent.text = message;
+		messageObjectAvatarComponent.sprite = spriteResources;
+
+		// Scroll to the top.
+		//Debug.Log(- (chatBox.GetComponent<RectTransform>().rect.height / 2));
+		//chatBox.transform.localPosition = new Vector3(0, 0, 0);
+		// Set PoY to 0.
+		chatBox.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0, 0);
+	}
+
+	int tmp = 0;
+	void CallPrintMessageEveryFiveSeconds() {
+		PrintMessage("Bananas #" + tmp.ToString(), "baseline_person_white_icon");
+		tmp++;
 	}
 }

@@ -12,7 +12,7 @@
 using System.IO;
 using UnityEngine;
 
-public class Storage
+public static class Storage
 {
 
     // Static string used for setting up the file.
