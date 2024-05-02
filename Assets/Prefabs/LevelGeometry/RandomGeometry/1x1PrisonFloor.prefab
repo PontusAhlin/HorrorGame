@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4452495776938561807}
+  - component: {fileID: 958712697611358291}
   m_Layer: 8
   m_Name: 1x1PrisonFloor
   m_TagString: Untagged
