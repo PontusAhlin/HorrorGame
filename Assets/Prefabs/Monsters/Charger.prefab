@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 209557827406040534}
   - component: {fileID: 3308436140841353308}
   m_Layer: 2
-  m_Name: Sphere Volume
+  m_Name: Vignette
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -189,11 +189,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9501e4e8584af43059413dee01ba5068,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8858459954513360406}
+      addedObject: {fileID: 7527259606333789521}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9501e4e8584af43059413dee01ba5068,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7527259606333789521}
+      addedObject: {fileID: 8858459954513360406}
   m_SourcePrefab: {fileID: 100100000, guid: 9501e4e8584af43059413dee01ba5068, type: 3}
 --- !u!4 &7006144395667580014 stripped
 Transform:
@@ -350,6 +350,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7527259606333789521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7669915599114108628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61d717b56c75bc44f8ab25c09bf1820b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerScore: {fileID: 0}
+  viewerAddAmount: 1
+  viewerRemoveAmount: 0.5
+  generatorSpeed: 1
+  increaseAndDecrease: 0
+  inFieldOfView: 0
+  viewerRequest: 0
+  mult: 1
+  multDec: 0.01
 --- !u!82 &8858459954513360406
 AudioSource:
   m_ObjectHideFlags: 0
@@ -360,11 +381,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: dd9d675239dc1b54fa293bf5c8954bcb, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 42e2b2655f0d289439d094f51a82975d, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
+  m_Pitch: 0.73
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -446,24 +467,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &7527259606333789521
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7669915599114108628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61d717b56c75bc44f8ab25c09bf1820b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerScore: {fileID: 0}
-  viewerAddAmount: 1
-  viewerRemoveAmount: 0.5
-  generatorSpeed: 1
-  increaseAndDecrease: 0
-  inFieldOfView: 0
-  viewerRequest: 0
-  mult: 1
-  multDec: 0.01

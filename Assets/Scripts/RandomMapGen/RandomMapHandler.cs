@@ -28,6 +28,8 @@ public class RandomMapHandler : MonoBehaviour
     public List<GameObject> Two_OneFloors = new List<GameObject>();
     [Tooltip("list of all the room floors that are 2x2")]
     public List<GameObject> Two_TwoFloors = new List<GameObject>();
+    [Tooltip("this should keep the prefab for the control room floor only, will use prefab nr0 for its walls/doorways")]
+    public GameObject ControlRoomFloor;
     [Tooltip("list of all the room walls that correspond to 2x2 and 2x1")]
     public List<GameObject> Walls = new List<GameObject>();
     [Tooltip("list of all the room doorways that correspond to 2x2 and 2x1")]
@@ -45,6 +47,7 @@ public class RandomMapHandler : MonoBehaviour
 
     public enum Grid
     {
+        CONTROL_ROOM,
         TWO_TWO,
         TWO_ONE,
         ONE_ONE,
@@ -60,7 +63,7 @@ public class RandomMapHandler : MonoBehaviour
     [Tooltip("total map height in cells")]
     public int MapHeight = 30;
     [Tooltip("this should match the EXACT SIZE OF A 1X1 ROOM. this is how much we distance stuff as well, and we set our rooms to 50 as default!!!")]
-    public int RoomSize = 5; // THIS IS HOW BIG ONE "SQUARE" ROOM OF 1x1 IS IN UNITY UNITS!!
+    public int RoomSize = 5; // THIS IS HOW BIG ONE "SQUARE" ROOM OF 1x1 IS IN UNITY UNITS!
     [Tooltip("this decides the distance between the complete edge of the cell and where the wall spawns")]
     public float WallGapSize = 0.01f;
     [Tooltip("more walkers - more uhhh...agents walking around generating the map. imagine you have ants on a piece of paper that u dunked in ink. wherever the ant walks, the map generates. this value sets the amount of ants u drop down")]
@@ -284,6 +287,33 @@ public class RandomMapHandler : MonoBehaviour
           LIKE
           THIS IS THE POINT WHERE THE MAP IS FULL OF Grid.EMPTY or GRID.ONE_ONE
         */
+
+        //CONTROL ROOM HANDLING, MAKING SURE AT LEAST ONE SPAWNS
+        int controlroomX = UnityEngine.Random.Range(0,MapWidth); 
+        int controlroomY = UnityEngine.Random.Range(0,MapHeight);
+        while ((gridHandler[controlroomX,controlroomY]) != Grid.ONE_ONE) //redoing this until we randomly pick a spot thats valid
+        {
+            controlroomX = UnityEngine.Random.Range(0,MapWidth);
+            controlroomY = UnityEngine.Random.Range(0,MapHeight);
+        }
+        gridHandler[controlroomX,controlroomY] = Grid.CONTROL_ROOM;
+        Instantiate(ControlRoomFloor, new Vector3((controlroomX)*RoomSize, 0, (controlroomY)*RoomSize), Quaternion.Euler(0,0,0)).transform.SetParent(RandomMapParent.transform, false);
+        bool north = false, east = false, south = false, west = false;
+        try { north = gridHandler[controlroomX,controlroomY+1] != Grid.EMPTY;}
+        catch (Exception) {}
+        try { east = gridHandler[controlroomX+1,controlroomY] != Grid.EMPTY;}
+        catch (Exception) {}
+        try { south = gridHandler[controlroomX,controlroomY-1] != Grid.EMPTY;}
+        catch (Exception) {}
+        try { west = gridHandler[controlroomX-1,controlroomY] != Grid.EMPTY;}
+        catch (Exception) {}
+        InitializePrefab(controlroomX, controlroomY, north, 0, (controlroomX)*RoomSize, (controlroomY+0.50f - WallGapSize)*RoomSize, 0);
+        InitializePrefab(controlroomX, controlroomY, east, 0, (controlroomX+0.50f - WallGapSize)*RoomSize, (controlroomY)*RoomSize, 90f);
+        InitializePrefab(controlroomX, controlroomY, south, 0, (controlroomX)*RoomSize, (controlroomY-0.50f + WallGapSize)*RoomSize, 180f);
+        InitializePrefab(controlroomX, controlroomY, west, 0, (controlroomX-0.50f + WallGapSize)*RoomSize, (controlroomY)*RoomSize, 270f);
+        
+
+
         for (int x = 0; x < MapWidth-1; x++) //APPLYING TWO_TWO ROOMS
             for (int y = 0; y < MapHeight-1; y++)
             {
@@ -391,9 +421,12 @@ public class RandomMapHandler : MonoBehaviour
             {
                 if (gridHandler[x, y] == Grid.ONE_ONE)
                 {
-                    bool north = false, east = false, south = false, west = false;  //variables to hand to
-                                                                                    //DrawRoom to select the right prefab
-                                                                                    //with n/e/s/w entrances
+                    north = false;
+                    east = false;
+                    south = false;
+                    west = false;  //variables to hand to
+                                    //DrawRoom to select the right prefab
+                                    //with n/e/s/w entrances
                     try { north = gridHandler[x,y+1] != Grid.EMPTY;}
                     catch (Exception) {}
                     try { east = gridHandler[x+1,y] != Grid.EMPTY;}

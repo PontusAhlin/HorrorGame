@@ -302,6 +302,7 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 5763178569223870365, guid: 7a1755c7d08a35647b0abbfb384a083c, type: 3}
     - {fileID: 6613584350286170209, guid: 7a1755c7d08a35647b0abbfb384a083c, type: 3}
+    - {fileID: 7759393419775982404, guid: 7a1755c7d08a35647b0abbfb384a083c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -354,13 +355,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 962fcf1225441434b95df267c9e81d99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDistance: 100
+  maxDistance: 60
   minDistance: 3
   layerMask:
     serializedVersion: 2
     m_Bits: 1
   boxOrientation: {x: 0, y: 0, z: 0, w: 0}
-  halfBox: {x: 80, y: 20, z: 0.1}
+  halfBox: {x: 15, y: 5, z: 0.1}
+  seenMonsters: []
+  viewerRequestTime: 0
 --- !u!108 &3787276491942127044
 Light:
   m_ObjectHideFlags: 0
@@ -559,7 +562,7 @@ PrefabInstance:
     - target: {fileID: 1098806714618258908, guid: 284e0ca2c1a77284db569c761241378d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 114.73491
+      value: 319.8864
       objectReference: {fileID: 0}
     - target: {fileID: 1098806714618258908, guid: 284e0ca2c1a77284db569c761241378d,
         type: 3}
@@ -764,7 +767,7 @@ PrefabInstance:
     - target: {fileID: 3427655239810319234, guid: 284e0ca2c1a77284db569c761241378d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 114.73491
+      value: 319.8864
       objectReference: {fileID: 0}
     - target: {fileID: 3427655239810319234, guid: 284e0ca2c1a77284db569c761241378d,
         type: 3}

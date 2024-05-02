@@ -439,11 +439,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   One_OneFloors:
-  - {fileID: 8476333451016901077, guid: 5ee0307198ffd4463aaa05945741bef2, type: 3}
+  - {fileID: 2197518751371334308, guid: 5a0d9597e4fb24edbb27cf59ea8319b6, type: 3}
+  - {fileID: 5494139032220107365, guid: 5f0670f26f5d0413ca47d4f840aa2b11, type: 3}
+  - {fileID: 3453717261446643645, guid: f1d1919491304a84e9de5b2618fba5be, type: 3}
   Two_OneFloors:
   - {fileID: 910495619493306895, guid: 7cb577b787ef24d76888bde36e579ec6, type: 3}
+  - {fileID: 3210018799227719742, guid: 0aca72c55a7524f0b8c5a8f6690eb109, type: 3}
   Two_TwoFloors:
   - {fileID: 3105231536723997877, guid: ad0c9b0be5e3b407b89ae11aec4d1afe, type: 3}
+  ControlRoomFloor: {fileID: 8476333451016901077, guid: 5ee0307198ffd4463aaa05945741bef2,
+    type: 3}
   Walls:
   - {fileID: 8523536431361906366, guid: d1e83073e533230419d956b33fec45e9, type: 3}
   - {fileID: 8665916550482828080, guid: ee735b25d5f974e0eb00f5f5827ee263, type: 3}
@@ -459,17 +464,17 @@ MonoBehaviour:
   - {fileID: 9062866336837615491, guid: b390ffd34e3039141accf66f1465e8b9, type: 3}
   Doors:
   - {fileID: 8605882871198492074, guid: e5bab216db185424091cc5f77d837f33, type: 3}
-  MapWidth: 5
-  MapHeight: 5
+  MapWidth: 8
+  MapHeight: 8
   RoomSize: 50
   WallGapSize: 0.001
-  MaximumWalkers: 1
+  MaximumWalkers: 3
   TileCount: 0
-  FillPercentage: 0.2
-  Randomness: 0.2
+  FillPercentage: 0.25
+  Randomness: 0.5
   WaitTime: 0
-  TwoByTwoChance: 0
-  TwoByOneChance: 0
+  TwoByTwoChance: 0.5
+  TwoByOneChance: 0.5
   DoorChance: 0
   RandomMapParent: {fileID: 424695929}
   NavmeshParent: {fileID: 721380121}
@@ -504,12 +509,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac3c5391c3fbead4abf039f5e72d5a94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SaiBallTester: {fileID: 5963655803062015831, guid: 8064665bf60c04ab487287fa0816b01d,
-    type: 3}
   escapeDoor: {fileID: 4131765527472534327, guid: a7a68f776caed4d01924c638ba79d2d6,
     type: 3}
   RandomMapParent: {fileID: 424695929}
-  randscript: {fileID: 424695930}
+  RandomMapHandlerScript: {fileID: 424695930}
 --- !u!114 &424695933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -527,13 +530,11 @@ MonoBehaviour:
   MonsterPrefabs:
   - {fileID: 7669915599114108628, guid: eb3798cfecf32430592a742b605c99d7, type: 3}
   - {fileID: 8182396208055939415, guid: 183dfe7f4d0194a0884e929994c8eb59, type: 3}
-  timeSeconds: 5
-  MonsterAmount: 2
+  timeSeconds: 30
+  MonsterAmount: 6
+  firstMonsterDelay: 5
   CurrentMonsterAmount: 0
   RandomMapScript: {fileID: 424695930}
-  xCoord: 0
-  zCoord: 0
-  boxCast: {fileID: 0}
 --- !u!114 &589702165 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5848892784253001097, guid: 4d061403edf068243adb4e23aef23fd2,
