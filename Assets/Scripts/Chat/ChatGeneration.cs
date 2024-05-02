@@ -66,10 +66,31 @@ public class ChatGeneration : MonoBehaviour
     {
         string message = null;
 
+        float pickedMessagePointer = UnityEngine.Random.value;
+
+        /*
+        HOW THIS WORKS:
+        so we have two chances in play rn, request & monster chance
+        request chance is the chance the message will be a request message (ex: 0.20f)
+        monster chance is the chance the message will be a scared message (ex: 0.30f)
+        then we pick a number between 0 and 1.00f
+
+        monsterchance has priority and requests have lower priority, so if monster chance is 1.0f, and request is 0.2f
+        it'll always be a monster message
+
+        so if the number is 
+        under 0.20f, monster spook message
+        under 0.20f+0.30f, we get a request
+        if it's over 0.20f+0.30f, we get a regular random chat message
+        */
 
 
-        message = RegularMessages[UnityEngine.Random.Range(0,RegularMessages.Count)];
-
+        if (pickedMessagePointer < MonsterChance)
+            message = MonsterMessages[UnityEngine.Random.Range(0,MonsterMessages.Count)];
+        else if (pickedMessagePointer < (MonsterChance + RequestChance))
+            message = RequestMessages[UnityEngine.Random.Range(0,RequestMessages.Count)];
+        else 
+            message = RegularMessages[UnityEngine.Random.Range(0,RegularMessages.Count)];
 
         return message;
     }
