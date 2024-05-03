@@ -2,6 +2,9 @@
     * This class is used for storing data locally on the device.
     * This is useful for storing data that should be kept between sessions.
     *
+    * Full documentation can be found at:
+    * https://github.com/PontusAhlin/HorrorGame/wiki/Storage
+    *
     * Example #1:
     * - Storage.SetUsername("William");
     * - string username = Storage.GetUsername();
@@ -67,11 +70,24 @@ public static class Storage
         return data.topFiveHighscore;
     }
 
+    public static float GetMusicVolume()
+    {
+        StorageData data = getData();
+        return data.musicVolume;
+    }
+
     // =============================== SETTERS ===============================
     public static void SetUsername(string value)
     {
         StorageData data = getData();
         data.username = value;
+        SaveData(data);
+    }
+
+    public static void SetMusicVolume(float value)
+    {
+        StorageData data = getData();
+        data.musicVolume = value;
         SaveData(data);
     }
 
@@ -127,5 +143,6 @@ public static class Storage
 public class StorageData
 {
     public string username;
+    public float musicVolume;
     public string[] topFiveHighscore = new string[0];
 }
