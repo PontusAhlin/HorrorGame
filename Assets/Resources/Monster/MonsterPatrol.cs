@@ -121,7 +121,7 @@ public class enemyAiControl : MonoBehaviour
             if (killHit.collider.gameObject.name.Equals("Character & Camera")) {
                 ChangeScene(JumpscareScene);
             }
-            //.Log(killHit.collider.gameObject.name + " was hit!");
+            Debug.Log(killHit.collider.gameObject.name + " was hit!");
 
         }
 
