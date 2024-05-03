@@ -1220,6 +1220,7 @@ MonoBehaviour:
   sceneNames:
   - MainMenu
   - Login
+  - Highscore
   instanceName: BG Sound
 --- !u!1 &882762612
 GameObject:
