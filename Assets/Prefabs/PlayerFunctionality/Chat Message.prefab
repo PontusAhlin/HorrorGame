@@ -111,7 +111,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 121.935, y: -46.105}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 185.87, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5637004429207303090
 MonoBehaviour:
@@ -327,6 +327,7 @@ GameObject:
   - component: {fileID: 683051041714248554}
   - component: {fileID: 2030315811219671633}
   - component: {fileID: 8775063112090812657}
+  - component: {fileID: 2733392444787865184}
   m_Layer: 5
   m_Name: Chat Message
   m_TagString: Untagged
@@ -433,3 +434,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 2
+--- !u!114 &2733392444787865184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7191375162648120789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c38769f879acc7446a2f3820fc0bba31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationDuration: 0.05

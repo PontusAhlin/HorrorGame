@@ -8,7 +8,8 @@
 	*
 	* Author(s): William Fridh
 	*/
-	
+
+using UnityEditor.EditorTools;
 using UnityEngine;
 
 public class InGameInterface : MonoBehaviour
@@ -44,6 +45,10 @@ public class InGameInterface : MonoBehaviour
 
 	[Tooltip("Username text object.")]
 	[SerializeField] TMPro.TextMeshProUGUI usernameText;
+
+	[Tooltip("Enable debugging messages.")]
+	[SerializeField] bool debugMessages = false;
+
 	private AudioSource audioSource;
 
 	// Start is called before the first frame update
@@ -105,6 +110,10 @@ public class InGameInterface : MonoBehaviour
 			}
 			SetMessageVolume(audioVolume);
 		}
+
+		// Debugging.
+		if (debugMessages)
+			InvokeRepeating("DebugPrintMessage", 10.0f, 10.0f);
 	}
 
 	// Update is called once per frame
@@ -198,6 +207,15 @@ public class InGameInterface : MonoBehaviour
 		// Play audio clip.
 		if (audioClip != null)
 			audioSource.Play();
+	}
+
+	/**
+		* Debugging function.
+		*
+		* Used to generate a random message for debugging purposes.
+		*/
+	void DebugPrintMessage() {
+		PrintMessage("This is a test message", "baseline_person_white_icon");
 	}
 
 }
