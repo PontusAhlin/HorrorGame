@@ -1,5 +1,4 @@
 /**
-    *   
     * This script connects to the main camera 
     * so that when you look at a monster you
     * generate a score. A prerequisite is
@@ -25,8 +24,9 @@ public class BoxCast : MonoBehaviour
     */
     
     //Init of detection components
+    [Tooltip("How far the boxcast goes")]
     public float maxDistance;
-    [Tooltip("The 'offset' from the player forward which the sphere will start from  ")]
+    [Tooltip("The 'offset' from the player forward which the box will start from")]
     public float minDistance;
     private Vector3 boxCastOffset;
     private Vector3 playerDirection;
@@ -34,7 +34,9 @@ public class BoxCast : MonoBehaviour
     [SerializeField] LayerMask layerMask;
     
     //BoxCast adjustments 
+    [Tooltip("The orientation of the boxcast")]
     public Quaternion boxOrientation;
+    [Tooltip("The width of the boxcast")]
     public Vector3 halfBox; 
 
 
@@ -45,7 +47,7 @@ public class BoxCast : MonoBehaviour
     //References to other scripts
     RandomMonsterGeneration randomMonsterGeneration;
     MonsterGenerateViewers monsterViewer;
-    //ChangeColour changeColour;
+    //ChangeColour changeColour;        //To be added later
     ChatGeneration chatGeneration;
     PlayerScore playerScore;
 
@@ -53,19 +55,24 @@ public class BoxCast : MonoBehaviour
     private int ranReqIndex;
 
     //Timer for the monster requests 
+    [Tooltip("How often viewers should request a monster")]
     public float viewerRequestTime;
+    private float viewerRequestTimeInit;
     //Timer for how often the chat should appear
+    [Tooltip("How often a viewer should send a message in chat")]
     public float chatTimeInterval;
+    private float chatTimeIntervalInit;
 
+    //Where viewer messages will be stored from ChatGeneration.cs 
+    private string viewerMsg;
+    //Used for 
+    private bool extraBreak;
 
-    //variable where viewer messages will be stored from ChatGeneration.cs     
-    public string viewerMsg;
 
     void Start(){
         //Request time is initilized to 60 seconds
-        viewerRequestTime = 60.0f;
-        chatTimeInterval = 5.0f;
-
+        viewerRequestTimeInit = viewerRequestTime;
+        chatTimeIntervalInit = chatTimeInterval;
     }
 
 
@@ -105,12 +112,10 @@ public class BoxCast : MonoBehaviour
             GameObject hitObject = hit.collider.gameObject;
             MonsterGenerateViewers monsterGenerates = hitObject.GetComponent<MonsterGenerateViewers>();
   
-
             //If not seen before, add monster to seen monsters list(used for random viewerRequest)
             if(!seenMonsters.Contains(hitObject) && hit.transform.tag == "Monster"){
                 seenMonsters.Add(hitObject);
             }
-
 
             //seen and spawned monsters are checked so only their unqiue ID triggers pointed raycast. 
             if(hit.transform.tag == "Monster"){
@@ -137,14 +142,16 @@ public class BoxCast : MonoBehaviour
                     }
                     monsterGenerates.inFieldOfView = true;
 
-                    }
-
+                }
             }
         }
     }
     
 
     void viewerRequest(){
+        
+        extraBreak = false;
+        
         //After a certain time a seen monster will reset their viewer multiplier and be requested by the chat. 
         //If nothing is seen in set amount of time the chat will be bored.
         if(chatTimeInterval < 1.0f){
@@ -152,23 +159,25 @@ public class BoxCast : MonoBehaviour
             GameObject pScore = GameObject.Find("Main Camera");
             playerScore = pScore.GetComponent<PlayerScore>();    
             
-            
             for(int i = 0; i < monsterInFov.Count; i++){
                 if(monsterInFov[i].inFieldOfView == true || playerScore.viewers > 5){
                     getChat();
                     viewerMsg = chatGeneration.GenerateMessage("Positive");
                     print(viewerMsg);
-                    chatTimeInterval = 5.0f;
+                    chatTimeInterval = chatTimeIntervalInit;
+                    extraBreak = true;
+                    break;
                 }
             }
-            /*WORK ON GETTING THE LOGIC WORKING FOR WATCHING ONE MONSTER AND GETTING TWO MESSAGES*/
-            /*if(monsterInFov[i].inFieldOfView == false && playerScore.viewers > 5){
+            
+            //The case if the player doesn't see a monster 
+            if(extraBreak == false && playerScore.viewers < 5){
                 getChat();
                 viewerMsg = chatGeneration.GenerateMessage("Negative");
                 print(viewerMsg);
                 //Resetting the timers
                 chatTimeInterval = 5.0f;
-            }*/
+            }
         }
 
         if(viewerRequestTime < 1.0f && seenMonsters.Count > 0 && chatTimeInterval < 2.0f){
@@ -183,11 +192,12 @@ public class BoxCast : MonoBehaviour
             //ChangeColour colourMonster = seenMonsters[ranReqIndex].GetComponent<ChangeColour>(); //SHOULD BE PUT IN BELOW WHEN ADDED TO DEV
             //seenMonster[ranReqIndex].gameObject.Colour
             print("I want to see the " + "PUT IN COLOUR OF MONSTER" + " " + seenMonsters[ranReqIndex].gameObject.name);
-            viewerRequestTime = 60.0f;
-            chatTimeInterval = 5.0f;
+            viewerRequestTime = viewerRequestTimeInit;
+            chatTimeInterval = chatTimeIntervalInit;
         }
     }
     
+
     //Debugging by creating the raycast box and line towards the box
     private void OnDrawGizmosSelected() {
         Gizmos.color = Color.red;
