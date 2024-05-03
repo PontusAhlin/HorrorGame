@@ -475,7 +475,7 @@ MonoBehaviour:
   WaitTime: 0
   TwoByTwoChance: 0.5
   TwoByOneChance: 0.5
-  DoorChance: 0
+  DoorChance: 0.5
   RandomMapParent: {fileID: 424695929}
   NavmeshParent: {fileID: 721380121}
   postMapgenScript: {fileID: 424695932}
@@ -862,7 +862,7 @@ PrefabInstance:
     - target: {fileID: 1401504665176257241, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 322.29944
+      value: 94.3866
       objectReference: {fileID: 0}
     - target: {fileID: 1401504665176257241, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
@@ -1037,7 +1037,7 @@ PrefabInstance:
     - target: {fileID: 3737391430845731975, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 322.29944
+      value: 94.3866
       objectReference: {fileID: 0}
     - target: {fileID: 3737391430845731975, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
@@ -1093,6 +1093,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4708142324329818333, guid: 4d061403edf068243adb4e23aef23fd2,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4708142324329818333, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}

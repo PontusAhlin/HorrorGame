@@ -152,7 +152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOpen: 0
   isRotatingDoor: 1
-  speed: 1
+  speed: 2
   ForwardDirection: 0
 --- !u!1 &7804846910543216700
 GameObject:
@@ -231,7 +231,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3374285989972265582}
   m_Layer: 0
-  m_Name: randomDoor
+  m_Name: woodDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
