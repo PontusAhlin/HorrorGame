@@ -99,6 +99,10 @@ public static class Storage
         *
         * Returns true if the new highscore was added.
         */
+    public static bool AddToTopFiveHighscore(string username, int score)
+    {
+        return AddToTopFiveHighscore(username + ":" + score);
+    }
     public static bool AddToTopFiveHighscore(string newHighscore)
     {
         bool newHighscoreAdded = false;

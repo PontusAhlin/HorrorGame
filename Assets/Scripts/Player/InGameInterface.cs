@@ -8,9 +8,7 @@
 	*
 	* Author(s): William Fridh
 	*/
-
-using System.IO;
-using System.Xml;
+	
 using UnityEngine;
 
 public class InGameInterface : MonoBehaviour
