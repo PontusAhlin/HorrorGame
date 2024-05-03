@@ -44,7 +44,8 @@ public class InGameInterface : MonoBehaviour
 	[Tooltip("Message volume.")]
 	[SerializeField] float audioVolume = 1.0f;
 
-	private TMPro.TextMeshProUGUI usernameText;
+	[Tooltip("Username text object.")]
+	[SerializeField] TMPro.TextMeshProUGUI usernameText;
 	private AudioSource audioSource;
 
 	// Start is called before the first frame update

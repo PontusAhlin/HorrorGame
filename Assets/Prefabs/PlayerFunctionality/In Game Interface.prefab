@@ -245,6 +245,7 @@ MonoBehaviour:
   spriteFolder: Assets/Resources/Images
   audioClip: {fileID: 8300000, guid: b5b0cfb6462d13743be3dbeb9aa5ed1a, type: 3}
   audioVolume: 0.4
+  usernameText: {fileID: 4785221850112769156}
 --- !u!1 &928981376951287987
 GameObject:
   m_ObjectHideFlags: 0
