@@ -24,10 +24,15 @@ public class GhostMonster : MonoBehaviour
     Vector3 direction;
     int randomX;
     int randomY;
+    Vector3 playerDirection;
+
+    public enum Grid {
+        EMPTY
+    }
     
 
 
-    NavMeshAgent agent; // initialize agent object referring to scripted object
+    
 
     float rand; // initialize random object
 
@@ -43,7 +48,7 @@ public class GhostMonster : MonoBehaviour
 
     [SerializeField] int pauseTimeRange; // variable determining range of time to stop between walks
 
-    NavMeshHit hit; // initializes variable in which the chosen destination will be stored. 
+    
 
     // Start is called before the first frame update
     void Start()
@@ -51,9 +56,9 @@ public class GhostMonster : MonoBehaviour
         randomMapHandler = GameObject.Find("/RandomMapGeneration").GetComponent<RandomMapHandler>();
         Debug.Log(randomMapHandler);
         pace = speed;
-        agent = GetComponent<NavMeshAgent>(); // agent object corresponding to object that script is attributed to.
+       
         GameObject playerObject = GameObject.Find("Character & Camera");
-        //playerTransform = playerObject.transform; // Reference to the player's transform
+        playerTransform = playerObject.transform; // Reference to the player's transform
         SearchForDest();
        
     }
@@ -68,9 +73,10 @@ public class GhostMonster : MonoBehaviour
 
         Patrol();
         direction = destPoint - transform.position;
-        Rotate(rotationSpeed, MonsterTransform.forward, movementDirection);
+        Debug.Log(direction);
+        Rotate(rotationSpeed, MonsterTransform.forward, direction);
 
-        Animator.SetBool(isMoving, agent.velocity.magnitude < 0.01f);
+        //Animator.SetBool(isMoving, agent.velocity.magnitude < 0.01f);
     }
 
     void Patrol()
@@ -80,7 +86,7 @@ public class GhostMonster : MonoBehaviour
         
         /* if distance between current position to destination is less than 2
          then destination has been reached */
-        if(Vector3.Distance(playerTransform.position, destPoint) < 2)
+        if(Vector3.Distance(MonsterTransform.position, destPoint) < 2)
         {
             
             StopEnemy(); // stop agent 
@@ -99,27 +105,20 @@ public class GhostMonster : MonoBehaviour
 
     void SearchForDest()
     {
-        /*
-        Vector3 randomDirection = Random.insideUnitSphere * walkRange; 
-         picks a random 3D coordinate in 
-        in the range of the sphere (serialized as Range) 
 
-        randomDirection += transform.position; // add the current position to randomDirection
-        NavMesh.SamplePosition(randomDirection, out hit, walkRange, 1); // find closest point on the navmesh to randomDirection
-         store this in hit 
-        destPoint = hit.position; // set destination to hit
-        Debug.Log(destPoint);
-        walkPointSet = true; // now walkPointSet is true.
-        */
-
-        randomX = UnityEngine.Random.Range(0, randomMapHandler.MapWidth)*randomMapHandler.RoomSize;
-        randomY = UnityEngine.Random.Range(0, randomMapHandler.MapHeight)*randomMapHandler.RoomSize;
+        randomX = UnityEngine.Random.Range(0, randomMapHandler.MapWidth-1);
+        randomY = UnityEngine.Random.Range(0, randomMapHandler.MapHeight-1);
+        
+        while (randomMapHandler.gridHandler[randomX,randomY] == RandomMapHandler.Grid.EMPTY){
+            randomX = UnityEngine.Random.Range(0, randomMapHandler.MapWidth-1);
+            randomY = UnityEngine.Random.Range(0, randomMapHandler.MapHeight-1);
+        }
+        walkPointSet = true;    // now walkPointSet is true.
+        randomX = randomX * randomMapHandler.RoomSize;
+        randomY = randomY * randomMapHandler.RoomSize;
+        
         destPoint = new Vector3((float)randomX,0,(float)randomY);
         Debug.Log(destPoint);
-        walkPointSet = true;    // now walkPointSet is true.
-        
-
-
     }
 
     
@@ -127,8 +126,8 @@ public class GhostMonster : MonoBehaviour
     void IsPlayerVisible()
     {
         // Calculate direction from the monster to the player
-        direction = playerTransform.position - transform.position;
-        Ray ray = new Ray(transform.position, direction.normalized);
+        playerDirection = playerTransform.position - MonsterTransform.position;
+        Ray ray = new Ray(MonsterTransform.position, playerDirection.normalized);
 
         // Cast a ray from the monster towards the player
     
@@ -196,7 +195,7 @@ public class GhostMonster : MonoBehaviour
             transform.Rotate(rotation * Time.deltaTime);
         }
 
-        if (rot.y < 0)
+        if (rot.y <= 0)
         {
             MonsterTransform.Rotate(-rotation * Time.deltaTime);
         }
