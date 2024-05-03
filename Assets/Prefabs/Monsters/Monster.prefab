@@ -264,7 +264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 0}
-  killRange: 3
+  killRange: 5
   huntRange: 40
   layersToHit:
     serializedVersion: 2
