@@ -76,7 +76,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 55e87b745b006494cad485924f179e2e,
         type: 3}
       propertyPath: m_Name
-      value: GhostMonster - Copy
+      value: GhostMonster
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -197,6 +197,7 @@ MonoBehaviour:
     m_Bits: 264
   speed: 10
   MonsterTransform: {fileID: 4982748168232926638}
+  JumpscareScene: Jumpscare1
   rotationSpeed: 60.2
   groundLayer:
     serializedVersion: 2

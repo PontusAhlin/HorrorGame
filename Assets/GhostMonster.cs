@@ -18,6 +18,7 @@ public class GhostMonster : MonoBehaviour
     public float speed;
     private float pace;
     public Transform MonsterTransform;
+    public string JumpscareScene;
     Vector3 movementDirection;
     public float rotationSpeed;
     Vector3 rotation;
@@ -135,7 +136,7 @@ public class GhostMonster : MonoBehaviour
         {
             // Check if the ray hits the player
             if (killHit.collider.gameObject.name.Equals("Character & Camera")) {
-                ChangeScene("JumpScare");
+                ChangeScene(JumpscareScene);
             }
             Debug.Log(killHit.collider.gameObject.name + " was hit!");
 
