@@ -8,13 +8,13 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class ThirdPersonMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     // Public variables set in Unity Editor
     private Transform camTransform;
     [Tooltip("Player movement speed.")]
     [SerializeField] float speed = 1f;
-    private Gamepad gamepad;            // We're using INPUTSYSTEM, configured it to imitate gamepad buttons touchscreens
+    private Gamepad gamepad;            // InputSystem is used and set to imitate controller input on touchscreens.
     [Tooltip("Upper step ray element. This element is responsible for sending out a ray to check if the next step is rechable.")]
     [SerializeField] GameObject stepRayUpper;
     [Tooltip("Lower step ray element. This element is responsible for sending out a ray to check for step collision.")]
@@ -49,10 +49,9 @@ public class ThirdPersonMovement : MonoBehaviour
     void Update()
     {
 
-        // We're using INPUTSYSTEM, configured it to imitate gamepad buttons touchscreens
+        // Check if a gamepad is connected
         if (gamepad == null)
             return; // No gamepad connected
-
 
         // Set the position of the stepRay objects to the player's position.
         // Important to keep them on the same level and at correct height.
@@ -65,7 +64,7 @@ public class ThirdPersonMovement : MonoBehaviour
         stepRayLower.transform.rotation = Quaternion.Euler(stepRayLower.transform.rotation.eulerAngles.x, camTransform.rotation.eulerAngles.y, stepRayLower.transform.rotation.eulerAngles.z);
 
         if (gamepad.buttonNorth.isPressed) {                                            // "butttonNorth" is our current movement button
-            stepClimb();                                                                // Perform climb
+            StepClimb();                                                                // Perform climb
             float targetAngle = camTransform.eulerAngles.y;                             // Get the camera's y rotation
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;  // Rotate the forward vector by the camera's y rotation
             transform.position += moveDir.normalized * speed * Time.deltaTime;          // Move the player in the direction of the rotated forward vector
@@ -82,14 +81,14 @@ public class ThirdPersonMovement : MonoBehaviour
         * Authors: William Fridh
         * Source: https://www.youtube.com/watch?v=DrFk5Q_IwG0
         */
-    void stepClimb() {
+    void StepClimb() {
         RaycastHit hitLower;
         if (Physics.Raycast(stepRayLower.transform.position, stepRayLower.transform.TransformDirection(Vector3.forward), out hitLower, capsuleCollider.radius + 0.1f)) {
             RaycastHit hitUpper;
             if (!Physics.Raycast(stepRayUpper.transform.position, stepRayUpper.transform.TransformDirection(Vector3.forward), out hitUpper, capsuleCollider.radius + 0.3f)) {
                 transform.position += new Vector3(0f, stepSpeed, 0f);
-                //Debug.LogWarning("JUMP");
             }
         }
     }
 }
+
