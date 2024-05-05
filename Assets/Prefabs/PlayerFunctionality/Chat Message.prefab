@@ -327,7 +327,7 @@ GameObject:
   - component: {fileID: 683051041714248554}
   - component: {fileID: 2030315811219671633}
   - component: {fileID: 8775063112090812657}
-  - component: {fileID: 2733392444787865184}
+  - component: {fileID: 4005234888692489318}
   m_Layer: 5
   m_Name: Chat Message
   m_TagString: Untagged
@@ -434,7 +434,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 2
---- !u!114 &2733392444787865184
+--- !u!114 &4005234888692489318
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -443,7 +443,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 7191375162648120789}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c38769f879acc7446a2f3820fc0bba31, type: 3}
+  m_Script: {fileID: 11500000, guid: cfdbd748fb1384a4091030081a39385f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationDuration: 0.05
+  animationDuration: 5
+  animationType: 0
