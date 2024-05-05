@@ -3,14 +3,12 @@
 	* It's supposed to be called during each frame and adjust based on that.
 	* It will for instance update the amount of viewers and likes.
 	*
-	* TODO:
-	* - 
-	*
 	* Author(s): William Fridh
 	*/
 
 using UnityEditor.EditorTools;
 using UnityEngine;
+using System.Collections;
 
 public class InGameInterface : MonoBehaviour
 {
@@ -41,13 +39,17 @@ public class InGameInterface : MonoBehaviour
 	[SerializeField] AudioClip audioClip;
 
 	[Tooltip("Message volume.")]
+	[Range(0f, 1f)]
 	[SerializeField] float audioVolume = 1.0f;
 
 	[Tooltip("Username text object.")]
 	[SerializeField] TMPro.TextMeshProUGUI usernameText;
 
-	[Tooltip("Enable debugging messages.")]
-	[SerializeField] bool debugMessages = false;
+	[Tooltip("Generate debugging messages.")]
+	[SerializeField] bool generateDebugMessages = false;
+
+	[Tooltip("Generate debugging messages speed.")]
+	[SerializeField] float generateDebugMessagesSpeed = 5.0f;
 
 	private AudioSource audioSource;
 
@@ -112,8 +114,7 @@ public class InGameInterface : MonoBehaviour
 		}
 
 		// Debugging.
-		if (debugMessages)
-			InvokeRepeating("DebugPrintMessage", 10.0f, 10.0f);
+		StartCoroutine(DebugPrintMessageCoroutine());
 	}
 
 	// Update is called once per frame
@@ -214,8 +215,14 @@ public class InGameInterface : MonoBehaviour
 		*
 		* Used to generate a random message for debugging purposes.
 		*/
-	void DebugPrintMessage() {
-		PrintMessage("This is a test message", "baseline_person_white_icon");
+	IEnumerator DebugPrintMessageCoroutine()
+	{
+		while (true)
+		{
+			if (generateDebugMessages)
+				PrintMessage("This is a test message.", "baseline_person_white_icon");
+			yield return new WaitForSeconds(generateDebugMessagesSpeed);
+		}
 	}
 
 }

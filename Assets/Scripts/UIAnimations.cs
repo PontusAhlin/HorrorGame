@@ -21,7 +21,7 @@ using UnityEngine;
 public class UIAnimations : MonoBehaviour
 {
 
-    [Tooltip("The duration of the animation.")]
+    [Tooltip("The duration of the animation (s).")]
     [SerializeField] float animationDuration = 1;
 
     [Tooltip("The type of animation to perform.")]
@@ -57,6 +57,7 @@ public class UIAnimations : MonoBehaviour
         {
             rectTransform.localScale = Vector3.Lerp(startScale, endScale, currentTime/animationDuration);
             currentTime += Time.deltaTime;
+            yield return null; // yield control back to Unity's main loop
         }
         rectTransform.localScale = endScale;
         yield return null;
