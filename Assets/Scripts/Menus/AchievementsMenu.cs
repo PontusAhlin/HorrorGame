@@ -24,6 +24,9 @@ public class AchievementsMenu : MonoBehaviour
     [Tooltip("The name of the scene to load when the player wants to quit.")]
     [SerializeField] string QuiteMenuSceneName;
 
+    [Tooltip("Achievement holder.")]
+    [SerializeField] GameObject AchievementHolder;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,13 +45,15 @@ public class AchievementsMenu : MonoBehaviour
 
         PrintAchievements();
 
+        Debug.Log(Storage.GetPath());
+
     }
 
     // Print array of achievements.
     void PrintAchievements()
     {
 
-        foreach (Transform Achievement in transform)
+        foreach (Transform Achievement in AchievementHolder.transform)
         {
 
             AchievementAbstract AchievementObject = Achievement.gameObject.GetComponent<AchievementAbstract>();

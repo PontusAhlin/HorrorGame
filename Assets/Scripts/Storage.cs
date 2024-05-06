@@ -21,6 +21,12 @@ public static class Storage
     // Static string used for setting up the file.
     private static string path = Application.persistentDataPath + "/storage.json";
 
+    // Used for debugging.
+    public static string GetPath()
+    {
+        return path;
+    }
+
     /**
         * Checks if the storage file is valid.
         * This is important as the strcture might change troughout the development.
@@ -36,7 +42,7 @@ public static class Storage
         * Gets the data from the storage file.
         * If the file does not exist or is invalid a new file will be generated.
         */
-    private static StorageData getData()
+    private static StorageData GetData()
     {
 
         if (!File.Exists(path) || !StorageFileIsValid())
@@ -60,37 +66,37 @@ public static class Storage
     // =============================== GETTERS ===============================
     public static string GetUsername()
     {
-        StorageData data = getData();
+        StorageData data = GetData();
         return data.username;
     }
 
     public static string[] GetTopFiveHighscore()
     {
-        StorageData data = getData();
+        StorageData data = GetData();
         return data.topFiveHighscore;
     }
 
     public static float GetMusicVolume()
     {
-        StorageData data = getData();
+        StorageData data = GetData();
         return data.musicVolume;
     }
     
     public static float GetLastGameViewers()
     {
-        StorageData data = getData();
+        StorageData data = GetData();
         return data.lastGameViewers;
     }
 
     public static float GetLastGameLikes()
     {
-        StorageData data = getData();
+        StorageData data = GetData();
         return data.lastGameLikes;
     }
 
     public static bool GetAchievementAchieved(int index)
     {
-        StorageData data = getData();
+        StorageData data = GetData();
         if (index < 0 || index >= data.achievementsAchieved.Length)
         {
             throw new System.ArgumentOutOfRangeException("Index out of range.");
@@ -100,7 +106,7 @@ public static class Storage
 
     public static int GetAchievementProgress(int index)
     {
-        StorageData data = getData();
+        StorageData data = GetData();
         if (index < 0 || index >= data.achievementsProgress.Length)
         {
             throw new System.ArgumentOutOfRangeException("Index out of range.");
@@ -111,35 +117,35 @@ public static class Storage
     // =============================== SETTERS ===============================
     public static void SetUsername(string value)
     {
-        StorageData data = getData();
+        StorageData data = GetData();
         data.username = value;
         SaveData(data);
     }
 
     public static void SetMusicVolume(float value)
     {
-        StorageData data = getData();
+        StorageData data = GetData();
         data.musicVolume = value;
         SaveData(data);
     }
 
     public static void SetLastGameViewers(float value)
     {
-        StorageData data = getData();
+        StorageData data = GetData();
         data.lastGameViewers = value;
         SaveData(data);
     }
 
     public static void SetLastGameLikes(float value)
     {
-        StorageData data = getData();
+        StorageData data = GetData();
         data.lastGameLikes = value;
         SaveData(data);
     }
 
     public static void SetAchievementArchieved(int index, bool value)
     {
-        StorageData data = getData();
+        StorageData data = GetData();
         if (index < 0 || index >= data.achievementsAchieved.Length)
         {
             throw new System.ArgumentOutOfRangeException("Index out of range.");
@@ -150,7 +156,7 @@ public static class Storage
 
     public static void SetAchievementProgress(int index, int value)
     {
-        StorageData data = getData();
+        StorageData data = GetData();
         if (index < 0 || index >= data.achievementsProgress.Length)
         {
             throw new System.ArgumentOutOfRangeException("Index out of range.");
@@ -177,7 +183,7 @@ public static class Storage
         // Seperate given data.
         int newScore = int.Parse(newHighscore.Split(':')[1]);
         // Load data.
-        StorageData data = getData();
+        StorageData data = GetData();
         // Create a new array and clone content.
         int newArrLength = data.topFiveHighscore.Length + 1;
         if (newArrLength > 5)
