@@ -28,6 +28,8 @@ public class GhostMonster : MonoBehaviour
     public float speed; // maximum speed of ghost
     private float pace; // current speed of ghost
     public Transform MonsterTransform; // transform of the monster
+
+    public UnityEngine.Rendering.Volume MonsterVolume;
     public string JumpscareScene; // scene name of the jumpscare scene
     Vector3 movementDirection; // normalized position destPoint positon vector
     public float rotationSpeed; // speed of rotation for monster, rotationSpeed is the magnitude of rotationVector
@@ -151,6 +153,11 @@ public class GhostMonster : MonoBehaviour
                 // if player is hit by ray then set destPoint to player position
                 destPoint = huntHit.point;
                 walkPointSet = true;
+                MonsterVolume.weight = 1.0f;
+            }
+            else
+            {
+                MonsterVolume.weight = 0.1f;
             }
         }
     }

@@ -10,6 +10,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.AI;
@@ -25,7 +26,8 @@ public class enemyAiControl : MonoBehaviour
     public float huntRange = 100f; 
     public LayerMask layersToHit; // Layer mask to detect obstacles between the monster and the player
     public string JumpscareScene;
-
+    
+    public UnityEngine.Rendering.Volume MonsterVolume;
     NavMeshAgent agent; // initialize agent object referring to scripted object
 
     float rand; // initialize random object
@@ -146,7 +148,11 @@ public class enemyAiControl : MonoBehaviour
             if (huntHit.collider.gameObject.name.Equals("Character & Camera")) {
                 destPoint = huntHit.point;
                 walkPointSet = true;
-
+                MonsterVolume.weight = 1.0f;
+            }
+            else
+            {
+                MonsterVolume.weight = 0.1f;
             }
             //Debug.Log(huntHit.collider.gameObject.name + " was hit!");
 
