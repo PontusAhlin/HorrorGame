@@ -19,8 +19,8 @@ public class HighscoreMenu : MonoBehaviour
 
     [Tooltip("The prefab that will hold the highscore list.")]
     [SerializeField] GameObject HighscoreListObjectPrefab;
+    
     [Tooltip("The name of the scene to load when the player wants to quit.")]
-
     [SerializeField] string QuiteMenuSceneName;
 
     // Start is called before the first frame update

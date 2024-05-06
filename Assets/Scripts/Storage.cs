@@ -88,23 +88,23 @@ public static class Storage
         return data.lastGameLikes;
     }
 
-    public static bool GetAchievemenAchieved(int index)
+    public static bool GetAchievementAchieved(int index)
     {
-        if (index < 0 || index >= getData().achievements.Length)
+        StorageData data = getData();
+        if (index < 0 || index >= data.achievementsAchieved.Length)
         {
             throw new System.ArgumentOutOfRangeException("Index out of range.");
         }
-        StorageData data = getData();
         return data.achievementsAchieved[index];
     }
 
-    public static bool GetAchievementProgress(int index)
+    public static int GetAchievementProgress(int index)
     {
-        if (index < 0 || index >= getData().achievements.Length)
+        StorageData data = getData();
+        if (index < 0 || index >= data.achievementsProgress.Length)
         {
             throw new System.ArgumentOutOfRangeException("Index out of range.");
         }
-        StorageData data = getData();
         return data.achievementsProgress[index];
     }
 
@@ -139,22 +139,22 @@ public static class Storage
 
     public static void SetAchievementArchieved(int index, bool value)
     {
-        if (index < 0 || index >= getData().achievements.Length)
+        StorageData data = getData();
+        if (index < 0 || index >= data.achievementsAchieved.Length)
         {
             throw new System.ArgumentOutOfRangeException("Index out of range.");
         }
-        StorageData data = getData();
-        data.achievements[index] = value;
+        data.achievementsAchieved[index] = value;
         SaveData(data);
     }
 
     public static void SetAchievementProgress(int index, int value)
     {
-        if (index < 0 || index >= getData().achievements.Length)
+        StorageData data = getData();
+        if (index < 0 || index >= data.achievementsProgress.Length)
         {
             throw new System.ArgumentOutOfRangeException("Index out of range.");
         }
-        StorageData data = getData();
         data.achievementsProgress[index] = value;
         SaveData(data);
     }
@@ -218,8 +218,8 @@ public class StorageData
     public string username;
     public float musicVolume;
     public string[] topFiveHighscore = new string[0];
-    public bool[] achievementAchieved = new bool[1];
-    public int[] achievementProgress = new bool[1];
+    public bool[] achievementsAchieved = new bool[2];
+    public int[] achievementsProgress = new int[2];
 
     // Stores the amount of viewers and likes for temporary use.
     public float lastGameViewers;

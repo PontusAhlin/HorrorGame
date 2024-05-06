@@ -1,26 +1,16 @@
-public class AchievementZero
+/**
+    * Author(s): William Fridh
+    */
+public class AchievementZero : AchievementAbstract
 {
 
-    private int index = 0;
-    private string title = "First death";
-    private string description = "You died for the first time";
-
-    public bool isAchieved;
-
-    // Start is called before the first frame update
-    void Start()
+    public AchievementZero()
     {
-        Storage.GetAchievement(0);
-    }
-
-    // =============================== GETTERS ===============================
-    public string GetTitle()
-    {
-        return title;
-    }
-    public string GetDescription()
-    {
-        return description;
+        Index = 0;  
+        Title = "Master Escapist";
+        Description = "Escape 10 times.";
+        MaxProgress = 10;
+        SetSpritePath("Assets/Resources/Images/baseline_person_white_icon");
     }
 
 }
