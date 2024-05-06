@@ -51,6 +51,9 @@ public class InGameInterface : MonoBehaviour
 	[Tooltip("Generate debugging messages speed.")]
 	[SerializeField] float generateDebugMessagesSpeed = 5.0f;
 
+	[Tooltip("The decimal for the viewers and the likes")]
+	[SerializeField] int LikesAndViewerDecimal = 3;
+
 	private AudioSource audioSource;
 
 	// Start is called before the first frame update
@@ -141,12 +144,12 @@ public class InGameInterface : MonoBehaviour
 	void UpdateInGameInterface() {
 		// Update the likes and views counter.
 		if (playerScore == null) { // Fall back on stored values if playerScore is not set.
-			likesCounterText.text = Formatting.FloatToShortString(Storage.GetLastGameLikes());
-			viewersCounterText.text = Formatting.FloatToShortString(Storage.GetLastGameViewers());
+			likesCounterText.text = Formatting.FloatToShortString(Storage.GetLastGameLikes(),LikesAndViewerDecimal);
+			viewersCounterText.text = Formatting.FloatToShortString(Storage.GetLastGameViewers(),LikesAndViewerDecimal);
 
 		} else {
-			likesCounterText.text = Formatting.FloatToShortString(playerScore.likes);
-			viewersCounterText.text = Formatting.FloatToShortString(playerScore.viewers);
+			likesCounterText.text = Formatting.FloatToShortString(playerScore.likes,LikesAndViewerDecimal);
+			viewersCounterText.text = Formatting.FloatToShortString(playerScore.viewers,LikesAndViewerDecimal);
 		}
 
 		// Enable and disable top bar element to trigger recalculation of position (to resovle Unity bug).
@@ -163,7 +166,7 @@ public class InGameInterface : MonoBehaviour
 		* It can be used for printing out normal chat messages, and/or when
 		* a user has liked the stream.
 		*/
-	void PrintMessage(string message, string sprite) {
+	public void PrintMessage(string message, string sprite) {
 
 		if (chatBoxWrapper == null)
 			return;

@@ -363,8 +363,8 @@ MonoBehaviour:
   boxOrientation: {x: 0, y: 0, z: 0, w: 0}
   halfBox: {x: 15, y: 5, z: 0.1}
   seenMonsters: []
-  viewerRequestTime: 0
-  chatTimeInterval: 0
+  viewerRequestTime: 30
+  chatTimeInterval: 5
 --- !u!108 &3787276491942127044
 Light:
   m_ObjectHideFlags: 0
@@ -563,7 +563,7 @@ PrefabInstance:
     - target: {fileID: 1098806714618258908, guid: 284e0ca2c1a77284db569c761241378d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 320.88043
+      value: 330.82294
       objectReference: {fileID: 0}
     - target: {fileID: 1098806714618258908, guid: 284e0ca2c1a77284db569c761241378d,
         type: 3}
@@ -798,7 +798,7 @@ PrefabInstance:
     - target: {fileID: 3427655239810319234, guid: 284e0ca2c1a77284db569c761241378d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 320.88043
+      value: 330.82294
       objectReference: {fileID: 0}
     - target: {fileID: 3427655239810319234, guid: 284e0ca2c1a77284db569c761241378d,
         type: 3}

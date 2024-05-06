@@ -50,6 +50,7 @@ public class BoxCast : MonoBehaviour
     //ChangeColour changeColour;        //To be added later
     ChatGeneration chatGeneration;
     PlayerScore playerScore;
+    InGameInterface inGameInterface;
 
     //Random indexing for monsterRequests 
     private int ranReqIndex;
@@ -65,7 +66,7 @@ public class BoxCast : MonoBehaviour
 
     //Where viewer messages will be stored from ChatGeneration.cs 
     private string viewerMsg;
-    //Used for 
+    //Bool that makes it so messages don't overlap
     private bool extraBreak;
 
 
@@ -74,6 +75,7 @@ public class BoxCast : MonoBehaviour
         viewerRequestTimeInit = viewerRequestTime;
         chatTimeIntervalInit = chatTimeInterval;
     }
+
 
 
     void FixedUpdate(){
@@ -141,7 +143,6 @@ public class BoxCast : MonoBehaviour
                         monsterInFov.Add(monsterGenerates);
                     }
                     monsterGenerates.inFieldOfView = true;
-
                 }
             }
         }
@@ -149,50 +150,53 @@ public class BoxCast : MonoBehaviour
     
 
     void viewerRequest(){
-        
         extraBreak = false;
         
         //After a certain time a seen monster will reset their viewer multiplier and be requested by the chat. 
         //If nothing is seen in set amount of time the chat will be bored.
-        if(chatTimeInterval < 1.0f){
+        if(chatTimeInterval < 2.2f){
             //Getting the viewercount from the PlayerScore.cs
             GameObject pScore = GameObject.Find("Main Camera");
             playerScore = pScore.GetComponent<PlayerScore>();    
             
+            //Goes through all of the monsters that's in the field of view, if that's true we send a message to the UI
             for(int i = 0; i < monsterInFov.Count; i++){
-                if(monsterInFov[i].inFieldOfView == true || playerScore.viewers > 5){
+                if(monsterInFov[i].inFieldOfView == true || playerScore.viewers > 50){
                     getChat();
                     viewerMsg = chatGeneration.GenerateMessage("Positive");
-                    print(viewerMsg);
-                    chatTimeInterval = chatTimeIntervalInit;
+                    inGameInterface.PrintMessage(viewerMsg,"baseline_person_white_icon");
+                    chatTimeInterval = chatTimeIntervalInit/2;
                     extraBreak = true;
                     break;
                 }
             }
             
             //The case if the player doesn't see a monster 
-            if(extraBreak == false && playerScore.viewers < 5){
+            if(extraBreak == false && playerScore.viewers < 50){
                 getChat();
                 viewerMsg = chatGeneration.GenerateMessage("Negative");
-                print(viewerMsg);
+                inGameInterface.PrintMessage(viewerMsg,"baseline_person_white_icon");
                 //Resetting the timers
-                chatTimeInterval = 5.0f;
+                chatTimeInterval = chatTimeIntervalInit;
             }
         }
 
         if(viewerRequestTime < 1.0f && seenMonsters.Count > 0 && chatTimeInterval < 2.0f){
-            //Message from ChatGeneration.cs
-            getChat();
-            viewerMsg = chatGeneration.GenerateMessage("Request");
-            print(viewerMsg);
+
+            //Randomly selects a seen monster to be requested and resets the multipler of it,
             ranReqIndex = Random.Range(0,seenMonsters.Count);
             MonsterGenerateViewers reqMonster = seenMonsters[ranReqIndex].GetComponent<MonsterGenerateViewers>();
             reqMonster.mult = 1.0f;     
             //ChangeColour colourMonster = seenMonsters[ranReqIndex].GetComponent<ChangeColour>(); //SHOULD BE PUT IN BELOW WHEN ADDED TO DEV
             //seenMonster[ranReqIndex].gameObject.Colour
-            
-            PrintMessage("Hello","a");
-            print("I want to see the " + "PUT IN COLOUR OF MONSTER" + " " + seenMonsters[ranReqIndex].gameObject.name);
+
+
+            getChat();
+            //Color is to be replaced with the color of the monster to finalize viewer message
+            viewerMsg = ("I want to see the " + "COLOR " + seenMonsters[ranReqIndex].gameObject.name);
+
+            inGameInterface.PrintMessage(viewerMsg,"baseline_person_white_icon");
+            //Resets the timers
             viewerRequestTime = viewerRequestTimeInit;
             chatTimeInterval = chatTimeIntervalInit;
         }
@@ -208,12 +212,11 @@ public class BoxCast : MonoBehaviour
     }
 
     /*
-        *Gets the chat reference from ChatManager
+        * Gets the chat reference from ChatManager and the ingame interface
     */
     private void getChat(){
         GameObject uiElem = GameObject.Find("In Game Interface");
-        ui = uiElem.GetComponent<ChatGeneration>();
-        
+        inGameInterface = uiElem.GetComponent<InGameInterface>(); 
         GameObject chatGenerationGameObject = GameObject.Find("ChatManager");
         chatGeneration = chatGenerationGameObject.GetComponent<ChatGeneration>();
     }
