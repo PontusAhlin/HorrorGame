@@ -190,8 +190,7 @@ public class BoxCast : MonoBehaviour
             reqMonster.mult = 1.0f;     
             //ChangeColour colourMonster = seenMonsters[ranReqIndex].GetComponent<ChangeColour>(); //SHOULD BE PUT IN BELOW WHEN ADDED TO DEV
             //seenMonster[ranReqIndex].gameObject.Colour
-
-            InGameInterface ui =  .GetComponent<InGameInterface>();
+            
             PrintMessage("Hello","a");
             print("I want to see the " + "PUT IN COLOUR OF MONSTER" + " " + seenMonsters[ranReqIndex].gameObject.name);
             viewerRequestTime = viewerRequestTimeInit;
@@ -212,7 +211,9 @@ public class BoxCast : MonoBehaviour
         *Gets the chat reference from ChatManager
     */
     private void getChat(){
-        InGameInterface ui = GetComponent<InGameInterface>();
+        GameObject uiElem = GameObject.Find("In Game Interface");
+        ui = uiElem.GetComponent<ChatGeneration>();
+        
         GameObject chatGenerationGameObject = GameObject.Find("ChatManager");
         chatGeneration = chatGenerationGameObject.GetComponent<ChatGeneration>();
     }
