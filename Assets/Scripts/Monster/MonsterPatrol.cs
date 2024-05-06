@@ -130,8 +130,9 @@ public class enemyAiControl : MonoBehaviour
             // Check if the ray hits the player
             if (killHit.collider.gameObject.name.Equals("Character & Camera")) {
                 // Call player death function to store likes and viewers.
-                PlayerScore player = killHit.collider.gameObject.GetComponent<PlayerScore>();
-                player.Death();
+                Camera playerCamera = killHit.collider.gameObject.GetComponentInChildren<Camera>();
+                PlayerScore playerScore = playerCamera.GetComponent<PlayerScore>();
+                playerScore.Death();
                 // Change scene to jumpscare scene.
                 ChangeScene(JumpscareScene);
             }

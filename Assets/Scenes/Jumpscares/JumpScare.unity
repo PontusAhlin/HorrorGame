@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414727, b: 0.121078536, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731713, g: 0.13414736, b: 0.12107852, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1000,7 +1000,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 79.736595, y: 32}
+  m_AnchoredPosition: {x: 100.08491, y: 32}
   m_SizeDelta: {x: 88.33, y: 0}
   m_Pivot: {x: 0.5, y: 3}
 --- !u!224 &201182922033303325
@@ -2324,7 +2324,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 63.621597, y: -0}
+  m_AnchoredPosition: {x: 83.96991, y: -0}
   m_SizeDelta: {x: 120.56, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!224 &2552018963831502318
@@ -3233,9 +3233,15 @@ MonoBehaviour:
   playerScore: {fileID: 0}
   likesCounterText: {fileID: 4698785374678798493}
   viewersCounterText: {fileID: 4466492131185812478}
-  chatBox: {fileID: 0}
-  topBar: {fileID: 0}
-  usernameText: {fileID: 0}
+  chatBoxWrapper: {fileID: 0}
+  topBar: {fileID: 2601533101138012958}
+  chatMessagePrefab: {fileID: 0}
+  spriteFolder: 
+  audioClip: {fileID: 0}
+  audioVolume: 1
+  usernameText: {fileID: 5754919037453489466}
+  generateDebugMessages: 0
+  generateDebugMessagesSpeed: 5
 --- !u!1 &4089567568152730726
 GameObject:
   m_ObjectHideFlags: 0
@@ -6070,7 +6076,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: -197.091}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &8081263547467991524
 RectTransform:
