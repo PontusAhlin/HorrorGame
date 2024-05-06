@@ -12,7 +12,7 @@
     * frame rate. It does not make use of the Update() function for this as it
     * is recommended to control animations with coroutines.
     *
-    * Author(s): William Fridh
+    * Author(s): William Fridh, Sai Chintapalli
     */
 
 using System.Collections;
@@ -24,8 +24,11 @@ public class CustomAnimations : MonoBehaviour
     [Tooltip("The duration of the animation (s).")]
     [SerializeField] float animationDuration = 1;
 
+    [Tooltip("The duration of the notification")]
+    [SerializeField] float notificationDuration = 10;
+
     [Tooltip("The type of animation to perform.")]
-    enum AnimationType { ScaleZeroToOne };
+    enum AnimationType { ScaleZeroToOne, Notification };
     [SerializeField] AnimationType animationType;
     
     private RectTransform rectTransform;
@@ -40,6 +43,9 @@ public class CustomAnimations : MonoBehaviour
         {
             case AnimationType.ScaleZeroToOne:
                 StartCoroutine(ScaleZeroToOne());
+                break;
+            case AnimationType.Notification:
+                StartCoroutine(Notification());
                 break;
         }
     }
@@ -60,6 +66,31 @@ public class CustomAnimations : MonoBehaviour
             yield return null; // yield control back to Unity's main loop
         }
         rectTransform.localScale = endScale;
+        yield return null;
+    }
+
+        IEnumerator Notification()
+    {
+        float currentTime = 0.0f;
+        Vector3 StartPosition = this.transform.position;
+        Vector3 EndPosition = StartPosition - new Vector3(0,50,0);
+        while (this.transform.position.y >= EndPosition.y)
+        {
+            this.transform.position -= new Vector3(0,1,0);
+            currentTime += Time.deltaTime;
+            yield return null; // yield control back to Unity's main loop
+        }
+        //this.transform.position = EndPosition;
+        yield return new WaitForSeconds(notificationDuration);
+        
+        currentTime = 0.0f;
+        while (this.transform.position.y <= StartPosition.y + 200)
+        {
+            this.transform.position += new Vector3(0,2,0);
+            currentTime += Time.deltaTime;
+            yield return null; // yield control back to Unity's main loop
+        }
+        Destroy(gameObject);
         yield return null;
     }
 

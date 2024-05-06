@@ -3,7 +3,7 @@
 	* It's supposed to be called during each frame and adjust based on that.
 	* It will for instance update the amount of viewers and likes.
 	*
-	* Author(s): William Fridh
+	* Author(s): William Fridh, Sai Chintapalli
 	*/
 
 
@@ -235,7 +235,7 @@ public class InGameInterface : MonoBehaviour
 		sprite = sprite.Split('.')[0]; // Remove file extension.
 
 		// Get the chat box object.
-		GameObject chatBox = notificationBoxWrapper.transform.Find("Notification Box").gameObject; // Get the chat box object.
+		//GameObject chatBox = notificationBoxWrapper.transform.Find("Notification Box").gameObject; // Get the chat box object.
 
 		// Get sprite resources.
 		string spritePath = spriteFolder + "/" + sprite;
@@ -246,8 +246,8 @@ public class InGameInterface : MonoBehaviour
 		}
 
 		// Create a new notification object.
-        GameObject messageObject = Instantiate(notificationPrefab, transform);
-		messageObject.transform.SetParent(chatBox.transform);
+        GameObject messageObject = Instantiate(notificationPrefab, notificationBoxWrapper.transform);
+		messageObject.transform.SetParent(notificationBoxWrapper.transform);
 		messageObject.transform.SetAsFirstSibling();
 		
 		TMPro.TextMeshProUGUI messageObjectTextComponent =
@@ -265,7 +265,7 @@ public class InGameInterface : MonoBehaviour
 		messageObjectAvatarComponent.sprite = spriteResources;
 
 		// Scroll to the top.
-		chatBox.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0, 0);
+		//notificationBoxWrapper.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0, 0);
 
 		// Play audio clip.
 		if (audioClip != null)

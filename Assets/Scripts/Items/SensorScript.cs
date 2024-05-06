@@ -43,7 +43,7 @@ public class SensorScript : MonoBehaviour
             else{
                 message = "ERROR: UNKOWN MONSTER";
             }
-            message = this.name + message;
+            message = "(" + this.name + ") " + "\n" + message;
             Debug.Log(message);
             InterfaceScript.SendNotification(message, "Alert");   
         }
