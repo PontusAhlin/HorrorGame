@@ -3366,7 +3366,7 @@ MonoBehaviour:
   spriteFolder: 
   audioClip: {fileID: 0}
   audioVolume: 1
-  usernameText: {fileID: 0}
+  usernameText: {fileID: 5754919037453489466}
   generateDebugMessages: 0
   generateDebugMessagesSpeed: 5
 --- !u!1 &4054383986255587928
