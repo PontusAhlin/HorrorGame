@@ -979,12 +979,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: ae56baa6573014d02a7d1bce54de29c0, type: 3}
+    m_Font: {fileID: 12800000, guid: 6f5c5e5174abf4a3ea67dc61b7af9dd5, type: 3}
     m_FontSize: 170
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 200
+    m_MaxSize: 300
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1

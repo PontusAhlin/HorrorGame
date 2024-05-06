@@ -394,8 +394,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -13.9516, y: -30.267519}
-  m_SizeDelta: {x: 1382.3113, y: 1106.9092}
+  m_AnchoredPosition: {x: -13.9516, y: 14.4812}
+  m_SizeDelta: {x: 1382.3113, y: 1196.4067}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &442551927
 MonoBehaviour:
@@ -961,8 +961,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Return To Main Menu
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c2a3e0423ce7342939a62ae495f10e33, type: 2}
-  m_sharedMaterial: {fileID: 8098653943917566091, guid: c2a3e0423ce7342939a62ae495f10e33,
+  m_fontAsset: {fileID: 11400000, guid: c42a8a347e69c4fc7862d9d153e8dff4, type: 2}
+  m_sharedMaterial: {fileID: 7532974183772838903, guid: c42a8a347e69c4fc7862d9d153e8dff4,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -987,8 +987,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 48
+  m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1163,7 +1163,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -70}
-  m_SizeDelta: {x: 450, y: 75}
+  m_SizeDelta: {x: 410, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1139621573
 MonoBehaviour:
@@ -1568,8 +1568,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: You Died
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c2a3e0423ce7342939a62ae495f10e33, type: 2}
-  m_sharedMaterial: {fileID: 8098653943917566091, guid: c2a3e0423ce7342939a62ae495f10e33,
+  m_fontAsset: {fileID: 11400000, guid: c42a8a347e69c4fc7862d9d153e8dff4, type: 2}
+  m_sharedMaterial: {fileID: 7532974183772838903, guid: c42a8a347e69c4fc7862d9d153e8dff4,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1594,8 +1594,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 150
-  m_fontSizeBase: 150
+  m_fontSize: 130
+  m_fontSizeBase: 130
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
