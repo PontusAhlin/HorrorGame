@@ -61,7 +61,6 @@ public class InGameInterface : MonoBehaviour
 		if (playerScore == null)
 		{
 			Debug.LogError("Player score is not set.");
-			DestroyDueToError();
 		}
 
 		// Find the child GameObject with the name "Likes Text".
@@ -141,8 +140,14 @@ public class InGameInterface : MonoBehaviour
 		*/
 	void UpdateInGameInterface() {
 		// Update the likes and views counter.
-		likesCounterText.text = Formatting.FloatToShortString(playerScore.likes);
-		viewersCounterText.text = Formatting.FloatToShortString(playerScore.viewers);
+		if (playerScore == null) { // Fall back on stored values if playerScore is not set.
+			likesCounterText.text = Formatting.FloatToShortString(Storage.GetLastGameLikes());
+			viewersCounterText.text = Formatting.FloatToShortString(Storage.GetLastGameViewers());
+
+		} else {
+			likesCounterText.text = Formatting.FloatToShortString(playerScore.likes);
+			viewersCounterText.text = Formatting.FloatToShortString(playerScore.viewers);
+		}
 
 		// Enable and disable top bar element to trigger recalculation of position (to resovle Unity bug).
 		if (topBar != null) {

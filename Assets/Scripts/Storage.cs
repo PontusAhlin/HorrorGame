@@ -75,6 +75,18 @@ public static class Storage
         StorageData data = getData();
         return data.musicVolume;
     }
+    
+    public static float GetLastGameViewers()
+    {
+        StorageData data = getData();
+        return data.lastGameViewers;
+    }
+
+    public static float GetLastGameLikes()
+    {
+        StorageData data = getData();
+        return data.lastGameLikes;
+    }
 
     // =============================== SETTERS ===============================
     public static void SetUsername(string value)
@@ -88,6 +100,20 @@ public static class Storage
     {
         StorageData data = getData();
         data.musicVolume = value;
+        SaveData(data);
+    }
+
+    public static void SetLastGameViewers(float value)
+    {
+        StorageData data = getData();
+        data.lastGameViewers = value;
+        SaveData(data);
+    }
+
+    public static void SetLastGameLikes(float value)
+    {
+        StorageData data = getData();
+        data.lastGameLikes = value;
         SaveData(data);
     }
 
@@ -146,7 +172,12 @@ public static class Storage
 
 public class StorageData
 {
+    // Long-term data.
     public string username;
     public float musicVolume;
     public string[] topFiveHighscore = new string[0];
+
+    // Stores the amount of viewers and likes for temporary use.
+    public float lastGameViewers;
+    public float lastGameLikes;
 }

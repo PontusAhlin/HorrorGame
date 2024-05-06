@@ -1,3 +1,13 @@
+/**
+    * GhostMonster.cs
+    *
+    * This script is used to control the ghost monster's movement and detection of the player.
+    * The ghost monster will patrol the map and chase the player if they are within the detection range.
+    * If the player is within the kill range, the player will die and the scene will change to the jumpscare scene.
+    *
+    * Autor(s): ??? & William Fridh
+    */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
@@ -136,6 +146,10 @@ public class GhostMonster : MonoBehaviour
         {
             // Check if the ray hits the player
             if (killHit.collider.gameObject.name.Equals("Character & Camera")) {
+                // Call player death function to store likes and viewers.
+                PlayerScore player = killHit.collider.gameObject.GetComponent<PlayerScore>();
+                player.Death();
+                // Change scene to jumpscare scene.
                 ChangeScene(JumpscareScene);
             }
             Debug.Log(killHit.collider.gameObject.name + " was hit!");
