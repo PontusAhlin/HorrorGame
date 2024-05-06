@@ -88,6 +88,26 @@ public static class Storage
         return data.lastGameLikes;
     }
 
+    public static bool GetAchievemenAchieved(int index)
+    {
+        if (index < 0 || index >= getData().achievements.Length)
+        {
+            throw new System.ArgumentOutOfRangeException("Index out of range.");
+        }
+        StorageData data = getData();
+        return data.achievementsAchieved[index];
+    }
+
+    public static bool GetAchievementProgress(int index)
+    {
+        if (index < 0 || index >= getData().achievements.Length)
+        {
+            throw new System.ArgumentOutOfRangeException("Index out of range.");
+        }
+        StorageData data = getData();
+        return data.achievementsProgress[index];
+    }
+
     // =============================== SETTERS ===============================
     public static void SetUsername(string value)
     {
@@ -114,6 +134,28 @@ public static class Storage
     {
         StorageData data = getData();
         data.lastGameLikes = value;
+        SaveData(data);
+    }
+
+    public static void SetAchievementArchieved(int index, bool value)
+    {
+        if (index < 0 || index >= getData().achievements.Length)
+        {
+            throw new System.ArgumentOutOfRangeException("Index out of range.");
+        }
+        StorageData data = getData();
+        data.achievements[index] = value;
+        SaveData(data);
+    }
+
+    public static void SetAchievementProgress(int index, int value)
+    {
+        if (index < 0 || index >= getData().achievements.Length)
+        {
+            throw new System.ArgumentOutOfRangeException("Index out of range.");
+        }
+        StorageData data = getData();
+        data.achievementsProgress[index] = value;
         SaveData(data);
     }
 
@@ -176,6 +218,8 @@ public class StorageData
     public string username;
     public float musicVolume;
     public string[] topFiveHighscore = new string[0];
+    public bool[] achievementAchieved = new bool[1];
+    public int[] achievementProgress = new bool[1];
 
     // Stores the amount of viewers and likes for temporary use.
     public float lastGameViewers;
