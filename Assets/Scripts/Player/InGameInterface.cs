@@ -25,12 +25,18 @@ public class InGameInterface : MonoBehaviour
 
 	[Tooltip("Chat box wrapper object.")]
 	[SerializeField] GameObject chatBoxWrapper;
+	
+	[Tooltip("Notification box wrapper object.")]
+	[SerializeField] GameObject notificationBoxWrapper;
 
 	[Tooltip("Top bar object. Used to trigger recalculation of position (to resovle Unity bug).")]
 	[SerializeField] GameObject topBar;
 
     [Tooltip("Message prefab.")]
     [SerializeField] GameObject chatMessagePrefab;
+
+	[Tooltip("Notification prefab.")]
+    [SerializeField] GameObject notificationPrefab;
 
 	[Tooltip("Sprite folder. Example: \"Assets/Resources/Images\"")]
 	[SerializeField] string spriteFolder;
@@ -203,6 +209,58 @@ public class InGameInterface : MonoBehaviour
 			.gameObject.GetComponent<UnityEngine.UI.Image>();
 
 		// Add content to new message.
+		messageObjectTextComponent.text = message;
+		messageObjectAvatarComponent.sprite = spriteResources;
+
+		// Scroll to the top.
+		chatBox.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0, 0);
+
+		// Play audio clip.
+		if (audioClip != null)
+			audioSource.Play();
+	}
+
+	public void SendNotification(string message, string sprite) {
+
+		if (notificationBoxWrapper == null)
+			return;
+
+		// Check arguments.
+		if (message == null) {
+			Debug.LogError("PrintMessage: One or more arguments are null.");
+			return;
+		}
+
+		// Clean sprite name.
+		sprite = sprite.Split('.')[0]; // Remove file extension.
+
+		// Get the chat box object.
+		GameObject chatBox = notificationBoxWrapper.transform.Find("Notification Box").gameObject; // Get the chat box object.
+
+		// Get sprite resources.
+		string spritePath = spriteFolder + "/" + sprite;
+		Sprite spriteResources = Resources.Load<Sprite>(spritePath);
+		if (spriteResources == null) {
+			Debug.LogError("PrintMessage: Sprite located at \"" + spritePath + "\" could not be found. Message won't be printed.");
+			return;
+		}
+
+		// Create a new notification object.
+        GameObject messageObject = Instantiate(notificationPrefab, transform);
+		messageObject.transform.SetParent(chatBox.transform);
+		messageObject.transform.SetAsFirstSibling();
+		
+		TMPro.TextMeshProUGUI messageObjectTextComponent =
+			messageObject.transform
+			.Find("Text Wrapper").Find("Text")
+			.gameObject.GetComponent<TMPro.TextMeshProUGUI>();
+
+		UnityEngine.UI.Image messageObjectAvatarComponent =
+			messageObject.transform
+			.Find("Avatar")
+			.gameObject.GetComponent<UnityEngine.UI.Image>();
+
+		// Add content to new notification.
 		messageObjectTextComponent.text = message;
 		messageObjectAvatarComponent.sprite = spriteResources;
 
