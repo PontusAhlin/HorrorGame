@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6f5c5e5174abf4a3ea67dc61b7af9dd5
+guid: bf37db9c583914ae9b080cf93568ae24
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Friday Terror
+  - BirminghamTitling
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
