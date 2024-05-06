@@ -2,6 +2,9 @@
     * This class is used for storing data locally on the device.
     * This is useful for storing data that should be kept between sessions.
     *
+    * Full documentation can be found at:
+    * https://github.com/PontusAhlin/HorrorGame/wiki/Storage
+    *
     * Example #1:
     * - Storage.SetUsername("William");
     * - string username = Storage.GetUsername();
@@ -67,11 +70,50 @@ public static class Storage
         return data.topFiveHighscore;
     }
 
+    public static float GetMusicVolume()
+    {
+        StorageData data = getData();
+        return data.musicVolume;
+    }
+    
+    public static float GetLastGameViewers()
+    {
+        StorageData data = getData();
+        return data.lastGameViewers;
+    }
+
+    public static float GetLastGameLikes()
+    {
+        StorageData data = getData();
+        return data.lastGameLikes;
+    }
+
     // =============================== SETTERS ===============================
     public static void SetUsername(string value)
     {
         StorageData data = getData();
         data.username = value;
+        SaveData(data);
+    }
+
+    public static void SetMusicVolume(float value)
+    {
+        StorageData data = getData();
+        data.musicVolume = value;
+        SaveData(data);
+    }
+
+    public static void SetLastGameViewers(float value)
+    {
+        StorageData data = getData();
+        data.lastGameViewers = value;
+        SaveData(data);
+    }
+
+    public static void SetLastGameLikes(float value)
+    {
+        StorageData data = getData();
+        data.lastGameLikes = value;
         SaveData(data);
     }
 
@@ -83,6 +125,10 @@ public static class Storage
         *
         * Returns true if the new highscore was added.
         */
+    public static bool AddToTopFiveHighscore(string username, int score)
+    {
+        return AddToTopFiveHighscore(username + ":" + score);
+    }
     public static bool AddToTopFiveHighscore(string newHighscore)
     {
         bool newHighscoreAdded = false;
@@ -126,6 +172,12 @@ public static class Storage
 
 public class StorageData
 {
+    // Long-term data.
     public string username;
+    public float musicVolume;
     public string[] topFiveHighscore = new string[0];
+
+    // Stores the amount of viewers and likes for temporary use.
+    public float lastGameViewers;
+    public float lastGameLikes;
 }

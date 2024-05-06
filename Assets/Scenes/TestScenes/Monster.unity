@@ -1147,6 +1147,7 @@ MonoBehaviour:
   layersToHit:
     serializedVersion: 2
     m_Bits: 0
+  JumpscareScene: 
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -2756,6 +2757,170 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1168158147}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &1212042674
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4982748168232926638, guid: 2e4341b898ad64b3a86e5a9592ce57dc,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 53.405453
+      objectReference: {fileID: 0}
+    - target: {fileID: 4982748168232926638, guid: 2e4341b898ad64b3a86e5a9592ce57dc,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.20000076
+      objectReference: {fileID: 0}
+    - target: {fileID: 4982748168232926638, guid: 2e4341b898ad64b3a86e5a9592ce57dc,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -24.870014
+      objectReference: {fileID: 0}
+    - target: {fileID: 4982748168232926638, guid: 2e4341b898ad64b3a86e5a9592ce57dc,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99999285
+      objectReference: {fileID: 0}
+    - target: {fileID: 4982748168232926638, guid: 2e4341b898ad64b3a86e5a9592ce57dc,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4982748168232926638, guid: 2e4341b898ad64b3a86e5a9592ce57dc,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.0037801322
+      objectReference: {fileID: 0}
+    - target: {fileID: 4982748168232926638, guid: 2e4341b898ad64b3a86e5a9592ce57dc,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4982748168232926638, guid: 2e4341b898ad64b3a86e5a9592ce57dc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4982748168232926638, guid: 2e4341b898ad64b3a86e5a9592ce57dc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -0.433
+      objectReference: {fileID: 0}
+    - target: {fileID: 4982748168232926638, guid: 2e4341b898ad64b3a86e5a9592ce57dc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5508120590585364828, guid: 2e4341b898ad64b3a86e5a9592ce57dc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5651339836816107284, guid: 2e4341b898ad64b3a86e5a9592ce57dc,
+        type: 3}
+      propertyPath: m_Name
+      value: GhostMonster - Copy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7118089094910767946, guid: 2e4341b898ad64b3a86e5a9592ce57dc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747866572334251126, guid: 2e4341b898ad64b3a86e5a9592ce57dc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3535983614946078914, guid: 2e4341b898ad64b3a86e5a9592ce57dc, type: 3}
+    - {fileID: 4623889392269862424, guid: 2e4341b898ad64b3a86e5a9592ce57dc, type: 3}
+    - {fileID: 7118089094910767946, guid: 2e4341b898ad64b3a86e5a9592ce57dc, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5651339836816107284, guid: 2e4341b898ad64b3a86e5a9592ce57dc,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1212042676}
+    - targetCorrespondingSourceObject: {fileID: 5651339836816107284, guid: 2e4341b898ad64b3a86e5a9592ce57dc,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1212042682}
+  m_SourcePrefab: {fileID: 100100000, guid: 2e4341b898ad64b3a86e5a9592ce57dc, type: 3}
+--- !u!1 &1212042675 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5651339836816107284, guid: 2e4341b898ad64b3a86e5a9592ce57dc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1212042674}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1212042676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212042675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9cedfe54684e49748bfda083f1827ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 1212042678}
+  killRange: 10
+  huntRange: 100
+  layersToHit:
+    serializedVersion: 2
+    m_Bits: 264
+  speed: 5
+  MonsterTransform: {fileID: 1212042678}
+  rotationSpeed: 60
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  Animator: {fileID: 1212042677}
+  walkRange: 50
+  pauseTimeRange: 5
+--- !u!95 &1212042677 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4715889647215291433, guid: 2e4341b898ad64b3a86e5a9592ce57dc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1212042674}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1212042678 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4982748168232926638, guid: 2e4341b898ad64b3a86e5a9592ce57dc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1212042674}
+  m_PrefabAsset: {fileID: 0}
+--- !u!195 &1212042682
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212042675}
+  m_Enabled: 0
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &1265449894
 GameObject:
   m_ObjectHideFlags: 0
@@ -4556,8 +4721,9 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 878107742}
-  - {fileID: 404336865}
   - {fileID: 990660969}
   - {fileID: 8818156656136970289}
   - {fileID: 1411872836}
   - {fileID: 570852375}
+  - {fileID: 404336865}
+  - {fileID: 1212042674}

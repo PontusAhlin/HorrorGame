@@ -1,3 +1,10 @@
+/**
+    * This script is used to control the volume of the game.
+    * It uses the PlayerPrefs to store the volume value.
+    *
+    * Author(s): Arnob Sarker
+    */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,12 +12,9 @@ using UnityEngine.UI;
 
 public class AudioControl : MonoBehaviour
 {
+
+    [Tooltip("The slider used to control the volume.")]
     [SerializeField] Slider volumeSlider;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -20,7 +24,6 @@ public class AudioControl : MonoBehaviour
             PlayerPrefs.SetFloat("musicVolume", 1);
             Load();
         }
-        
         else
         {
             Load();

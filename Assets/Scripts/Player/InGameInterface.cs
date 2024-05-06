@@ -3,15 +3,12 @@
 	* It's supposed to be called during each frame and adjust based on that.
 	* It will for instance update the amount of viewers and likes.
 	*
-	* TODO:
-	* - 
-	*
 	* Author(s): William Fridh
 	*/
 
-using System.IO;
-using System.Xml;
+using UnityEditor.EditorTools;
 using UnityEngine;
+using System.Collections;
 
 public class InGameInterface : MonoBehaviour
 {
@@ -42,9 +39,18 @@ public class InGameInterface : MonoBehaviour
 	[SerializeField] AudioClip audioClip;
 
 	[Tooltip("Message volume.")]
+	[Range(0f, 1f)]
 	[SerializeField] float audioVolume = 1.0f;
 
-	private TMPro.TextMeshProUGUI usernameText;
+	[Tooltip("Username text object.")]
+	[SerializeField] TMPro.TextMeshProUGUI usernameText;
+
+	[Tooltip("Generate debugging messages.")]
+	[SerializeField] bool generateDebugMessages = false;
+
+	[Tooltip("Generate debugging messages speed.")]
+	[SerializeField] float generateDebugMessagesSpeed = 5.0f;
+
 	private AudioSource audioSource;
 
 	// Start is called before the first frame update
@@ -55,25 +61,21 @@ public class InGameInterface : MonoBehaviour
 		if (playerScore == null)
 		{
 			Debug.LogError("Player score is not set.");
-			DestroyDueToError();
 		}
 
 		// Find the child GameObject with the name "Likes Text".
 		if (likesCounterText == null) {
 			Debug.LogError("Likes text object is not set.");
-			DestroyDueToError();
 		}
 
 		// Find the child GameObject with the name "Viewers Text".
 		if (viewersCounterText == null) {
 			Debug.LogError("Viewers text object is not set.");
-			DestroyDueToError();
 		}
 
 		// Find the child GameObject with the name "Chat Box".
 		if (chatBoxWrapper == null) {
 			Debug.LogWarning("No chatBoxWrapper selected. Thus the chat will be disabled.");
-			DestroyDueToError();
 		}
 
 		// Find the child GameObject with the name "Username".
@@ -87,13 +89,6 @@ public class InGameInterface : MonoBehaviour
 		else
 			spriteFolder = spriteFolder.Replace("Assets/", "").Replace("Resources/", ""); // Remove "Assets/" and "Resources/" from the path.
 
-		// Nested function for convenience.
-		void DestroyDueToError()
-		{
-			Debug.LogError("InGameInterface: Due to missing elemenet, this script will be destroyed.");
-			Destroy(this); // Destroy this script if the required component is not found.
-		}
-
 		// Set username.
 		if (usernameText != null)
 			usernameText.text = Storage.GetUsername();
@@ -106,6 +101,9 @@ public class InGameInterface : MonoBehaviour
 			}
 			SetMessageVolume(audioVolume);
 		}
+
+		// Debugging.
+		StartCoroutine(DebugPrintMessageCoroutine());
 	}
 
 	// Update is called once per frame
@@ -131,9 +129,21 @@ public class InGameInterface : MonoBehaviour
 		* to read/easy to maintain!
 		*/
 	void UpdateInGameInterface() {
+
+		if (likesCounterText == null || viewersCounterText == null) {
+			Debug.LogError("Missing element to display topbar correctly. Please check the inspector.");
+			return;
+		}
+
 		// Update the likes and views counter.
-		likesCounterText.text = Formatting.FloatToShortString(playerScore.likes);
-		viewersCounterText.text = Formatting.FloatToShortString(playerScore.viewers);
+		if (playerScore == null) { // Fall back on stored values if playerScore is not set.
+			likesCounterText.text = Formatting.FloatToShortString(Storage.GetLastGameLikes());
+			viewersCounterText.text = Formatting.FloatToShortString(Storage.GetLastGameViewers());
+
+		} else {
+			likesCounterText.text = Formatting.FloatToShortString(playerScore.likes);
+			viewersCounterText.text = Formatting.FloatToShortString(playerScore.viewers);
+		}
 
 		// Enable and disable top bar element to trigger recalculation of position (to resovle Unity bug).
 		if (topBar != null) {
@@ -199,6 +209,21 @@ public class InGameInterface : MonoBehaviour
 		// Play audio clip.
 		if (audioClip != null)
 			audioSource.Play();
+	}
+
+	/**
+		* Debugging function.
+		*
+		* Used to generate a random message for debugging purposes.
+		*/
+	IEnumerator DebugPrintMessageCoroutine()
+	{
+		while (true)
+		{
+			if (generateDebugMessages)
+				PrintMessage("This is a test message.", "baseline_person_white_icon");
+			yield return new WaitForSeconds(generateDebugMessagesSpeed);
+		}
 	}
 
 }

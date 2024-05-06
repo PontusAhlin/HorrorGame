@@ -37,7 +37,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 114.73491, y: -0}
+  m_AnchoredPosition: {x: 124.668076, y: -0}
   m_SizeDelta: {x: 59.03, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &5653070099479082383
@@ -205,7 +205,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &5614193283638350085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,6 +245,9 @@ MonoBehaviour:
   spriteFolder: Assets/Resources/Images
   audioClip: {fileID: 8300000, guid: b5b0cfb6462d13743be3dbeb9aa5ed1a, type: 3}
   audioVolume: 0.4
+  usernameText: {fileID: 4785221850112769156}
+  generateDebugMessages: 0
+  generateDebugMessagesSpeed: 3
 --- !u!1 &928981376951287987
 GameObject:
   m_ObjectHideFlags: 0
@@ -876,7 +879,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 114.73491, y: 32}
+  m_AnchoredPosition: {x: 124.668076, y: 32}
   m_SizeDelta: {x: 59.03, y: 0}
   m_Pivot: {x: 0.5, y: 3}
 --- !u!222 &7379644222469412367

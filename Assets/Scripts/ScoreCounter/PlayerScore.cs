@@ -43,4 +43,16 @@ public class PlayerScore : MonoBehaviour
             Debug.Log("Viewers: " + viewers + "Likes: " + likes);   // Debug log.
         }
     }
+
+    /**
+        * Death.
+        *
+        * This function is called when the player dies. It's used to save the likes and viewers
+        * to the storage to be used in the jumpscare scenes.
+        */
+    public void Death()
+    {
+        Storage.SetLastGameLikes(likes);                       // Save the likes to the storage.
+        Storage.SetLastGameViewers(viewers);                   // Save the viewers to the storage.
+    }
 }

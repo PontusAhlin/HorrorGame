@@ -11,20 +11,20 @@
 public static class Formatting {
 
     /**
-        * Formats a float to a string.
-        * 
-        * If the value is less than 1000, it will return the value as a string.
-        * If the value is more than 1000, it will return the value divided by 1000 and rounded to one decimal.
+        * Formats a float to a string with prefix.
         *
         * TODO:
         * - Add support for millions, billions, etc.
         */
     public static string FloatToShortString(float value = 0, int decimals = 0) {
-        if (value < 1000) {
-            return ((int)value).ToString();
-        } else {
+        if (value >= 1000000) {
+            decimal rounded = System.Math.Round((decimal)(value / 1000000), decimals);
+            return rounded.ToString() + "M";
+        } else if (value >= 1000) {
             decimal rounded = System.Math.Round((decimal)(value / 1000), decimals);
             return rounded.ToString() + "K";
+        } else {
+            return ((int)value).ToString();
         }
     }
 

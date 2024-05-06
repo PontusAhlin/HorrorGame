@@ -52,7 +52,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1
+  m_Radius: 0.1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7107281418373697343
 MonoBehaviour:
@@ -69,7 +69,7 @@ MonoBehaviour:
   m_IsGlobal: 0
   priority: 3
   blendDistance: 30
-  weight: 0.8
+  weight: 0.7
   sharedProfile: {fileID: 11400000, guid: fa203a4dd601d9d41a9b0abad2d8d93a, type: 2}
 --- !u!1001 &9028833443712093190
 PrefabInstance:
@@ -264,7 +264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 0}
-  killRange: 3
+  killRange: 5
   huntRange: 40
   layersToHit:
     serializedVersion: 2
@@ -391,7 +391,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 50
+  MaxDistance: 75
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
