@@ -399,6 +399,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 264
   JumpscareScene: JumpscareCharger
+  MonsterVolume: {fileID: 3308436140841353308}
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
