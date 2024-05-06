@@ -1,4 +1,14 @@
-    using System.Collections;
+/**
+    * Title: MonsterPatrol.cs
+    *
+    * This script is used to control the ghost monster's movement and detection of the player.
+    * The ghost monster will patrol the map and chase the player if they are within the detection range.
+    * If the player is within the kill range, the player will die and the scene will change to the jumpscare scene.
+    *
+    * Author: ??? & William Fridh
+    */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
@@ -119,9 +129,13 @@ public class enemyAiControl : MonoBehaviour
         {
             // Check if the ray hits the player
             if (killHit.collider.gameObject.name.Equals("Character & Camera")) {
+                // Call player death function to store likes and viewers.
+                PlayerScore player = killHit.collider.gameObject.GetComponent<PlayerScore>();
+                player.Death();
+                // Change scene to jumpscare scene.
                 ChangeScene(JumpscareScene);
             }
-            //.Log(killHit.collider.gameObject.name + " was hit!");
+            Debug.Log(killHit.collider.gameObject.name + " was hit!");
 
         }
 

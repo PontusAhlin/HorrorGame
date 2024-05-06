@@ -50,13 +50,11 @@ public class HighscoreMenu : MonoBehaviour
         // Show the missing highscore text by default.
         MissingHighscoreTextHolder.SetActive(true);
 
-        printHighscore();
+        // Print the highscore.
+        PrintHighscore();
     }
 
-    /**
-        * Prints the highscore to the screen.
-        */
-    void printHighscore()
+    void PrintHighscore()
     {
         // Get the highscore from the playerprefs
         // Remember to hide the missing highscore text if there's a highscore.
@@ -73,12 +71,7 @@ public class HighscoreMenu : MonoBehaviour
             // Set the score (rounded).
             TMPro.TextMeshProUGUI scoreText = highscoreListObject.transform.Find("Score").GetComponent<TMPro.TextMeshProUGUI>();
             int score = int.Parse(highscore.Split(':')[1]);
-            if (score >= 1000) {
-                decimal likesRounded = System.Math.Round((decimal)(score / 1000), 1);	// Round to 1 decimal place.
-                scoreText.text = likesRounded.ToString() + "K";							// Round to 1 decimal place and add "K" for thousands.
-            } else {
-                scoreText.text = ((int)score).ToString();								// If less than 1000, just print the number.
-            }
+            scoreText.text = Formatting.FloatToShortString(score);
             // Set the parent.
             highscoreListObject.transform.SetParent(HighscoreList.transform);
         }
