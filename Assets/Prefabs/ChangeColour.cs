@@ -8,7 +8,6 @@ public class ChangeColour : MonoBehaviour
     // SkinnedMeshRenderer is the component of the monster containing its materials
     public SkinnedMeshRenderer[] skinnedMeshRenderer;
     private Material[] materials; // list of Materials applied to monster
-    public Material[] materialsPossibleForUse; // list of Materials which we can to apply to monster
     private List<Material> materialsInUse = new List<Material>(); // Array of length 2 which contain the two current materials in use
     Color cyanC = new Color(0f, 1f, 1f, 1f);
     Color blackC = new Color(0f, 0f, 0f, 1f);
@@ -58,6 +57,7 @@ public class ChangeColour : MonoBehaviour
         // Generate a random index within the range of the list
         int randomIndex = Random.Range(0, colorPallet.Count);
 
+        // picks a random color from the colorPallet, then applies this color to material outline color
         materials[0].SetColor("_OutlineColor", colorPallet[randomIndex].color);
         materials[1].SetColor("_OutlineColor", colorPallet[randomIndex].color);
 

@@ -28,5 +28,5 @@ Material:
     m_Floats: []
     m_Colors:
     - _FaceColor: {r: 0.408805, g: 0.408805, b: 0.408805, a: 1}
-    - _OutlineColor: {r: 0.16077869, g: 0.6415094, b: 0.075649686, a: 1}
+    - _OutlineColor: {r: 0.7690714, g: 0.8396226, b: 0.75645244, a: 1}
   m_BuildTextureStacks: []
