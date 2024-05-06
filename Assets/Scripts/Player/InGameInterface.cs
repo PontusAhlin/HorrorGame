@@ -6,7 +6,7 @@
 	* Author(s): William Fridh
 	*/
 
-using UnityEditor.EditorTools;
+
 using UnityEngine;
 using System.Collections;
 
