@@ -18,7 +18,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class UIAnimations : MonoBehaviour
+public class CustomAnimations : MonoBehaviour
 {
 
     [Tooltip("The duration of the animation (s).")]
