@@ -76,7 +76,12 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 55e87b745b006494cad485924f179e2e,
         type: 3}
       propertyPath: m_Name
-      value: GhostMonster
+      value: Ghost
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 55e87b745b006494cad485924f179e2e,
+        type: 3}
+      propertyPath: m_TagString
+      value: Monster
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -98,6 +103,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 7118089094910767946}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 55e87b745b006494cad485924f179e2e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4673010724816424608}
   m_SourcePrefab: {fileID: 100100000, guid: 55e87b745b006494cad485924f179e2e, type: 3}
 --- !u!4 &4982748168232926638 stripped
 Transform:
@@ -195,16 +204,36 @@ MonoBehaviour:
   layersToHit:
     serializedVersion: 2
     m_Bits: 264
-  speed: 10
+  speed: 4
   MonsterTransform: {fileID: 4982748168232926638}
-  JumpscareScene: Jumpscare1
-  rotationSpeed: 60.2
+  JumpscareScene: JumpscareGhost
+  rotationSpeed: 300
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
-  Animator: {fileID: 0}
   walkRange: 40
   pauseTimeRange: 5
+--- !u!114 &4673010724816424608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5651339836816107284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61d717b56c75bc44f8ab25c09bf1820b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerScore: {fileID: 0}
+  viewerAddAmount: 1
+  viewerRemoveAmount: 0.5
+  generatorSpeed: 1
+  increaseAndDecrease: 0
+  inFieldOfView: 0
+  viewerRequest: 0
+  mult: 1
+  multDec: 0.01

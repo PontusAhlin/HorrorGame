@@ -62,8 +62,7 @@ public class RandomMonsterGeneration : MonoBehaviour
 
         if (SpawnOneOfEach)
         {
-            //Debug.Log(monsterIndex);
-            if (monsterIndex == MonsterPrefabs.Count)
+            if (monsterIndex == (MonsterPrefabs.Count-1))
                 SpawnOneOfEach = false;
             Instantiate(MonsterPrefabs[monsterIndex], new Vector3(xCoord, 2, zCoord), Quaternion.identity);
             CurrentMonsterAmount++;

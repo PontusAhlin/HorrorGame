@@ -136,7 +136,7 @@ public class enemyAiControl : MonoBehaviour
                 // Change scene to jumpscare scene.
                 ChangeScene(JumpscareScene);
             }
-            Debug.Log(killHit.collider.gameObject.name + " was hit!");
+            //Debug.Log(killHit.collider.gameObject.name + " was hit!");
 
         }
 
