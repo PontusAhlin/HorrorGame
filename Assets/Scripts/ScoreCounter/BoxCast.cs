@@ -185,18 +185,21 @@ public class BoxCast : MonoBehaviour
             getChat();
             viewerMsg = chatGeneration.GenerateMessage("Request");
             print(viewerMsg);
-
             ranReqIndex = Random.Range(0,seenMonsters.Count);
             MonsterGenerateViewers reqMonster = seenMonsters[ranReqIndex].GetComponent<MonsterGenerateViewers>();
             reqMonster.mult = 1.0f;     
             //ChangeColour colourMonster = seenMonsters[ranReqIndex].GetComponent<ChangeColour>(); //SHOULD BE PUT IN BELOW WHEN ADDED TO DEV
             //seenMonster[ranReqIndex].gameObject.Colour
+
+            InGameInterface ui =  .GetComponent<InGameInterface>();
+            PrintMessage("Hello","a");
             print("I want to see the " + "PUT IN COLOUR OF MONSTER" + " " + seenMonsters[ranReqIndex].gameObject.name);
             viewerRequestTime = viewerRequestTimeInit;
             chatTimeInterval = chatTimeIntervalInit;
         }
     }
     
+
 
     //Debugging by creating the raycast box and line towards the box
     private void OnDrawGizmosSelected() {
@@ -205,8 +208,11 @@ public class BoxCast : MonoBehaviour
         Gizmos.DrawWireCube(boxCastOffset + playerDirection * maxDistance , halfBox/2);
     }
 
-
+    /*
+        *Gets the chat reference from ChatManager
+    */
     private void getChat(){
+        InGameInterface ui = GetComponent<InGameInterface>();
         GameObject chatGenerationGameObject = GameObject.Find("ChatManager");
         chatGeneration = chatGenerationGameObject.GetComponent<ChatGeneration>();
     }
