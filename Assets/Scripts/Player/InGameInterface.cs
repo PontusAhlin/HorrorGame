@@ -69,19 +69,16 @@ public class InGameInterface : MonoBehaviour
 		// Find the child GameObject with the name "Likes Text".
 		if (likesCounterText == null) {
 			Debug.LogError("Likes text object is not set.");
-			DestroyDueToError();
 		}
 
 		// Find the child GameObject with the name "Viewers Text".
 		if (viewersCounterText == null) {
 			Debug.LogError("Viewers text object is not set.");
-			DestroyDueToError();
 		}
 
 		// Find the child GameObject with the name "Chat Box".
 		if (chatBoxWrapper == null) {
 			Debug.LogWarning("No chatBoxWrapper selected. Thus the chat will be disabled.");
-			DestroyDueToError();
 		}
 
 		// Find the child GameObject with the name "Username".
@@ -94,13 +91,6 @@ public class InGameInterface : MonoBehaviour
 			Debug.LogWarning("Sprite folder is not set. No chat messages will be displayed.");
 		else
 			spriteFolder = spriteFolder.Replace("Assets/", "").Replace("Resources/", ""); // Remove "Assets/" and "Resources/" from the path.
-
-		// Nested function for convenience.
-		void DestroyDueToError()
-		{
-			Debug.LogError("InGameInterface: Due to missing elemenet, this script will be destroyed.");
-			Destroy(this); // Destroy this script if the required component is not found.
-		}
 
 		// Set username.
 		if (usernameText != null)
@@ -142,6 +132,12 @@ public class InGameInterface : MonoBehaviour
 		* to read/easy to maintain!
 		*/
 	void UpdateInGameInterface() {
+
+		if (likesCounterText == null || viewersCounterText == null) {
+			Debug.LogError("Missing element to display topbar correctly. Please check the inspector.");
+			return;
+		}
+
 		// Update the likes and views counter.
 		if (playerScore == null) { // Fall back on stored values if playerScore is not set.
 			likesCounterText.text = Formatting.FloatToShortString(Storage.GetLastGameLikes(),LikesAndViewerDecimal);
