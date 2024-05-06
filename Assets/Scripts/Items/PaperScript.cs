@@ -31,7 +31,7 @@ public class PaperScript : MonoBehaviour
             { 
             if ((90 - playerTransform.localEulerAngles.x < AngleToReadAt) && ((90 - playerTransform.localEulerAngles.x) > 0))
             {
-                Debug.Log(playerTransform.localEulerAngles.x);
+                Debug.Log("Player is looking down at an instance of LorePaper but there is nothing to do in this function!!!");
             }
         }
     }
