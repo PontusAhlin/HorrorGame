@@ -19,11 +19,26 @@ public class PointerScript : MonoBehaviour
         //Vector3 fromPosition = gameObject.transform.position;
         //fromPosition.y = 0f;
         //Vector3 direction = (toPosition - fromPosition).normalized;
-        Vector3 targetDir = target.transform.position - transform.position;
+        Vector3 targetDir = target.transform.position - pointerWrapper.transform.position;
         Vector3 currentDir = pointer.transform.position - pointerWrapper.transform.position;
         float angle = Vector3.Angle(currentDir, targetDir);
         Debug.Log(angle);
-        //if (angle > 5)
-            //pointerWrapper.transform.rotation = Quaternion.Slerp(pointerWrapper.transform.rotation, to.rotation, timeCount);
+        Rotate(angle,currentDir,targetDir);
+    }
+
+        private void Rotate(float rotationSpeed, Vector3 forward, Vector3 destdir){
+        // rotation is the vector about which we rotate
+        Vector3 rotationVector = new Vector3(0,rotationSpeed,0);
+        // Quaternion is a measure of how much rotation there is between two vectors
+        Quaternion rot = Quaternion.FromToRotation(forward, destdir);
+        // here we pick the closest rotation (whether to turn left or right)
+        if (rot.y > 0)
+        {
+            pointerWrapper.transform.Rotate(rotationVector * Time.deltaTime);
+        }
+        if (rot.y <= 0)
+        {
+            pointerWrapper.transform.Rotate(-rotationVector * Time.deltaTime);
+        }
     }
 }
