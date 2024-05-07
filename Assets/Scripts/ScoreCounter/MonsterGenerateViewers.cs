@@ -57,6 +57,7 @@ public class MonsterGenerateViewers : MonoBehaviour
         if (PlayerScore == null) {
             Debug.LogError("PlayerScore is not set. Removing MonsterGenerateViews script.");
             Destroy(this);
+            return;
         }
         if (generatorSpeed == 0f)
             Debug.LogWarning("Generator speed is 0, which is invalid. It'll be set to 1 instead.");
@@ -66,11 +67,11 @@ public class MonsterGenerateViewers : MonoBehaviour
             viewerAddAmount = 1f;
         }
         if (viewerAddAmount < 1.1f && increaseAndDecrease == IncreaseAndDecrease.Exponential){
-            Debug.LogWarning("viewerAddAmount speed is less than 1, which is invalid. It'll be set to 1.1 instead.");
+            Debug.LogWarning("viewerAddAmount speed is less than 1.1, which is invalid. It'll be set to 1.1 instead.");
             viewerAddAmount = 1.1f;
         }
         if (viewerRemoveAmount < 1.1f && increaseAndDecrease == IncreaseAndDecrease.Exponential){
-            Debug.LogWarning("viewerRemoveAmount speed is less than 1, which is invalid. It'll be set to 1.1 instead.");
+            Debug.LogWarning("viewerRemoveAmount speed is less than 1.1, which is invalid. It'll be set to 1.1 instead.");
             viewerRemoveAmount = 1.1f;
         }
         
