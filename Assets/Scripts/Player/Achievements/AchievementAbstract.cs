@@ -118,6 +118,8 @@ public abstract class AchievementAbstract : MonoBehaviour
         */
     public void AddProgress(int Value)
     {
+        if (IsAchieved) // If the achievement is already archived, return.
+            return;
         Progress += Value;
         if (Progress >= MaxProgress) // If Progress is greater than max Progress, set as archived.
         {
