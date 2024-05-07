@@ -5,19 +5,23 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 /*
-By: ALIN
-but really by this video
-https://www.youtube.com/watch?v=6B7yOnqpK_Y
-and this github repo
-https://github.com/GarnetKane99/RandomWalkerAlgo_YT
+this is probably the biggest code file in the project. it is mainly this video's code, and our game's logic on top
+---> https://www.youtube.com/watch?v=6B7yOnqpK_Y / https://github.com/GarnetKane99/RandomWalkerAlgo_YT
+1. generate an empty MapWidth x MapHeight grid, datatype Grid. fill it with Grid.EMPTY
+2. spawn some "walkers" in the middle, and let them walk from the middle, and wherever they walk, they turn
+Grid.EMPTY into Grid.ONE_ONE. this represents a ROOM SPACE for now, not neccesarily a 1x1 room.
+3. randomly pick a point in this until you hit a Grid.ONE_ONE, and turn it into Grid.CONTROL_ROOM. cuz only one spawns
+4. run through every tile in the grid. if it's ONE_ONE check it's neighbors to see if you can spawn a 2x2 room. roll the 
+chance to get a 2x2 room, and if successful, change the tiles to Grid.TWO_TWO and run DrawTwoByTwo().
+5. similar logic for 2x1 vertical, and 2x1 horizontal rooms, and DrawTwoByOneVertical()/Horizontal()
+6. run through the entire grid again. if we land on a ONE_ONE room, draw it.
+(note: drawing means spawning all the assets in it so they're in the actual unity scene).
+(note: in the running of the Draw commands, we also spawn navmeshes on the whole map corresponding to each room)
+7. bake the navmesh so we have one big area where AI can walk on
+8. run PostMapGenFunction. this will generate doors so they do not interfere with A.I. pathfinding and also run
+PostmapGenScript for anything else.
 
-what this does is generate a grid,
-spawn these "walker" objects that walk around the grid and place rooms where they walk,
-and then i needa code wtf it does with the grid
-because this was setup to output to a tilemap but that's for 2d
-
-YOU WANT TO WORK IN DrawRoom TO DRAW STUFF!!
-TO MODIFY RANDOM GENERATION PARAMETERS, DO IT FROM THE INSPECTOR, ON THE OBJECT WITH THIS SCRIPT!
+-alin, and optimized by william fridh
 */
 
 public class RandomMapHandler : MonoBehaviour
