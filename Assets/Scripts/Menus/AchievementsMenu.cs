@@ -74,7 +74,7 @@ public class AchievementsMenu : MonoBehaviour
 
             TMPro.TextMeshProUGUI Progress =
                 AchievementElement.transform
-                .Find("Right Column/Progress")
+                .Find("Right Column/Progress Bar/Progress")
                 .gameObject.GetComponent<TMPro.TextMeshProUGUI>();
 
             UnityEngine.UI.Image icon =
@@ -82,10 +82,19 @@ public class AchievementsMenu : MonoBehaviour
                 .Find("Icon")
                 .gameObject.GetComponent<UnityEngine.UI.Image>();
 
+            RectTransform bar =
+                AchievementElement.transform
+                .Find("Right Column/Progress Bar/Bar")
+                .gameObject.GetComponent<RectTransform>();
+
+            // Set progress bar fill amount.
+            float progress = bar.sizeDelta.x * (AchievementObject.GetProgress() / AchievementObject.GetMaxProgress());
+            bar.sizeDelta = new Vector2(progress * bar.sizeDelta.y, bar.sizeDelta.y);
+
             // Set text and sprite element contents.
             Title.text = AchievementObject.GetTitle();
             Description.text = AchievementObject.GetDescription();
-            Progress.text = "Progress: " + AchievementObject.GetProgress() + "/" + AchievementObject.GetMaxProgress();
+            Progress.text = AchievementObject.GetProgress() + "/" + AchievementObject.GetMaxProgress();
 
             string SpritePath = AchievementObject.GetSpritePath();
 
