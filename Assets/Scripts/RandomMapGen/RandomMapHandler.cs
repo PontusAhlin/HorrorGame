@@ -326,7 +326,7 @@ public class RandomMapHandler : MonoBehaviour
                 paperY = UnityEngine.Random.Range(0,MapHeight);
             }
 
-            Instantiate(LoreNotes[i], new Vector3((controlroomX)*RoomSize, 1, (controlroomY)*RoomSize), Quaternion.Euler(0,0,0));
+            Instantiate(LoreNotes[i], new Vector3((paperX)*RoomSize, 0.6f, (paperY)*RoomSize), Quaternion.Euler(0,0,0));
         }
 
 
