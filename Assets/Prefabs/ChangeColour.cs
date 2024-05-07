@@ -59,7 +59,7 @@ public class ChangeColour : MonoBehaviour
         int randomIndex = Random.Range(0, colorPallet.Count);
 
         // picks a random color from the colorPallet, then applies this color to material outline color
-        materials[0].SetTexture("_BaseMap", colorPallet[randomIndex].color);
+        materials[0].SetColor("_OutlineColor", colorPallet[randomIndex].color);
         
 
         CurrentColor = colorPallet[randomIndex].name;
