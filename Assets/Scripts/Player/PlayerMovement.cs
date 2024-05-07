@@ -9,6 +9,7 @@
     */
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
     [Tooltip("Player movement speed.")]
 
     [SerializeField] public float speed = 1f;
+    public float speedInit = 1f;
+    
     private Gamepad gamepad;            // InputSystem is used and set to imitate controller input on touchscreens.
 
     [Tooltip("Upper step ray element. This element is responsible for sending out a ray to check if the next step is rechable.")]
@@ -38,11 +41,20 @@ public class PlayerMovement : MonoBehaviour
     private float lowerRayCastingDistance = 0.1f;        // Distance of the lower raycasting
     private float upperRayCastingDistance = 0.3f;        // Distance of the upper raycasting
 
+
+    private Vector2 direction;          //Used for the direction of the joystick
+    private float directionX;
+    private float directionY;
+    [Tooltip("Documentation for the used joystick pack https://assetstore.unity.com/packages/tools/input-management/joystick-pack-107631#content")]
+    [SerializeField] private FloatingJoystick joystick;
+
+
     // Start is called before the first frame update
     void Start()
     {
         gamepad = Gamepad.current;                              // Select current gamepad
         capsuleCollider = GetComponent<CapsuleCollider>();      // Get the player's capsule collider
+        FloatingJoystick joystick = GetComponent<FloatingJoystick>();
 
         // Find child camera
         Camera childCam = GetComponentInChildren<Camera>();
@@ -89,10 +101,15 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
 
+
+
+
+        /* Deprecated
         // Check if a gamepad is connected
         if (gamepad == null)
             return;
-
+        */
+        
         // Set the position of the stepRay objects to the player's position.
         // Important to keep them on the same level and at correct height.
         stepRayLower.transform.position = transform.position - new Vector3(0f, capsuleCollider.height / 2 - capsuleCollider.center.y, 0f) + new Vector3(0f, stepRayLowerMargin, 0f);
@@ -103,14 +120,74 @@ public class PlayerMovement : MonoBehaviour
         Vector3 camEuler = camTransform.rotation.eulerAngles;
         stepRayUpper.transform.rotation = Quaternion.Euler(0f, camEuler.y, 0f);
         stepRayLower.transform.rotation = Quaternion.Euler(0f, camEuler.y, 0f);
+        
+        // Stiches together joystick/player movement direction
 
+        MovePlayer();
+        
+        
+        
+        /* Deprecated
         if (gamepad.buttonNorth.isPressed) {                                            // "butttonNorth" is our current movement button
             StepClimb();                                                                // Perform climb
             float targetAngle = camTransform.eulerAngles.y;                             // Get the camera's y rotation
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;  // Rotate the forward vector by the camera's y rotation
             transform.position += moveDir.normalized * speed * Time.deltaTime;          // Move the player in the direction of the rotated forward vector
-        }
+        }*/
     }
+
+    /*
+        * Checks different parts of the joystick and how  
+        * much the player should move based on the joystick position
+    */
+    
+    void MovePlayer(){
+        
+        // Gets the directions of the joystick
+        direction = joystick.Direction;
+        directionX = direction.x; 
+        directionY = direction.y; 
+        
+        // These if statements checks different parts of the joystick
+        // First one is top part of joystick
+        if(directionY > (Math.Sqrt(3)/2) && (directionX > -1/2 || directionX < 1/2)){
+            JoystickPlayerSpeed(1);
+        }
+
+        // Second one checks middle part of joystick/circle up until the first part 
+        if(directionY > 1/2 && ((directionX > -Math.Sqrt(3)/2) || (directionX < Math.Sqrt(3)/2))){
+            JoystickPlayerSpeed(2);
+        }
+
+        // Third checks the under the middle line of the joystick/circle
+        if(directionY < 0){
+            JoystickPlayerSpeed(3);
+        }
+
+    }
+
+    /*
+        * Calculates the direction of the player while using the joystick, 
+        * also divides the speed of the players original movespeed 
+    */
+    void JoystickPlayerSpeed(int speedDivision){
+
+        // References to the camera and capsule collider 
+        GameObject camera = GameObject.Find("Main Camera");
+        Transform cameraTransform = camera.GetComponent<Transform>();    
+        
+        CapsuleCollider collider = GetComponent<CapsuleCollider>(); 
+        Transform colliderTra = collider.GetComponent<Transform>();
+
+        // Sets the speed speed based on speedDivision
+        speed = speedInit/speedDivision;
+        // Calculations to get the direction of how the player should move based on the joystick direction
+        Vector3 moveDir = directionX * cameraTransform.right.normalized + directionY * cameraTransform.forward.normalized;
+        colliderTra.position += moveDir * speed * Time.deltaTime;
+        cameraTransform.transform.position = colliderTra.position + new Vector3(0,3,0);
+    }
+
+
 
 
     /**
