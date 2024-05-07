@@ -69,6 +69,9 @@ public class BoxCast : MonoBehaviour
     //Bool that makes it so messages don't overlap
     private bool extraBreak;
 
+    // ChangeColour object containing the colour of the current "special "monster to follow for views
+    private ChangeColour currentColorMonster;
+
 
     void Start(){
         //Request time is initilized to 60 seconds
@@ -188,7 +191,8 @@ public class BoxCast : MonoBehaviour
             MonsterGenerateViewers reqMonster = seenMonsters[ranReqIndex].GetComponent<MonsterGenerateViewers>();
             reqMonster.mult = 1.0f;     
             //ChangeColour colourMonster = seenMonsters[ranReqIndex].GetComponent<ChangeColour>(); //SHOULD BE PUT IN BELOW WHEN ADDED TO DEV
-            //seenMonster[ranReqIndex].gameObject.Colour
+            currentColorMonster = seenMonsters[ranReqIndex].ChangeColour;
+
 
 
             getChat();
