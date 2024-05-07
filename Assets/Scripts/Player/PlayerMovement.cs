@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private Transform camTransform;
     [Tooltip("Player movement speed.")]
 
-    [SerializeField] float speed = 1f;
+    [SerializeField] public float speed = 1f;
     private Gamepad gamepad;            // InputSystem is used and set to imitate controller input on touchscreens.
 
     [Tooltip("Upper step ray element. This element is responsible for sending out a ray to check if the next step is rechable.")]
