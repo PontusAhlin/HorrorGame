@@ -9,6 +9,7 @@ public class ChangeColour : MonoBehaviour
     public SkinnedMeshRenderer[] skinnedMeshRenderer;
     private Material[] materials; // list of Materials applied to monster
     private List<Material> materialsInUse = new List<Material>(); // Array of length 2 which contain the two current materials in use
+    public string CurrentColor; 
     Color cyanC = new Color(0f, 1f, 1f, 1f);
     Color blackC = new Color(0f, 0f, 0f, 1f);
     Color blueC = new Color(0f, 0f, 1f, 1f);
@@ -61,7 +62,7 @@ public class ChangeColour : MonoBehaviour
         materials[0].SetColor("_OutlineColor", colorPallet[randomIndex].color);
         materials[1].SetColor("_OutlineColor", colorPallet[randomIndex].color);
 
-        
+        CurrentColor = colorPallet[randomIndex].name;
         
     }
 

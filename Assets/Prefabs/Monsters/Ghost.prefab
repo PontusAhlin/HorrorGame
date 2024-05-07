@@ -196,6 +196,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 6210297821009159190}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 55e87b745b006494cad485924f179e2e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -6135630731409709057}
   m_SourcePrefab: {fileID: 100100000, guid: 55e87b745b006494cad485924f179e2e, type: 3}
 --- !u!4 &4982748168232926638 stripped
 Transform:
@@ -423,3 +427,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-6135630731409709057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5651339836816107284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d995481dce8ec4600ae6b0424fe81fc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skinnedMeshRenderer: []
