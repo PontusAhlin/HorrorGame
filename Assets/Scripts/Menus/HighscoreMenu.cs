@@ -68,7 +68,7 @@ public class HighscoreMenu : MonoBehaviour
             // Hide missing highscore text.
             MissingHighscoreTextHolder.SetActive(false);
             // Create a new highscore list object.
-            GameObject highscoreListObject = Instantiate(HighscoreListObjectPrefab, transform);
+            GameObject highscoreListObject = Instantiate(HighscoreListObjectPrefab, HighscoreList.transform);
             // Set the username.
             TMPro.TextMeshProUGUI usernameText = highscoreListObject.transform.Find("Username").GetComponent<TMPro.TextMeshProUGUI>();
             usernameText.text = highscore.Split(':')[0];
@@ -76,8 +76,6 @@ public class HighscoreMenu : MonoBehaviour
             TMPro.TextMeshProUGUI scoreText = highscoreListObject.transform.Find("Score").GetComponent<TMPro.TextMeshProUGUI>();
             int score = int.Parse(highscore.Split(':')[1]);
             scoreText.text = Formatting.FloatToShortString(score);
-            // Set the parent.
-            highscoreListObject.transform.SetParent(HighscoreList.transform);
         }
     }
 
