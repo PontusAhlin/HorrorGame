@@ -26,7 +26,7 @@ public class EscapeSceneCode : MonoBehaviour
     void Start(){
         score = ScoreManager.Score;
         scoreText.text = "SCORE: " + score.ToString();
-        if (Storage.AddToTopFiveHighscore(Storage.GetUsername() + ":" + score.ToString())) {
+        if (Storage.AddToHighscore(Storage.GetUsername() + ":" + score.ToString())) {
             // New highscore.
         }
         AchievementHandler();
