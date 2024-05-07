@@ -53,6 +53,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Jumpscares/JumpscareGhost.unity
     guid: ee7af9f16d4dc4b3dab3d4a69a56588f
+  - enabled: 1
+    path: Assets/Scenes/MainScenes/Achievements.unity
+    guid: e01f6ecb7f2c9b340b80c8ede819849d
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 6ee72d15cf39dd748a13eac57397b9af,
       type: 2}

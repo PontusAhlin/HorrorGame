@@ -12,8 +12,13 @@ public class SC_MainMenu : MonoBehaviour
 {
     public GameObject MainMenu;
     public GameObject CreditsMenu;
-    [SerializeField] string HighscoreSceneName;
+
     [Tooltip("The name of the scene to load when the player wants to see the highscore.")]
+    [SerializeField] string HighscoreSceneName;
+
+    [Tooltip("The name of the scene to load when the player wants to see the achievements.")]
+    [SerializeField] public string AchievementsSceneName = "";
+
     [SerializeField] public string StartingSceneName = "Entrance";
     public InputField playername;
 
@@ -55,6 +60,19 @@ public class SC_MainMenu : MonoBehaviour
         else
         {
             Debug.LogError("HighscoreSceneName is not set in the inspector, thus no navigation will be done.");
+        }
+    }
+
+    public void AchievementsButton()
+    {
+        // Show Achievements Menu
+        if (AchievementsSceneName != null && AchievementsSceneName != "")
+        {
+            SceneManager.LoadScene(AchievementsSceneName);
+        }
+        else
+        {
+            Debug.LogError("AchievementsSceneName is not set in the inspector, thus no navigation will be done.");
         }
     }
 

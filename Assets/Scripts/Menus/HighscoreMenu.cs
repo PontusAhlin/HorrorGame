@@ -19,8 +19,8 @@ public class HighscoreMenu : MonoBehaviour
 
     [Tooltip("The prefab that will hold the highscore list.")]
     [SerializeField] GameObject HighscoreListObjectPrefab;
+    
     [Tooltip("The name of the scene to load when the player wants to quit.")]
-
     [SerializeField] string QuiteMenuSceneName;
 
     // Start is called before the first frame update
@@ -58,9 +58,13 @@ public class HighscoreMenu : MonoBehaviour
     {
         // Get the highscore from the playerprefs
         // Remember to hide the missing highscore text if there's a highscore.
-        string[] topFiveHighscores = Storage.GetTopFiveHighscore();
-        foreach (string highscore in topFiveHighscores)
+        string[] Highscores = Storage.GetHighscore();
+        int i = 0;
+        foreach (string highscore in Highscores)
         {
+            // Print max 5 highscores.
+            if (i++ == 5)
+                break;
             // Hide missing highscore text.
             MissingHighscoreTextHolder.SetActive(false);
             // Create a new highscore list object.

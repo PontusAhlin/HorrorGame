@@ -135,6 +135,9 @@ public class enemyAiControl : MonoBehaviour
                 Camera playerCamera = killHit.collider.gameObject.GetComponentInChildren<Camera>();
                 PlayerScore playerScore = playerCamera.GetComponent<PlayerScore>();
                 playerScore.Death();
+                // Target the achievement holder and call it's hanlding function.
+                GameObject achievementHolder = killHit.collider.gameObject.transform.parent.Find("AchievementHolder").gameObject;
+                AchievementHandler(achievementHolder);
                 // Change scene to jumpscare scene.
                 ChangeScene(JumpscareScene);
             }
@@ -157,6 +160,20 @@ public class enemyAiControl : MonoBehaviour
             //Debug.Log(huntHit.collider.gameObject.name + " was hit!");
 
         }
+    }
+
+    /**
+        * Achievement Handler.
+        *
+        * This function is called when the player is killed by the monster.
+        * It handles the achievements for the player related to the death.
+        */
+    void AchievementHandler(GameObject achievementHolder)
+    {
+        // Get component.
+        AchievementAbstract AchievementFour = achievementHolder.transform.Find("AchievementFour").GetComponent<AchievementAbstract>();
+        // Increase progress.
+        AchievementFour.AddProgress(1);
     }
 
     void PlayerDeath()

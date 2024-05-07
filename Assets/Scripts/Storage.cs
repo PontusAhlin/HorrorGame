@@ -19,32 +19,42 @@ public static class Storage
 {
 
     // Static string used for setting up the file.
-    private static string path = Application.persistentDataPath + "/storage.json";
+    private static string Path = Application.persistentDataPath + "/storage.json";
+
+    // Used for debugging.
+    public static string GetPath()
+    {
+        return Path;
+    }
 
     /**
         * Checks if the storage file is valid.
         * This is important as the strcture might change troughout the development.
+        *
+        * A missing JSON-file or a JSON-file that does not match the StorageData-class
+        * will be considered invalid.
         */
     private static bool StorageFileIsValid() {
-        string jsonDataFromFile = File.ReadAllText(path);
-        StorageData data = JsonUtility.FromJson<StorageData>(jsonDataFromFile);
-        string jsonDataFromObject = JsonUtility.ToJson(data);
-        return jsonDataFromFile == jsonDataFromObject;
+        if (!File.Exists(Path)) return false;                                                   // Check if the file exists.
+        string jsonDataFromFile     = File.ReadAllText(Path);                                   // Read from JSON-file.
+        StorageData data            = JsonUtility.FromJson<StorageData>(jsonDataFromFile);      // Insert the JSON-data into a StorageData-object.
+        string jsonDataFromObject   = JsonUtility.ToJson(data);                                 // Convert the StorageData-object back to JSON.
+        return jsonDataFromFile != "" && jsonDataFromFile == jsonDataFromObject;                // Compare the two JSON-strings.
     }
 
     /**
         * Gets the data from the storage file.
         * If the file does not exist or is invalid a new file will be generated.
         */
-    private static StorageData getData()
+    private static StorageData GetData()
     {
 
-        if (!File.Exists(path) || !StorageFileIsValid())
+        if (!StorageFileIsValid())
         {
             Debug.LogWarning("Non-existing or invalid storage file. Generating a new one.");
             SaveData(new StorageData());
         }
-        string jsonData = File.ReadAllText(path);
+        string jsonData = File.ReadAllText(Path);
         return JsonUtility.FromJson<StorageData>(jsonData);
     }
 
@@ -54,66 +64,108 @@ public static class Storage
     private static void SaveData(StorageData data)
     {
         string jsonData = JsonUtility.ToJson(data);
-        File.WriteAllText(path, jsonData);
+        File.WriteAllText(Path, jsonData);
     }
 
     // =============================== GETTERS ===============================
     public static string GetUsername()
     {
-        StorageData data = getData();
+        StorageData data = GetData();
         return data.username;
     }
 
-    public static string[] GetTopFiveHighscore()
+    public static string[] GetHighscore()
     {
-        StorageData data = getData();
-        return data.topFiveHighscore;
+        StorageData data = GetData();
+        return data.highscore;
     }
 
     public static float GetMusicVolume()
     {
-        StorageData data = getData();
+        StorageData data = GetData();
         return data.musicVolume;
     }
     
     public static float GetLastGameViewers()
     {
-        StorageData data = getData();
+        StorageData data = GetData();
         return data.lastGameViewers;
     }
 
     public static float GetLastGameLikes()
     {
-        StorageData data = getData();
+        StorageData data = GetData();
         return data.lastGameLikes;
+    }
+
+    public static bool GetAchievementAchieved(int index)
+    {
+        StorageData data = GetData();
+        if (index < 0 || index >= data.achievementsAchieved.Length)
+        {
+            throw new System.ArgumentOutOfRangeException("Index out of range.");
+        }
+        return data.achievementsAchieved[index];
+    }
+
+    public static int GetAchievementProgress(int index)
+    {
+        StorageData data = GetData();
+        if (index < 0 || index >= data.achievementsProgress.Length)
+        {
+            throw new System.ArgumentOutOfRangeException("Index out of range.");
+        }
+        return data.achievementsProgress[index];
     }
 
     // =============================== SETTERS ===============================
     public static void SetUsername(string value)
     {
-        StorageData data = getData();
+        StorageData data = GetData();
         data.username = value;
         SaveData(data);
     }
 
     public static void SetMusicVolume(float value)
     {
-        StorageData data = getData();
+        StorageData data = GetData();
         data.musicVolume = value;
         SaveData(data);
     }
 
     public static void SetLastGameViewers(float value)
     {
-        StorageData data = getData();
+        StorageData data = GetData();
         data.lastGameViewers = value;
         SaveData(data);
     }
 
     public static void SetLastGameLikes(float value)
     {
-        StorageData data = getData();
+        StorageData data = GetData();
         data.lastGameLikes = value;
+        SaveData(data);
+    }
+
+    public static void SetAchievementArchieved(int index, bool value)
+    {
+        StorageData data = GetData();
+        if (index < 0 || index >= data.achievementsAchieved.Length)
+        {
+            throw new System.ArgumentOutOfRangeException("Index out of range.");
+        }
+        data.achievementsAchieved[index] = value;
+        SaveData(data);
+    }
+
+    public static void SetAchievementProgress(int index, int value)
+    {
+        StorageData data = GetData();
+        if (index < 0 || index >= data.achievementsProgress.Length)
+        {
+            throw new System.ArgumentOutOfRangeException("Index out of range.");
+        }
+        data.achievementsProgress[index] = value;
         SaveData(data);
     }
 
@@ -125,48 +177,47 @@ public static class Storage
         *
         * Returns true if the new highscore was added.
         */
-    public static bool AddToTopFiveHighscore(string username, int score)
+    public static bool AddToHighscore(string username, int score)
     {
-        return AddToTopFiveHighscore(username + ":" + score);
-    }
-    public static bool AddToTopFiveHighscore(string newHighscore)
-    {
-        bool newHighscoreAdded = false;
-        // Seperate given data.
-        int newScore = int.Parse(newHighscore.Split(':')[1]);
-        // Load data.
-        StorageData data = getData();
-        // Create a new array and clone content.
-        int newArrLength = data.topFiveHighscore.Length + 1;
-        if (newArrLength > 5)
+        if (username == "" || score < 0)
         {
-            newArrLength = 5;
+            throw new System.ArgumentException("Username or score is invalid.");
         }
-        string[] newArray = new string[newArrLength];
-        if (newArrLength == 1)
+        return AddToHighscore(username + ":" + score);
+    }
+    public static bool AddToHighscore(string newHighscore)
+    {
+        // Get the top five highscores.
+        string[] oldList = GetHighscore();
+        // Create a new list with the new highscore. included.
+        string[] newList = new string[oldList.Length + 1];
+        for (int i = 0; i < oldList.Length; i++)
+            newList[i] = oldList[i];
+        newList[oldList.Length] = newHighscore;
+        // Sort the list by score.
+        System.Array.Sort(newList, (x, y) => int.Parse(y.Split(':')[1]).CompareTo(int.Parse(x.Split(':')[1])));
+        // Transfer the top five highscores to a new list.
+        string[] topScores;
+        if (newList.Length > 5)
         {
-            newArray[0] = newHighscore;
+            topScores = new string[5];
+            for (int i = 0; i < 5; i++)
+                topScores[i] = newList[i];
         }
         else
         {
-            int i = 0;
-            for (int ii = 0; ii < newArrLength; ii++)
-            {
-                if (int.Parse(data.topFiveHighscore[i].Split(':')[1]) < newScore && !newHighscoreAdded)
-                {
-                    newArray[ii] = newHighscore;
-                    newHighscoreAdded = true;
-                }
-                else
-                {
-                    newArray[ii] = data.topFiveHighscore[i++];
-                }
-            }
+            topScores = newList;
         }
+        // Load data.
+        StorageData data = GetData();
         // Save.
-        data.topFiveHighscore = newArray;
+        data.highscore = newList;
         SaveData(data);
-        return newHighscoreAdded;
+        // Check if new highscore was added.
+        foreach (string score in newList)
+            if (newHighscore.Contains(score))
+                return true;
+        return false;
     }
 }
 
@@ -175,7 +226,9 @@ public class StorageData
     // Long-term data.
     public string username;
     public float musicVolume;
-    public string[] topFiveHighscore = new string[0];
+    public string[] highscore = new string[0];
+    public bool[] achievementsAchieved = new bool[5];
+    public int[] achievementsProgress = new int[5];
 
     // Stores the amount of viewers and likes for temporary use.
     public float lastGameViewers;

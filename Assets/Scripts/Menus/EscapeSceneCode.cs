@@ -13,16 +13,23 @@ using UnityEngine.UI;
 
 public class EscapeSceneCode : MonoBehaviour
 {   
+
     [SerializeField]
     Text scoreText;
+
+    [SerializeField] AchievementAbstract AchievementZero;
+    [SerializeField] AchievementAbstract AchievementOne;
+    [SerializeField] AchievementAbstract AchievementTwo;
+    [SerializeField] AchievementAbstract AchievementThree;
 
     float score = 0;
     void Start(){
         score = ScoreManager.Score;
         scoreText.text = "SCORE: " + score.ToString();
-        if (Storage.AddToTopFiveHighscore(Storage.GetUsername() + ":" + score.ToString())) {
+        if (Storage.AddToHighscore(Storage.GetUsername() + ":" + score.ToString())) {
             // New highscore.
         }
+        AchievementHandler();
     }
 
     //void Update(){
@@ -32,5 +39,21 @@ public class EscapeSceneCode : MonoBehaviour
     public void BackToMenu(){
     //    Debug.Log("pls work");
         SceneManager.LoadScene("MainMenu");
+    }
+
+    /**
+     * This method is used to handle the achievements connected to
+     * this section of the game.
+     */
+    private void AchievementHandler()
+    {
+        if (AchievementZero != null)
+            AchievementZero.AddProgress(1);
+        if (AchievementOne != null && score < 1)
+            AchievementOne.AddProgress(1);
+        if (AchievementTwo != null && Storage.GetLastGameViewers() >= 100000)
+            AchievementTwo.AddProgress(1);
+        if (AchievementThree != null && score >= 100000)
+            AchievementThree.AddProgress(1);
     }
 }
