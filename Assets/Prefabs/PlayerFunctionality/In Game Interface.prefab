@@ -205,7 +205,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &5614193283638350085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,15 +239,18 @@ MonoBehaviour:
   likesCounterText: {fileID: 5512513506599188771}
   viewersCounterText: {fileID: 3479377440802638400}
   chatBoxWrapper: {fileID: 4585534455362267548}
+  notificationBoxWrapper: {fileID: 0}
   topBar: {fileID: 3003779071644828320}
   chatMessagePrefab: {fileID: 7191375162648120789, guid: f8c45bd053481d94fb90ea10a6eff487,
     type: 3}
+  notificationPrefab: {fileID: 0}
   spriteFolder: Assets/Resources/Images
-  audioClip: {fileID: 8300000, guid: b5b0cfb6462d13743be3dbeb9aa5ed1a, type: 3}
+  audioClip: {fileID: 8300000, guid: d06386c2d8220a8448691b5b0c17a69c, type: 3}
   audioVolume: 0.4
   usernameText: {fileID: 4785221850112769156}
   generateDebugMessages: 0
   generateDebugMessagesSpeed: 3
+  LikesAndViewerDecimal: 3
 --- !u!1 &928981376951287987
 GameObject:
   m_ObjectHideFlags: 0
