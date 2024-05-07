@@ -69,8 +69,7 @@ public class CustomAnimations : MonoBehaviour
         yield return null;
     }
 
-        IEnumerator Notification()
-    {
+        IEnumerator Notification(){
         float currentTime = 0.0f;
         Vector3 StartPosition = this.transform.position;
         Vector3 EndPosition = StartPosition - new Vector3(0,50,0);
@@ -78,7 +77,7 @@ public class CustomAnimations : MonoBehaviour
         {
             this.transform.position -= new Vector3(0,1,0);
             currentTime += Time.deltaTime;
-            //yield return null; // yield control back to Unity's main loop
+            yield return null; // yield control back to Unity's main loop
         }
         //this.transform.position = EndPosition;
         yield return new WaitForSeconds(notificationDuration);
@@ -86,12 +85,12 @@ public class CustomAnimations : MonoBehaviour
         currentTime = 0.0f;
         while (this.transform.position.y <= StartPosition.y + 200)
         {
-            this.transform.position += new Vector3(0,2,0);
+            this.transform.position += new Vector3(0,4,0);
             currentTime += Time.deltaTime;
-            //yield return null; // yield control back to Unity's main loop
+            yield return null; // yield control back to Unity's main loop
         }
         Destroy(gameObject);
-        //yield return null;
+        yield return null;
     }
 
 }

@@ -506,6 +506,7 @@ MonoBehaviour:
   ghostFreq: 20
   Antenna1: {fileID: 4849239053010448887}
   Antenna2: {fileID: 7148706657144167852}
+  InterfaceObject: {fileID: 0}
 --- !u!54 &6009065757763447772
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -514,7 +515,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4398858690349692872}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 5
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}

@@ -234,9 +234,6 @@ public class InGameInterface : MonoBehaviour
 		// Clean sprite name.
 		sprite = sprite.Split('.')[0]; // Remove file extension.
 
-		// Get the chat box object.
-		//GameObject chatBox = notificationBoxWrapper.transform.Find("Notification Box").gameObject; // Get the chat box object.
-
 		// Get sprite resources.
 		string spritePath = spriteFolder + "/" + sprite;
 		Sprite spriteResources = Resources.Load<Sprite>(spritePath);
@@ -248,7 +245,7 @@ public class InGameInterface : MonoBehaviour
 		// Create a new notification object.
         GameObject messageObject = Instantiate(notificationPrefab, notificationBoxWrapper.transform);
 		messageObject.transform.SetParent(notificationBoxWrapper.transform);
-		messageObject.transform.SetAsFirstSibling();
+		//messageObject.transform.SetAsFirstSibling();
 		
 		TMPro.TextMeshProUGUI messageObjectTextComponent =
 			messageObject.transform
@@ -263,9 +260,6 @@ public class InGameInterface : MonoBehaviour
 		// Add content to new notification.
 		messageObjectTextComponent.text = message;
 		messageObjectAvatarComponent.sprite = spriteResources;
-
-		// Scroll to the top.
-		//notificationBoxWrapper.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0, 0);
 
 		// Play audio clip.
 		if (audioClip != null)
