@@ -27,7 +27,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MainScenes/GameEnd.unity
     guid: 7b1668a38771d47fd9bc54cda2708f3b
   - enabled: 1
-    path: Assets/Scenes/MainScenes/EscapeScene.unity
+    path: Assets/Scenes/MainScenes/EscapeMenu.unity
     guid: f975e96e439f84a52a1d7c9b144e0fac
   - enabled: 1
     path: Assets/Scenes/MainScenes/MainMapRandom.unity

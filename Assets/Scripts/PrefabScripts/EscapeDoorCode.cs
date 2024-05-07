@@ -9,7 +9,7 @@ public class EscapeDoorCode : MonoBehaviour
         //Debug.Log("Escape door war triggered");
         if(other.CompareTag("Player")){
             Debug.Log("you escaped");
-            SceneManager.LoadScene("EscapeScene");
+            SceneManager.LoadScene("EscapeMenu");
         }
     }
 }
