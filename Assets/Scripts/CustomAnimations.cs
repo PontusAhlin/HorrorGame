@@ -25,7 +25,7 @@ public class CustomAnimations : MonoBehaviour
     [SerializeField] float animationDuration = 1;
 
     [Tooltip("The duration of the notification")]
-    [SerializeField] float notificationDuration = 10;
+    [SerializeField] float notificationDuration = 5;
 
     [Tooltip("The type of animation to perform.")]
     enum AnimationType { ScaleZeroToOne, Notification };
@@ -78,7 +78,7 @@ public class CustomAnimations : MonoBehaviour
         {
             this.transform.position -= new Vector3(0,1,0);
             currentTime += Time.deltaTime;
-            yield return null; // yield control back to Unity's main loop
+            //yield return null; // yield control back to Unity's main loop
         }
         //this.transform.position = EndPosition;
         yield return new WaitForSeconds(notificationDuration);
@@ -88,10 +88,10 @@ public class CustomAnimations : MonoBehaviour
         {
             this.transform.position += new Vector3(0,2,0);
             currentTime += Time.deltaTime;
-            yield return null; // yield control back to Unity's main loop
+            //yield return null; // yield control back to Unity's main loop
         }
         Destroy(gameObject);
-        yield return null;
+        //yield return null;
     }
 
 }
