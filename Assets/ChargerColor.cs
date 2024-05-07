@@ -39,7 +39,7 @@ public class MannequinColor : MonoBehaviour
         // gets skinned Mesh renderer component from child object "Ch11"
         skinnedMeshRenderer = GetComponentsInChildren<SkinnedMeshRenderer>();
         // extracts the materials into an array of type Material 
-        materials = skinnedMeshRenderer[1].materials;
+        materials = skinnedMeshRenderer[0].materials;
         // Makes instances of different colours
         ColorVar cyan = new ColorVar(cyanC, "cyan");
         ColorVar black = new ColorVar(blackC, "black");

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class MannequinColor : MonoBehaviour
+public class MannequinColors : MonoBehaviour
 {
     // SkinnedMeshRenderer is the component of the monster containing its materials
     public SkinnedMeshRenderer[] skinnedMeshRenderer;
@@ -59,8 +59,8 @@ public class MannequinColor : MonoBehaviour
         int randomIndex = Random.Range(0, colorPallet.Count);
 
         // picks a random color from the colorPallet, then applies this color to material outline color
-        materials[0].SetColor("_OutlineColor", colorPallet[randomIndex].color);
-        materials[1].SetColor("_OutlineColor", colorPallet[randomIndex].color);
+        materials[0].SetColor("_BaseColor", colorPallet[randomIndex].color);
+        
         
 
         CurrentColor = colorPallet[randomIndex].name;
