@@ -71,6 +71,10 @@ public class BoxCast : MonoBehaviour
 
     // ChangeColour object containing the colour of the current "special "monster to follow for views
     private ChangeColour currentColorMonster;
+    // string obejct for holding substring of Monster name
+    // before monster name was "Ghost(clone)" for example
+    // we therefore need only the substring
+    private string monsterName;
 
 
     void Start(){
@@ -183,21 +187,27 @@ public class BoxCast : MonoBehaviour
                 chatTimeInterval = chatTimeIntervalInit;
             }
         }
-
-        if(viewerRequestTime < 1.0f && seenMonsters.Count > 0 && chatTimeInterval < 2.0f){
+            Debug.Log("viewerRequestTime" + viewerRequestTime);
+            Debug.Log("seenMonsters" + seenMonsters.Count);
+            Debug.Log("chatTimeInterval" + chatTimeInterval);
+        if(viewerRequestTime < 2f && seenMonsters.Count > 0 && chatTimeInterval < 4f){
+            
+            
 
             //Randomly selects a seen monster to be requested and resets the multipler of it,
             ranReqIndex = Random.Range(0,seenMonsters.Count);
             MonsterGenerateViewers reqMonster = seenMonsters[ranReqIndex].GetComponent<MonsterGenerateViewers>();
             reqMonster.mult = 1.0f;     
-            //ChangeColour colourMonster = seenMonsters[ranReqIndex].GetComponent<ChangeColour>(); //SHOULD BE PUT IN BELOW WHEN ADDED TO DEV
-            currentColorMonster = seenMonsters[ranReqIndex].ChangeColour;
-
-
+            // gets ChangeColour object from monster object
+            currentColorMonster = seenMonsters[ranReqIndex].gameObject.GetComponent<ChangeColour>();
+            // places monster object name in auxilliary string
+            monsterName = seenMonsters[ranReqIndex].gameObject.name;
+            // extracts substring, exluding "(Clone)" part
+            monsterName = monsterName.Remove(monsterName.Length - 7);
 
             getChat();
             //Color is to be replaced with the color of the monster to finalize viewer message
-            viewerMsg = ("I want to see the " + "COLOR " + seenMonsters[ranReqIndex].gameObject.name);
+            viewerMsg = ("I want to see the " + currentColorMonster.CurrentColor + " " + monsterName);
 
             inGameInterface.PrintMessage(viewerMsg,"baseline_person_white_icon");
             //Resets the timers
