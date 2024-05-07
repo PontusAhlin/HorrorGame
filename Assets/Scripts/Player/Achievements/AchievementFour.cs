@@ -10,7 +10,7 @@ public class AchievementFour : AchievementAbstract
         Title = "Weakling";
         Description = "Die 20 times.";
         MaxProgress = 20;
-        SetSpritePath("Assets/Resources/Images/baseline_person_white_icon");
+        SetSpritePath("Assets/Resources/Images/skull");
     }
 
 }

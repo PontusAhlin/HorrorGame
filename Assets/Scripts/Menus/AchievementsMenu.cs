@@ -7,8 +7,7 @@
  *
  * Author: William Fridh
  */
-using System.Collections;
-using System.Collections.Generic;
+ 
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -44,8 +43,6 @@ public class AchievementsMenu : MonoBehaviour
         }
 
         PrintAchievements();
-
-        Debug.Log(Storage.GetPath());
 
     }
 
@@ -88,8 +85,8 @@ public class AchievementsMenu : MonoBehaviour
                 .gameObject.GetComponent<RectTransform>();
 
             // Set progress bar fill amount.
-            float progress = bar.sizeDelta.x * (AchievementObject.GetProgress() / AchievementObject.GetMaxProgress());
-            bar.sizeDelta = new Vector2(progress * bar.sizeDelta.y, bar.sizeDelta.y);
+            float progressWidth = bar.sizeDelta.x * ((float)AchievementObject.GetProgress() / (float)AchievementObject.GetMaxProgress());
+            bar.sizeDelta = new Vector2(progressWidth, bar.sizeDelta.y);
 
             // Set text and sprite element contents.
             Title.text = AchievementObject.GetTitle();

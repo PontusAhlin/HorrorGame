@@ -10,7 +10,7 @@ public class AchievementTwo : AchievementAbstract
         Title = "PewDiePie";
         Description = "Gain 100k viewers in one run.";
         MaxProgress = 1;
-        SetSpritePath("Assets/Resources/Images/baseline_person_white_icon");
+        SetSpritePath("Assets/Resources/Images/crown");
     }
 
 }

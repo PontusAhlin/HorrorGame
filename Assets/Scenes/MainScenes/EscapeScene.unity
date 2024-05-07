@@ -1168,6 +1168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 2078795209}
+  QuiteMenuSceneName: MainMenu
   AchievementZero: {fileID: 845192326}
   AchievementOne: {fileID: 845192325}
   AchievementTwo: {fileID: 845192324}

@@ -87,8 +87,10 @@ public abstract class AchievementAbstract : MonoBehaviour
         * Set the Progress of the achievement.
         * If Progress is greater than max Progress, set as archived.
         * Else, set Progress to Value.
+        *
+        * Returns a boolean if the achievement is archived or not.
         */
-    public void SetProgress(int Value)
+    public bool SetProgress(int Value)
     {
         if (Progress >= MaxProgress) // If Progress is greater than max Progress, set as archived.
         {
@@ -99,6 +101,7 @@ public abstract class AchievementAbstract : MonoBehaviour
             Progress = Value;
             Storage.SetAchievementProgress(Index, Value);
         }
+        return IsAchieved;
     }
 
     /**
@@ -115,11 +118,13 @@ public abstract class AchievementAbstract : MonoBehaviour
     /**
         * Add Progress to the achievement.
         * This is useful when the achievement is not binary, but has a Progress.
+        *
+        * Returns a boolean if the achievement is archived or not.
         */
-    public void AddProgress(int Value)
+    public bool AddProgress(int Value)
     {
         if (IsAchieved) // If the achievement is already archived, return.
-            return;
+            return true;
         Progress += Value;
         if (Progress >= MaxProgress) // If Progress is greater than max Progress, set as archived.
         {
@@ -127,6 +132,7 @@ public abstract class AchievementAbstract : MonoBehaviour
             Progress = MaxProgress;
         }
         Storage.SetAchievementProgress(Index, Progress);
+        return IsAchieved;
     }
 
 }

@@ -14,31 +14,38 @@ using UnityEngine.UI;
 public class EscapeSceneCode : MonoBehaviour
 {   
 
+    [Tooltip("Score text element.")]
     [SerializeField]
     Text scoreText;
+
+    [Tooltip("The name of the scene to load when the player wants to quit.")]
+    [SerializeField] string QuiteMenuSceneName;
 
     [SerializeField] AchievementAbstract AchievementZero;
     [SerializeField] AchievementAbstract AchievementOne;
     [SerializeField] AchievementAbstract AchievementTwo;
     [SerializeField] AchievementAbstract AchievementThree;
 
-    float score = 0;
+    // Private score data.
+    private float likes;
+    private float viewers;
+
+    // Start is called before the first frame update
     void Start(){
-        score = ScoreManager.Score;
-        scoreText.text = "SCORE: " + score.ToString();
-        if (Storage.AddToHighscore(Storage.GetUsername() + ":" + score.ToString())) {
+        likes = Storage.GetLastGameLikes();
+        viewers = Storage.GetLastGameViewers();
+        scoreText.text = "SCORE: " + Formatting.FloatToShortString(likes, 3);
+        if (Storage.AddToHighscore(Storage.GetUsername() + ":" + likes.ToString())) {
             // New highscore.
         }
         AchievementHandler();
     }
-
-    //void Update(){
-    //    scoreText.text = "SCORE: " + score.ToString();
-    //}
     
+    /**
+     * This method is used to return to the main menu.
+     */
     public void BackToMenu(){
-    //    Debug.Log("pls work");
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene(QuiteMenuSceneName);
     }
 
     /**
@@ -49,11 +56,11 @@ public class EscapeSceneCode : MonoBehaviour
     {
         if (AchievementZero != null)
             AchievementZero.AddProgress(1);
-        if (AchievementOne != null && score < 1)
+        if (AchievementOne != null && likes < 1)
             AchievementOne.AddProgress(1);
-        if (AchievementTwo != null && Storage.GetLastGameViewers() >= 100000)
+        if (AchievementTwo != null && viewers >= 100000)
             AchievementTwo.AddProgress(1);
-        if (AchievementThree != null && score >= 100000)
+        if (AchievementThree != null && likes >= 100000)
             AchievementThree.AddProgress(1);
     }
 }
