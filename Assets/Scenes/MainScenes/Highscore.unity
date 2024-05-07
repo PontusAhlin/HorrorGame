@@ -564,7 +564,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MissingHighscoreTextHolder: {fileID: 1704544127}
   HighscoreList: {fileID: 297426693}
-  HighscoreListObjectPrefab: {fileID: 6724282144266075715, guid: 281acf2a478df2f4abd4bf17f7b647fc,
+  HighscoreListObjectPrefab: {fileID: 363079853164684300, guid: 81b13f3b8bb43c04cb153dfc89b2aa6b,
     type: 3}
   QuiteMenuSceneName: MainMenu
 --- !u!4 &536551264
