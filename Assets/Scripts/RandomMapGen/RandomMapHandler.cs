@@ -38,8 +38,10 @@ public class RandomMapHandler : MonoBehaviour
     public List<GameObject> Navmeshes = new List<GameObject>();
     [Tooltip("list of all door prefabs that will generate in doorways")]
     public List<GameObject> Doors = new List<GameObject>();
-    [Tooltip("list of all notes with lore that will randomly spawn in rooms")]
-    public List<GameObject> LoreNotes = new List<GameObject>();
+    [Tooltip("prefab with the lore note")]
+    public GameObject LoreNote;
+    [Tooltip("amount of lore notes to spawn")]
+    public int LoreNoteAmount;
 
     //this is used to store all doors generated and spawn them AFTER the navmesh si generated, so monsters can path through doors
     //xPosition, zPosition, yRotation
@@ -316,7 +318,7 @@ public class RandomMapHandler : MonoBehaviour
         
 
         //LORE PAPER HANDLING, MAKING SURE THAT ALL OF THE SUBMITTED ONES SPAWN AT RANDOM POINTS IN THE MAP
-        for (int i = 0; i < LoreNotes.Count ; i++)
+        for (int i = 0; i < LoreNoteAmount ; i++)
         {
             int paperX = UnityEngine.Random.Range(0,MapWidth); 
             int paperY = UnityEngine.Random.Range(0,MapHeight);
@@ -326,7 +328,7 @@ public class RandomMapHandler : MonoBehaviour
                 paperY = UnityEngine.Random.Range(0,MapHeight);
             }
 
-            Instantiate(LoreNotes[i], new Vector3((paperX)*RoomSize, 0.2f, (paperY)*RoomSize), Quaternion.Euler(0,0,0));
+            Instantiate(LoreNote, new Vector3((paperX)*RoomSize, 0.2f, (paperY)*RoomSize), Quaternion.Euler(0,0,0));
         }
 
 
