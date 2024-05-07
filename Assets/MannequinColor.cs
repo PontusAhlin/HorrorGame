@@ -2,6 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+    * This script applies a random color
+    * to the charger monster at spawn
+    * it also provides a public field
+    * for reading the color of the monster 
+    * Authors: Moritz Gruss
+*/
 
 public class MannequinColors : MonoBehaviour
 {

@@ -2,8 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+    * This script applies a random color
+    * to the charger monster at spawn
+    * it also provides a public field
+    * for reading the color of the monster 
+    * Authors: Moritz Gruss
+*/
 
-public class ChangeColour : MonoBehaviour
+public class GhostColors : MonoBehaviour
 {
     // SkinnedMeshRenderer is the component of the monster containing its materials
     public SkinnedMeshRenderer[] skinnedMeshRenderer;
@@ -60,7 +67,7 @@ public class ChangeColour : MonoBehaviour
 
         // picks a random color from the colorPallet, then applies this color to material outline color
         materials[0].SetColor("_BaseColor", colorPallet[randomIndex].color);
-        
+        materials[1].SetColor("_BaseColor", colorPallet[randomIndex].color);
 
         CurrentColor = colorPallet[randomIndex].name;
         

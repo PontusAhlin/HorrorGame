@@ -538,8 +538,8 @@ MonoBehaviour:
   SpawnOneOfEach: 1
   MonsterPrefabs:
   - {fileID: 8182396208055939415, guid: 183dfe7f4d0194a0884e929994c8eb59, type: 3}
-  - {fileID: 8182396208055939415, guid: 183dfe7f4d0194a0884e929994c8eb59, type: 3}
-  - {fileID: 8182396208055939415, guid: 183dfe7f4d0194a0884e929994c8eb59, type: 3}
+  - {fileID: 7669915599114108628, guid: eb3798cfecf32430592a742b605c99d7, type: 3}
+  - {fileID: 5651339836816107284, guid: 2e4341b898ad64b3a86e5a9592ce57dc, type: 3}
   timeSeconds: 30
   MonsterAmount: 6
   firstMonsterDelay: 5
