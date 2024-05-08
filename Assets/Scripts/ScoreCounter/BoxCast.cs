@@ -167,7 +167,7 @@ public class BoxCast : MonoBehaviour
         
         //After a certain time a seen monster will reset their viewer multiplier and be requested by the chat. 
         //If nothing is seen in set amount of time the chat will be bored.
-        if(chatTimeInterval < 2.2f){
+        if(chatTimeInterval < 2.2f && playerScore.viewers != 0){
             //Getting the viewercount from the PlayerScore.cs
             GameObject pScore = GameObject.Find("Main Camera");
             playerScore = pScore.GetComponent<PlayerScore>();    
@@ -185,7 +185,7 @@ public class BoxCast : MonoBehaviour
             }
             
             //The case if the player doesn't see a monster 
-            if(extraBreak == false && playerScore.viewers < 50){
+            if(extraBreak == false && playerScore.viewers < 50 && playerScore.viewers != 0){
                 getChat();
                 viewerMsg = chatGeneration.GenerateMessage("Negative");
                 inGameInterface.PrintMessage(viewerMsg,"baseline_person_white_icon");
@@ -194,7 +194,7 @@ public class BoxCast : MonoBehaviour
             }
         }
             
-        if(viewerRequestTime < 2f && seenMonsters.Count > 0 && chatTimeInterval < 4f){
+        if(viewerRequestTime < 2f && seenMonsters.Count > 0 && chatTimeInterval < 4f && playerScore.viewers != 0){
             
             
 
