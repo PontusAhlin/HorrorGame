@@ -1502,6 +1502,7 @@ MonoBehaviour:
   - MainMenu
   - Login
   - Highscore
+  - Achievements
   instanceName: BG Sound
 --- !u!1 &882762612
 GameObject:
