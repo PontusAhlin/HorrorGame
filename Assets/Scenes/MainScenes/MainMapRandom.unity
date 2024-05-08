@@ -397,10 +397,10 @@ MonoBehaviour:
   MaximumWalkers: 3
   TileCount: 0
   FillPercentage: 0.25
-  Randomness: 0.5
+  Randomness: 0.75
   WaitTime: 0
-  TwoByTwoChance: 0.3
-  TwoByOneChance: 0.3
+  TwoByTwoChance: 0.2
+  TwoByOneChance: 0.2
   DoorChance: 0.5
   RandomMapParent: {fileID: 424695929}
   NavmeshParent: {fileID: 721380121}
@@ -1028,7 +1028,7 @@ PrefabInstance:
     - target: {fileID: 1401504665176257241, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 413.09003
+      value: 296.96863
       objectReference: {fileID: 0}
     - target: {fileID: 1401504665176257241, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
@@ -1213,7 +1213,7 @@ PrefabInstance:
     - target: {fileID: 3737391430845731975, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 413.09003
+      value: 296.96863
       objectReference: {fileID: 0}
     - target: {fileID: 3737391430845731975, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
