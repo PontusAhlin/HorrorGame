@@ -15,17 +15,19 @@
 using System;
 using System.IO;
 using UnityEngine;
+using System.Collections;
+using UnityEngine.Networking;
 
 public static class Storage
 {
 
     // Static string used for setting up the file.
-    private static string Path = Application.persistentDataPath + "/storage.json";
+    private static string storageFilePath = Path.Combine(Application.persistentDataPath, "storage.json");
 
     // Used for debugging.
-    public static string GetPath()
+    public static string GetStorageFilePath()
     {
-        return Path;
+        return storageFilePath;
     }
 
     /**
@@ -34,12 +36,35 @@ public static class Storage
         */
     private static StorageData GetData()
     {
-        if (!File.Exists(Path))
+        if (!File.Exists(storageFilePath))
         {
             Debug.LogWarning("Non-existing or invalid storage file. Generating a new one.");
             SaveData(new StorageData());
         }
-        string jsonData = File.ReadAllText(Path);
+        string jsonData;
+        //#if UNITY_EDITOR
+        //    jsonData = File.ReadAllText(storageFilePath);
+        //#elif UNITY_ANDROID
+            //WWW reader = new WWW(storageFilePath);
+            //while (!reader.isDone) { } // Do nothing
+            //jsonData = reader.text;
+
+
+            //List<string> lines = new List<string>();
+           /* using (StreamReader reader = new StreamReader(storageFilePath))
+            {
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    jsonData += "\n" + line;
+                }
+            }*/
+
+jsonData = File.ReadAllText(storageFilePath);
+
+        //#else
+        //    jsonData = File.ReadAllText(storageFilePath);
+        //#endif
         StorageData dataObject = new StorageData(jsonData);
         return dataObject;
     }
@@ -49,8 +74,10 @@ public static class Storage
         */
     private static void SaveData(StorageData data)
     {
+        if (!Directory.Exists(Application.persistentDataPath))
+            Directory.CreateDirectory(Application.persistentDataPath);
         string jsonData = JsonUtility.ToJson(data);
-        File.WriteAllText(Path, jsonData);
+        File.WriteAllText(storageFilePath, jsonData);
     }
 
     // =============================== GETTERS ===============================
