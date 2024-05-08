@@ -360,8 +360,8 @@ MonoBehaviour:
   - {fileID: 8523536431361906366, guid: d1e83073e533230419d956b33fec45e9, type: 3}
   - {fileID: 8523536431361906366, guid: d1e83073e533230419d956b33fec45e9, type: 3}
   Two_OneDoorways:
-  - {fileID: 8523536431361906366, guid: 4a873812fbac4452eaabcea8e7215c02, type: 3}
-  - {fileID: 8523536431361906366, guid: 4a873812fbac4452eaabcea8e7215c02, type: 3}
+  - {fileID: 8523536431361906366, guid: 5c4c0a918317c224bb88b72a675bb471, type: 3}
+  - {fileID: 8523536431361906366, guid: 5c4c0a918317c224bb88b72a675bb471, type: 3}
   Two_TwoFloors:
   - {fileID: 8004833117270778539, guid: ad0c9b0be5e3b407b89ae11aec4d1afe, type: 3}
   - {fileID: 5557411212536615338, guid: dd837bc9b5abf27428b4367d5ac6fda9, type: 3}
@@ -369,13 +369,13 @@ MonoBehaviour:
   - {fileID: 8523536431361906366, guid: d1e83073e533230419d956b33fec45e9, type: 3}
   - {fileID: 900312630867020392, guid: 31b7a937806602848b87fc76903af05a, type: 3}
   Two_TwoDoorways:
-  - {fileID: 8523536431361906366, guid: 4a873812fbac4452eaabcea8e7215c02, type: 3}
+  - {fileID: 8523536431361906366, guid: 5c4c0a918317c224bb88b72a675bb471, type: 3}
   - {fileID: 5254813787407965473, guid: 9d7f94964600d7741872c11396397412, type: 3}
   ControlRoomFloor: {fileID: 8476333451016901077, guid: 5ee0307198ffd4463aaa05945741bef2,
     type: 3}
   ControlWall: {fileID: 8523536431361906366, guid: d1e83073e533230419d956b33fec45e9,
     type: 3}
-  ControlDoorway: {fileID: 8523536431361906366, guid: 4a873812fbac4452eaabcea8e7215c02,
+  ControlDoorway: {fileID: 8523536431361906366, guid: 5c4c0a918317c224bb88b72a675bb471,
     type: 3}
   Navmeshes:
   - {fileID: 6672660521479324593, guid: 1bfce81a57a4bb341a2675d0d1e33b7f, type: 3}
@@ -931,7 +931,7 @@ PrefabInstance:
     - target: {fileID: 1401504665176257241, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 94.3866
+      value: 397.59357
       objectReference: {fileID: 0}
     - target: {fileID: 1401504665176257241, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
@@ -1116,7 +1116,7 @@ PrefabInstance:
     - target: {fileID: 3737391430845731975, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 94.3866
+      value: 397.59357
       objectReference: {fileID: 0}
     - target: {fileID: 3737391430845731975, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
@@ -1167,6 +1167,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4708142324329818333, guid: 4d061403edf068243adb4e23aef23fd2,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.0007324219
       objectReference: {fileID: 0}
     - target: {fileID: 5093086119982172459, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
