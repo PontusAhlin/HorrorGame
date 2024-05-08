@@ -54,6 +54,10 @@ public class RandomMapHandler : MonoBehaviour
     public List<GameObject> Navmeshes = new List<GameObject>();
     [Tooltip("list of all door prefabs that will generate in doorways")]
     public List<GameObject> Doors = new List<GameObject>();
+    [Tooltip("prefab with the lore note")]
+    public GameObject LoreNote;
+    [Tooltip("amount of lore notes to spawn")]
+    public int LoreNoteAmount;
 
     //this is used to store all doors generated and spawn them AFTER the navmesh si generated, so monsters can path through doors
     //xPosition, zPosition, yRotation
@@ -138,10 +142,10 @@ public class RandomMapHandler : MonoBehaviour
     }
 
     /* initialize navmesh
-    this smacks a navmesh down at the same time as a big/small/whateverthefuck floor you need
+    this smacks a navmesh down at the same time as a 2x2/2x1/1x1 floor you need
     so that they are all at the same height and are parented to the same thing
-    once theyr e parented to the same thing you can hit "bake" on that big thing and it'll
-    make the navmesh we need for the mosnter to move around
+    once they are parented to the same thing you can hit "bake" on that big thing and it'll
+    make the navmesh we need for the monster to move around
 
     -alin
     */
@@ -360,6 +364,20 @@ public class RandomMapHandler : MonoBehaviour
         InitializePrefab("control",controlroomX, controlroomY, south, 0, (controlroomX)*RoomSize, (controlroomY-0.50f + WallGapSize)*RoomSize, 180f);
         InitializePrefab("control",controlroomX, controlroomY, west, 0, (controlroomX-0.50f + WallGapSize)*RoomSize, (controlroomY)*RoomSize, 270f);
         
+
+        //LORE PAPER HANDLING, MAKING SURE THAT ALL OF THE SUBMITTED ONES SPAWN AT RANDOM POINTS IN THE MAP
+        for (int i = 0; i < LoreNoteAmount ; i++)
+        {
+            int paperX = UnityEngine.Random.Range(0,MapWidth); 
+            int paperY = UnityEngine.Random.Range(0,MapHeight);
+            while ((gridHandler[paperX,paperY]) != Grid.ONE_ONE) //redoing this until we randomly pick a spot thats valid
+            {
+                paperX = UnityEngine.Random.Range(0,MapWidth);
+                paperY = UnityEngine.Random.Range(0,MapHeight);
+            }
+
+            Instantiate(LoreNote, new Vector3((paperX)*RoomSize, 0.2f, (paperY)*RoomSize), Quaternion.Euler(0,0,0));
+        }
 
 
         for (int x = 0; x < MapWidth-1; x++) //APPLYING TWO_TWO ROOMS
