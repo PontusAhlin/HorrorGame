@@ -52,6 +52,16 @@ public class PlayerScore : MonoBehaviour
         */
     public void Death()
     {
+        StoreLikesAndViewers();
+    }
+
+    /**
+        * Store likes and viewers.
+        *
+        * Store the likes and viewers temporarly in the storage file.
+        */
+    public void StoreLikesAndViewers()
+    {
         Storage.SetLastGameLikes(likes);                       // Save the likes to the storage.
         Storage.SetLastGameViewers(viewers);                   // Save the viewers to the storage.
     }
