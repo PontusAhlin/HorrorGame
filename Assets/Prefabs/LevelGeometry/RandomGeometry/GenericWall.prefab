@@ -132,7 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8389922949030044791}
   m_Layer: 8
-  m_Name: ExperimentRoomWall
+  m_Name: GenericWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
