@@ -6,7 +6,7 @@
     * which generates the score. This is mainly used for 
     * detection of monsters and viewer requests. 
     *
-    * Authors: Pontus Åhlin, William Fridh, Sai Chintapalli
+    * Authors: Pontus Åhlin, William Fridh, Sai Chintapalli, Moritz Gruss
 */
 
 
@@ -68,6 +68,19 @@ public class BoxCast : MonoBehaviour
     private string viewerMsg;
     //Bool that makes it so messages don't overlap
     private bool extraBreak;
+
+    // Moritz
+    // ChangeColour object containing the colour of the current "special "monster to follow for views
+    // we instantiatie a class for each type of monster
+    private GhostColors currentColorGhost;
+    private MannequinColors currentColorMannequin;
+    private ChargerColors currentColorCharger;
+
+
+    // string obejct for holding substring of Monster name
+    // before monster name was "Ghost(clone)" for example
+    // we therefore need only the substring
+    private string monsterName;
 
 
     void Start(){
@@ -180,21 +193,48 @@ public class BoxCast : MonoBehaviour
                 chatTimeInterval = chatTimeIntervalInit;
             }
         }
-
-        if(viewerRequestTime < 1.0f && seenMonsters.Count > 0 && chatTimeInterval < 2.0f){
+            
+        if(viewerRequestTime < 2f && seenMonsters.Count > 0 && chatTimeInterval < 4f){
+            
+            
 
             //Randomly selects a seen monster to be requested and resets the multipler of it,
             ranReqIndex = Random.Range(0,seenMonsters.Count);
             MonsterGenerateViewers reqMonster = seenMonsters[ranReqIndex].GetComponent<MonsterGenerateViewers>();
             reqMonster.mult = 1.0f;     
-            //ChangeColour colourMonster = seenMonsters[ranReqIndex].GetComponent<ChangeColour>(); //SHOULD BE PUT IN BELOW WHEN ADDED TO DEV
-            //seenMonster[ranReqIndex].gameObject.Colour
 
+            // Moritz
+            // gets ChangeColour object from monster objects
+            currentColorGhost = seenMonsters[ranReqIndex].gameObject.GetComponent<GhostColors>();
+            currentColorMannequin = seenMonsters[ranReqIndex].gameObject.GetComponent<MannequinColors>();
+            currentColorCharger = seenMonsters[ranReqIndex].gameObject.GetComponent<ChargerColors>();
 
+            // places monster object name in auxilliary string
+            monsterName = seenMonsters[ranReqIndex].gameObject.name;
+            // extracts substring, exluding "(Clone)" part
+            monsterName = monsterName.Remove(monsterName.Length - 7);
+            
             getChat();
             //Color is to be replaced with the color of the monster to finalize viewer message
-            viewerMsg = ("I want to see the " + "COLOR " + seenMonsters[ranReqIndex].gameObject.name);
 
+            if (currentColorGhost != null)
+            {
+                viewerMsg = ("I want to see the " + currentColorGhost.CurrentColor + " " + monsterName);
+            }
+            else if (currentColorMannequin != null) 
+            {
+                viewerMsg = ("I want to see the " + currentColorMannequin.CurrentColor + " " + monsterName);
+            }
+            else 
+            {
+                viewerMsg = ("I want to see the " + currentColorCharger.CurrentColor + " " + monsterName);
+            }
+
+            currentColorGhost = null;
+            currentColorMannequin = null;
+            currentColorCharger = null;
+            
+            
             inGameInterface.PrintMessage(viewerMsg,"baseline_person_white_icon");
             //Resets the timers
             viewerRequestTime = viewerRequestTimeInit;

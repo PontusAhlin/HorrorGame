@@ -19,6 +19,15 @@ public class SensorScript : MonoBehaviour
     public GameObject Antenna1;
     public GameObject Antenna2;
     private string message;
+    [SerializeField]
+    private GameObject InterfaceObject;
+    private InGameInterface InterfaceScript;
+
+
+    private void Start() {
+        InterfaceObject = GameObject.Find("In Game Interface");
+        InterfaceScript = InterfaceObject.GetComponent<InGameInterface>();
+    }
 
     private void OnTriggerEnter(Collider other) {
         if(other.CompareTag("Monster")){
@@ -34,7 +43,9 @@ public class SensorScript : MonoBehaviour
             else{
                 message = "ERROR: UNKOWN MONSTER";
             }
+            message = "(" + this.name + ") " + "\n" + message;
             Debug.Log(message);
+            InterfaceScript.SendNotification(message, "Alert");   
         }
     }
 
