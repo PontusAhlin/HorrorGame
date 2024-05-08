@@ -164,14 +164,14 @@ public class BoxCast : MonoBehaviour
 
     void viewerRequest(){
         extraBreak = false;
+        //Getting the viewercount from the PlayerScore.cs
+        GameObject pScore = GameObject.Find("Main Camera");
+        playerScore = pScore.GetComponent<PlayerScore>();   
         
         //After a certain time a seen monster will reset their viewer multiplier and be requested by the chat. 
         //If nothing is seen in set amount of time the chat will be bored.
         if(chatTimeInterval < 2.2f && playerScore.viewers != 0){
-            //Getting the viewercount from the PlayerScore.cs
-            GameObject pScore = GameObject.Find("Main Camera");
-            playerScore = pScore.GetComponent<PlayerScore>();    
-            
+
             //Goes through all of the monsters that's in the field of view, if that's true we send a message to the UI
             for(int i = 0; i < monsterInFov.Count; i++){
                 if(monsterInFov[i].inFieldOfView == true || playerScore.viewers > 50){
