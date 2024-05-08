@@ -356,20 +356,23 @@ MonoBehaviour:
   Two_OneFloors:
   - {fileID: 910495619493306895, guid: 7cb577b787ef24d76888bde36e579ec6, type: 3}
   - {fileID: 3210018799227719742, guid: 0aca72c55a7524f0b8c5a8f6690eb109, type: 3}
+  - {fileID: 4795580872614274521, guid: c3630066b58384bb2ba42245cf278ec4, type: 3}
   Two_OneWalls:
   - {fileID: 8523536431361906366, guid: d1e83073e533230419d956b33fec45e9, type: 3}
   - {fileID: 8523536431361906366, guid: d1e83073e533230419d956b33fec45e9, type: 3}
+  - {fileID: 4547220096657381278, guid: af3c60e7dc84c48d2b9ddb2d4bb4e495, type: 3}
   Two_OneDoorways:
   - {fileID: 8523536431361906366, guid: 5c4c0a918317c224bb88b72a675bb471, type: 3}
   - {fileID: 8523536431361906366, guid: 5c4c0a918317c224bb88b72a675bb471, type: 3}
+  - {fileID: 8225041260236136898, guid: 795d26f0228614b49b33edc4b5fe5fa7, type: 3}
   Two_TwoFloors:
   - {fileID: 8004833117270778539, guid: ad0c9b0be5e3b407b89ae11aec4d1afe, type: 3}
   - {fileID: 5557411212536615338, guid: dd837bc9b5abf27428b4367d5ac6fda9, type: 3}
   Two_TwoWalls:
-  - {fileID: 8523536431361906366, guid: d1e83073e533230419d956b33fec45e9, type: 3}
+  - {fileID: 3390188611183950590, guid: 6e4c4c327577e3645bb7deebb06db3ae, type: 3}
   - {fileID: 900312630867020392, guid: 31b7a937806602848b87fc76903af05a, type: 3}
   Two_TwoDoorways:
-  - {fileID: 8523536431361906366, guid: 5c4c0a918317c224bb88b72a675bb471, type: 3}
+  - {fileID: 8225041260236136898, guid: 253a04df5be1de14cb20ce178b2adb0b, type: 3}
   - {fileID: 5254813787407965473, guid: 9d7f94964600d7741872c11396397412, type: 3}
   ControlRoomFloor: {fileID: 8476333451016901077, guid: 5ee0307198ffd4463aaa05945741bef2,
     type: 3}
@@ -837,7 +840,7 @@ PrefabInstance:
     - target: {fileID: 139293253767508008, guid: e4955e24e939e2b4088552de2a66e300,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 287.3581
+      value: 94.3866
       objectReference: {fileID: 0}
     - target: {fileID: 139293253767508008, guid: e4955e24e939e2b4088552de2a66e300,
         type: 3}
@@ -867,7 +870,7 @@ PrefabInstance:
     - target: {fileID: 367703265813152426, guid: e4955e24e939e2b4088552de2a66e300,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 287.3581
+      value: 94.3866
       objectReference: {fileID: 0}
     - target: {fileID: 367703265813152426, guid: e4955e24e939e2b4088552de2a66e300,
         type: 3}
