@@ -1056,6 +1056,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 669754564120512720, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
+      propertyPath: audioVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 669754564120512720, guid: 4d061403edf068243adb4e23aef23fd2,
+        type: 3}
       propertyPath: notificationPrefab
       value: 
       objectReference: {fileID: 7191375162648120789, guid: dcead8fb0bd6948359057c029ed83507,
@@ -1163,7 +1168,7 @@ PrefabInstance:
     - target: {fileID: 1401504665176257241, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 321.97876
+      value: 248.4164
       objectReference: {fileID: 0}
     - target: {fileID: 1401504665176257241, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
@@ -1348,7 +1353,7 @@ PrefabInstance:
     - target: {fileID: 3737391430845731975, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 321.97876
+      value: 248.4164
       objectReference: {fileID: 0}
     - target: {fileID: 3737391430845731975, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
