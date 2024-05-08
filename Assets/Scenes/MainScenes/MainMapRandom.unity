@@ -482,10 +482,13 @@ MonoBehaviour:
   - {fileID: 8523536431361906366, guid: 4a873812fbac4452eaabcea8e7215c02, type: 3}
   Two_TwoFloors:
   - {fileID: 8004833117270778539, guid: ad0c9b0be5e3b407b89ae11aec4d1afe, type: 3}
+  - {fileID: 5557411212536615338, guid: dd837bc9b5abf27428b4367d5ac6fda9, type: 3}
   Two_TwoWalls:
   - {fileID: 8523536431361906366, guid: d1e83073e533230419d956b33fec45e9, type: 3}
+  - {fileID: 900312630867020392, guid: 31b7a937806602848b87fc76903af05a, type: 3}
   Two_TwoDoorways:
   - {fileID: 8523536431361906366, guid: 4a873812fbac4452eaabcea8e7215c02, type: 3}
+  - {fileID: 5254813787407965473, guid: 9d7f94964600d7741872c11396397412, type: 3}
   ControlRoomFloor: {fileID: 8476333451016901077, guid: 5ee0307198ffd4463aaa05945741bef2,
     type: 3}
   ControlWall: {fileID: 8523536431361906366, guid: d1e83073e533230419d956b33fec45e9,
@@ -1139,7 +1142,7 @@ PrefabInstance:
     - target: {fileID: 1401504665176257241, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 398.2165
+      value: 397.89307
       objectReference: {fileID: 0}
     - target: {fileID: 1401504665176257241, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
@@ -1324,7 +1327,7 @@ PrefabInstance:
     - target: {fileID: 3737391430845731975, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 398.2165
+      value: 397.89307
       objectReference: {fileID: 0}
     - target: {fileID: 3737391430845731975, guid: 4d061403edf068243adb4e23aef23fd2,
         type: 3}
