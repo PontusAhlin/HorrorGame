@@ -1,6 +1,6 @@
 /**
     * MainMenuCode.cs
-    * Author(s): Arnob Sarker, William Fridh
+    * Author(s): Arnob Sarker, William Fridh, Pontus Åhlin
     */
 
 using UnityEngine;
@@ -12,6 +12,8 @@ public class SC_MainMenu : MonoBehaviour
 {
     public GameObject MainMenu;
     public GameObject CreditsMenu;
+    public GameObject TrademarksMenu;
+
 
     [Tooltip("The name of the scene to load when the player wants to see the highscore.")]
     [SerializeField] string HighscoreSceneName;
@@ -48,7 +50,20 @@ public class SC_MainMenu : MonoBehaviour
         // Show Main Menu
         MainMenu.SetActive(true);
         CreditsMenu.SetActive(false);
+        TrademarksMenu.SetActive(false);
+
     }
+
+
+    public void TrademarksButton()
+    {
+        // Displays the credits/trademarks screen 
+        CreditsMenu.SetActive(false);
+        MainMenu.SetActive(false);
+        TrademarksMenu.SetActive(true);
+    }
+
+
 
     public void HighscoreButton()
     {
