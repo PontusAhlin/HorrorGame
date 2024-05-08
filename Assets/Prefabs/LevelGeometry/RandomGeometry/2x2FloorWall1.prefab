@@ -148,7 +148,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5341966722171495474}
   m_Layer: 0
-  m_Name: 2x1FloorWall1
+  m_Name: 2x2FloorWall1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
