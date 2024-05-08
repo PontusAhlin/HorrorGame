@@ -2,31 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+/*
+    *This code is to handle the arrow that points
+    *towards a sensor.
 
+    *Author(s): Sai Chintapalli
+*/
 public class PointerScript : MonoBehaviour
 {
-    private Vector3 targetPosition;
-    private Transform pointerTransform;
     public GameObject pointer;
-    public GameObject pointerWrapper;
-    public GameObject target;
-    void Awake()
-    {
+    [SerializeField]
+    static public GameObject pointerWrapper;
+    static public GameObject target;
+    [Tooltip("This is how many seconds the sensor will stay active")]
+    public int timer = 5;
+    bool active = false;
 
-    }    
-    private void Update() {
-        //Vector3 toPosition = targetPosition;
-        //Vector3 fromPosition = gameObject.transform.position;
-        //fromPosition.y = 0f;
-        //Vector3 direction = (toPosition - fromPosition).normalized;
-        Vector3 targetDir = target.transform.position - pointerWrapper.transform.position;
-        Vector3 currentDir = pointer.transform.position - pointerWrapper.transform.position;
-        float angle = Vector3.Angle(currentDir, targetDir);
-        Debug.Log(angle);
-        Rotate(angle,currentDir,targetDir);
+    private void Start(){
+        pointerWrapper = GameObject.Find("Pointer Wrapper");
     }
 
-        private void Rotate(float rotationSpeed, Vector3 forward, Vector3 destdir){
+    public void Activate(){
+        StartCoroutine(ActiveTimer());
+    }
+
+    private void Update() {
+        if(target != null){
+            Vector3 targetDir = target.transform.position - pointerWrapper.transform.position;
+            Vector3 currentDir = pointer.transform.position - pointerWrapper.transform.position;
+            float angle = Vector3.Angle(currentDir, targetDir);
+            Rotate(angle,currentDir,targetDir);
+        }
+    }
+
+    private void Rotate(float rotationSpeed, Vector3 forward, Vector3 destdir){
         // rotation is the vector about which we rotate
         Vector3 rotationVector = new Vector3(0,rotationSpeed,0);
         // Quaternion is a measure of how much rotation there is between two vectors
@@ -39,6 +48,15 @@ public class PointerScript : MonoBehaviour
         if (rot.y <= 0)
         {
             pointerWrapper.transform.Rotate(-rotationVector * Time.deltaTime);
+        }
+    }
+
+    IEnumerator ActiveTimer(){
+        if(!active){
+            active = true;
+            pointerWrapper.transform.position = pointerWrapper.transform.position + new Vector3(0,5,0);
+            yield return new WaitForSeconds(timer);
+        pointerWrapper.transform.position = pointerWrapper.transform.position - new Vector3(0,5,0);
         }
     }
 }

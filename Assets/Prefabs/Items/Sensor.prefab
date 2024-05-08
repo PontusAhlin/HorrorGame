@@ -500,7 +500,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charger: {fileID: 7669915599114108628, guid: eb3798cfecf32430592a742b605c99d7, type: 3}
   man: {fileID: 8182396208055939415, guid: 183dfe7f4d0194a0884e929994c8eb59, type: 3}
-  ghost: {fileID: 5963655803062015831, guid: 8064665bf60c04ab487287fa0816b01d, type: 3}
+  ghost: {fileID: 5651339836816107284, guid: 2e4341b898ad64b3a86e5a9592ce57dc, type: 3}
   chargerFreq: 10
   manFreq: 5
   ghostFreq: 20

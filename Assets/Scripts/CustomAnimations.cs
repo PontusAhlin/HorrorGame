@@ -72,10 +72,10 @@ public class CustomAnimations : MonoBehaviour
         IEnumerator Notification(){
         float currentTime = 0.0f;
         Vector3 StartPosition = this.transform.position;
-        Vector3 EndPosition = StartPosition - new Vector3(0,50,0);
+        Vector3 EndPosition = StartPosition - new Vector3(0,190,0);
         while (this.transform.position.y >= EndPosition.y)
         {
-            this.transform.position -= new Vector3(0,1,0);
+            this.transform.position -= new Vector3(0,3,0);
             currentTime += Time.deltaTime;
             yield return null; // yield control back to Unity's main loop
         }
