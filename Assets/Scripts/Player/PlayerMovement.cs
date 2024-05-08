@@ -102,19 +102,15 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
 
-
-
-
         /* Deprecated
         // Check if a gamepad is connected
         if (gamepad == null)
             return;
         */
-        
 
         // Set the position of the stepRay objects to the player's position.
         // Important to keep them on the same level and at correct height.
-        stepRayLower.transform.position = transform.position - new Vector3(0f, capsuleCollider.height / 2 - capsuleCollider.center.y, 0f) + new Vector3(0f, stepRayLowerMargin, 0f);
+        stepRayLower.transform.position = transform.position - new Vector3(0f, capsuleCollider.height/2 - capsuleCollider.center.y, 0f) + new Vector3(0f, stepRayLowerMargin, 0f);
         stepRayUpper.transform.position = stepRayLower.transform.position + new Vector3(0f, stepHeight, 0f);
 
         // Rotate the stepRay objects to match the camera's rotation.
@@ -124,8 +120,8 @@ public class PlayerMovement : MonoBehaviour
         stepRayLower.transform.rotation = Quaternion.Euler(0f, camEuler.y, 0f);
         
         // Stiches together joystick/player movement direction
-
         MovePlayer();
+
         
         
         
@@ -145,6 +141,8 @@ public class PlayerMovement : MonoBehaviour
     
     void MovePlayer(){
         
+        StepClimb();
+
         // Gets the directions of the joystick
         direction = joystick.Direction;
         directionX = direction.x; 
@@ -158,7 +156,7 @@ public class PlayerMovement : MonoBehaviour
 
         // Second one checks middle part of joystick/circle up until the first part 
         if(directionY > 1/2 && ((directionX > -Math.Sqrt(3)/2) || (directionX < Math.Sqrt(3)/2))){
-            JoystickPlayerSpeed(2);
+            JoystickPlayerSpeed(3/2);
         }
 
         // Third checks the under the middle line of the joystick/circle
@@ -172,7 +170,7 @@ public class PlayerMovement : MonoBehaviour
         * Calculates the direction of the player while using the joystick, 
         * also divides the speed of the players original movespeed 
     */
-    void JoystickPlayerSpeed(int speedDivision){
+    void JoystickPlayerSpeed(float speedDivision){
 
         // References to the camera and capsule collider 
         GameObject camera = GameObject.Find("Main Camera");
@@ -186,7 +184,7 @@ public class PlayerMovement : MonoBehaviour
         // Calculations to get the direction of how the player should move based on the joystick direction
         Vector3 moveDir = directionX * cameraTransform.right.normalized + directionY * cameraTransform.forward.normalized;
         colliderTra.position += moveDir * speed * Time.deltaTime;
-        cameraTransform.transform.position = colliderTra.position + new Vector3(0,3,0);
+        cameraTransform.transform.position = colliderTra.position + new Vector3(0,capsuleCollider.height - 2,0);
     }
 
 
