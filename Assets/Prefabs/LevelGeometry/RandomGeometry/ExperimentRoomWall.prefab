@@ -29,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 352529664564082232}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 10, z: 0}
-  m_LocalScale: {x: 50, y: 20, z: 1}
+  m_LocalPosition: {x: -1.2, y: 15.0639, z: 0}
+  m_LocalScale: {x: 50, y: 30.128, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8389922949030044791}
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 89464b064dd6c4bdd805d87e3d8325b0, type: 2}
+  - {fileID: 2100000, guid: e79d7706538b1459fb2cdbddef6fb6cf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -132,7 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8389922949030044791}
   m_Layer: 8
-  m_Name: Wall
+  m_Name: ExperimentRoomWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
