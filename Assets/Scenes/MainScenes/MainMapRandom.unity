@@ -124,6 +124,18 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &34162010 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1253545078857138610, guid: 4d061403edf068243adb4e23aef23fd2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1945998503}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a47f546fc70ec8428172694e78e4288, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &163052176
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,6 +577,19 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1945998503}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &656645227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656645222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53a9f696df2e02f43a31a4f80363f4ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  joystick: {fileID: 34162010}
 --- !u!1 &721380121
 GameObject:
   m_ObjectHideFlags: 0
