@@ -2,10 +2,11 @@
     * This script is attached to the player object and is responsible for moving the player in the direction of the camera.
     * The player moves in the direction of the camera's forward vector, rotated by the camera's y rotation.
     * This allows the player to move in the direction they are looking as well as walk in stairs.
+    * The movement is done using a joystick structure, the joystick prefab can be found here: https://assetstore.unity.com/packages/tools/input-management/joystick-pack-107631#content
     *
     * Note that this file can be written without rotating the objects used for raycasting, but it's easier to understand this way.
     * 
-    * Authors: William Fridh, Alin-Cristian Serban
+    * Authors: William Fridh, Alin-Cristian Serban, Pontus Åhlin
     */
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -17,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     private Transform camTransform;
     [Tooltip("Player movement speed.")]
 
-    [SerializeField] public float speed = 1f;
+    [SerializeField] private float speed = 1f;
     public float speedInit = 1f;
     
     private Gamepad gamepad;            // InputSystem is used and set to imitate controller input on touchscreens.
@@ -110,6 +111,7 @@ public class PlayerMovement : MonoBehaviour
             return;
         */
         
+
         // Set the position of the stepRay objects to the player's position.
         // Important to keep them on the same level and at correct height.
         stepRayLower.transform.position = transform.position - new Vector3(0f, capsuleCollider.height / 2 - capsuleCollider.center.y, 0f) + new Vector3(0f, stepRayLowerMargin, 0f);
