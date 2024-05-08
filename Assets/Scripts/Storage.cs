@@ -12,6 +12,7 @@
     * Author(s): William Fridh
     */
 
+using System;
 using System.IO;
 using UnityEngine;
 
@@ -28,34 +29,19 @@ public static class Storage
     }
 
     /**
-        * Checks if the storage file is valid.
-        * This is important as the strcture might change troughout the development.
-        *
-        * A missing JSON-file or a JSON-file that does not match the StorageData-class
-        * will be considered invalid.
-        */
-    private static bool StorageFileIsValid() {
-        if (!File.Exists(Path)) return false;                                                   // Check if the file exists.
-        string jsonDataFromFile     = File.ReadAllText(Path);                                   // Read from JSON-file.
-        StorageData data            = JsonUtility.FromJson<StorageData>(jsonDataFromFile);      // Insert the JSON-data into a StorageData-object.
-        string jsonDataFromObject   = JsonUtility.ToJson(data);                                 // Convert the StorageData-object back to JSON.
-        return jsonDataFromFile != "" && jsonDataFromFile == jsonDataFromObject;                // Compare the two JSON-strings.
-    }
-
-    /**
         * Gets the data from the storage file.
         * If the file does not exist or is invalid a new file will be generated.
         */
     private static StorageData GetData()
     {
-
-        if (!StorageFileIsValid())
+        if (!File.Exists(Path))
         {
             Debug.LogWarning("Non-existing or invalid storage file. Generating a new one.");
             SaveData(new StorageData());
         }
         string jsonData = File.ReadAllText(Path);
-        return JsonUtility.FromJson<StorageData>(jsonData);
+        StorageData dataObject = new StorageData(jsonData);
+        return dataObject;
     }
 
     /**
@@ -195,7 +181,7 @@ public static class Storage
             newList[i] = oldList[i];
         newList[oldList.Length] = newHighscore;
         // Sort the list by score.
-        System.Array.Sort(newList, (x, y) => int.Parse(y.Split(':')[1]).CompareTo(int.Parse(x.Split(':')[1])));
+        Array.Sort(newList, (x, y) => int.Parse(y.Split(':')[1]).CompareTo(int.Parse(x.Split(':')[1])));
         // Transfer the top five highscores to a new list.
         string[] topScores;
         if (newList.Length > 5)
@@ -223,14 +209,40 @@ public static class Storage
 
 public class StorageData
 {
+
+    // Settings.
+    private int amountOfAchievements = 5;
+
     // Long-term data.
     public string username;
     public float musicVolume;
-    public string[] highscore = new string[0];
-    public bool[] achievementsAchieved = new bool[5];
-    public int[] achievementsProgress = new int[5];
+    public string[] highscore;
+    public bool[] achievementsAchieved;
+    public int[] achievementsProgress;
 
     // Stores the amount of viewers and likes for temporary use.
     public float lastGameViewers;
     public float lastGameLikes;
+
+    /**
+        * Constructor for the StorageData-class.
+        */
+    public StorageData(string jsonData = "{}")
+    {
+        JsonUtility.FromJsonOverwrite(jsonData, this);
+        FixFaultyArrayLengths();
+    }
+
+    /**
+        * Fixes the length of the arrays if they are faulty.
+        */
+    private void FixFaultyArrayLengths()
+    {
+        if (achievementsAchieved == null || achievementsAchieved.Length != amountOfAchievements)
+            Array.Resize(ref achievementsAchieved, amountOfAchievements);
+        if (achievementsProgress == null || achievementsProgress.Length != amountOfAchievements)
+            Array.Resize(ref achievementsProgress, amountOfAchievements);
+        if (highscore == null)
+            highscore = new string[0];
+    }
 }
