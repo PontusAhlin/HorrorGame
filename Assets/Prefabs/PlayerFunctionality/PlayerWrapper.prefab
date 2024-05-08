@@ -3404,8 +3404,8 @@ MonoBehaviour:
   speedInit: 4
   stepRayUpper: {fileID: 3569435333911412182}
   stepRayLower: {fileID: 1559255730953936718}
-  stepHeight: 1
-  stepSpeed: 0.1
+  stepHeight: 1.1
+  stepSpeed: 1
   stepRayLowerMargin: 0.1
   joystick: {fileID: 1628979610877413268}
 --- !u!1 &4582969914747955378
