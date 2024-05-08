@@ -32,18 +32,18 @@ public class SensorScript : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if(other.CompareTag("Monster")){
             if(other.name.Contains(charger.name)){
-                message = "ALERT: Frequency spike of " + chargerFreq + " KHz";
+                message = "Frequency spike of " + chargerFreq + " KHz";
             }
             else if(other.name.Contains(man.name)){
-                message = "ALERT: Frequency spike of " + manFreq + " KHz";
+                message = "Frequency spike of " + manFreq + " KHz";
             }
             else if(other.name.Contains(ghost.name)){
-                message = "ALERT: Frequency spike of " + ghostFreq + " KHz";
+                message = "Frequency spike of " + ghostFreq + " KHz";
             }
             else{
                 message = "ERROR: UNKOWN MONSTER";
             }
-            message = "(" + this.name + ") " + "\n" + message;
+            message = "(" + this.name + ") " + "ALERT:" + "\n" + message;
             Debug.Log(message);
             InterfaceScript.SendNotification(message, "Alert");   
         }
