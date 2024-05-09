@@ -6,7 +6,7 @@
     * https://github.com/PontusAhlin/HorrorGame/wiki/Storage
     *
     * Example #1:
-    * - Storage.SetUsername("William");
+    * - storage.SetUsername("William");
     * - string username = Storage.GetUsername();
     *
     * Author(s): William Fridh
@@ -19,88 +19,196 @@ using System.Collections;
 using UnityEngine.Networking;
 using System.Threading;
 
-public static class Storage
+public class Storage: MonoBehaviour
 {
 
-    // Static string used for setting up the file.
-    private static string fileName = "storage.json";
-    #if UNITY_ANDROID
-    private static string folder = "jar:file://" + Application.dataPath + "!/assets/";
-    #else
-    private static string folder = Application.dataPath + "/StreamingAssets/";
-    #endif
-    private static Mutex fileMutex = new Mutex(false, "StorageFileMutex");
+    // Settings.
+    private const int amountOfAchievements = 5;
 
-    // Used for debugging.
-    public static string GetStorageFilePath()
+    // Empty variables.
+    private Data data;
+    public static Storage instance;
+
+    /**
+        * Define Storage Path.
+        *
+        * As diffrent operating systems have diffrent ways of storing files
+        * we need to take this into consideration. This is done by defining
+        * the path to the storage file in different ways depending on the OS.
+        */
+    private string filePath;
+    private const string fileName = "storage.json";
+
+    #if UNITY_IPHONE
+    private string fileFolder = Path.Combine(Application.dataPath, "Raw");
+    #elif UNITY_ANDROID
+    private string fileFolder = Path.Combine("jar:file://", Application.dataPath, "!/assets/");
+    #else
+    // Mac, Windows, and Linux
+    private string fileFolder = Path.Combine(Application.dataPath, "StreamingAssets");
+    #endif
+
+    /**
+        * Get Storage.
+        *
+        * This function checks the scene for a storage object and
+        * returns it if it exists. If it does not exist, it will
+        * create a new storage object and return it.
+        *
+        * This is the first function that should be called when
+        * using the storage class.
+        */
+    public static Storage GetStorage()
     {
-        return folder + fileName;
+        Storage storage = GameObject.FindObjectOfType<Storage>();   // Find storage.
+        if (storage == null)                                        // If storage object does not exist.
+        {
+            Debug.Log("Storage: No storage object found. Creating a new one.");
+            GameObject storageObject = new GameObject();            // Create a new storage object.
+            storageObject.name = "Storage";                         // Set the name of the storage object.
+            storage = storageObject.AddComponent<Storage>();        // Add the storage script to the storage object.
+            storage.transform.parent = null;                        // Set the storage object to the root of the scene.
+        }
+        return storage;                                             // Return the storage object.
     }
 
     /**
-        * Gets the data from the storage file.
-        * If the file does not exist or is invalid a new file will be generated.
+        * Upon Start.
+        *
+        * Upon start we need to combine the file folder and name
+        * to create the final path. Then we start a coroutine to
+        * get the data from the file located at the final file path.
         */
-    private static StorageData GetData()
+
+    private void Start()
     {
-        if (!File.Exists(GetStorageFilePath()))
+        // Construct full file path.
+        filePath = Path.Combine(fileFolder, fileName);
+        // Create a coroutine to get the data.
+        StartCoroutine(GetData());
+    }
+
+    /**
+        * Get Data Routine.
+        *
+        * This function is used to get the data from the storage file and
+        * sets the class objects data to a new data object with the data.
+        * If the file does not exist, a new data object based on an empty
+        * json string will be generated instead.
+        */
+    private IEnumerator GetData()
+    {
+        string dataString = "";                                         // Create a string to store the data.
+        if (filePath.Contains("://") || filePath.Contains(":///"))      // Check if the file path is a URL (mobile devices). 
         {
-            Debug.LogWarning("Non-existing or invalid storage file. Generating a new one.");
-            SaveData(new StorageData());
+            UnityWebRequest www = UnityWebRequest.Get(filePath);        // Create a new web request.
+            yield return www.SendWebRequest();                          // Send the web request.
+            if (                                                        // Catch failed fetch.
+                www.result == UnityWebRequest.Result.ConnectionError ||
+                www.result == UnityWebRequest.Result.ProtocolError
+            ) {
+                Debug.Log("Storage: File does not exist. Starting a new one.");
+                dataString = "{}";                                      // Create a new empty json string.
+            }
+            else {
+                dataString = www.downloadHandler.text;                  // Store resulting data.
+            }
+        }
+        else                                                            // If the file path is not a URL (PC).
+        {
+            if (!File.Exists(filePath))                                 // If the file does not exist.
+            {
+                Debug.Log("Storage: File does not exist. Starting a new one.");
+                dataString = "{}";                                      // Create a new empty json string.
+            }
+            dataString = File.ReadAllText(filePath);                    // Read the existing file.
+        }
+        data = new Data(amountOfAchievements, dataString);              // Create a new data object.
+    }
+
+    /**
+        * Data Class.
+        *
+        * This class in defined as a nested class as it is only used by the storage
+        * and should be communicated with through the storage class's getters,
+        * setters, incremenetrs, et cetera.
+        */
+    private class Data
+    {
+
+        // Long-term data.
+        public string username;
+        public float musicVolume;
+        public string[] highscore;
+        public bool[] achievementsAchieved;
+        public int[] achievementsProgress;
+
+        // Stores the amount of viewers and likes for temporary use.
+        public float lastGameViewers;
+        public float lastGameLikes;
+
+        /**
+            * Constructor for the Data-class.
+            */
+        public Data(int amountOfAchievements, string jsonData = "{}")
+        {
+            JsonUtility.FromJsonOverwrite(jsonData, this);
+            FixFaultyArrayLengths();
         }
 
-        string jsonData = File.ReadAllText(GetStorageFilePath());
-        StorageData dataObject = new StorageData(jsonData);
-
-        return dataObject;
+        /**
+            * Fixes the length of the arrays if they are faulty.
+            */
+        private void FixFaultyArrayLengths()
+        {
+            if (achievementsAchieved == null || achievementsAchieved.Length != amountOfAchievements)
+                Array.Resize(ref achievementsAchieved, amountOfAchievements);
+            if (achievementsProgress == null || achievementsProgress.Length != amountOfAchievements)
+                Array.Resize(ref achievementsProgress, amountOfAchievements);
+            if (highscore == null)
+                highscore = new string[0];
+        }
     }
 
     /**
+        * Save Data.
+        *
         * Saves the data to the storage file.
         */
-    private static void SaveData(StorageData data)
+    private void SaveData()
     {
-
-
         string jsonData = JsonUtility.ToJson(data);
-        File.WriteAllText(GetStorageFilePath(), jsonData);
-
+        File.WriteAllText(filePath, jsonData);
     }
 
     // =============================== GETTERS ===============================
-    public static string GetUsername()
+    public string GetUsername()
     {
-        StorageData data = GetData();
         return data.username;
     }
 
-    public static string[] GetHighscore()
+    public string[] GetHighscore()
     {
-        StorageData data = GetData();
         return data.highscore;
     }
 
-    public static float GetMusicVolume()
+    public float GetMusicVolume()
     {
-        StorageData data = GetData();
         return data.musicVolume;
     }
     
-    public static float GetLastGameViewers()
+    public float GetLastGameViewers()
     {
-        StorageData data = GetData();
         return data.lastGameViewers;
     }
 
-    public static float GetLastGameLikes()
+    public float GetLastGameLikes()
     {
-        StorageData data = GetData();
         return data.lastGameLikes;
     }
 
-    public static bool GetAchievementAchieved(int index)
+    public bool GetAchievementAchieved(int index)
     {
-        StorageData data = GetData();
         if (index < 0 || index >= data.achievementsAchieved.Length)
         {
             throw new System.ArgumentOutOfRangeException("Index out of range.");
@@ -108,9 +216,8 @@ public static class Storage
         return data.achievementsAchieved[index];
     }
 
-    public static int GetAchievementProgress(int index)
+    public int GetAchievementProgress(int index)
     {
-        StorageData data = GetData();
         if (index < 0 || index >= data.achievementsProgress.Length)
         {
             throw new System.ArgumentOutOfRangeException("Index out of range.");
@@ -119,54 +226,48 @@ public static class Storage
     }
 
     // =============================== SETTERS ===============================
-    public static void SetUsername(string value)
+    public void SetUsername(string value)
     {
-        StorageData data = GetData();
         data.username = value;
-        SaveData(data);
+        SaveData();
     }
 
-    public static void SetMusicVolume(float value)
+    public void SetMusicVolume(float value)
     {
-        StorageData data = GetData();
         data.musicVolume = value;
-        SaveData(data);
+        SaveData();
     }
 
-    public static void SetLastGameViewers(float value)
+    public void SetLastGameViewers(float value)
     {
-        StorageData data = GetData();
         data.lastGameViewers = value;
-        SaveData(data);
+        SaveData();
     }
 
-    public static void SetLastGameLikes(float value)
+    public void SetLastGameLikes(float value)
     {
-        StorageData data = GetData();
         data.lastGameLikes = value;
-        SaveData(data);
+        SaveData();
     }
 
-    public static void SetAchievementArchieved(int index, bool value)
+    public void SetAchievementArchieved(int index, bool value)
     {
-        StorageData data = GetData();
         if (index < 0 || index >= data.achievementsAchieved.Length)
         {
             throw new System.ArgumentOutOfRangeException("Index out of range.");
         }
         data.achievementsAchieved[index] = value;
-        SaveData(data);
+        SaveData();
     }
 
-    public static void SetAchievementProgress(int index, int value)
+    public void SetAchievementProgress(int index, int value)
     {
-        StorageData data = GetData();
         if (index < 0 || index >= data.achievementsProgress.Length)
         {
             throw new System.ArgumentOutOfRangeException("Index out of range.");
         }
         data.achievementsProgress[index] = value;
-        SaveData(data);
+        SaveData();
     }
 
     // =============================== ADDERS ===============================
@@ -177,7 +278,7 @@ public static class Storage
         *
         * Returns true if the new highscore was added.
         */
-    public static bool AddToHighscore(string username, int score)
+    public bool AddToHighscore(string username, int score)
     {
         if (username == "" || score < 0)
         {
@@ -185,7 +286,7 @@ public static class Storage
         }
         return AddToHighscore(username + ":" + score);
     }
-    public static bool AddToHighscore(string newHighscore)
+    public bool AddToHighscore(string newHighscore)
     {
         // Get the top five highscores.
         string[] oldList = GetHighscore();
@@ -208,55 +309,13 @@ public static class Storage
         {
             topScores = newList;
         }
-        // Load data.
-        StorageData data = GetData();
         // Save.
         data.highscore = newList;
-        SaveData(data);
+        SaveData();
         // Check if new highscore was added.
         foreach (string score in newList)
             if (newHighscore.Contains(score))
                 return true;
         return false;
-    }
-}
-
-public class StorageData
-{
-
-    // Settings.
-    private int amountOfAchievements = 5;
-
-    // Long-term data.
-    public string username;
-    public float musicVolume;
-    public string[] highscore;
-    public bool[] achievementsAchieved;
-    public int[] achievementsProgress;
-
-    // Stores the amount of viewers and likes for temporary use.
-    public float lastGameViewers;
-    public float lastGameLikes;
-
-    /**
-        * Constructor for the StorageData-class.
-        */
-    public StorageData(string jsonData = "{}")
-    {
-        JsonUtility.FromJsonOverwrite(jsonData, this);
-        FixFaultyArrayLengths();
-    }
-
-    /**
-        * Fixes the length of the arrays if they are faulty.
-        */
-    private void FixFaultyArrayLengths()
-    {
-        if (achievementsAchieved == null || achievementsAchieved.Length != amountOfAchievements)
-            Array.Resize(ref achievementsAchieved, amountOfAchievements);
-        if (achievementsProgress == null || achievementsProgress.Length != amountOfAchievements)
-            Array.Resize(ref achievementsProgress, amountOfAchievements);
-        if (highscore == null)
-            highscore = new string[0];
     }
 }

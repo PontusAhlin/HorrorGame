@@ -24,6 +24,7 @@ public class LoginScene : MonoBehaviour
     [SerializeField] string cancelScene;
     [Tooltip("The error box object.")]
     [SerializeField] GameObject errorBox;
+    private Storage storage;
 
     // Start is called before the first frame update
     void Start()
@@ -44,8 +45,11 @@ public class LoginScene : MonoBehaviour
             Destroy(this);
         }
 
+        // Get storage object.
+        storage = Storage.GetStorage();
+
         // Set value of input to last used (stored).
-        usernameInput.text = Storage.GetUsername();
+        usernameInput.text = storage.GetUsername();
 
         // Disable error box.
         errorBox.SetActive(false);
@@ -80,6 +84,6 @@ public class LoginScene : MonoBehaviour
 
     // Save username
     private void SaveUsername() {
-        Storage.SetUsername(usernameInput.text);
+        storage.SetUsername(usernameInput.text);
     }
 }

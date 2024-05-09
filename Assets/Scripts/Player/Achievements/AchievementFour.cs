@@ -6,10 +6,10 @@ public class AchievementFour : AchievementAbstract
 
     public AchievementFour()
     {
-        Index = 4;
-        Title = "Weakling";
-        Description = "Die 20 times.";
-        MaxProgress = 20;
+        index = 4;
+        title = "Weakling";
+        description = "Die 20 times.";
+        maxProgress = 20;
         SetSpritePath("Assets/Resources/Images/skull");
     }
 

@@ -23,6 +23,8 @@ public class HighscoreMenu : MonoBehaviour
     [Tooltip("The name of the scene to load when the player wants to quit.")]
     [SerializeField] string QuiteMenuSceneName;
 
+    private Storage storage;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +49,9 @@ public class HighscoreMenu : MonoBehaviour
             Destroy(this);
         }
 
+        // Get storage object.
+        storage = Storage.GetStorage();
+
         // Show the missing highscore text by default.
         MissingHighscoreTextHolder.SetActive(true);
 
@@ -58,7 +63,7 @@ public class HighscoreMenu : MonoBehaviour
     {
         // Get the highscore from the playerprefs
         // Remember to hide the missing highscore text if there's a highscore.
-        string[] Highscores = Storage.GetHighscore();
+        string[] Highscores = storage.GetHighscore();
         int i = 0;
         foreach (string highscore in Highscores)
         {
