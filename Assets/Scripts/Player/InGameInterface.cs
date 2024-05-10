@@ -67,6 +67,9 @@ public class InGameInterface : MonoBehaviour
 	void Start()
 	{
 
+		// Get storage object.
+		storage = Storage.GetStorage();
+
 		// Check if the playerScore GameObject is set.
 		if (playerScore == null)
 		{
@@ -111,9 +114,6 @@ public class InGameInterface : MonoBehaviour
 			}
 			SetMessageVolume(audioVolume);
 		}
-
-		// Get storage object.
-		storage = Storage.GetStorage();
 
 		// Debugging.
 		StartCoroutine(DebugPrintMessageCoroutine());
