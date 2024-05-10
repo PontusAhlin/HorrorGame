@@ -42,7 +42,7 @@ public class Storage: MonoBehaviour
     #if UNITY_IPHONE
     private string fileFolder = Path.Combine(Application.dataPath, "Raw");
     #elif UNITY_ANDROID
-    private string fileFolder = Path.Combine("jar:file://", Application.dataPath, "!/assets/");
+    private string fileFolder = Path.Combine("jar:file://", Application.dataPath, "assets"); // Changed from "!/assets/".
     #else
     // Mac, Windows, and Linux
     private string fileFolder = Path.Combine(Application.dataPath, "StreamingAssets");
@@ -60,6 +60,20 @@ public class Storage: MonoBehaviour
         */
     public static Storage GetStorage()
     {
+
+
+
+
+    #if UNITY_IPHONE
+    Debug.Log(1);
+    #elif UNITY_ANDROID
+    Debug.Log(2);
+    //Detects this...
+    #else
+    Debug.Log(3);
+    #endif
+
+
         Storage storage = GameObject.FindObjectOfType<Storage>();   // Find storage.
         if (storage == null)                                        // If storage object does not exist.
         {
@@ -73,14 +87,14 @@ public class Storage: MonoBehaviour
     }
 
     /**
-        * Upon Start.
+        * Upon Awakening.
         *
-        * Upon start we need to combine the file folder and name
+        * Upon awake we need to combine the file folder and name
         * to create the final path. Then we start a coroutine to
         * get the data from the file located at the final file path.
         */
 
-    private void Start()
+    void Awake()
     {
         // Construct full file path.
         filePath = Path.Combine(fileFolder, fileName);
@@ -107,7 +121,7 @@ public class Storage: MonoBehaviour
                 www.result == UnityWebRequest.Result.ConnectionError ||
                 www.result == UnityWebRequest.Result.ProtocolError
             ) {
-                Debug.Log("Storage: File does not exist. Starting a new one.");
+                Debug.Log("Storage: File does not exist. Starting a new one (mobile).");
                 dataString = "{}";                                      // Create a new empty json string.
             }
             else {
@@ -118,7 +132,7 @@ public class Storage: MonoBehaviour
         {
             if (!File.Exists(filePath))                                 // If the file does not exist.
             {
-                Debug.Log("Storage: File does not exist. Starting a new one.");
+                Debug.Log("Storage: File does not exist. Starting a new one (PC).");
                 dataString = "{}";                                      // Create a new empty json string.
             }
             dataString = File.ReadAllText(filePath);                    // Read the existing file.
