@@ -25,18 +25,23 @@ public abstract class AchievementAbstract : MonoBehaviour
     private string    spritePath;     // Full sprite path.
     private Storage   storage;        // Storage object.
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        storage = Storage.GetStorage(); // Get storage object.
-        // Get status of achievement
-        isAchieved =  storage.GetAchievementAchieved(index);
-        progress = storage.GetAchievementProgress(index);
         // Check Values.
         if (title == null || description == null || spritePath == null)
         {
             throw new System.ArgumentNullException("index, title, description, maxProgress, or spritePath is null.");
         }
+        // Get storage object.
+        storage = Storage.GetStorage();
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        // Get status of achievement
+        isAchieved =  storage.GetAchievementAchieved(index);
+        progress = storage.GetAchievementProgress(index);
     }
 
     // =============================== GETTERS ===============================

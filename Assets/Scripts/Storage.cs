@@ -27,8 +27,7 @@ public class Storage: MonoBehaviour
 
     // Empty variables.
     private Data data;
-    public static Storage instance;
-    private bool isReady = false;
+    public static Storage Instance { get; private set; }
 
     /**
         * Define Storage Path.
@@ -41,7 +40,6 @@ public class Storage: MonoBehaviour
         */
     private string filePath;
     private readonly string fileName = "storage.json";
-    private readonly string fileFolder = Application.dataPath;
 /*
     #if UNITY_IPHONE
     private readonly string fileFolder = Application.dataPath + "/Raw";
@@ -82,13 +80,18 @@ public class Storage: MonoBehaviour
         if (storage == null)                                        // If storage object does not exist.
         {
             Debug.Log("Storage: No storage object found. Creating a new one.");
-            GameObject storageObject = new()                        // Create a new storage object.
+            if (Instance == null)
             {
-                name = "Storage"
-            };
-            storage = storageObject.AddComponent<Storage>();        // Add the storage script to the storage object.
-            storage.transform.parent = null;                        // Set the storage object to the root of the scene.
+                GameObject storageObject = new()                        // Create a new storage object.
+                {
+                    name = "StorageHolder"
+                };
+                storage = storageObject.AddComponent<Storage>();        // Add the storage script to the storage object.
+                storage.transform.parent = null;                        // Set the storage object to the root of the scene.
+            }
         }
+        storage.filePath = Path.Combine(Application.persistentDataPath, storage.fileName);
+        storage.data ??= storage.GetData();
         return storage;                                             // Return the storage object.
     }
 
@@ -100,15 +103,18 @@ public class Storage: MonoBehaviour
         * get the data from the file located at the final file path.
         */
 
-    void Awake()
+void Awake()
+{
+    if (Instance == null)
     {
-        // Construct full file path.
-        filePath = Path.Combine(fileFolder, fileName);
-        Debug.Log(filePath);
-        // Create a coroutine to get the data.
-        GetData();
-        //StartCoroutine(GetData());
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
+    else
+    {
+        Destroy(gameObject);
+    }
+}
 
     /**
         * Get Data Routine.
@@ -132,6 +138,8 @@ public class Storage: MonoBehaviour
             */
         Data GetDataComputer()
         {
+            Debug.Log("Storage: Getting data for computer.");
+            // Make sure the file folder exists (sloppy fix).
             if (!File.Exists(filePath))
             {
                 Debug.Log("Storage: No storage file found. Creating a new one.");
@@ -145,6 +153,7 @@ public class Storage: MonoBehaviour
             */
         Data GetDataAndroid()
         {
+            Debug.Log("Storage: Getting data for Android.");
             UnityWebRequest www = UnityWebRequest.Get(filePath);
             www.SendWebRequest();
             while (!www.isDone) { }
@@ -152,7 +161,7 @@ public class Storage: MonoBehaviour
                 www.result == UnityWebRequest.Result.ConnectionError ||
                 www.result == UnityWebRequest.Result.ProtocolError
             ) {
-                Debug.LogError(www.error);
+                Debug.LogError("Storage: " + www.error + ". Creating a new data object.");
                 return new Data(amountOfAchievements);
             }
             return new Data(amountOfAchievements, www.downloadHandler.text);

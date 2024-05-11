@@ -63,10 +63,8 @@ public class InGameInterface : MonoBehaviour
 	private AudioSource audioSource;
 	private Storage storage;
 
-	// Start is called before the first frame update
-	void Start()
+	void Awake()
 	{
-
 		// Get storage object.
 		storage = Storage.GetStorage();
 
@@ -101,7 +99,11 @@ public class InGameInterface : MonoBehaviour
 			Debug.LogWarning("Sprite folder is not set. No chat messages will be displayed.");
 		else
 			spriteFolder = spriteFolder.Replace("Assets/", "").Replace("Resources/", ""); // Remove "Assets/" and "Resources/" from the path.
+	}
 
+	// Start is called before the first frame update
+	void Start()
+	{
 		// Set username.
 		if (usernameText != null)
 			usernameText.text = storage.GetUsername();

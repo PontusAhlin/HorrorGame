@@ -26,8 +26,8 @@ public class LoginScene : MonoBehaviour
     [SerializeField] GameObject errorBox;
     private Storage storage;
 
-    // Start is called before the first frame update
-    void Start()
+    // Awake is called when the script instance is being loaded.
+    void Awake()
     {
         if (gameScene == null)
         {
@@ -47,7 +47,11 @@ public class LoginScene : MonoBehaviour
 
         // Get storage object.
         storage = Storage.GetStorage();
+    }
 
+    // Start is called before the first frame update
+    void Start()
+    {
         // Set value of input to last used (stored).
         usernameInput.text = storage.GetUsername();
 
@@ -73,6 +77,7 @@ public class LoginScene : MonoBehaviour
             return;
         }
         SaveUsername();
+        
         SceneManager.LoadScene(gameScene);
     }
 
