@@ -7,6 +7,7 @@
     *
     * TODO:
     * - Add code to call the popup to notify the player.
+    * - Refactor into having variable properties.
     *
     * Author(s): William Fridh
     */
@@ -16,7 +17,8 @@ using UnityEngine;
 public abstract class AchievementAbstract : MonoBehaviour
 {
 
-    protected int     index;          // index of the achievement (must be unique).
+    // =============================== VARIABLES ===============================
+    protected int     index ;          // index of the achievement (must be unique).
     protected string  title;          // title of the achievement.
     protected string  description;    // description of the achievement.
     protected bool    isAchieved;     // If the achievement is archived or not.
@@ -25,20 +27,14 @@ public abstract class AchievementAbstract : MonoBehaviour
     private string    spritePath;     // Full sprite path.
     private Storage   storage;        // Storage object.
 
+    // =============================== INITIALIZATION ===============================
     void Awake()
     {
         // Check Values.
         if (title == null || description == null || spritePath == null)
-        {
             throw new System.ArgumentNullException("index, title, description, maxProgress, or spritePath is null.");
-        }
         // Get storage object.
         storage = Storage.GetStorage();
-    //}
-
-    // Start is called before the first frame update
-    //void Start()
-    //{
         // Get status of achievement
         isAchieved =  storage.GetAchievementAchieved(index);
         progress = storage.GetAchievementProgress(index);
@@ -117,7 +113,8 @@ public abstract class AchievementAbstract : MonoBehaviour
         */
     public void SetSpritePath(string Value)
     {
-        spritePath = Value.Replace("Assets/", "").Replace("Resources/", ""); // Remove "Assets/" and "Resources/" from the path.;
+        // Remove "Assets/" and "Resources/" from the path.;
+        spritePath = Value.Replace("Assets/", "").Replace("Resources/", "");
     }
 
     // =============================== ADDERS ===============================

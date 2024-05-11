@@ -5,9 +5,8 @@
     * Full documentation can be found at:
     * https://github.com/PontusAhlin/HorrorGame/wiki/Storage
     *
-    * Example #1:
-    * - storage.SetUsername("William");
-    * - string username = Storage.GetUsername();
+    * TODO:
+    * - Refactor the class to use variables properties instead of normal getters and setters.
     *
     * Author(s): William Fridh
     */
@@ -22,33 +21,11 @@ using System.Threading;
 public class Storage: MonoBehaviour
 {
 
-    // Settings.
     private const int amountOfAchievements = 5;
-
-    // Empty variables.
     private Data data;
     public static Storage Instance { get; private set; }
-
-    /**
-        * Define Storage Path.
-        *
-        * As diffrent operating systems have diffrent ways of storing files
-        * we need to take this into consideration. This is done by defining
-        * the path to the storage file in different ways depending on the OS.
-        *
-        * NOTE: Do not use Path.Combine()!
-        */
     private string filePath;
     private readonly string fileName = "storage.json";
-/*
-    #if UNITY_IPHONE
-    private readonly string fileFolder = Application.dataPath + "/Raw";
-    #elif UNITY_ANDROID
-    private readonly string fileFolder = "jar:file://" + Application.dataPath;// + "!/assets/"; // Changed from "!/assets/".
-    #else
-    // Mac, Windows, and Linux
-    private readonly string fileFolder = Application.dataPath + "/StreamingAssets";
-    #endif*/
 
     /**
         * Get Storage.
@@ -62,24 +39,10 @@ public class Storage: MonoBehaviour
         */
     public static Storage GetStorage()
     {
-
-
-/*
-
-    #if UNITY_IPHONE
-    Debug.Log(1);
-    #elif UNITY_ANDROID
-    Debug.Log(2);
-    //Detects this...
-    #else
-    Debug.Log(3);
-    #endif*/
-
-
-        Storage storage = GameObject.FindObjectOfType<Storage>();   // Find storage.
+        Storage storage = GameObject.FindObjectOfType<Storage>();   // Find storage object.
         if (storage == null)                                        // If storage object does not exist.
         {
-            Debug.Log("Storage: No storage object found. Creating a new one.");
+            //Debug.Log("Storage: No storage object found. Creating a new one.");
             if (Instance == null)
             {
                 GameObject storageObject = new()                        // Create a new storage object.
@@ -88,38 +51,33 @@ public class Storage: MonoBehaviour
                 };
                 storage = storageObject.AddComponent<Storage>();        // Add the storage script to the storage object.
                 storage.transform.parent = null;                        // Set the storage object to the root of the scene.
+                storage.filePath = Path.Combine(Application.persistentDataPath, storage.fileName); // Set the file path.
+                storage.data = storage.GetData();                       // Get the data from the storage file.
             }
         }
-        storage.filePath = Application.platform switch
-        {
-            RuntimePlatform.WindowsEditor or RuntimePlatform.OSXEditor => Path.Combine(Application.persistentDataPath, storage.fileName),
-            RuntimePlatform.Android => Path.Combine(Application.persistentDataPath, storage.fileName),
-            _ => throw new PlatformNotSupportedException("Platform not supported."),
-        };
-        storage.data ??= storage.GetData();
+        //storage.data ??= storage.GetData();
         return storage;                                             // Return the storage object.
     }
 
     /**
-        * Upon Awakening.
+        * Awake Routine.
         *
-        * Upon awake we need to combine the file folder and name
-        * to create the final path. Then we start a coroutine to
-        * get the data from the file located at the final file path.
+        * This function is called when the script instance is being loaded.
+        * It is used to make sure that only one instance of the storage
+        * object exists at a time. Also known as "the singleton pattern".
         */
-
-void Awake()
-{
-    if (Instance == null)
+    void Awake()
     {
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
-    else
-    {
-        Destroy(gameObject);
-    }
-}
 
     /**
         * Get Data Routine.
@@ -129,22 +87,19 @@ void Awake()
         * If the file does not exist, a new data object based on an empty
         * json string will be generated instead.
         *
-        * NOTE: Do not use preprocessor directives as this breaks the code
-        * when testing the game in the editor for different platforms.
-        *
         * TODO:
-        * - Rewrite documentaion.
-        * - Rewrite comments.
+        * - Explore proper folder existance check and fixing.
         */
     private Data GetData()
     {
-            Debug.Log("Storage: Getting data for computer.");
-            // Make sure the file folder exists (sloppy fix).
+            // If the file does not exist, start a new storage.
+            // Note that the files won't be created until Storage.Save() is called.
             if (!File.Exists(filePath))
             {
                 Debug.Log("Storage: No storage file found. Creating a new one.");
                 return new Data(amountOfAchievements);
             }
+            // Read the file and return the data.
             string jsonData = File.ReadAllText(filePath);
             return new Data(amountOfAchievements, jsonData);
     }
@@ -200,8 +155,6 @@ void Awake()
     private void SaveData()
     {
         string jsonData = JsonUtility.ToJson(data);
-        Debug.Log("Saving: " + jsonData);
-        Debug.Log("To: " + filePath);   
         File.WriteAllText(filePath, jsonData);
     }
 

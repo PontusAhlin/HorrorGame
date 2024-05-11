@@ -12,11 +12,12 @@ public static class Formatting {
 
     /**
         * Formats a float to a string with prefix.
-        *
-        * TODO:
-        * - Add support for millions, billions, etc.
         */
     public static string FloatToShortString(float value = 0, int decimals = 0) {
+        if (value >= 1000000000) {
+            decimal rounded = System.Math.Round((decimal)(value / 1000000000), decimals);
+            return rounded.ToString() + "B";
+        } else
         if (value >= 1000000) {
             decimal rounded = System.Math.Round((decimal)(value / 1000000), decimals);
             return rounded.ToString() + "M";
