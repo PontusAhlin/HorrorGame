@@ -34,11 +34,11 @@ public abstract class AchievementAbstract : MonoBehaviour
         }
         // Get storage object.
         storage = Storage.GetStorage();
-    }
+    //}
 
     // Start is called before the first frame update
-    void Start()
-    {
+    //void Start()
+    //{
         // Get status of achievement
         isAchieved =  storage.GetAchievementAchieved(index);
         progress = storage.GetAchievementProgress(index);

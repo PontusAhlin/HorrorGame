@@ -90,7 +90,12 @@ public class Storage: MonoBehaviour
                 storage.transform.parent = null;                        // Set the storage object to the root of the scene.
             }
         }
-        storage.filePath = Path.Combine(Application.persistentDataPath, storage.fileName);
+        storage.filePath = Application.platform switch
+        {
+            RuntimePlatform.WindowsEditor or RuntimePlatform.OSXEditor => Path.Combine(Application.persistentDataPath, storage.fileName),
+            RuntimePlatform.Android => Path.Combine(Application.persistentDataPath, storage.fileName),
+            _ => throw new PlatformNotSupportedException("Platform not supported."),
+        };
         storage.data ??= storage.GetData();
         return storage;                                             // Return the storage object.
     }
@@ -133,11 +138,6 @@ void Awake()
         */
     private Data GetData()
     {
-        /**
-            * Define inner function for getting data for Computers.
-            */
-        Data GetDataComputer()
-        {
             Debug.Log("Storage: Getting data for computer.");
             // Make sure the file folder exists (sloppy fix).
             if (!File.Exists(filePath))
@@ -147,34 +147,6 @@ void Awake()
             }
             string jsonData = File.ReadAllText(filePath);
             return new Data(amountOfAchievements, jsonData);
-        }
-        /**
-            * Define inner function for getting data for Android.
-            */
-        Data GetDataAndroid()
-        {
-            Debug.Log("Storage: Getting data for Android.");
-            UnityWebRequest www = UnityWebRequest.Get(filePath);
-            www.SendWebRequest();
-            while (!www.isDone) { }
-            if (
-                www.result == UnityWebRequest.Result.ConnectionError ||
-                www.result == UnityWebRequest.Result.ProtocolError
-            ) {
-                Debug.LogError("Storage: " + www.error + ". Creating a new data object.");
-                return new Data(amountOfAchievements);
-            }
-            return new Data(amountOfAchievements, www.downloadHandler.text);
-        }
-        /**
-            * Call appropriate function based on platform.
-            */
-        return Application.platform switch
-        {
-            RuntimePlatform.WindowsEditor or RuntimePlatform.OSXEditor => GetDataComputer(),
-            RuntimePlatform.Android => GetDataAndroid(),
-            _ => throw new PlatformNotSupportedException("Platform not supported."),
-        };
     }
 
     /**

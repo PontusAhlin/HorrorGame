@@ -25,36 +25,42 @@ public class HighscoreMenu : MonoBehaviour
 
     private Storage storage;
 
-    // Start is called before the first frame update
-    void Start()
+    // Awake is called when the script instance is being loaded.
+    void Awake()
     {
-
         if (MissingHighscoreTextHolder == null) {
             Debug.LogError("MissingHighscoreTextHolder is not set in the inspector.");
             Destroy(this);
+            return;
         }
 
         if (HighscoreListObjectPrefab == null) {
             Debug.LogError("HighscoreListObjectPrefab is not set in the inspector.");
             Destroy(this);
+            return;
         }
 
         if (QuiteMenuSceneName == null) {
             Debug.LogError("QuiteMenuSceneName is not set in the inspector.");
             Destroy(this);
+            return;
         }
 
         if (HighscoreList == null) {
             Debug.LogError("HighscoreList is not set in the inspector.");
             Destroy(this);
+            return;
         }
 
         // Get storage object.
         storage = Storage.GetStorage();
+    }
 
+    // Start is called before the first frame update
+    void Start()
+    {
         // Show the missing highscore text by default.
         MissingHighscoreTextHolder.SetActive(true);
-
         // Print the highscore.
         PrintHighscore();
     }
