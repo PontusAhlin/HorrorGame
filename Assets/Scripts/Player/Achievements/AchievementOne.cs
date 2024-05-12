@@ -6,11 +6,11 @@ public class AchievementOne : AchievementAbstract
 
     public AchievementOne()
     {
-        index = 1;
-        title = "Scared Bird";
-        description = "Escape without any likes.";
-        maxProgress = 1;
-        SetSpritePath("Assets/Resources/Images/bird");
+        Index = 1;
+        Title = "Scared Bird";
+        Description = "Escape without any likes.";
+        MaxProgress = 1;
+        SpritePath = "Assets/Resources/Images/bird";
     }
 
 }

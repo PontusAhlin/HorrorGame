@@ -6,11 +6,11 @@ public class AchievementFive : AchievementAbstract
 
     public AchievementFive()
     {
-        index = 5;
-        title = "Are You Mad?";
-        description = "Enter the asylum 30 times.";
-        maxProgress = 30;
-        SetSpritePath("Assets/Resources/Images/skull");
+        Index = 5;
+        Title = "Are You Mad?";
+        Description = "Enter the asylum 30 times.";
+        MaxProgress = 30;
+        SpritePath = "Assets/Resources/Images/skull";
     }
 
 }

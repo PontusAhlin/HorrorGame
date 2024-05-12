@@ -86,15 +86,15 @@ public class AchievementsMenu : MonoBehaviour
                 .gameObject.GetComponent<RectTransform>();
 
             // Set progress bar fill amount.
-            float progressWidth = bar.sizeDelta.x * ((float)AchievementObject.GetProgress() / (float)AchievementObject.GetMaxProgress());
+            float progressWidth = bar.sizeDelta.x * ((float)AchievementObject.Progress / (float)AchievementObject.MaxProgress);
             bar.sizeDelta = new Vector2(progressWidth, bar.sizeDelta.y);
 
             // Set text and sprite element contents.
-            Title.text = AchievementObject.GetTitle();
-            Description.text = AchievementObject.GetDescription();
-            Progress.text = AchievementObject.GetProgress() + "/" + AchievementObject.GetMaxProgress();
+            Title.text = AchievementObject.Title;
+            Description.text = AchievementObject.Description;
+            Progress.text = AchievementObject.Progress + "/" + AchievementObject.MaxProgress;
 
-            string SpritePath = AchievementObject.GetSpritePath();
+            string SpritePath = AchievementObject.SpritePath;
 
             Sprite spriteResources = Resources.Load<Sprite>(SpritePath);
             if (spriteResources == null) {
