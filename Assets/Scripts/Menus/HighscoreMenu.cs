@@ -25,8 +25,8 @@ public class HighscoreMenu : MonoBehaviour
 
     private Storage storage;
 
-    // Awake is called when the script instance is being loaded.
-    void Awake()
+    // Start is called before the first frame update
+    void Start()
     {
         if (MissingHighscoreTextHolder == null) {
             Debug.LogError("MissingHighscoreTextHolder is not set in the inspector.");
@@ -54,11 +54,6 @@ public class HighscoreMenu : MonoBehaviour
 
         // Get storage object.
         storage = Storage.GetStorage();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
         // Show the missing highscore text by default.
         MissingHighscoreTextHolder.SetActive(true);
         // Print the highscore.

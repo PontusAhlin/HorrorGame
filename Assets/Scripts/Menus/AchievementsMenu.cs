@@ -29,21 +29,22 @@ public class AchievementsMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         if (AchievementPrefab == null)
         {
-            Debug.LogError("Achievement prefab is not set.");
-            Destroy(this);
+            Debug.LogError("AchievementsMenu: Achievement prefab is not set.");
+            DestroyObject();
         }
-
         if (AchievementContainer == null)
         {
-            Debug.LogError("Achievement container is not set.");
-            Destroy(this);
+            Debug.LogError("AchievementsMenu: Achievement container is not set.");
+            DestroyObject();
         }
-
+        void DestroyObject() {
+            Debug.LogError("AchievementsMenu: Destroying script due to missing settings.");
+            Destroy(this);
+            return;
+        }
         PrintAchievements();
-
     }
 
     // Print array of achievements.

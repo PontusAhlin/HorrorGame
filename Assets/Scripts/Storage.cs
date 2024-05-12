@@ -21,7 +21,7 @@ using System.Threading;
 public class Storage: MonoBehaviour
 {
 
-    private const int amountOfAchievements = 5;
+    private const int amountOfAchievements = 6;
     private Data data;
     public static Storage Instance { get; private set; }
     private string filePath;
