@@ -453,9 +453,7 @@ MonoBehaviour:
   Player: {fileID: 656645222}
   SpawnOneOfEach: 1
   MonsterPrefabs:
-  - {fileID: 8182396208055939415, guid: 183dfe7f4d0194a0884e929994c8eb59, type: 3}
-  - {fileID: 7669915599114108628, guid: eb3798cfecf32430592a742b605c99d7, type: 3}
-  - {fileID: 5651339836816107284, guid: 2e4341b898ad64b3a86e5a9592ce57dc, type: 3}
+  - {fileID: 5256081540509174738, guid: 8e3032d5ebcc846d3a3c001b6f380228, type: 3}
   timeSeconds: 30
   MonsterAmount: 6
   firstMonsterDelay: 5
@@ -840,7 +838,7 @@ PrefabInstance:
     - target: {fileID: 139293253767508008, guid: e4955e24e939e2b4088552de2a66e300,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 94.3866
+      value: 322.13818
       objectReference: {fileID: 0}
     - target: {fileID: 139293253767508008, guid: e4955e24e939e2b4088552de2a66e300,
         type: 3}
@@ -870,7 +868,7 @@ PrefabInstance:
     - target: {fileID: 367703265813152426, guid: e4955e24e939e2b4088552de2a66e300,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 94.3866
+      value: 322.13818
       objectReference: {fileID: 0}
     - target: {fileID: 367703265813152426, guid: e4955e24e939e2b4088552de2a66e300,
         type: 3}
