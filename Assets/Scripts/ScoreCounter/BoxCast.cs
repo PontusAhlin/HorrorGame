@@ -219,15 +219,15 @@ public class BoxCast : MonoBehaviour
 
             if (currentColorGhost != null)
             {
-                viewerMsg = ("I want to see the " + currentColorGhost.CurrentColor + " " + monsterName);
+                viewerMsg = (chatGeneration.GenerateMessage("Request") + currentColorGhost.CurrentColor + " " + monsterName);
             }
             else if (currentColorMannequin != null) 
             {
-                viewerMsg = ("I want to see the " + currentColorMannequin.CurrentColor + " " + monsterName);
+                viewerMsg = (chatGeneration.GenerateMessage("Request") + currentColorMannequin.CurrentColor + " " + monsterName);
             }
             else 
             {
-                viewerMsg = ("I want to see the " + currentColorCharger.CurrentColor + " " + monsterName);
+                viewerMsg = (chatGeneration.GenerateMessage("Request") + currentColorCharger.CurrentColor + " " + monsterName);
             }
 
             currentColorGhost = null;

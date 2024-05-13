@@ -48,22 +48,16 @@ public class ChatGeneration : MonoBehaviour
         "KEEP FILMING IT",
         "FINALLY SOMETHING GOOD"
     };
-    /*List<string> RequestMessages = new List<string>
+    List<string> RequestMessages = new List<string>
     {
-        "WHAT IS THAT",
-        "RUN!!!",
-        "poke it",
-        "you can clearly see its fake...",
-        "pls dont die",
-        "GHOSTLEAKS IS THE BEST HAHA",
-        "IS HE GHONNA DIE",
-        "RUN RUN RUN",
-        "KEEP FILMING IT",
-        "FINALLY SOMETHING GOOD"
-    };*/
-
-    List<string> RequestMessages = new List<string>{
-        "I want to see the " + 12
+        "I wanna see the ",
+        "ill donate if u show the ",
+        "FIND THE ",
+        "im bored...want ",
+        "where is the ",
+        "WE WANT ",
+        "i want the ",
+        "i dont care if u die, film the "
     };
 
 
