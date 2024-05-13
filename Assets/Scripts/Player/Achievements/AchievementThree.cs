@@ -8,7 +8,7 @@ public class AchievementThree : AchievementAbstract
     {
         Index = 3;
         Title = "Know The Algorithm";
-        Description = "Gain 100k likes in one run.";
+        Description = "Escape with 100k likes.";
         MaxProgress = 1;
         SpritePath = "Assets/Resources/Images/math";
     }
