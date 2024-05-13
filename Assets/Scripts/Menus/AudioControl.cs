@@ -4,9 +4,6 @@
     *
     * Author(s): Arnob Sarker
     */
-
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,8 +14,9 @@ public class AudioControl : MonoBehaviour
     [SerializeField] Slider volumeSlider;
 
     // Update is called once per frame
-    void Update()
+    void Awake()
     {
+        Debug.Log("Volume: " + PlayerPrefs.GetFloat("musicVolume"));
         if(!PlayerPrefs.HasKey("musicVolume"))
         {
             PlayerPrefs.SetFloat("musicVolume", 1);
