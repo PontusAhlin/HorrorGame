@@ -61,10 +61,13 @@ public class InGameInterface : MonoBehaviour
 	[SerializeField] int LikesAndViewerDecimal = 3;
 
 	private AudioSource audioSource;
+	private Storage storage;
 
 	// Start is called before the first frame update
 	void Start()
 	{
+		// Get storage object.
+		storage = Storage.GetStorage();
 
 		// Check if the playerScore GameObject is set.
 		if (playerScore == null)
@@ -97,10 +100,10 @@ public class InGameInterface : MonoBehaviour
 			Debug.LogWarning("Sprite folder is not set. No chat messages will be displayed.");
 		else
 			spriteFolder = spriteFolder.Replace("Assets/", "").Replace("Resources/", ""); // Remove "Assets/" and "Resources/" from the path.
-
+	
 		// Set username.
 		if (usernameText != null)
-			usernameText.text = Storage.GetUsername();
+			usernameText.text = storage.GetUsername();
 
 		// Set audio source.
 		if (audioClip != null) {
@@ -146,8 +149,8 @@ public class InGameInterface : MonoBehaviour
 
 		// Update the likes and views counter.
 		if (playerScore == null) { // Fall back on stored values if playerScore is not set.
-			likesCounterText.text = Formatting.FloatToShortString(Storage.GetLastGameLikes(),LikesAndViewerDecimal);
-			viewersCounterText.text = Formatting.FloatToShortString(Storage.GetLastGameViewers(),LikesAndViewerDecimal);
+			likesCounterText.text = Formatting.FloatToShortString(storage.GetLastGameLikes(),LikesAndViewerDecimal);
+			viewersCounterText.text = Formatting.FloatToShortString(storage.GetLastGameViewers(),LikesAndViewerDecimal);
 
 		} else {
 			likesCounterText.text = Formatting.FloatToShortString(playerScore.likes,LikesAndViewerDecimal);

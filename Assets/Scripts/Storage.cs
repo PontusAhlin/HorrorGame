@@ -5,9 +5,8 @@
     * Full documentation can be found at:
     * https://github.com/PontusAhlin/HorrorGame/wiki/Storage
     *
-    * Example #1:
-    * - Storage.SetUsername("William");
-    * - string username = Storage.GetUsername();
+    * TODO:
+    * - Refactor the class to use variables properties instead of normal getters and setters.
     *
     * Author(s): William Fridh
     */
@@ -15,144 +14,237 @@
 using System;
 using System.IO;
 using UnityEngine;
+using System.Collections;
+using UnityEngine.Networking;
+using System.Threading;
 
-public static class Storage
+public class Storage: MonoBehaviour
 {
 
-    // Static string used for setting up the file.
-    private static string Path = Application.persistentDataPath + "/storage.json";
-
-    // Used for debugging.
-    public static string GetPath()
-    {
-        return Path;
-    }
+    private const int amountOfAchievements = 6;
+    private Data data;
+    public static Storage Instance { get; private set; }
+    private string filePath;
+    private readonly string fileName = "storage.json";
 
     /**
-        * Gets the data from the storage file.
-        * If the file does not exist or is invalid a new file will be generated.
+        * Get Storage.
+        *
+        * This function checks the scene for a storage object and
+        * returns it if it exists. If it does not exist, it will
+        * create a new storage object and return it.
+        *
+        * This is the first function that should be called when
+        * using the storage class.
         */
-    private static StorageData GetData()
+    public static Storage GetStorage()
     {
-        if (!File.Exists(Path))
+        Storage storage = GameObject.FindObjectOfType<Storage>();   // Find storage object.
+        if (storage == null)                                        // If storage object does not exist.
         {
-            Debug.LogWarning("Non-existing or invalid storage file. Generating a new one.");
-            SaveData(new StorageData());
+            //Debug.Log("Storage: No storage object found. Creating a new one.");
+            if (Instance == null)
+            {
+                GameObject storageObject = new()                        // Create a new storage object.
+                {
+                    name = "StorageHolder"
+                };
+                storage = storageObject.AddComponent<Storage>();        // Add the storage script to the storage object.
+                storage.transform.parent = null;                        // Set the storage object to the root of the scene.
+                storage.filePath = Path.Combine(Application.persistentDataPath, storage.fileName); // Set the file path.
+                storage.data = storage.GetData();                       // Get the data from the storage file.
+            }
         }
-        string jsonData = File.ReadAllText(Path);
-        StorageData dataObject = new StorageData(jsonData);
-        return dataObject;
+        //storage.data ??= storage.GetData();
+        return storage;                                             // Return the storage object.
     }
 
     /**
+        * Awake Routine.
+        *
+        * This function is called when the script instance is being loaded.
+        * It is used to make sure that only one instance of the storage
+        * object exists at a time. Also known as "the singleton pattern".
+        */
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    /**
+        * Get Data Routine.
+        *
+        * This function is used to get the data from the storage file and
+        * sets the class objects data to a new data object with the data.
+        * If the file does not exist, a new data object based on an empty
+        * json string will be generated instead.
+        *
+        * TODO:
+        * - Explore proper folder existance check and fixing.
+        */
+    private Data GetData()
+    {
+            // If the file does not exist, start a new storage.
+            // Note that the files won't be created until Storage.Save() is called.
+            if (!File.Exists(filePath))
+            {
+                Debug.Log("Storage: No storage file found. Creating a new one.");
+                return new Data(amountOfAchievements);
+            }
+            // Read the file and return the data.
+            string jsonData = File.ReadAllText(filePath);
+            return new Data(amountOfAchievements, jsonData);
+    }
+
+    /**
+        * Data Class.
+        *
+        * This class in defined as a nested class as it is only used by the storage
+        * and should be communicated with through the storage class's getters,
+        * setters, incremenetrs, et cetera.
+        */
+    private class Data
+    {
+
+        // Long-term data.
+        public string username;
+        public float musicVolume;
+        public string[] highscore;
+        public bool[] achievementsAchieved;
+        public int[] achievementsProgress;
+
+        // Stores the amount of viewers and likes for temporary use.
+        public float lastGameViewers;
+        public float lastGameLikes;
+
+        /**
+            * Constructor for the Data-class.
+            */
+        public Data(int amountOfAchievements, string jsonData = "{}")
+        {
+            JsonUtility.FromJsonOverwrite(jsonData, this);
+            FixFaultyArrayLengths(amountOfAchievements);
+        }
+
+        /**
+            * Fixes the length of the arrays if they are faulty.
+            */
+        private void FixFaultyArrayLengths(int amountOfAchievements)
+        {
+            if (achievementsAchieved == null || achievementsAchieved.Length != amountOfAchievements)
+                Array.Resize(ref achievementsAchieved, amountOfAchievements);
+            if (achievementsProgress == null || achievementsProgress.Length != amountOfAchievements)
+                Array.Resize(ref achievementsProgress, amountOfAchievements);
+            highscore ??= new string[0];
+        }
+    }
+
+    /**
+        * Save Data.
+        *
         * Saves the data to the storage file.
         */
-    private static void SaveData(StorageData data)
+    private void SaveData()
     {
         string jsonData = JsonUtility.ToJson(data);
-        File.WriteAllText(Path, jsonData);
+        File.WriteAllText(filePath, jsonData);
     }
 
     // =============================== GETTERS ===============================
-    public static string GetUsername()
+    public string GetUsername()
     {
-        StorageData data = GetData();
         return data.username;
     }
 
-    public static string[] GetHighscore()
+    public string[] GetHighscore()
     {
-        StorageData data = GetData();
         return data.highscore;
     }
 
-    public static float GetMusicVolume()
+    public float GetMusicVolume()
     {
-        StorageData data = GetData();
         return data.musicVolume;
     }
     
-    public static float GetLastGameViewers()
+    public float GetLastGameViewers()
     {
-        StorageData data = GetData();
         return data.lastGameViewers;
     }
 
-    public static float GetLastGameLikes()
+    public float GetLastGameLikes()
     {
-        StorageData data = GetData();
         return data.lastGameLikes;
     }
 
-    public static bool GetAchievementAchieved(int index)
+    public bool GetAchievementAchieved(int index)
     {
-        StorageData data = GetData();
         if (index < 0 || index >= data.achievementsAchieved.Length)
         {
-            throw new System.ArgumentOutOfRangeException("Index out of range.");
+            throw new ArgumentOutOfRangeException("Index out of range.");
         }
         return data.achievementsAchieved[index];
     }
 
-    public static int GetAchievementProgress(int index)
+    public int GetAchievementProgress(int index)
     {
-        StorageData data = GetData();
         if (index < 0 || index >= data.achievementsProgress.Length)
         {
-            throw new System.ArgumentOutOfRangeException("Index out of range.");
+            throw new ArgumentOutOfRangeException("Index out of range.");
         }
         return data.achievementsProgress[index];
     }
 
     // =============================== SETTERS ===============================
-    public static void SetUsername(string value)
+    public void SetUsername(string value)
     {
-        StorageData data = GetData();
         data.username = value;
-        SaveData(data);
+        SaveData();
     }
 
-    public static void SetMusicVolume(float value)
+    public void SetMusicVolume(float value)
     {
-        StorageData data = GetData();
         data.musicVolume = value;
-        SaveData(data);
+        SaveData();
     }
 
-    public static void SetLastGameViewers(float value)
+    public void SetLastGameViewers(float value)
     {
-        StorageData data = GetData();
         data.lastGameViewers = value;
-        SaveData(data);
+        SaveData();
     }
 
-    public static void SetLastGameLikes(float value)
+    public void SetLastGameLikes(float value)
     {
-        StorageData data = GetData();
         data.lastGameLikes = value;
-        SaveData(data);
+        SaveData();
     }
 
-    public static void SetAchievementArchieved(int index, bool value)
+    public void SetAchievementArchieved(int index, bool value)
     {
-        StorageData data = GetData();
         if (index < 0 || index >= data.achievementsAchieved.Length)
         {
-            throw new System.ArgumentOutOfRangeException("Index out of range.");
+            throw new ArgumentOutOfRangeException("Index out of range.");
         }
         data.achievementsAchieved[index] = value;
-        SaveData(data);
+        SaveData();
     }
 
-    public static void SetAchievementProgress(int index, int value)
+    public void SetAchievementProgress(int index, int value)
     {
-        StorageData data = GetData();
         if (index < 0 || index >= data.achievementsProgress.Length)
         {
-            throw new System.ArgumentOutOfRangeException("Index out of range.");
+            throw new ArgumentOutOfRangeException("Index out of range.");
         }
         data.achievementsProgress[index] = value;
-        SaveData(data);
+        SaveData();
     }
 
     // =============================== ADDERS ===============================
@@ -163,15 +255,15 @@ public static class Storage
         *
         * Returns true if the new highscore was added.
         */
-    public static bool AddToHighscore(string username, int score)
+    public bool AddToHighscore(string username, int score)
     {
         if (username == "" || score < 0)
         {
-            throw new System.ArgumentException("Username or score is invalid.");
+            throw new ArgumentException("Username or score is invalid.");
         }
         return AddToHighscore(username + ":" + score);
     }
-    public static bool AddToHighscore(string newHighscore)
+    public bool AddToHighscore(string newHighscore)
     {
         // Get the top five highscores.
         string[] oldList = GetHighscore();
@@ -194,55 +286,13 @@ public static class Storage
         {
             topScores = newList;
         }
-        // Load data.
-        StorageData data = GetData();
         // Save.
         data.highscore = newList;
-        SaveData(data);
+        SaveData();
         // Check if new highscore was added.
         foreach (string score in newList)
             if (newHighscore.Contains(score))
                 return true;
         return false;
-    }
-}
-
-public class StorageData
-{
-
-    // Settings.
-    private int amountOfAchievements = 5;
-
-    // Long-term data.
-    public string username;
-    public float musicVolume;
-    public string[] highscore;
-    public bool[] achievementsAchieved;
-    public int[] achievementsProgress;
-
-    // Stores the amount of viewers and likes for temporary use.
-    public float lastGameViewers;
-    public float lastGameLikes;
-
-    /**
-        * Constructor for the StorageData-class.
-        */
-    public StorageData(string jsonData = "{}")
-    {
-        JsonUtility.FromJsonOverwrite(jsonData, this);
-        FixFaultyArrayLengths();
-    }
-
-    /**
-        * Fixes the length of the arrays if they are faulty.
-        */
-    private void FixFaultyArrayLengths()
-    {
-        if (achievementsAchieved == null || achievementsAchieved.Length != amountOfAchievements)
-            Array.Resize(ref achievementsAchieved, amountOfAchievements);
-        if (achievementsProgress == null || achievementsProgress.Length != amountOfAchievements)
-            Array.Resize(ref achievementsProgress, amountOfAchievements);
-        if (highscore == null)
-            highscore = new string[0];
     }
 }

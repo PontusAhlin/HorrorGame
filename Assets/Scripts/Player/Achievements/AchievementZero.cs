@@ -10,7 +10,7 @@ public class AchievementZero : AchievementAbstract
         Title = "Master Escapist";
         Description = "Escape 10 times.";
         MaxProgress = 10;
-        SetSpritePath("Assets/Resources/Images/exit");
+        SpritePath = "Assets/Resources/Images/exit";
     }
 
 }

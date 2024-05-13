@@ -24,9 +24,12 @@ public class PlayerScore : MonoBehaviour
     [Tooltip("The interval timer at which more likes should be generated.")]
     [SerializeField] float likeGenerationInterval = 1.0f;       // Multiplier for score generation.
 
+    private Storage storage;                                    // Storage object.
+
     // Start is called before the first frame update
     void Start()
     {
+        storage = Storage.GetStorage();                         // Get storage object.
         InvokeRepeating("IncreaseLikes", likeGenerationInterval, likeGenerationInterval);             // Increase score every second.
     }
 
@@ -62,7 +65,7 @@ public class PlayerScore : MonoBehaviour
         */
     public void StoreLikesAndViewers()
     {
-        Storage.SetLastGameLikes(likes);                       // Save the likes to the storage.
-        Storage.SetLastGameViewers(viewers);                   // Save the viewers to the storage.
+        storage.SetLastGameLikes(likes);                       // Save the likes to the storage.
+        storage.SetLastGameViewers(viewers);                   // Save the viewers to the storage.
     }
 }

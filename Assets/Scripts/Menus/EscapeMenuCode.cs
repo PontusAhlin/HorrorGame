@@ -29,14 +29,21 @@ public class EscapeSceneCode : MonoBehaviour
     // Private score data.
     private float likes;
     private float viewers;
+    private Storage storage;
 
     // Start is called before the first frame update
     void Start(){
-        likes = Storage.GetLastGameLikes();
-        viewers = Storage.GetLastGameViewers();
+        // Get storage object.
+        storage = Storage.GetStorage();
+        // Get last game data.
+        likes = storage.GetLastGameLikes();
+        viewers = storage.GetLastGameViewers();
+        // Display score (likes).
         scoreText.text = "SCORE: " + Formatting.FloatToShortString(likes, 3);
-        if (Storage.AddToHighscore(Storage.GetUsername() + ":" + likes.ToString())) {
-            // New highscore.
+        if (likes > 0) {
+            if (storage.AddToHighscore(storage.GetUsername() + ":" + likes.ToString())) {
+                // New highscore.
+            }
         }
         AchievementHandler();
     }

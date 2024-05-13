@@ -10,7 +10,7 @@ public class AchievementOne : AchievementAbstract
         Title = "Scared Bird";
         Description = "Escape without any likes.";
         MaxProgress = 1;
-        SetSpritePath("Assets/Resources/Images/bird");
+        SpritePath = "Assets/Resources/Images/bird";
     }
 
 }

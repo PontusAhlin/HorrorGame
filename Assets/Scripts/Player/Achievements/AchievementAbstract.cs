@@ -3,7 +3,7 @@
     *
     * This script is an interface for achievements.
     * It contains the basic structure of an achievement, with getters and setters.
-    * It also contains a method to add Progress to the achievement.
+    * It also contains a method to add progress to the achievement.
     *
     * TODO:
     * - Add code to call the popup to notify the player.
@@ -16,108 +16,102 @@ using UnityEngine;
 public abstract class AchievementAbstract : MonoBehaviour
 {
 
-    protected int     Index;          // Index of the achievement (must be unique).
-    protected string  Title;          // Title of the achievement.
-    protected string  Description;    // Description of the achievement.
-    protected bool    IsAchieved;     // If the achievement is archived or not.
-    protected int     Progress;       // Progress of the achievement.
-    protected int     MaxProgress;    // Maximum Progress of the achievement (Progress = MaxProgress -> archived).
-    private string    SpritePath;     // Full sprite path.
+    // =============================== VARIABLES ===============================
+    private int     index;          // index of the achievement (must be unique).
+    private string  title;          // title of the achievement.
+    private string  description;    // description of the achievement.
+    private bool    isAchieved;     // If the achievement is archived or not.
+    private int     progress;       // progress of the achievement.
+    private int     maxProgress;    // Maximum progress of the achievement (progress = maxProgress -> archived).
+    private string    spritePath;     // Full sprite path.
+    private Storage   storage;        // Storage object.
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        // Get status of achievement
-        IsAchieved =  Storage.GetAchievementAchieved(Index);
-        Progress = Storage.GetAchievementProgress(Index);
-        // Check Values.
-        if (Title == null || Description == null || SpritePath == null)
-        {
-            throw new System.ArgumentNullException("Index, Title, Description, MaxProgress, or SpritePath is null.");
-        }
+    // =============================== PROPERTIES ===============================
+    public int Index {
+        get { return index; }
+        protected set { index = value; }
     }
-
-    // =============================== GETTERS ===============================
-    public string GetTitle()
-    {
-        return Title;
+    public string Title {
+        get { return title; }
+        protected set { title = value; }
     }
-    public string GetDescription()
-    {
-        return Description;
+    public string Description {
+        get { return description; }
+        protected set { description = value; }
     }
-    public bool GetIsAchieved()
-    {
-        return IsAchieved;
-    }
-    public int GetProgress()
-    {
-        return Progress;
-    }
-    public int GetMaxProgress()
-    {
-        return MaxProgress;
-    }
-    public string GetSpritePath()
-    {
-        return SpritePath;
-    }
-
-    // =============================== SETTERS ===============================
-
     /**
         * Set the achievement as archived or not.
-        * This can be used directly, but can also be called from SetProgress.
+        * This can be used directly, but can also be called from Setprogress.
         */
-    public void SetIsArchived(bool Value)
-    {
-        IsAchieved = Value;
-        if (IsAchieved)
-        {
-            Progress = MaxProgress; // If archived, set Progress to max Progress.
-            Storage.SetAchievementProgress(Index, MaxProgress);
-            // Call the achievement popup.
+    public bool IsAchieved {
+        get { return isAchieved; }
+        set {
+            isAchieved = value;
+            if (isAchieved)
+            {
+                progress = maxProgress; // If archived, set progress to max progress.
+                storage.SetAchievementProgress(index, maxProgress);
+                // Call the achievement popup.
+            }
+            storage.SetAchievementArchieved(index, value);
+            if (value)
+                Debug.Log("Achievement " + Title + " is archived.");
         }
-        Storage.SetAchievementArchieved(Index, Value);
-        if (Value)
-            Debug.Log("Achievement " + GetTitle() + " is archived.");
     }
-
     /**
-        * Set the Progress of the achievement.
-        * If Progress is greater than max Progress, set as archived.
-        * Else, set Progress to Value.
+        * Set the progress of the achievement.
+        * If progress is greater than max progress, set as archived.
+        * Else, set progress to Value.
         *
         * Returns a boolean if the achievement is archived or not.
         */
-    public bool SetProgress(int Value)
-    {
-        if (Progress >= MaxProgress) // If Progress is greater than max Progress, set as archived.
-        {
-            SetIsArchived(true);
-            Progress = MaxProgress;
-            Storage.SetAchievementProgress(Index, MaxProgress);
-        } else { // Else, set Progress to Value.
-            Progress = Value;
-            Storage.SetAchievementProgress(Index, Value);
+    public int Progress {
+        get { return progress; }
+        set {
+            if (progress >= maxProgress) // If progress is greater than max progress, set as archived.
+            {
+                IsAchieved = true;
+                progress = maxProgress;
+                storage.SetAchievementProgress(index, maxProgress);
+            } else { // Else, set progress to Value.
+                progress = value;
+                storage.SetAchievementProgress(index, value);
+            }
         }
-        return IsAchieved;
     }
-
+    public int MaxProgress {
+        get { return maxProgress; }
+        protected set{ maxProgress = value; }
+    }
     /**
         * Set the sprite path of the achievement.
         * This is used to set the sprite of the achievement in a correct way.
         */
-    public void SetSpritePath(string Value)
+    public string SpritePath {
+        get { return spritePath; }
+        protected set {
+            // Remove "Assets/" and "Resources/" from the path.;
+            spritePath = value.Replace("Assets/", "").Replace("Resources/", "");
+        }
+    }
+
+    // =============================== INITIALIZATION ===============================
+    void Awake()
     {
-        SpritePath = Value.Replace("Assets/", "").Replace("Resources/", ""); // Remove "Assets/" and "Resources/" from the path.;
+        // Check Values.
+        if (Title == null || Description == null || SpritePath == null)
+            throw new System.ArgumentNullException("Index, Title, Description, MaxProgress, or SpritePath is null.");
+        // Get storage object.
+        storage = Storage.GetStorage();
+        // Get status of achievement
+        IsAchieved =  storage.GetAchievementAchieved(index);
+        Progress = storage.GetAchievementProgress(index);
     }
 
     // =============================== ADDERS ===============================
-
     /**
-        * Add Progress to the achievement.
-        * This is useful when the achievement is not binary, but has a Progress.
+        * Add progress to the achievement.
+        * This is useful when the achievement is not binary, but has a progress.
         *
         * Returns a boolean if the achievement is archived or not.
         */
@@ -126,12 +120,12 @@ public abstract class AchievementAbstract : MonoBehaviour
         if (IsAchieved) // If the achievement is already archived, return.
             return true;
         Progress += Value;
-        if (Progress >= MaxProgress) // If Progress is greater than max Progress, set as archived.
+        if (Progress >= MaxProgress) // If progress is greater than max progress, set as archived.
         {
-            SetIsArchived(true);
+            IsAchieved = true;
             Progress = MaxProgress;
         }
-        Storage.SetAchievementProgress(Index, Progress);
+        storage.SetAchievementProgress(Index, Progress);
         return IsAchieved;
     }
 
