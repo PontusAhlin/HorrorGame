@@ -14,9 +14,6 @@
 using System;
 using System.IO;
 using UnityEngine;
-using System.Collections;
-using UnityEngine.Networking;
-using System.Threading;
 
 public class Storage: MonoBehaviour
 {
@@ -39,7 +36,7 @@ public class Storage: MonoBehaviour
         */
     public static Storage GetStorage()
     {
-        Storage storage = GameObject.FindObjectOfType<Storage>();   // Find storage object.
+        Storage storage = FindObjectOfType<Storage>();   // Find storage object.
         if (storage == null)                                        // If storage object does not exist.
         {
             //Debug.Log("Storage: No storage object found. Creating a new one.");
@@ -55,7 +52,6 @@ public class Storage: MonoBehaviour
                 storage.data = storage.GetData();                       // Get the data from the storage file.
             }
         }
-        //storage.data ??= storage.GetData();
         return storage;                                             // Return the storage object.
     }
 
