@@ -235,7 +235,7 @@ public class BoxCast : MonoBehaviour
             currentColorCharger = null;
             
             
-            inGameInterface.PrintMessage(viewerMsg,"baseline_person_white_icon");
+            inGameInterface.PrintMessage(viewerMsg,"baseline_person_white_icon", Color.red);
             //Resets the timers
             viewerRequestTime = viewerRequestTimeInit;
             chatTimeInterval = chatTimeIntervalInit;

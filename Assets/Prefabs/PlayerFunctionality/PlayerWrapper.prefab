@@ -3172,6 +3172,7 @@ MonoBehaviour:
   generateDebugMessages: 0
   generateDebugMessagesSpeed: 3
   LikesAndViewerDecimal: 3
+  defaultColor: {r: 0, g: 0, b: 0, a: 0.76}
 --- !u!1 &3569435333911412182
 GameObject:
   m_ObjectHideFlags: 0
@@ -5447,7 +5448,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 114.73491, y: -0}
+  m_AnchoredPosition: {x: 94.3866, y: -0}
   m_SizeDelta: {x: 59.03, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &8025668793498179488
@@ -5805,7 +5806,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 114.73491, y: 32}
+  m_AnchoredPosition: {x: 94.3866, y: 32}
   m_SizeDelta: {x: 59.03, y: 0}
   m_Pivot: {x: 0.5, y: 3}
 --- !u!222 &7457910621540519784
