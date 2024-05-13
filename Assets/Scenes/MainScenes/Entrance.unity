@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731707, g: 0.13414726, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12729266, g: 0.13414232, b: 0.12114291, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4552,6 +4552,27 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1507258226}
     m_Modifications:
+    - target: {fileID: 74281576540660932, guid: 08d2334065032764db394bd8d2b1d454,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 585419963938307506, guid: 08d2334065032764db394bd8d2b1d454,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1297820051875740126, guid: 08d2334065032764db394bd8d2b1d454,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1334083533636998620, guid: 08d2334065032764db394bd8d2b1d454,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5eda94a9dcf71e445ad17e3c065d1460,
+        type: 3}
     - target: {fileID: 1527799667999124089, guid: 08d2334065032764db394bd8d2b1d454,
         type: 3}
       propertyPath: m_Pivot.x
@@ -4652,10 +4673,40 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3236608865533681594, guid: 08d2334065032764db394bd8d2b1d454,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3912095773812592029, guid: 08d2334065032764db394bd8d2b1d454,
         type: 3}
       propertyPath: m_Name
       value: InstrContextCanvas 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4113114621504570107, guid: 08d2334065032764db394bd8d2b1d454,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4113114621504570107, guid: 08d2334065032764db394bd8d2b1d454,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -122
+      objectReference: {fileID: 0}
+    - target: {fileID: 5950240522420245799, guid: 08d2334065032764db394bd8d2b1d454,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8909882050501570065, guid: 08d2334065032764db394bd8d2b1d454,
+        type: 3}
+      propertyPath: m_text
+      value: Drag the joystick in the direction you want to move
+      objectReference: {fileID: 0}
+    - target: {fileID: 8909882050501570065, guid: 08d2334065032764db394bd8d2b1d454,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 16777215
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5725,7 +5776,7 @@ PrefabInstance:
     - target: {fileID: 139293253767508008, guid: e4955e24e939e2b4088552de2a66e300,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 94.3866
+      value: 114.73491
       objectReference: {fileID: 0}
     - target: {fileID: 139293253767508008, guid: e4955e24e939e2b4088552de2a66e300,
         type: 3}
@@ -5755,7 +5806,7 @@ PrefabInstance:
     - target: {fileID: 367703265813152426, guid: e4955e24e939e2b4088552de2a66e300,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 94.3866
+      value: 114.73491
       objectReference: {fileID: 0}
     - target: {fileID: 367703265813152426, guid: e4955e24e939e2b4088552de2a66e300,
         type: 3}
