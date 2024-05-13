@@ -377,6 +377,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AngleToReadAt: 30
   paperNotes:
+  - {fileID: 4845356094505294403, guid: 705d970bd6ff55a49acf7cbd8dd5ce95, type: 3}
+  - {fileID: 1462663478299428465, guid: af30d1dae3691574aa0afdeb1beaf247, type: 3}
+  - {fileID: 5394875859400799361, guid: c0a7f24e2c2bf1848b32801db63ae359, type: 3}
+  - {fileID: 1866808835288625497, guid: 1d16688e7df37a84ea7a4357de111365, type: 3}
+  - {fileID: 2961459159586310993, guid: 792e3bde2b76ddc448059044de94ef9a, type: 3}
+  - {fileID: 2094373402825903618, guid: c5e1de55701900b42a22d55cc97ab1ba, type: 3}
+  - {fileID: 1787992265782145372, guid: 7296df6750db4ba429002f82865f74a2, type: 3}
+  - {fileID: 7538165506717992060, guid: facfb65991d81774e9747cfc58b6d976, type: 3}
   - {fileID: 7989838594014960372, guid: dee7b61e4c81b57478b92dea0fee696a, type: 3}
-  - {fileID: 7989838594014960372, guid: 34b8e09925d4cf74398fa351d377b9fa, type: 3}
-  - {fileID: 7989838594014960372, guid: 33b3f9df936079c4db6edf9257534d76, type: 3}
