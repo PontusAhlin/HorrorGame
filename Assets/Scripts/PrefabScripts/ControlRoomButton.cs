@@ -15,8 +15,8 @@ public class ControlRoomButton : MonoBehaviour
             pressedSound.pitch = 1;
             pressedSound.Play();
             //Debug.Log("trigger entered");
-            GameObject EscapeDoorTrigger = GameObject.Find("/justDoor(withCam)(Clone)/EscapeDoorTrigger");
-            GameObject LockedDoor = GameObject.Find("justDoor(withCam)(Clone)/LockedDoor");
+            GameObject EscapeDoorTrigger = GameObject.Find("ExitDoor(Clone)/justDoor(withCam)/EscapeDoorTrigger");
+            GameObject LockedDoor = GameObject.Find("ExitDoor(Clone)/justDoor(withCam)/LockedDoor");
             GameObject Bulb = GameObject.Find("1x1ControlRoomFloor(Clone)/ControlPanel/Bulb");
             EscapeDoorTrigger.GetComponent<Collider>().isTrigger = true;
             LockedDoor.SetActive(false);
