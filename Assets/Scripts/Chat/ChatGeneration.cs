@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using Random = UnityEngine.Random;
+using System.Collections;
 
 public class ChatGeneration : MonoBehaviour
 {
@@ -31,20 +32,12 @@ public class ChatGeneration : MonoBehaviour
     [Tooltip("this is the monster GameObject whose EXACT NAME IN UNITY will be requested")]
     public GameObject MonsterObject;
 
-    [Tooltip("Path to the chat messages json file. Default is \"/Resources/ChatMessages.json\".")]
-    [SerializeField] string ChatMessagesPath = "/Resources/ChatMessages.json";
-
     private ChatMessages chatMessages;
 
     // Awake is called when the script instance is being loaded.
     void Awake()
     {
-        if (ChatMessagesPath == null) {
-            Debug.LogError("ChatGeneration: ChatMessagesPath is not set in the inspector!");
-            Destroy(this);
-            return;
-        }
-        string jsonData = File.ReadAllText(Application.dataPath + "/Resources/ChatMessages.json");
+        string jsonData = Resources.Load<TextAsset>("ChatMessages").text;
         chatMessages = JsonUtility.FromJson<ChatMessages>(jsonData);
     }
 
