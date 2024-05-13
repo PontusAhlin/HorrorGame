@@ -9,7 +9,7 @@
 
 using UnityEngine;
 using System.Collections;
-using Microsoft.Unity.VisualStudio.Editor;
+
 
 public class InGameInterface : MonoBehaviour
 {
