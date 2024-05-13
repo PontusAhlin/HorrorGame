@@ -192,6 +192,12 @@ public class BoxCast : MonoBehaviour
                 //Resetting the timers
                 chatTimeInterval = chatTimeIntervalInit;
             }
+        
+            //Made so monsters aren't requested when the player haven't seen a monster when the timer is done. 
+            if(seenMonsters.Count == 0 && viewerRequestTime < 2f){
+                viewerRequestTime = viewerRequestTimeInit;
+            }
+        
         }
             
         if(viewerRequestTime < 2f && seenMonsters.Count > 0 && chatTimeInterval < 4f && playerScore.viewers != 0){
