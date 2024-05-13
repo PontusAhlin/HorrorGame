@@ -251,7 +251,6 @@ public class InGameInterface : MonoBehaviour
 
 		// Create a new notification object.
         GameObject messageObject = Instantiate(notificationPrefab, notificationBoxWrapper.transform);
-		messageObject.transform.SetAsFirstSibling();
 		
 		TMPro.TextMeshProUGUI messageObjectTextComponent =
 			messageObject.transform
