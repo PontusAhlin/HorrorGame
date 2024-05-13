@@ -30,7 +30,9 @@
         "Why are you whispering?",
         "I'm getting bored, do something interesting",
         "What's the point of all this?",
-        "This is getting old fast"
+        "This is getting old fast",
+        "Boo Logan Paul did this in 2017",
+        "I'm gonna go watch skibidi toilet instead"
     ],
     "MonsterMessages": [
         "WHAT IS THAT",
@@ -53,7 +55,10 @@
         "Show us the behind-the-scenes already",
         "This isn't convincing at all",
         "This is the worst monster I've ever seen",
-        "I've seen scarier things in my dreams"
+        "I've seen scarier things in my dreams",
+        "IS THAT BORKIPLIER !?",
+        "Cool costume dude, ain't fooling us tho",
+        "GET OUTTA THERE DUDE"
     ],
     "RequestMessages": [
         "I wanna see the ",
@@ -65,7 +70,8 @@
         "i want the ",
         "i dont care if u die, film the ",
         "Just show the ",
-        "Can you zoom in on the "
+        "Can you zoom in on the ",
+        "Try killing the "
     ]
 }
 
