@@ -31,16 +31,15 @@ public class ChatGeneration : MonoBehaviour
 
     [Tooltip("this is the monster GameObject whose EXACT NAME IN UNITY will be requested")]
     public GameObject MonsterObject;
-
-    [Tooltip("Path to the chat messages json file. Default is \"/Resources/ChatMessages.json\".")]
-    [SerializeField] string chatMessagesPath = "/Resources/ChatMessages.json";
+    private string chatMessagesFile = "ChatMessages.json";
 
     private ChatMessages chatMessages;
 
     // Awake is called when the script instance is being loaded.
     void Awake()
     {
-        string path = Application.dataPath + "/" + chatMessagesPath;
+        Debug.Log(Application.streamingAssetsPath);
+        string path = Application.streamingAssetsPath + "/" + chatMessagesFile;
 
         // If the application is running on Android, add "jar:file://" at the beginning of the path.
         if (Application.platform == RuntimePlatform.Android)
@@ -57,15 +56,21 @@ IEnumerator LoadData (string path)
 string jsonData;
 if (path.Contains ("://") || path.Contains (":///")) 
 {
+    Debug.Log("Loading from web");
 UnityEngine.Networking.UnityWebRequest www = UnityEngine.Networking.UnityWebRequest.Get(path);
 yield return www.SendWebRequest();
 jsonData = www.downloadHandler.text;
 }
 else 
 {
-jsonData = File.ReadAllText (path);
+    Debug.Log("Loading from file");
+jsonData = File.ReadAllText(path);
 }
+    Debug.Log(jsonData);
         chatMessages = JsonUtility.FromJson<ChatMessages>(jsonData);
+        Debug.Log(chatMessages.RegularMessages[0]);
+        Debug.Log(chatMessages.RegularMessages[1]);
+        Debug.Log(chatMessages.RegularMessages[2]);
 }
 
 
