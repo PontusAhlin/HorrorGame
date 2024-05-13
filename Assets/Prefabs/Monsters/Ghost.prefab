@@ -323,14 +323,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerScore: {fileID: 0}
-  viewerAddAmount: 1
-  viewerRemoveAmount: 0.5
+  viewerAddAmount: 1.5
+  viewerRemoveAmount: 1
   generatorSpeed: 1
-  increaseAndDecrease: 0
+  increaseAndDecrease: 1
   inFieldOfView: 0
   viewerRequest: 0
   mult: 1
-  multDec: 0.01
+  multDec: 0.1
 --- !u!82 &6210297821009159190
 AudioSource:
   m_ObjectHideFlags: 0
@@ -440,3 +440,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skinnedMeshRenderer: []
+  CurrentColor: 

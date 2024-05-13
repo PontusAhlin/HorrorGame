@@ -93,6 +93,7 @@ public class MonsterGenerateViewers : MonoBehaviour
         if (inFieldOfView) {
             AddViewers();                                       // Update addSpeed.
             mult -= multDec;
+            print(mult);
             if(mult < 0){
                 mult = 0;
             }

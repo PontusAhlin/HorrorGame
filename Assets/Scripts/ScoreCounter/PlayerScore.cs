@@ -41,6 +41,11 @@ public class PlayerScore : MonoBehaviour
      */
     private void IncreaseLikes()
     {
+        
+        if (viewers < 5f) {                                         //Added to make sure the player never goes below 5 viewers  
+            viewers = 5f;
+        }
+
         if (viewers >= 1f) {                                         // If the player has viewers (required to avoid likes while no viewers).
             likes += (int)(viewers * likesPerViewer);               // Increase likes based on the amount of viewers.
             Debug.Log("Viewers: " + viewers + "Likes: " + likes);   // Debug log.

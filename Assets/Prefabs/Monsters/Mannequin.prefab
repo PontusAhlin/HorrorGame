@@ -374,7 +374,7 @@ MonoBehaviour:
   inFieldOfView: 0
   viewerRequest: 0
   mult: 1
-  multDec: 0.01
+  multDec: 0.1
 --- !u!82 &3273196259448020967
 AudioSource:
   m_ObjectHideFlags: 0
