@@ -324,7 +324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb4e4748d90daf0458009cc62010f4f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  source: {fileID: 0}
+  source: {fileID: 474981848}
   clip: {fileID: 8300000, guid: c0f3188898c09e74292cfaedb051170b, type: 3}
   play: 0
   cameraShake: {fileID: 340093555}
@@ -492,7 +492,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: b0c6085e2059d4118801c6f9ba9d2e8c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.39
+      value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b0c6085e2059d4118801c6f9ba9d2e8c,
         type: 3}
