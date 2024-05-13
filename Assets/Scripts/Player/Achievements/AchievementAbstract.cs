@@ -17,14 +17,15 @@ public abstract class AchievementAbstract : MonoBehaviour
 {
 
     // =============================== VARIABLES ===============================
-    private int     index;          // index of the achievement (must be unique).
-    private string  title;          // title of the achievement.
-    private string  description;    // description of the achievement.
-    private bool    isAchieved;     // If the achievement is archived or not.
-    private int     progress;       // progress of the achievement.
-    private int     maxProgress;    // Maximum progress of the achievement (progress = maxProgress -> archived).
-    private string    spritePath;     // Full sprite path.
-    private Storage   storage;        // Storage object.
+    private int         index;          // index of the achievement (must be unique).
+    private string      title;          // title of the achievement.
+    private string      description;    // description of the achievement.
+    private bool        isAchieved;     // If the achievement is archived or not.
+    private int         progress;       // progress of the achievement.
+    private int         maxProgress;    // Maximum progress of the achievement (progress = maxProgress -> archived).
+    private string      spritePath;     // Full sprite path.
+    private Storage     storage;        // Storage object.
+    private bool        isLoaded;       // If the achievement is loaded or not.
 
     // =============================== PROPERTIES ===============================
     public int Index {
@@ -54,7 +55,7 @@ public abstract class AchievementAbstract : MonoBehaviour
                 // Call the achievement popup.
             }
             storage.SetAchievementArchieved(index, value);
-            if (value)
+            if (value == true && IsLoaded)
                 Debug.Log("Achievement " + Title + " is archived.");
         }
     }
@@ -95,6 +96,11 @@ public abstract class AchievementAbstract : MonoBehaviour
         }
     }
 
+    private bool IsLoaded {
+        get { return isLoaded; }
+        set { isLoaded = value; }
+    }
+
     // =============================== INITIALIZATION ===============================
     void Awake()
     {
@@ -106,6 +112,7 @@ public abstract class AchievementAbstract : MonoBehaviour
         // Get status of achievement
         IsAchieved =  storage.GetAchievementAchieved(index);
         Progress = storage.GetAchievementProgress(index);
+        IsLoaded = true;
     }
 
     // =============================== ADDERS ===============================
