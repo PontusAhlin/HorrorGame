@@ -54,9 +54,9 @@ public class PointerScript : MonoBehaviour
     IEnumerator ActiveTimer(){
         if(!active){
             active = true;
-            pointerWrapper.transform.position = pointerWrapper.transform.position + new Vector3(0,40,0);
+            pointerWrapper.transform.position = pointerWrapper.transform.position + new Vector3(0,46,0);
             yield return new WaitForSeconds(timer);
-        pointerWrapper.transform.position = pointerWrapper.transform.position - new Vector3(0,40,0);
+        pointerWrapper.transform.position = pointerWrapper.transform.position - new Vector3(0,46,0);
         }
     }
 }

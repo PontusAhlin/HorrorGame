@@ -2779,7 +2779,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointer: {fileID: 7651305652333882042}
-  timer: 10
+  timer: 20
 --- !u!1 &3307667887114080661
 GameObject:
   m_ObjectHideFlags: 0

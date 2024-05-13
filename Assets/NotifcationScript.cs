@@ -16,7 +16,7 @@ public class NotifcationScript : MonoBehaviour
     private PointerScript pointerScript;
 
     // Start is called before the first frame update
-    void Awake(){
+    void Start(){
         pointerWrapper = PointerScript.pointerWrapper;
         pointerScript = pointerWrapper.GetComponent<PointerScript>();
 
@@ -41,7 +41,6 @@ public class NotifcationScript : MonoBehaviour
     }
 
     public void NotificationClick(){
-        Debug.Log("notification was clicked");
         PointerScript.target = sensor;
         pointerScript.Activate();
     }
