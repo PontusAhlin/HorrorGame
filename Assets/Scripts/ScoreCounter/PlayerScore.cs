@@ -42,7 +42,7 @@ public class PlayerScore : MonoBehaviour
     private void IncreaseLikes()
     {
         
-        if (viewers < 5f) {                                         //Added to make sure the player never goes below 5 viewers  
+        if (viewers == 5f) {                                         //Added to make sure the player never goes below 5 viewers
             viewers = 5f;
         }
 
