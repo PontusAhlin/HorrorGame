@@ -498,7 +498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae388d00efa6a4026829d310d6f64b2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charger: {fileID: 7669915599114108628, guid: eb3798cfecf32430592a742b605c99d7, type: 3}
+  charger: {fileID: 5256081540509174738, guid: 8e3032d5ebcc846d3a3c001b6f380228, type: 3}
   man: {fileID: 8182396208055939415, guid: 183dfe7f4d0194a0884e929994c8eb59, type: 3}
   ghost: {fileID: 5651339836816107284, guid: 2e4341b898ad64b3a86e5a9592ce57dc, type: 3}
   chargerFreq: 10
