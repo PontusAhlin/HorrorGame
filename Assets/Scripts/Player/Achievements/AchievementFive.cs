@@ -10,7 +10,7 @@ public class AchievementFive : AchievementAbstract
         Title = "Are You Mad?";
         Description = "Enter the asylum 30 times.";
         MaxProgress = 30;
-        SpritePath = "Assets/Resources/Images/skull";
+        SpritePath = "Assets/Resources/Images/shocked";
     }
 
 }
