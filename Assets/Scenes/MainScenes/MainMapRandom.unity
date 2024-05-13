@@ -922,6 +922,21 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2689637198029351637, guid: e4955e24e939e2b4088552de2a66e300,
+        type: 3}
+      propertyPath: stepSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2689637198029351637, guid: e4955e24e939e2b4088552de2a66e300,
+        type: 3}
+      propertyPath: stepHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2689637198029351637, guid: e4955e24e939e2b4088552de2a66e300,
+        type: 3}
+      propertyPath: stepRayLowerMargin
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2798803443994270766, guid: e4955e24e939e2b4088552de2a66e300,
         type: 3}
       propertyPath: m_AnchorMax.y
