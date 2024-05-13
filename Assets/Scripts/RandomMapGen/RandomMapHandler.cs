@@ -54,10 +54,15 @@ public class RandomMapHandler : MonoBehaviour
     public List<GameObject> Navmeshes = new List<GameObject>();
     [Tooltip("list of all door prefabs that will generate in doorways")]
     public List<GameObject> Doors = new List<GameObject>();
+    [Tooltip("prefab with the escape door specifically")]
+    public GameObject escapeDoor;
     [Tooltip("prefab with the lore note")]
     public GameObject LoreNote;
     [Tooltip("amount of lore notes to spawn")]
     public int LoreNoteAmount;
+    private int searchOffset = 0, escapeX, escapeZ;
+    private string direction;
+    private Boolean found = false;
 
     //this is used to store all doors generated and spawn them AFTER the navmesh si generated, so monsters can path through doors
     //xPosition, zPosition, yRotation
@@ -107,8 +112,6 @@ public class RandomMapHandler : MonoBehaviour
     [Tooltip("this is the gameobject that navmeshes will be parented to (VERY IMPORTANT)")]
     public GameObject NavmeshParent;
     [Tooltip("this hosts a script that runs right when mapgen ends for convenience")]
-    public PostMapgenScript postMapgenScript;
-    [Tooltip("this hosts the script for navmesh generation because we have a call to that")]
     public NavmeshGenerator navScript;
     [Tooltip("this hosts the player object so that we can teleport it on a map tile when its done generatin")]
     public GameObject player;
@@ -124,7 +127,76 @@ public class RandomMapHandler : MonoBehaviour
     //THIS FUNCTION RUNS AFTER MAPGEN IS DONE FOR HANDLING STUFF LIKE PLAYER & MONSTER PLACEMENT
     void PostMapgenFunction()
     {
-        navScript.GenerateMesh();
+        found = false;
+        while(!found){
+            //down to up on left side
+            for(int z = searchOffset; z<MapHeight - searchOffset; z++){
+                if(gridHandler[searchOffset, z] != RandomMapHandler.Grid.EMPTY &&
+                   gridHandler[searchOffset, z] != RandomMapHandler.Grid.ONE_ONE && 
+                   gridHandler[searchOffset, z] != RandomMapHandler.Grid.CONTROL_ROOM &&
+                   !found){
+                    escapeX = searchOffset;
+                    escapeZ = z;
+                    found = true;
+                    direction = "left";
+                }
+            }
+            //left to right on top side
+            for(int x = searchOffset; x<MapWidth - searchOffset; x++){
+                if(gridHandler[x, MapHeight - searchOffset - 1] != RandomMapHandler.Grid.EMPTY && 
+                   gridHandler[x, MapHeight - searchOffset - 1] != RandomMapHandler.Grid.ONE_ONE && 
+                   gridHandler[x, MapHeight - searchOffset - 1] != RandomMapHandler.Grid.CONTROL_ROOM &&
+                   !found){
+                    escapeX = x;
+                    escapeZ = MapHeight - searchOffset - 1;
+                    found = true;
+                    direction = "up";
+                }
+            }
+            //down to up on right side
+            for(int z = searchOffset; z<MapHeight - searchOffset; z++){
+                if(gridHandler[MapWidth - searchOffset - 1, z] != RandomMapHandler.Grid.EMPTY && 
+                   gridHandler[MapWidth - searchOffset - 1, z] != RandomMapHandler.Grid.ONE_ONE &&
+                   gridHandler[MapWidth - searchOffset - 1, z] != RandomMapHandler.Grid.CONTROL_ROOM && 
+                   !found){
+                    escapeX = MapWidth - searchOffset - 1;
+                    escapeZ = z;
+                    found = true;
+                    direction = "right";
+                }
+            }
+            //left to right on bottom side
+            for(int x = searchOffset; x<MapWidth - searchOffset; x++){
+                if(gridHandler[x, searchOffset] != RandomMapHandler.Grid.EMPTY && 
+                   gridHandler[x, searchOffset] != RandomMapHandler.Grid.ONE_ONE &&
+                   gridHandler[x, searchOffset] != RandomMapHandler.Grid.CONTROL_ROOM && 
+                   !found){
+                    escapeX = x;
+                    escapeZ = searchOffset;
+                    found = true;
+                    direction = "down";
+                }
+            }
+            searchOffset++;    
+        }
+        //Debug.Log("the door coords: (" + escapeX + ", " + escapeZ + ")");
+        if(direction == "left"){
+            Instantiate(escapeDoor, new Vector3(escapeX * RoomSize - RoomSize/2 + 0.31f, 0, escapeZ * RoomSize),
+            Quaternion.Euler(0, 90, 0)); 
+        }
+        else if(direction == "up"){
+            Instantiate(escapeDoor, new Vector3(escapeX * RoomSize, 0, escapeZ * RoomSize + RoomSize/2 - 0.31f),
+            Quaternion.Euler(0, 180, 0));
+        }
+        else if(direction == "right"){
+            Instantiate(escapeDoor, new Vector3(escapeX * RoomSize + RoomSize/2 - 0.31f, 0, escapeZ * RoomSize),
+            Quaternion.Euler(0, -90, 0));
+        }
+        else if(direction == "down"){
+            Instantiate(escapeDoor, new Vector3(escapeX * RoomSize, 0, escapeZ * RoomSize - RoomSize/2 + 0.31f),
+            Quaternion.identity);
+        }
+        navScript.GenerateMesh(); //THIS IS THE PART WHERE THE NAVMESH IS BAKED AT
         while (DoorList.First != null)
         {
             float x, z, rot;
@@ -138,7 +210,6 @@ public class RandomMapHandler : MonoBehaviour
             DoorList.RemoveFirst();
         }
         player.transform.position = RandomMapParent.transform.position + new Vector3((gridHandler.GetLength(0)/2)*RoomSize,5,(gridHandler.GetLength(1)/2)*RoomSize);
-        postMapgenScript.Main();
     }
 
     /* initialize navmesh
@@ -343,7 +414,7 @@ public class RandomMapHandler : MonoBehaviour
         //CONTROL ROOM HANDLING, MAKING SURE AT LEAST ONE SPAWNS
         int controlroomX = UnityEngine.Random.Range(0,MapWidth); 
         int controlroomY = UnityEngine.Random.Range(0,MapHeight);
-        while ((gridHandler[controlroomX,controlroomY]) != Grid.ONE_ONE) //redoing this until we randomly pick a spot thats valid
+        while ((gridHandler[controlroomX,controlroomY] != Grid.ONE_ONE) || ((controlroomX == MapWidth/2) && (controlroomY == MapHeight/2))) //redoing this until we randomly pick a spot thats valid
         {
             controlroomX = UnityEngine.Random.Range(0,MapWidth);
             controlroomY = UnityEngine.Random.Range(0,MapHeight);
