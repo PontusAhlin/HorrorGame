@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using Random = UnityEngine.Random;
+using System.Collections;
 
 public class ChatGeneration : MonoBehaviour
 {
@@ -32,21 +33,49 @@ public class ChatGeneration : MonoBehaviour
     public GameObject MonsterObject;
 
     [Tooltip("Path to the chat messages json file. Default is \"/Resources/ChatMessages.json\".")]
-    [SerializeField] string ChatMessagesPath = "/Resources/ChatMessages.json";
+    [SerializeField] string chatMessagesPath = "/Resources/ChatMessages.json";
 
     private ChatMessages chatMessages;
 
     // Awake is called when the script instance is being loaded.
     void Awake()
     {
-        if (ChatMessagesPath == null) {
-            Debug.LogError("ChatGeneration: ChatMessagesPath is not set in the inspector!");
-            Destroy(this);
-            return;
-        }
-        string jsonData = File.ReadAllText(Application.dataPath + "/Resources/ChatMessages.json");
-        chatMessages = JsonUtility.FromJson<ChatMessages>(jsonData);
+        string path = Application.dataPath + "/" + chatMessagesPath;
+
+        // If the application is running on Android, add "jar:file://" at the beginning of the path.
+        if (Application.platform == RuntimePlatform.Android)
+            path = "jar:file://" + path;
+        StartCoroutine("LoadData", path);
     }
+
+
+
+
+
+IEnumerator LoadData (string path)
+{
+string jsonData;
+if (path.Contains ("://") || path.Contains (":///")) 
+{
+UnityEngine.Networking.UnityWebRequest www = UnityEngine.Networking.UnityWebRequest.Get(path);
+yield return www.SendWebRequest();
+jsonData = www.downloadHandler.text;
+}
+else 
+{
+jsonData = File.ReadAllText (path);
+}
+        chatMessages = JsonUtility.FromJson<ChatMessages>(jsonData);
+}
+
+
+
+
+
+
+
+
+
 
     // Nested class for holding messages.
     class ChatMessages
