@@ -7,6 +7,7 @@
     * Author(s): Sai Chintapalli, William Fridh
     */
 
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -14,9 +15,9 @@ using UnityEngine.UI;
 public class EscapeSceneCode : MonoBehaviour
 {   
 
-    [Tooltip("Score text element.")]
+    [Tooltip("Score text holder.")]
     [SerializeField]
-    Text scoreText;
+    GameObject scoreTextHolder;
 
     [Tooltip("The name of the scene to load when the player wants to quit.")]
     [SerializeField] string QuiteMenuSceneName;
@@ -39,7 +40,10 @@ public class EscapeSceneCode : MonoBehaviour
         likes = storage.GetLastGameLikes();
         viewers = storage.GetLastGameViewers();
         // Display score (likes).
-        scoreText.text = "SCORE: " + Formatting.FloatToShortString(likes, 3);
+        string newText = "SCORE: " + Formatting.FloatToShortString(likes, 3);
+        foreach (TextMeshProUGUI textElement in scoreTextHolder.GetComponentsInChildren<TextMeshProUGUI>()) {
+            textElement.text = newText;
+        }
         if (likes > 0) {
             if (storage.AddToHighscore(storage.GetUsername() + ":" + likes.ToString())) {
                 // New highscore.
