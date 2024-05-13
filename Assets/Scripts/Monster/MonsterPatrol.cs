@@ -106,6 +106,7 @@ public class enemyAiControl : MonoBehaviour
     private void StopEnemy()
     {
         agent.isStopped = true;
+        Debug.Log("monster stopped");
     }
 
     private void StartEnemy()

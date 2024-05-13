@@ -1148,6 +1148,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   JumpscareScene: 
+  MonsterVolume: {fileID: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -2877,6 +2878,8 @@ MonoBehaviour:
     m_Bits: 264
   speed: 5
   MonsterTransform: {fileID: 1212042678}
+  MonsterVolume: {fileID: 0}
+  JumpscareScene: 
   rotationSpeed: 60
   groundLayer:
     serializedVersion: 2
@@ -2884,15 +2887,8 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
-  Animator: {fileID: 1212042677}
   walkRange: 50
   pauseTimeRange: 5
---- !u!95 &1212042677 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 4715889647215291433, guid: 2e4341b898ad64b3a86e5a9592ce57dc,
-    type: 3}
-  m_PrefabInstance: {fileID: 1212042674}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1212042678 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4982748168232926638, guid: 2e4341b898ad64b3a86e5a9592ce57dc,
