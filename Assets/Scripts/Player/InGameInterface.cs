@@ -9,6 +9,7 @@
 
 using UnityEngine;
 using System.Collections;
+using Microsoft.Unity.VisualStudio.Editor;
 
 public class InGameInterface : MonoBehaviour
 {
@@ -60,6 +61,9 @@ public class InGameInterface : MonoBehaviour
 	[Tooltip("The decimal for the viewers and the likes")]
 	[SerializeField] int LikesAndViewerDecimal = 3;
 
+	[Tooltip("Default color of the chat box.")]
+	[SerializeField] Color defaultColor = new Color(0, 0, 0, 0.76f);
+
 	private AudioSource audioSource;
 	private Storage storage;
 
@@ -71,29 +75,23 @@ public class InGameInterface : MonoBehaviour
 
 		// Check if the playerScore GameObject is set.
 		if (playerScore == null)
-		{
 			Debug.LogError("Player score is not set.");
-		}
 
 		// Find the child GameObject with the name "Likes Text".
-		if (likesCounterText == null) {
+		if (likesCounterText == null)
 			Debug.LogError("Likes text object is not set.");
-		}
 
 		// Find the child GameObject with the name "Viewers Text".
-		if (viewersCounterText == null) {
+		if (viewersCounterText == null)
 			Debug.LogError("Viewers text object is not set.");
-		}
 
 		// Find the child GameObject with the name "Chat Box".
-		if (chatBoxWrapper == null) {
+		if (chatBoxWrapper == null)
 			Debug.LogWarning("No chatBoxWrapper selected. Thus the chat will be disabled.");
-		}
 
 		// Find the child GameObject with the name "Username".
-		if (usernameText == null) {
+		if (usernameText == null)
 			Debug.LogWarning("Username text object is not set. No username will be displayed.");
-		}
 
 		// Check if sprite folder is set.
 		if (spriteFolder == null)
@@ -172,6 +170,9 @@ public class InGameInterface : MonoBehaviour
 		* a user has liked the stream.
 		*/
 	public void PrintMessage(string message, string sprite) {
+		PrintMessage(message, sprite, defaultColor);
+	}
+	public void PrintMessage(string message, string sprite, Color color) {
 
 		if (chatBoxWrapper == null)
 			return;
@@ -197,8 +198,8 @@ public class InGameInterface : MonoBehaviour
 		}
 
 		// Create a new chat message object.
-        GameObject messageObject = Instantiate(chatMessagePrefab, transform);
-		messageObject.transform.SetParent(chatBox.transform);
+        GameObject messageObject = Instantiate(chatMessagePrefab, chatBox.transform);
+		//messageObject.transform.SetParent(chatBox.transform);
 		messageObject.transform.SetAsFirstSibling();
 		
 		TMPro.TextMeshProUGUI messageObjectTextComponent =
@@ -214,6 +215,9 @@ public class InGameInterface : MonoBehaviour
 		// Add content to new message.
 		messageObjectTextComponent.text = message;
 		messageObjectAvatarComponent.sprite = spriteResources;
+
+		// Set color.
+		messageObject.gameObject.GetComponent<UnityEngine.UI.Image>().color = color;
 
 		// Scroll to the top.
 		chatBox.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0, 0);
@@ -247,8 +251,7 @@ public class InGameInterface : MonoBehaviour
 
 		// Create a new notification object.
         GameObject messageObject = Instantiate(notificationPrefab, notificationBoxWrapper.transform);
-		messageObject.transform.SetParent(notificationBoxWrapper.transform);
-		//messageObject.transform.SetAsFirstSibling();
+		messageObject.transform.SetAsFirstSibling();
 		
 		TMPro.TextMeshProUGUI messageObjectTextComponent =
 			messageObject.transform
