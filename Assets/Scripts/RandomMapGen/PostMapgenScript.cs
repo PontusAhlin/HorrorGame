@@ -26,7 +26,9 @@ public class PostMapgenScript : MonoBehaviour{
         while(!found){
             //down to up on left side
             for(int z = searchOffset; z<mapHeight - searchOffset; z++){
-                if(RandomMapHandlerScript.gridHandler[searchOffset, z] != RandomMapHandler.Grid.EMPTY && !found){
+                if(RandomMapHandlerScript.gridHandler[searchOffset, z] != RandomMapHandler.Grid.EMPTY &&
+                   RandomMapHandlerScript.gridHandler[searchOffset, z] != RandomMapHandler.Grid.ONE_ONE && 
+                   !found){
                     escapeX = searchOffset;
                     escapeZ = z;
                     found = true;
@@ -35,7 +37,9 @@ public class PostMapgenScript : MonoBehaviour{
             }
             //left to right on top side
             for(int x = searchOffset; x<mapWidth - searchOffset; x++){
-                if(RandomMapHandlerScript.gridHandler[x, mapHeight - searchOffset - 1] != RandomMapHandler.Grid.EMPTY && !found){
+                if(RandomMapHandlerScript.gridHandler[x, mapHeight - searchOffset - 1] != RandomMapHandler.Grid.EMPTY && 
+                   RandomMapHandlerScript.gridHandler[x, mapHeight - searchOffset - 1] != RandomMapHandler.Grid.ONE_ONE && 
+                   !found){
                     escapeX = x;
                     escapeZ = mapHeight - searchOffset - 1;
                     found = true;
@@ -44,7 +48,9 @@ public class PostMapgenScript : MonoBehaviour{
             }
             //down to up on right side
             for(int z = searchOffset; z<mapHeight - searchOffset; z++){
-                if(RandomMapHandlerScript.gridHandler[mapWidth - searchOffset - 1, z] != RandomMapHandler.Grid.EMPTY && !found){
+                if(RandomMapHandlerScript.gridHandler[mapWidth - searchOffset - 1, z] != RandomMapHandler.Grid.EMPTY && 
+                   RandomMapHandlerScript.gridHandler[mapWidth - searchOffset - 1, z] != RandomMapHandler.Grid.ONE_ONE && 
+                   !found){
                     escapeX = mapWidth - searchOffset - 1;
                     escapeZ = z;
                     found = true;
@@ -53,7 +59,9 @@ public class PostMapgenScript : MonoBehaviour{
             }
             //left to right on bottom side
             for(int x = searchOffset; x<mapWidth - searchOffset; x++){
-                if(RandomMapHandlerScript.gridHandler[x, searchOffset] != RandomMapHandler.Grid.EMPTY && !found){
+                if(RandomMapHandlerScript.gridHandler[x, searchOffset] != RandomMapHandler.Grid.EMPTY && 
+                   RandomMapHandlerScript.gridHandler[x, searchOffset] != RandomMapHandler.Grid.ONE_ONE&& 
+                   !found){
                     escapeX = x;
                     escapeZ = searchOffset;
                     found = true;
