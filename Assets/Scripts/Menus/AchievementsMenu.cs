@@ -26,6 +26,9 @@ public class AchievementsMenu : MonoBehaviour
     [Tooltip("Achievement holder.")]
     [SerializeField] GameObject AchievementHolder;
 
+    [Tooltip("Color of the achievement when achieved.")]
+    [SerializeField] Color achievementAchievedColor = new Color(0.5f, 0.5f, 0.5f, 1);
+
     // Start is called before the first frame update
     void Start()
     {
@@ -86,13 +89,20 @@ public class AchievementsMenu : MonoBehaviour
                 .gameObject.GetComponent<RectTransform>();
 
             // Set progress bar fill amount.
-            float progressWidth = bar.sizeDelta.x * ((float)AchievementObject.Progress / (float)AchievementObject.MaxProgress);
+            float progressWidth = bar.sizeDelta.x * ((float)AchievementObject.Progress / AchievementObject.MaxProgress);
             bar.sizeDelta = new Vector2(progressWidth, bar.sizeDelta.y);
 
             // Set text and sprite element contents.
             Title.text = AchievementObject.Title;
             Description.text = AchievementObject.Description;
-            Progress.text = AchievementObject.Progress + "/" + AchievementObject.MaxProgress;
+            if (AchievementObject.Progress == AchievementObject.MaxProgress)
+                Progress.text = "Achieved";
+            else
+                Progress.text = AchievementObject.Progress + "/" + AchievementObject.MaxProgress;
+
+            // Mark as achieved.
+            if (AchievementObject.IsAchieved)
+                AchievementElement.transform.GetComponent<UnityEngine.UI.Image>().color = achievementAchievedColor;
 
             string SpritePath = AchievementObject.SpritePath;
 

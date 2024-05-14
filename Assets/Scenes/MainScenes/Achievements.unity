@@ -517,6 +517,7 @@ MonoBehaviour:
   AchievementContainer: {fileID: 297426693}
   QuiteMenuSceneName: MainMenu
   AchievementHolder: {fileID: 356447447207980123}
+  achievementAchievedColor: {r: 0, g: 0.32156864, b: 0.003921569, a: 0.7607843}
 --- !u!4 &933341970
 Transform:
   m_ObjectHideFlags: 0

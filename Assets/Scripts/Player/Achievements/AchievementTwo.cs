@@ -8,7 +8,7 @@ public class AchievementTwo : AchievementAbstract
     {
         Index = 2;
         Title = "ViewDiePie";
-        Description = "Have 100k viewers upon escape.";
+        Description = "Escape with 100k active viewers.";
         MaxProgress = 1;
         SpritePath = "Assets/Resources/Images/crown";
     }
