@@ -13,9 +13,9 @@ public class SensorScript : MonoBehaviour
     public GameObject charger;
     public GameObject man;
     public GameObject ghost;
-    public int chargerFreq = 100;
-    public int manFreq = 50;
-    public int ghostFreq = 200;
+    public string chargerName = "charger";
+    public string mannequinName = "mannequin";
+    public string ghostName = "ghost";
     public GameObject Antenna1;
     public GameObject Antenna2;
     private string message;
@@ -32,13 +32,13 @@ public class SensorScript : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if(other.CompareTag("Monster")){
             if(other.name.Contains(charger.name)){
-                message = "Frequency spike of " + chargerFreq + " KHz";
+                message = "Detected a " + chargerName + " nearby!";
             }
             else if(other.name.Contains(man.name)){
-                message = "Frequency spike of " + manFreq + " KHz";
+                message = "Detected a " + mannequinName + " nearby!";
             }
             else if(other.name.Contains(ghost.name)){
-                message = "Frequency spike of " + ghostFreq + " KHz";
+                message = "Detected a " + ghostName + " nearby!";
             }
             else{
                 message = "ERROR: UNKOWN MONSTER";

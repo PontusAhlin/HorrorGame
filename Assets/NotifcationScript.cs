@@ -37,6 +37,12 @@ public class NotifcationScript : MonoBehaviour
         else if(notifMessage.Contains("sensor 3")){
             sensor = GameObject.Find("sensor 3");
         }
+        else if(notifMessage.Contains("sensor 4")){
+            sensor = GameObject.Find("sensor 5");
+        }
+        else if(notifMessage.Contains("sensor 5")){
+            sensor = GameObject.Find("sensor 5");
+        }
         else{
             Debug.Log("something went wrong: " + notifMessage);
         }
