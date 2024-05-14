@@ -383,7 +383,6 @@ MonoBehaviour:
   MonsterChance: 0.25
   RequestChance: 0.25
   MonsterObject: {fileID: 0}
-  ChatMessagesPath: /Resources/ChatMessages.json
 --- !u!1 &666354636789061818
 GameObject:
   m_ObjectHideFlags: 0
@@ -6311,8 +6310,8 @@ MonoBehaviour:
   boxOrientation: {x: 0, y: 0, z: 0, w: 0}
   halfBox: {x: 15, y: 5, z: 0.1}
   seenMonsters: []
-  viewerRequestTime: 10
-  chatTimeInterval: 5
+  viewerRequestTime: 60
+  chatTimeInterval: 6
 --- !u!108 &7720285219755585068
 Light:
   m_ObjectHideFlags: 0
