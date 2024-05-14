@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414727, b: 0.121078536, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5928,6 +5928,16 @@ PrefabInstance:
       propertyPath: speedInit
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 2689637198029351637, guid: e4955e24e939e2b4088552de2a66e300,
+        type: 3}
+      propertyPath: stepSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2689637198029351637, guid: e4955e24e939e2b4088552de2a66e300,
+        type: 3}
+      propertyPath: stepHeight
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2798803443994270766, guid: e4955e24e939e2b4088552de2a66e300,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -6911,10 +6921,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7e0edcb4458948c891972f93228e847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  object1: {fileID: 0}
-  object2: {fileID: 0}
-  object3: {fileID: 0}
-  delayInSeconds: 36
 --- !u!4 &968290745
 Transform:
   m_ObjectHideFlags: 0
