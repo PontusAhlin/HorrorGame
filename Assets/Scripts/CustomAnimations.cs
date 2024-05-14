@@ -69,10 +69,10 @@ public class CustomAnimations : MonoBehaviour
         yield return null;
     }
 
-        IEnumerator Notification(){
+    IEnumerator Notification(){
         float currentTime = 0.0f;
         Vector3 StartPosition = this.transform.position;
-        Vector3 EndPosition = StartPosition - new Vector3(0,190,0);
+        Vector3 EndPosition = StartPosition - new Vector3(0,70,0);
         while (this.transform.position.y >= EndPosition.y)
         {
             this.transform.position -= new Vector3(0,3,0);
