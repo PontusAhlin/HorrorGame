@@ -449,6 +449,7 @@ MonoBehaviour:
   timeSeconds: 40
   MonsterAmount: 10
   firstMonsterDelay: 5
+  minRoomDistanceBetweenPlayerAndMonster: 8
   CurrentMonsterAmount: 0
   RandomMapScript: {fileID: 424695930}
 --- !u!1 &656645222 stripped
