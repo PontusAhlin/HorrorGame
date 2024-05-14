@@ -5776,8 +5776,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   viewers: 5
   likes: 0
-  likesPerViewer: 1
-  likeGenerationInterval: 1
+  viewerLossInterval: 1
 --- !u!114 &2933985177542185370
 MonoBehaviour:
   m_ObjectHideFlags: 0
