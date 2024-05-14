@@ -708,7 +708,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6483214, guid: bfe9900043c59b04ab9e2d58f97d900a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -716,6 +717,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 8745821877791480653}
+    - targetCorrespondingSourceObject: {fileID: 139090, guid: bfe9900043c59b04ab9e2d58f97d900a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6438073852477493928}
   m_SourcePrefab: {fileID: 100100000, guid: bfe9900043c59b04ab9e2d58f97d900a, type: 3}
 --- !u!4 &666073288939272579 stripped
 Transform:
@@ -745,6 +750,27 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0.0050000004, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!65 &6438073852477493928
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666073288939503599}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.04, y: 0.007578771, z: 0.011393422}
+  m_Center: {x: 0.0049893497, y: 0.000094841605, z: -0.00010548887}
 --- !u!1001 &2116973103744806118
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -808,6 +834,10 @@ PrefabInstance:
     - target: {fileID: 465684, guid: 9ea3ce9ce36004e46b39c1080f65ab2e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598802, guid: 9ea3ce9ce36004e46b39c1080f65ab2e, type: 3}
+      propertyPath: m_Size.y
+      value: 481.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1131,7 +1161,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6419028, guid: c79eca95e84fc8447adde70f382a3758, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -1139,6 +1170,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 3960778460652869349}
+    - targetCorrespondingSourceObject: {fileID: 161796, guid: c79eca95e84fc8447adde70f382a3758,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2756566774754217027}
   m_SourcePrefab: {fileID: 100100000, guid: c79eca95e84fc8447adde70f382a3758, type: 3}
 --- !u!1 &5852517454538888359 stripped
 GameObject:
@@ -1156,12 +1191,33 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.005, y: 0.0135, z: 0.007}
+  m_Extents: {x: 0.005, y: 0.012, z: 0.02}
   m_MoveThreshold: 0.1
   m_Carve: 0
   m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0.001, z: 0.004}
+  m_Center: {x: 0, y: 0.002, z: 0.004}
   m_TimeToStationary: 0.5
+--- !u!65 &2756566774754217027
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5852517454538888359}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.008138595, y: 0.021820739, z: 0.014731032}
+  m_Center: {x: -0.000008090399, y: 0.0012613779, z: 0.0040894216}
 --- !u!4 &5852517454539220643 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 477696, guid: c79eca95e84fc8447adde70f382a3758,
@@ -1307,7 +1363,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6533936, guid: 707c8e73e995723438a43fc2201d7493, type: 3}
+      propertyPath: m_Size.y
+      value: 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6438210, guid: 707c8e73e995723438a43fc2201d7493, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -1407,6 +1468,10 @@ PrefabInstance:
     - target: {fileID: 442108, guid: 16ad736c6eda94c449cc0b04719b3c66, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6551380, guid: 16ad736c6eda94c449cc0b04719b3c66, type: 3}
+      propertyPath: m_Size.y
+      value: 449.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1534,7 +1599,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4994063792362835647, guid: 5797d767d86099a4687632787f9be779,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 627248804774802642}
+      addedObject: {fileID: 395904872350521117}
   m_SourcePrefab: {fileID: 100100000, guid: 5797d767d86099a4687632787f9be779, type: 3}
 --- !u!4 &1423248245188688694 stripped
 Transform:
@@ -1564,8 +1629,8 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0.008}
   m_TimeToStationary: 0.5
---- !u!64 &627248804774802642
-MeshCollider:
+--- !u!65 &395904872350521117
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1582,10 +1647,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -944563635335726766, guid: f091cb134a38e724599913f64ef89fbc, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 0.023865202, y: 0.02051281, z: 0.1}
+  m_Center: {x: -0.000015461817, y: 2.652645e-17, z: 0.008197069}
 --- !u!1001 &6885980855152141022
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1763,7 +1827,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 150.8, y: 116.7, z: 269.74307}
+  m_Size: {x: 150.8, y: 485.94, z: 269.74307}
   m_Center: {x: -0.0009765625, y: 67.1, z: -0.00048828125}
 --- !u!208 &5397722619049261976
 NavMeshObstacle:
