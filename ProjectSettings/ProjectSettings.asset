@@ -167,7 +167,7 @@ PlayerSettings:
   applicationIdentifier:
     Android: com.unity.template.ar_mobile
     Standalone: com.unity.template.ar-mobile
-    iPhone: com.unity.template.armobile
+    iPhone: com.Blackbird.GhostLeaks
   buildNumber:
     Bratwurst: 0
     Standalone: 0

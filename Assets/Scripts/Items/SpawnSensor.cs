@@ -12,7 +12,7 @@ public class SpawnSensor : MonoBehaviour{
     public GameObject Sensor;
     public GameObject Player;
     private GameObject temp;
-    public static int maxAmount = 3;
+    public static int maxAmount = 5;
     private int spawnedAmount = 0;
 
     // Update is called once per frame
