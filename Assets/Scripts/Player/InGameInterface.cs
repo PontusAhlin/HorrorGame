@@ -251,7 +251,7 @@ public class InGameInterface : MonoBehaviour
 
 		// Create a new notification object.
         GameObject messageObject = Instantiate(notificationPrefab, notificationBoxWrapper.transform);
-		
+		messageObject.transform.position = messageObject.transform.position + new Vector3(0, 80, 0);
 		TMPro.TextMeshProUGUI messageObjectTextComponent =
 			messageObject.transform
 			.Find("Text Wrapper").Find("Text")
