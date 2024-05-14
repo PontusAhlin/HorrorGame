@@ -199,11 +199,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b0c6085e2059d4118801c6f9ba9d2e8c,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1871839322428551794}
+      addedObject: {fileID: 311833674983388744}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b0c6085e2059d4118801c6f9ba9d2e8c,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 311833674983388744}
+      addedObject: {fileID: 8858459954513360406}
   m_SourcePrefab: {fileID: 100100000, guid: b0c6085e2059d4118801c6f9ba9d2e8c, type: 3}
 --- !u!95 &1538724914289445650 stripped
 Animator:
@@ -281,7 +281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 4880365964202987880}
-  killRange: 5
+  killRange: 4
   huntRange: 40
   layersToHit:
     serializedVersion: 2
@@ -367,6 +367,20 @@ MonoBehaviour:
   viewerRequest: 0
   mult: 1
   multDec: 0.1
+--- !u!114 &311833674983388744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5256081540509174738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a802a3bf163d44459bf11843edcf9fa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skinnedMeshRenderer: []
+  CurrentColor: 
 --- !u!82 &8858459954513360406
 AudioSource:
   m_ObjectHideFlags: 0
@@ -472,17 +486,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &311833674983388744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5256081540509174738}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a802a3bf163d44459bf11843edcf9fa9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skinnedMeshRenderer: []
-  CurrentColor: 
