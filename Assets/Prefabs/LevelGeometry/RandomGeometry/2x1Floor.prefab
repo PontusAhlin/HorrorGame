@@ -363,7 +363,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.5, y: 1, z: 0.5}
+  m_Extents: {x: 1, y: 1, z: 1}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1
@@ -537,7 +537,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 29.316002, y: 34.869003, z: 29.316002}
+  m_Extents: {x: 36.65, y: 34.869003, z: 38.8}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1
@@ -856,7 +856,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6506546, guid: ab4ced4914b68784d8bf02aba7918f90, type: 3}
       propertyPath: m_Size.y
-      value: 352.6
+      value: 352.99
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -889,7 +889,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 153.718, y: 57.271004, z: 60.013004}
+  m_Extents: {x: 166, y: 98.2, z: 75.4}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1
@@ -984,7 +984,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 34.772003, y: 70.29301, z: 34.195004}
+  m_Extents: {x: 46.5, y: 70.29301, z: 42.15}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1
@@ -1197,7 +1197,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.019000001, y: 0.017, z: 0.017}
+  m_Extents: {x: 0.02, y: 0.02, z: 0.017}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1
@@ -1329,7 +1329,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 270.08502, y: 72.634, z: 50.183002}
+  m_Extents: {x: 282.05, y: 72.634, z: 68.4}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1
@@ -2044,7 +2044,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.010000001, y: 0.011000001, z: 0.025}
+  m_Extents: {x: 0.015, y: 0.015, z: 0.025}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1
