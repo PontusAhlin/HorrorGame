@@ -81,7 +81,7 @@ public class HighscoreMenu : MonoBehaviour
             // Set the score (rounded).
             TMPro.TextMeshProUGUI scoreText = highscoreListObject.transform.Find("Score").GetComponent<TMPro.TextMeshProUGUI>();
             int score = int.Parse(highscore.Split(':')[1]);
-            scoreText.text = Formatting.FloatToShortString(score);
+            scoreText.text = Formatting.FloatToShortString(score, 2);
         }
     }
 
