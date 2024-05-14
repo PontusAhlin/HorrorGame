@@ -16,7 +16,6 @@ public class AudioControl : MonoBehaviour
     // Update is called once per frame
     void Awake()
     {
-        Debug.Log("Volume: " + PlayerPrefs.GetFloat("musicVolume"));
         if(!PlayerPrefs.HasKey("musicVolume"))
         {
             PlayerPrefs.SetFloat("musicVolume", 1);
