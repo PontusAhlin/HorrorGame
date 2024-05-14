@@ -9,6 +9,7 @@
 
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 
 public class InGameInterface : MonoBehaviour
@@ -66,6 +67,7 @@ public class InGameInterface : MonoBehaviour
 
 	private AudioSource audioSource;
 	private Storage storage;
+	private Sprite[] avatarSprites;
 
 	// Start is called before the first frame update
 	void Start()
@@ -114,6 +116,9 @@ public class InGameInterface : MonoBehaviour
 
 		// Debugging.
 		StartCoroutine(DebugPrintMessageCoroutine());
+
+		// Load sprites.
+		StartCoroutine(LoadSprites());
 	}
 
 	// Update is called once per frame
@@ -126,6 +131,15 @@ public class InGameInterface : MonoBehaviour
 	void SetMessageVolume(float volume) {
 		if (audioSource != null)
 			audioSource.volume = volume;
+	}
+
+	IEnumerator LoadSprites()
+	{
+		// Load all sprites from the sprite folder.
+		avatarSprites = Resources.LoadAll<Sprite>(spriteFolder);
+		if (avatarSprites == null)
+			Debug.LogError("InGameInterface: No sprites found in the sprite folder.");
+		yield return null;
 	}
 
 	/**
@@ -169,37 +183,25 @@ public class InGameInterface : MonoBehaviour
 		* It can be used for printing out normal chat messages, and/or when
 		* a user has liked the stream.
 		*/
-	public void PrintMessage(string message, string sprite) {
-		PrintMessage(message, sprite, defaultColor);
+	public void PrintMessage(string message, bool pin = false) {
+		PrintMessage(message, pin, defaultColor);
 	}
-	public void PrintMessage(string message, string sprite, Color color) {
+	public void PrintMessage(string message, bool pin, Color color) {
 
 		if (chatBoxWrapper == null)
 			return;
 
 		// Check arguments.
-		if (message == null || sprite == null) {
+		if (message == null) {
 			Debug.LogError("PrintMessage: One or more arguments are null.");
 			return;
 		}
 
-		// Clean sprite name.
-		sprite = sprite.Split('.')[0]; // Remove file extension.
-
 		// Get the chat box object.
 		GameObject chatBox = chatBoxWrapper.transform.Find("Chat Box").gameObject; // Get the chat box object.
 
-		// Get sprite resources.
-		string spritePath = spriteFolder + "/" + sprite;
-		Sprite spriteResources = Resources.Load<Sprite>(spritePath);
-		if (spriteResources == null) {
-			Debug.LogError("PrintMessage: Sprite located at \"" + spritePath + "\" could not be found. Message won't be printed.");
-			return;
-		}
-
 		// Create a new chat message object.
         GameObject messageObject = Instantiate(chatMessagePrefab, chatBox.transform);
-		//messageObject.transform.SetParent(chatBox.transform);
 		messageObject.transform.SetAsFirstSibling();
 		
 		TMPro.TextMeshProUGUI messageObjectTextComponent =
@@ -214,10 +216,34 @@ public class InGameInterface : MonoBehaviour
 
 		// Add content to new message.
 		messageObjectTextComponent.text = message;
-		messageObjectAvatarComponent.sprite = spriteResources;
+		messageObjectAvatarComponent.sprite = avatarSprites[Random.Range(0, avatarSprites.Length)];
 
 		// Set color.
 		messageObject.gameObject.GetComponent<UnityEngine.UI.Image>().color = color;
+
+		// Pin to bottom.
+		if (pin) {
+			// Add tag.
+			/*messageObject.tag = "PinnedMessage";
+			// Look for old pinned messages.
+			Transform[] allChildren = chatBox.GetComponentsInChildren<Transform>(true);
+			foreach (Transform child in allChildren)
+				if (child.gameObject.tag == "PinnedMessage")
+					if (child.gameObject.GetComponent<RectTransform>().position.y > chatBoxWrapper.GetComponent<RectTransform>().rect.height) {
+						// Remove old pinned messages.
+						allChildren = chatBoxWrapper.GetComponentsInChildren<Transform>(true);
+						foreach (Transform childPinned in allChildren)
+							if (chatBoxWrapper.gameObject.tag == "PinnedMessage")
+								Destroy(chatBoxWrapper.gameObject);
+						// Add new pinned message to the bottom.
+						messageObject.transform.SetParent(chatBoxWrapper.transform);
+						RectTransform messageObjectTransform = messageObject.GetComponent<RectTransform>();
+						messageObjectTransform.pivot = new Vector2(0, 0);
+						messageObjectTransform.anchorMin = new Vector2(0, 0);
+						messageObjectTransform.anchorMax = new Vector2(0, 0);
+						messageObjectTransform.anchoredPosition = new Vector3(0, 0, 0);
+					}*/
+		}
 
 		// Scroll to the top.
 		chatBox.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0, 0);
@@ -227,6 +253,12 @@ public class InGameInterface : MonoBehaviour
 			audioSource.Play();
 	}
 
+	/**
+		* Send notification.
+		*
+		* This function sends a notification to the notification box.
+		* It can be used for sending out notifications to the user.
+		*/
 	public void SendNotification(string message, string sprite) {
 
 		if (notificationBoxWrapper == null)
@@ -281,7 +313,7 @@ public class InGameInterface : MonoBehaviour
 		while (true)
 		{
 			if (generateDebugMessages)
-				PrintMessage("This is a test message.", "baseline_person_white_icon");
+				PrintMessage("This is a test message.");
 			yield return new WaitForSeconds(generateDebugMessagesSpeed);
 		}
 	}

@@ -177,7 +177,7 @@ public class BoxCast : MonoBehaviour
                 if(monsterInFov[i].inFieldOfView == true){
                     getChat();
                     viewerMsg = chatGeneration.GenerateMessage("Positive");
-                    inGameInterface.PrintMessage(viewerMsg,"baseline_person_white_icon");
+                    inGameInterface.PrintMessage(viewerMsg, false);
                     chatTimeInterval = chatTimeIntervalInit/2;
                     extraBreak = true;
                     break;
@@ -188,7 +188,7 @@ public class BoxCast : MonoBehaviour
             if(extraBreak == false && playerScore.viewers != 0){
                 getChat();
                 viewerMsg = chatGeneration.GenerateMessage("Negative");
-                inGameInterface.PrintMessage(viewerMsg,"baseline_person_white_icon");
+                inGameInterface.PrintMessage(viewerMsg, false);
                 //Resetting the timers
                 chatTimeInterval = chatTimeIntervalInit;
             }
@@ -241,7 +241,7 @@ public class BoxCast : MonoBehaviour
             currentColorCharger = null;
             
             
-            inGameInterface.PrintMessage(viewerMsg,"baseline_person_white_icon", Color.red);
+            inGameInterface.PrintMessage(viewerMsg, true, Color.red);
             //Resets the timers
             viewerRequestTime = viewerRequestTimeInit;
             chatTimeInterval = chatTimeIntervalInit;

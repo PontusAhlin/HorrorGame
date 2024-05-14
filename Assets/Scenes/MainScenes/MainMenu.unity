@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731704, g: 0.1341472, b: 0.121078566, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731713, g: 0.13414736, b: 0.12107852, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1925,7 +1925,13 @@ MonoBehaviour:
     \nCC BY 4.0\n\n\"Northern Cardinal animal wildlife\nchristmas bird icon\"\nby
     Rafiico Creative Studio Co.,\nLtd. is licensed under CC BY 4.0\n\n\"math mathematics
     square square sign x square icon\" \nby Mohamed Mbarki, Ltd. is licensed under
-    CC BY 4.0\n\nIcons From www.icons8.com:\n- \"Shocked\""
+    CC BY 4.0\n\nIcons From www.icons8.com:\n\"Shocked\"\n\"Bad Bunny\",\r\n\"Barack
+    Obama\"\r\n\"Bernie Sanders\"\r\n\"Beyonce\"\r\n\"Billie Holiday\"\r\n\"Cristiano
+    Ronaldo\"\r\n\"David Bowie\"\r\n\"Dona Sarkar\"\r\n\"Donald Trump\"\r\n\"Frida
+    Kahlo\"\r\n\"Griezmann\"\r\n\"Groucho Marx\"\r\n\"Hayao Miyazaki\"\r\n\"Hermione
+    Granger Doll\"\r\n\"Jacques Yves Cousteau\"\r\n\"Jahangir Khan (actor)\"\r\n\"Jahangir
+    Khan (sportsman)\"\r\n\"James Brown\"\r\n\"Jisung Park\"\r\n\"Joe Biden\"\r\n\"John
+    Cena\""
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
