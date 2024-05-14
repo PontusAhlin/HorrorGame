@@ -18,8 +18,8 @@ public class SkipEntrance : MonoBehaviour
 
 
     void FixedUpdate(){
-        print(skipTimer);
 
+        //Added a timer to make the scene "run out"
         if(skipTimer < 1f){
             DisableCanvas();
         }
