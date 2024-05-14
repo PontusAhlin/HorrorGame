@@ -174,7 +174,7 @@ public class BoxCast : MonoBehaviour
 
             //Goes through all of the monsters that's in the field of view, if that's true we send a message to the UI
             for(int i = 0; i < monsterInFov.Count; i++){
-                if(monsterInFov[i].inFieldOfView == true || playerScore.viewers > 50){
+                if(monsterInFov[i].inFieldOfView == true){
                     getChat();
                     viewerMsg = chatGeneration.GenerateMessage("Positive");
                     inGameInterface.PrintMessage(viewerMsg,"baseline_person_white_icon");
@@ -185,7 +185,7 @@ public class BoxCast : MonoBehaviour
             }
             
             //The case if the player doesn't see a monster 
-            if(extraBreak == false && playerScore.viewers < 50 && playerScore.viewers != 0){
+            if(extraBreak == false && playerScore.viewers != 0){
                 getChat();
                 viewerMsg = chatGeneration.GenerateMessage("Negative");
                 inGameInterface.PrintMessage(viewerMsg,"baseline_person_white_icon");
