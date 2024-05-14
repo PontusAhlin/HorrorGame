@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12729266, g: 0.13414232, b: 0.12114291, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4664,7 +4664,7 @@ PrefabInstance:
     - target: {fileID: 76129857113409143, guid: 08d2334065032764db394bd8d2b1d454,
         type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4294967295
+      value: 16777215
       objectReference: {fileID: 0}
     - target: {fileID: 585419963938307506, guid: 08d2334065032764db394bd8d2b1d454,
         type: 3}
@@ -4674,7 +4674,7 @@ PrefabInstance:
     - target: {fileID: 1225310650742264753, guid: 08d2334065032764db394bd8d2b1d454,
         type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4294967295
+      value: 16777215
       objectReference: {fileID: 0}
     - target: {fileID: 1297820051875740126, guid: 08d2334065032764db394bd8d2b1d454,
         type: 3}
@@ -4690,7 +4690,7 @@ PrefabInstance:
     - target: {fileID: 1384659688651686771, guid: 08d2334065032764db394bd8d2b1d454,
         type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4294967295
+      value: 16777215
       objectReference: {fileID: 0}
     - target: {fileID: 1527799667999124089, guid: 08d2334065032764db394bd8d2b1d454,
         type: 3}
@@ -4826,7 +4826,7 @@ PrefabInstance:
     - target: {fileID: 4027645102924727003, guid: 08d2334065032764db394bd8d2b1d454,
         type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4294967295
+      value: 16777215
       objectReference: {fileID: 0}
     - target: {fileID: 4113114621504570107, guid: 08d2334065032764db394bd8d2b1d454,
         type: 3}
@@ -4856,7 +4856,7 @@ PrefabInstance:
     - target: {fileID: 8909882050501570065, guid: 08d2334065032764db394bd8d2b1d454,
         type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4294967295
+      value: 16777215
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5694,7 +5694,7 @@ PrefabInstance:
     - target: {fileID: 139293253767508008, guid: e4955e24e939e2b4088552de2a66e300,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 107.19035
+      value: 94.3866
       objectReference: {fileID: 0}
     - target: {fileID: 139293253767508008, guid: e4955e24e939e2b4088552de2a66e300,
         type: 3}
@@ -5724,7 +5724,7 @@ PrefabInstance:
     - target: {fileID: 367703265813152426, guid: e4955e24e939e2b4088552de2a66e300,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 107.19035
+      value: 94.3866
       objectReference: {fileID: 0}
     - target: {fileID: 367703265813152426, guid: e4955e24e939e2b4088552de2a66e300,
         type: 3}
@@ -5791,6 +5791,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 5.52
       objectReference: {fileID: 0}
+    - target: {fileID: 2689637198029351637, guid: e4955e24e939e2b4088552de2a66e300,
+        type: 3}
+      propertyPath: speed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2689637198029351637, guid: e4955e24e939e2b4088552de2a66e300,
+        type: 3}
+      propertyPath: speedInit
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 2798803443994270766, guid: e4955e24e939e2b4088552de2a66e300,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -5850,6 +5860,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4582969914747955378, guid: e4955e24e939e2b4088552de2a66e300,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5136222065807930831, guid: e4955e24e939e2b4088552de2a66e300,
         type: 3}
@@ -12030,7 +12045,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 16777215
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3

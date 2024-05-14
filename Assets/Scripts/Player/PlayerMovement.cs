@@ -152,16 +152,19 @@ public class PlayerMovement : MonoBehaviour
         // First one is top part of joystick
         if(directionY > (Math.Sqrt(3)/2) && (directionX > -1/2 || directionX < 1/2)){
             JoystickPlayerSpeed(1);
+            return;
         }
 
         // Second one checks middle part of joystick/circle up until the first part 
         if(directionY > 1/2 && ((directionX > -Math.Sqrt(3)/2) || (directionX < Math.Sqrt(3)/2))){
-            JoystickPlayerSpeed(3/2);
+            JoystickPlayerSpeed(1.3f);
+            return;
         }
 
         // Third checks the under the middle line of the joystick/circle
         if(directionY < 0){
-            JoystickPlayerSpeed(3);
+            JoystickPlayerSpeed(2);
+            return;
         }
 
     }

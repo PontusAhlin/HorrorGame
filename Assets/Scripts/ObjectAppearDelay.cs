@@ -12,7 +12,7 @@ public class ObjectAppearDelay : MonoBehaviour
     void Start()
     {
         // Start the coroutine to make the objects appear after a delay
-        //StartCoroutine(ShowObjectsAfterDelay());
+        StartCoroutine(ShowObjectsAfterDelay());
         StartCoroutine(DisableTutorial());
     }
 
