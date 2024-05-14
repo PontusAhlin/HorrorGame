@@ -38,7 +38,7 @@ public class NotifcationScript : MonoBehaviour
             sensor = GameObject.Find("sensor 3");
         }
         else if(notifMessage.Contains("sensor 4")){
-            sensor = GameObject.Find("sensor 5");
+            sensor = GameObject.Find("sensor 4");
         }
         else if(notifMessage.Contains("sensor 5")){
             sensor = GameObject.Find("sensor 5");

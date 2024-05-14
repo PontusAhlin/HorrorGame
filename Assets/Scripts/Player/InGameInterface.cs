@@ -137,7 +137,7 @@ public class InGameInterface : MonoBehaviour
 	IEnumerator LoadSprites()
 	{
 		// Load all sprites from the sprite folder.
-		avatarSprites = Resources.LoadAll<Sprite>(spriteFolder);
+		avatarSprites = Resources.LoadAll<Sprite>(spriteFolder + "/Avatars");
 		if (avatarSprites == null)
 			Debug.LogError("InGameInterface: No sprites found in the sprite folder.");
 		yield return null;
