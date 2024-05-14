@@ -68,7 +68,7 @@ public class InGameInterface : MonoBehaviour
 	private AudioSource audioSource;
 	private Storage storage;
 	private Sprite[] avatarSprites;
-	private bool pinnedExists = false;
+	private int maxChatMessages = 4;
 
 	// Start is called before the first frame update
 	void Start()
@@ -226,12 +226,8 @@ public class InGameInterface : MonoBehaviour
 		for (int i = 0; i < chatBox.transform.childCount; i++)
 		{
 			Transform child = chatBox.transform.GetChild(i);
-			int maxI = 4;
-			if (pinnedExists)
-				maxI = 3;
-			if (i == maxI) {
+			if (i == maxChatMessages) {
 				if (child.gameObject.CompareTag("PinnedMessage")) {
-					pinnedExists = true;
 					// Remove old pinned messages.
 					GameObject chatBoxWrapperLastChild = chatBoxWrapper.transform.GetChild(chatBoxWrapper.transform.childCount - 1).gameObject;
 					if (chatBoxWrapperLastChild.CompareTag("PinnedMessage"))
@@ -243,11 +239,17 @@ public class InGameInterface : MonoBehaviour
 					messageObjectTransform.anchorMin = new Vector2(0, 0);
 					messageObjectTransform.anchorMax = new Vector2(0, 0);
 					messageObjectTransform.anchoredPosition = new Vector3(0, 0, 0);
+					maxChatMessages = 3;
 				} else {
 					Destroy(child.gameObject);
 				}
 			}
 		}
+
+		// Remove old messages.
+		for (int i = 0; i < chatBox.transform.childCount; i++)
+			if (i >= maxChatMessages)
+				Destroy(chatBox.transform.GetChild(i).gameObject);
 
 		// Pin to bottom.
 		if (pin) {
