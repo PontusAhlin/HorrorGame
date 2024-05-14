@@ -105,6 +105,7 @@ public class MonsterGenerateViewers : MonoBehaviour
         if (viewsGeneratedInRow < 0f)                           // Generate tmp sum to fix faulty real viewer amount.
             tmp = -viewsGeneratedInRow;
         PlayerScore.viewers += addSpeed - removeSpeed + tmp;    // Update player viewer amount.
+        PlayerScore.likes += (int) (addSpeed * (PlayerScore.viewers)/5);
         if (viewsGeneratedInRow <= 0f) {
             viewsGeneratedInRow = 0f;                           // Prevent faulty sum.
             addSpeed = 0f;                                      // Reset faulty add speed.

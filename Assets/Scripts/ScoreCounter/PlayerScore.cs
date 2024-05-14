@@ -19,10 +19,8 @@ public class PlayerScore : MonoBehaviour
     public float viewers = 0;                                     // Amount of score generators (a.k.a. viewers).
     [Tooltip("Total amount of likes the player has.")]
     public int likes = 0;                                       // The players likes.
-    [Tooltip("Amount fo likes per view that should be generated during each iteration.")]
-    [SerializeField] float likesPerViewer = 1.0f;               // Multiplier for score generation.
-    [Tooltip("The interval timer at which more likes should be generated.")]
-    [SerializeField] float likeGenerationInterval = 1.0f;       // Multiplier for score generation.
+    [Tooltip("this is how many seconds need to pass before one viewer is removed")]
+    [SerializeField] float viewerLossInterval = 1.0f;
 
     private Storage storage;                                    // Storage object.
 
@@ -30,7 +28,7 @@ public class PlayerScore : MonoBehaviour
     void Start()
     {
         storage = Storage.GetStorage();                         // Get storage object.
-        InvokeRepeating("IncreaseLikes", likeGenerationInterval, likeGenerationInterval);             // Increase score every second.
+        InvokeRepeating("MakeViewersDecrease", viewerLossInterval, viewerLossInterval);             // Increase score every second.
     }
 
     /**
@@ -46,10 +44,12 @@ public class PlayerScore : MonoBehaviour
             viewers = 5f;
         }
 
-        if (viewers >= 1f) {                                         // If the player has viewers (required to avoid likes while no viewers).
-            likes += (int)(viewers * likesPerViewer);               // Increase likes based on the amount of viewers.
-            Debug.Log("Viewers: " + viewers + "Likes: " + likes);   // Debug log.
-        }
+        viewers -= (viewers/1000) + 1;
+
+        // if (viewers >= 1f) {                                         // If the player has viewers (required to avoid likes while no viewers).
+        //     likes += (int)(viewers * likesPerViewer);               // Increase likes based on the amount of viewers.
+        //     //Debug.Log("Viewers: " + viewers + "Likes: " + likes);   // Debug log.
+        // }
     }
 
     /**

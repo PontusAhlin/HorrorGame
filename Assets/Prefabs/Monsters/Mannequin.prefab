@@ -367,10 +367,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerScore: {fileID: 0}
-  viewerAddAmount: 1.5
+  viewerAddAmount: 10
   viewerRemoveAmount: 1
   generatorSpeed: 1
-  increaseAndDecrease: 1
+  increaseAndDecrease: 0
   inFieldOfView: 0
   viewerRequest: 0
   mult: 1
