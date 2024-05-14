@@ -443,6 +443,7 @@ MonoBehaviour:
   timeSeconds: 30
   MonsterAmount: 6
   firstMonsterDelay: 5
+  minRoomDistanceBetweenPlayerAndMonster: 8
   CurrentMonsterAmount: 0
   RandomMapScript: {fileID: 424695930}
 --- !u!1 &656645222 stripped
@@ -824,7 +825,7 @@ PrefabInstance:
     - target: {fileID: 139293253767508008, guid: e4955e24e939e2b4088552de2a66e300,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 94.3866
+      value: 114.73491
       objectReference: {fileID: 0}
     - target: {fileID: 139293253767508008, guid: e4955e24e939e2b4088552de2a66e300,
         type: 3}
@@ -854,7 +855,7 @@ PrefabInstance:
     - target: {fileID: 367703265813152426, guid: e4955e24e939e2b4088552de2a66e300,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 94.3866
+      value: 114.73491
       objectReference: {fileID: 0}
     - target: {fileID: 367703265813152426, guid: e4955e24e939e2b4088552de2a66e300,
         type: 3}
