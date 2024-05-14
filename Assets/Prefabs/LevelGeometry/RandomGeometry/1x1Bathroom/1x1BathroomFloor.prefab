@@ -1253,6 +1253,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5649595599431722410}
   - component: {fileID: 4481551292351232931}
+  - component: {fileID: 3008680591846156199}
   m_Layer: 0
   m_Name: Vanity (3)
   m_TagString: Untagged
@@ -1292,6 +1293,27 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!65 &3008680591846156199
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2538403678700869236}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 13, y: 35, z: 8.12}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2794194636233879891
 GameObject:
   m_ObjectHideFlags: 0
@@ -2474,6 +2496,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1674660156745940697}
   - component: {fileID: 7965770619454036294}
+  - component: {fileID: 704094853345562798}
   m_Layer: 0
   m_Name: Vanity (4)
   m_TagString: Untagged
@@ -2513,6 +2536,27 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!65 &704094853345562798
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5996592540709369448}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 11.4, y: 35.9, z: 7.55}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6163531340539720178
 GameObject:
   m_ObjectHideFlags: 0
