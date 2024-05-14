@@ -33,6 +33,8 @@ public class CustomAnimations : MonoBehaviour
     
     private RectTransform rectTransform;
 
+    private Vector3 StartPosition;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,7 +47,7 @@ public class CustomAnimations : MonoBehaviour
                 StartCoroutine(ScaleZeroToOne());
                 break;
             case AnimationType.Notification:
-                StartCoroutine(Notification());
+                StartCoroutine(NotificationStart());
                 break;
         }
     }
@@ -69,21 +71,24 @@ public class CustomAnimations : MonoBehaviour
         yield return null;
     }
 
-    IEnumerator Notification(){
+    public IEnumerator NotificationStart()
+    {
         float currentTime = 0.0f;
-        Vector3 StartPosition = this.transform.position;
-        Vector3 EndPosition = StartPosition - new Vector3(0,70,0);
+        StartPosition = this.transform.position;
+        Vector3 EndPosition = StartPosition - new Vector3(0,400,0);
         while (this.transform.position.y >= EndPosition.y)
-        {
+         {
             this.transform.position -= new Vector3(0,3,0);
             currentTime += Time.deltaTime;
             yield return null; // yield control back to Unity's main loop
         }
-        //this.transform.position = EndPosition;
-        yield return new WaitForSeconds(notificationDuration);
-        
-        currentTime = 0.0f;
-        while (this.transform.position.y <= StartPosition.y + 200)
+        yield return null;
+    }
+
+    public IEnumerator NotificationEnd()
+    {
+        float currentTime = 0.0f;
+        while (this.transform.position.y <= StartPosition.y + 400)
         {
             this.transform.position += new Vector3(0,4,0);
             currentTime += Time.deltaTime;
@@ -92,5 +97,29 @@ public class CustomAnimations : MonoBehaviour
         Destroy(gameObject);
         yield return null;
     }
+
+    // IEnumerator Notification(){
+    //     float currentTime = 0.0f;
+    //     Vector3 StartPosition = this.transform.position;
+    //     Vector3 EndPosition = StartPosition - new Vector3(0,70,0);
+    //     while (this.transform.position.y >= EndPosition.y)
+    //     {
+    //         this.transform.position -= new Vector3(0,3,0);
+    //         currentTime += Time.deltaTime;
+    //         yield return null; // yield control back to Unity's main loop
+    //     }
+    //     //this.transform.position = EndPosition;
+    //     yield return new WaitForSeconds(notificationDuration);
+        
+    //     currentTime = 0.0f;
+    //     while (this.transform.position.y <= StartPosition.y + 200)
+    //     {
+    //         this.transform.position += new Vector3(0,4,0);
+    //         currentTime += Time.deltaTime;
+    //         yield return null; // yield control back to Unity's main loop
+    //     }
+    //     Destroy(gameObject);
+    //     yield return null;
+    // }
 
 }

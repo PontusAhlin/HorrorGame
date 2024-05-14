@@ -461,6 +461,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sensor: {fileID: 0}
   pointerWrapper: {fileID: 0}
+  customAnimations: {fileID: 4005234888692489318}
 --- !u!114 &6139928160255305148
 MonoBehaviour:
   m_ObjectHideFlags: 0

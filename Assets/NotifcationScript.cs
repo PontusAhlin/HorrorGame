@@ -13,6 +13,8 @@ public class NotifcationScript : MonoBehaviour
     public GameObject sensor;
     public GameObject pointerWrapper;
 
+    public CustomAnimations customAnimations;
+
     private PointerScript pointerScript;
 
     // Start is called before the first frame update
@@ -41,6 +43,7 @@ public class NotifcationScript : MonoBehaviour
     }
 
     public void NotificationClick(){
+        StartCoroutine(customAnimations.NotificationEnd());
         PointerScript.target = sensor;
         pointerScript.Activate();
     }
