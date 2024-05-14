@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414727, b: 0.121078536, a: 1}
+  m_IndirectSpecularColor: {r: 0.12729266, g: 0.13414232, b: 0.12114291, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4765,6 +4765,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 76129857113409143, guid: 08d2334065032764db394bd8d2b1d454,
         type: 3}
+      propertyPath: m_text
+      value: "Point the phone \nin the direction \nyou want to move"
+      objectReference: {fileID: 0}
+    - target: {fileID: 76129857113409143, guid: 08d2334065032764db394bd8d2b1d454,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 76129857113409143, guid: 08d2334065032764db394bd8d2b1d454,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 76129857113409143, guid: 08d2334065032764db394bd8d2b1d454,
+        type: 3}
       propertyPath: m_fontColor32.rgba
       value: 16777215
       objectReference: {fileID: 0}
@@ -4772,6 +4787,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1225310650742264753, guid: 08d2334065032764db394bd8d2b1d454,
+        type: 3}
+      propertyPath: m_text
+      value: "Make sure to film creepy stuff, and get out when things get too spooky,
+        because a dead streamer does not have a very \nlong career."
+      objectReference: {fileID: 0}
+    - target: {fileID: 1225310650742264753, guid: 08d2334065032764db394bd8d2b1d454,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1225310650742264753, guid: 08d2334065032764db394bd8d2b1d454,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1225310650742264753, guid: 08d2334065032764db394bd8d2b1d454,
         type: 3}
@@ -4789,6 +4820,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 5eda94a9dcf71e445ad17e3c065d1460,
         type: 3}
+    - target: {fileID: 1384659688651686771, guid: 08d2334065032764db394bd8d2b1d454,
+        type: 3}
+      propertyPath: m_text
+      value: "You are trying to go viral, so you went to an abandoned asylum to get
+        some good creepy footage \nfor your stream."
+      objectReference: {fileID: 0}
+    - target: {fileID: 1384659688651686771, guid: 08d2334065032764db394bd8d2b1d454,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1384659688651686771, guid: 08d2334065032764db394bd8d2b1d454,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 1384659688651686771, guid: 08d2334065032764db394bd8d2b1d454,
         type: 3}
       propertyPath: m_fontColor32.rgba
@@ -4952,8 +4999,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4027645102924727003, guid: 08d2334065032764db394bd8d2b1d454,
         type: 3}
+      propertyPath: m_fontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4027645102924727003, guid: 08d2334065032764db394bd8d2b1d454,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4027645102924727003, guid: 08d2334065032764db394bd8d2b1d454,
+        type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 16777215
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 4113114621504570107, guid: 08d2334065032764db394bd8d2b1d454,
         type: 3}
@@ -4967,8 +5024,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5062023198827775115, guid: 08d2334065032764db394bd8d2b1d454,
         type: 3}
+      propertyPath: m_fontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5062023198827775115, guid: 08d2334065032764db394bd8d2b1d454,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5062023198827775115, guid: 08d2334065032764db394bd8d2b1d454,
+        type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4294967295
+      value: 16777215
+      objectReference: {fileID: 0}
+    - target: {fileID: 5143304140909756592, guid: 08d2334065032764db394bd8d2b1d454,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -297
       objectReference: {fileID: 0}
     - target: {fileID: 5950240522420245799, guid: 08d2334065032764db394bd8d2b1d454,
         type: 3}
@@ -4978,7 +5050,17 @@ PrefabInstance:
     - target: {fileID: 8909882050501570065, guid: 08d2334065032764db394bd8d2b1d454,
         type: 3}
       propertyPath: m_text
-      value: Drag the joystick in the direction you want to move
+      value: "Drag the joystick \nin the direction \nyou want to move"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8909882050501570065, guid: 08d2334065032764db394bd8d2b1d454,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8909882050501570065, guid: 08d2334065032764db394bd8d2b1d454,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8909882050501570065, guid: 08d2334065032764db394bd8d2b1d454,
         type: 3}
@@ -5821,7 +5903,7 @@ PrefabInstance:
     - target: {fileID: 139293253767508008, guid: e4955e24e939e2b4088552de2a66e300,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 94.3866
+      value: 114.73491
       objectReference: {fileID: 0}
     - target: {fileID: 139293253767508008, guid: e4955e24e939e2b4088552de2a66e300,
         type: 3}
@@ -5851,12 +5933,17 @@ PrefabInstance:
     - target: {fileID: 367703265813152426, guid: e4955e24e939e2b4088552de2a66e300,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 94.3866
+      value: 114.73491
       objectReference: {fileID: 0}
     - target: {fileID: 367703265813152426, guid: e4955e24e939e2b4088552de2a66e300,
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 685702562820952942, guid: e4955e24e939e2b4088552de2a66e300,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1764034882413315647, guid: e4955e24e939e2b4088552de2a66e300,
         type: 3}
@@ -12343,8 +12430,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press this button to put down a ghost sensor, which gives a notification
-    when a monster walks near it
+  m_text: "Press this button \nto put down a ghost sensor, which gives a notification
+    when a monster walks near it. Tap on the notification bar to see where the monster
+    is"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6f353d11182c445d3bd988d1b253e432, type: 2}
   m_sharedMaterial: {fileID: -1277170355358967541, guid: 6f353d11182c445d3bd988d1b253e432,
@@ -12372,8 +12460,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
