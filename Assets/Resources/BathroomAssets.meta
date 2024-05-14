@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/BathroomAssets.meta
+guid: 3586610578a95704ebcbad562cd47d9e
+========
+guid: db307b478cf77454e9e858fe4f2407c4
+>>>>>>>> 6d5fd620 (deleted free audio system and kept sounds, deleted terrain, volumes move):Assets/Volumes.meta
+folderAsset: yes
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

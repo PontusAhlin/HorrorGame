@@ -19,15 +19,16 @@ public class PlayerScore : MonoBehaviour
     public float viewers = 0;                                     // Amount of score generators (a.k.a. viewers).
     [Tooltip("Total amount of likes the player has.")]
     public int likes = 0;                                       // The players likes.
-    [Tooltip("Amount fo likes per view that should be generated during each iteration.")]
-    [SerializeField] float likesPerViewer = 1.0f;               // Multiplier for score generation.
-    [Tooltip("The interval timer at which more likes should be generated.")]
-    [SerializeField] float likeGenerationInterval = 1.0f;       // Multiplier for score generation.
+    [Tooltip("this is how many seconds need to pass before one viewer is removed")]
+    [SerializeField] float viewerLossInterval = 1.0f;
+
+    private Storage storage;                                    // Storage object.
 
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("IncreaseLikes", likeGenerationInterval, likeGenerationInterval);             // Increase score every second.
+        storage = Storage.GetStorage();                         // Get storage object.
+        InvokeRepeating("MakeViewersDecrease", viewerLossInterval, viewerLossInterval);             // Increase score every second.
     }
 
     /**
@@ -38,9 +39,38 @@ public class PlayerScore : MonoBehaviour
      */
     private void IncreaseLikes()
     {
-        if (viewers >= 1f) {                                         // If the player has viewers (required to avoid likes while no viewers).
-            likes += (int)(viewers * likesPerViewer);               // Increase likes based on the amount of viewers.
-            Debug.Log("Viewers: " + viewers + "Likes: " + likes);   // Debug log.
+        
+        if (viewers == 5f) {                                         //Added to make sure the player never goes below 5 viewers
+            viewers = 5f;
         }
+
+        viewers -= (viewers/1000) + 1;
+
+        // if (viewers >= 1f) {                                         // If the player has viewers (required to avoid likes while no viewers).
+        //     likes += (int)(viewers * likesPerViewer);               // Increase likes based on the amount of viewers.
+        //     //Debug.Log("Viewers: " + viewers + "Likes: " + likes);   // Debug log.
+        // }
+    }
+
+    /**
+        * Death.
+        *
+        * This function is called when the player dies. It's used to save the likes and viewers
+        * to the storage to be used in the jumpscare scenes.
+        */
+    public void Death()
+    {
+        StoreLikesAndViewers();
+    }
+
+    /**
+        * Store likes and viewers.
+        *
+        * Store the likes and viewers temporarly in the storage file.
+        */
+    public void StoreLikesAndViewers()
+    {
+        storage.SetLastGameLikes(likes);                       // Save the likes to the storage.
+        storage.SetLastGameViewers(viewers);                   // Save the viewers to the storage.
     }
 }

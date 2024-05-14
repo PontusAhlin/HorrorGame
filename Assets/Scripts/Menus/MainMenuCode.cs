@@ -1,3 +1,8 @@
+/**
+    * MainMenuCode.cs
+    * Author(s): Arnob Sarker, William Fridh, Pontus Åhlin
+    */
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -7,7 +12,16 @@ public class SC_MainMenu : MonoBehaviour
 {
     public GameObject MainMenu;
     public GameObject CreditsMenu;
-    [SerializeField] public string StartingSceneName = "MainMapRandom";
+    public GameObject TrademarksMenu;
+
+
+    [Tooltip("The name of the scene to load when the player wants to see the highscore.")]
+    [SerializeField] string HighscoreSceneName;
+
+    [Tooltip("The name of the scene to load when the player wants to see the achievements.")]
+    [SerializeField] public string AchievementsSceneName = "";
+
+    [SerializeField] public string StartingSceneName = "Entrance";
     public InputField playername;
 
     // Start is called before the first frame update
@@ -36,6 +50,45 @@ public class SC_MainMenu : MonoBehaviour
         // Show Main Menu
         MainMenu.SetActive(true);
         CreditsMenu.SetActive(false);
+        TrademarksMenu.SetActive(false);
+
+    }
+
+
+    public void TrademarksButton()
+    {
+        // Displays the credits/trademarks screen 
+        CreditsMenu.SetActive(false);
+        MainMenu.SetActive(false);
+        TrademarksMenu.SetActive(true);
+    }
+
+
+
+    public void HighscoreButton()
+    {
+        // Show Highscore Menu
+        if (HighscoreSceneName != null && HighscoreSceneName != "")
+        {
+            SceneManager.LoadScene(HighscoreSceneName);
+        }
+        else
+        {
+            Debug.LogError("HighscoreSceneName is not set in the inspector, thus no navigation will be done.");
+        }
+    }
+
+    public void AchievementsButton()
+    {
+        // Show Achievements Menu
+        if (AchievementsSceneName != null && AchievementsSceneName != "")
+        {
+            SceneManager.LoadScene(AchievementsSceneName);
+        }
+        else
+        {
+            Debug.LogError("AchievementsSceneName is not set in the inspector, thus no navigation will be done.");
+        }
     }
 
     public void QuitButton()
