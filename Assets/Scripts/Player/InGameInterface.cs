@@ -68,6 +68,7 @@ public class InGameInterface : MonoBehaviour
 	private AudioSource audioSource;
 	private Storage storage;
 	private Sprite[] avatarSprites;
+	private int maxChatMessages = 4;
 
 	// Start is called before the first frame update
 	void Start()
@@ -221,28 +222,39 @@ public class InGameInterface : MonoBehaviour
 		// Set color.
 		messageObject.gameObject.GetComponent<UnityEngine.UI.Image>().color = color;
 
+		// Iterate each chat message.
+		for (int i = 0; i < chatBox.transform.childCount; i++)
+		{
+			Transform child = chatBox.transform.GetChild(i);
+			if (i == maxChatMessages) {
+				if (child.gameObject.CompareTag("PinnedMessage")) {
+					// Remove old pinned messages.
+					GameObject chatBoxWrapperLastChild = chatBoxWrapper.transform.GetChild(chatBoxWrapper.transform.childCount - 1).gameObject;
+					if (chatBoxWrapperLastChild.CompareTag("PinnedMessage"))
+						Destroy(chatBoxWrapperLastChild);
+					// Add new pinned message to the bottom.
+					child.transform.SetParent(chatBoxWrapper.transform);
+					RectTransform messageObjectTransform = child.GetComponent<RectTransform>();
+					messageObjectTransform.pivot = new Vector2(0, 0);
+					messageObjectTransform.anchorMin = new Vector2(0, 0);
+					messageObjectTransform.anchorMax = new Vector2(0, 0);
+					messageObjectTransform.anchoredPosition = new Vector3(0, 0, 0);
+					maxChatMessages = 3;
+				} else {
+					Destroy(child.gameObject);
+				}
+			}
+		}
+
+		// Remove old messages.
+		for (int i = 0; i < chatBox.transform.childCount; i++)
+			if (i >= maxChatMessages)
+				Destroy(chatBox.transform.GetChild(i).gameObject);
+
 		// Pin to bottom.
 		if (pin) {
 			// Add tag.
-			/*messageObject.tag = "PinnedMessage";
-			// Look for old pinned messages.
-			Transform[] allChildren = chatBox.GetComponentsInChildren<Transform>(true);
-			foreach (Transform child in allChildren)
-				if (child.gameObject.tag == "PinnedMessage")
-					if (child.gameObject.GetComponent<RectTransform>().position.y > chatBoxWrapper.GetComponent<RectTransform>().rect.height) {
-						// Remove old pinned messages.
-						allChildren = chatBoxWrapper.GetComponentsInChildren<Transform>(true);
-						foreach (Transform childPinned in allChildren)
-							if (chatBoxWrapper.gameObject.tag == "PinnedMessage")
-								Destroy(chatBoxWrapper.gameObject);
-						// Add new pinned message to the bottom.
-						messageObject.transform.SetParent(chatBoxWrapper.transform);
-						RectTransform messageObjectTransform = messageObject.GetComponent<RectTransform>();
-						messageObjectTransform.pivot = new Vector2(0, 0);
-						messageObjectTransform.anchorMin = new Vector2(0, 0);
-						messageObjectTransform.anchorMax = new Vector2(0, 0);
-						messageObjectTransform.anchoredPosition = new Vector3(0, 0, 0);
-					}*/
+			messageObject.tag = "PinnedMessage";
 		}
 
 		// Scroll to the top.

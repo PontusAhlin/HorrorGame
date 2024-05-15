@@ -397,8 +397,8 @@ MonoBehaviour:
   LoreNote: {fileID: 1607414420759160267, guid: 187cd5763f51d4c46a825cdc88379b74,
     type: 3}
   LoreNoteAmount: 5
-  MapWidth: 15
-  MapHeight: 15
+  MapWidth: 10
+  MapHeight: 10
   RoomSize: 50
   WallGapSize: 0.001
   MaximumWalkers: 3
@@ -407,7 +407,7 @@ MonoBehaviour:
   Randomness: 0.75
   WaitTime: 0
   TwoByTwoChance: 0.2
-  TwoByOneChance: 0.2
+  TwoByOneChance: 0.3
   DoorChance: 0.5
   RandomMapParent: {fileID: 424695929}
   NavmeshParent: {fileID: 721380121}
@@ -443,13 +443,13 @@ MonoBehaviour:
   Player: {fileID: 656645222}
   SpawnOneOfEach: 1
   MonsterPrefabs:
-  - {fileID: 5256081540509174738, guid: 8e3032d5ebcc846d3a3c001b6f380228, type: 3}
   - {fileID: 8182396208055939415, guid: 183dfe7f4d0194a0884e929994c8eb59, type: 3}
+  - {fileID: 5256081540509174738, guid: 8e3032d5ebcc846d3a3c001b6f380228, type: 3}
   - {fileID: 5651339836816107284, guid: 2e4341b898ad64b3a86e5a9592ce57dc, type: 3}
   timeSeconds: 40
   MonsterAmount: 10
   firstMonsterDelay: 5
-  minRoomDistanceBetweenPlayerAndMonster: 8
+  minRoomDistanceBetweenPlayerAndMonster: 2
   CurrentMonsterAmount: 0
   RandomMapScript: {fileID: 424695930}
 --- !u!1 &656645222 stripped
