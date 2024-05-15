@@ -6,9 +6,9 @@
 
 ## Technologies
 
-This mobile VR game is based on Unity's AR template stripped down to achieve VR. It's maps are random generated using a random walker algorithn that places out prefabs as uses custom alogirthms to place out walls, and doors. The monsters are controlled with a AI navigation package and detected by using "box casting". The gamle also makes use of JSON storage, animations, and ray casting to archieve monsters detection.
+This mobile VR game is based on Unity's AR template stripped down to achieve VR. Its maps are randomly generated using a random walker algorithm that places out prefabs and uses custom algorithms to place out walls, and doors. The monsters are controlled with an AI navigation package and detected by using "box casting". The game also makes use of JSON storage, animations, and ray casting to achieve monster detection.
 
 ## Additional Information
 
-For more information, such as team background, sprint logs, and demo, please visit out GitHub Wiki or website at [saitejaschintapall.wixsite.com](https://saitejaschintapall.wixsite.com/), or contact any of our teammemebrs (see Contributors).
+For more information, such as team background, sprint logs, and demo, please visit our GitHub Wiki or website at [saitejaschintapall.wixsite.com](https://saitejaschintapall.wixsite.com/), or contact any of our team members (see Contributors).
 
